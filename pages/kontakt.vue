@@ -43,11 +43,11 @@
             </div>
 
             <form @submit.prevent="sendEmail" :class="{ 'opacity-10 pointer-events-none blur-sm': consentCookie !== 'granted' }" class="relative space-y-6 bg-gray-50 p-8 md:p-12 rounded-[3.5rem] border border-gray-100 shadow-3xl">
-              <input v-model="formData.name" type="text" placeholder="NAME / UNTERNEHMEN" required class="w-full bg-white border-2 border-gray-200 p-6 rounded-2xl font-black italic focus:border-red-600 outline-none transition-all">
+              <input v-model="formData.name" type="text" placeholder="NAME / UNTERNEHMEN" autocomplete="name" required class="w-full bg-white border-2 border-gray-200 p-6 rounded-2xl font-black italic focus:border-red-600 outline-none transition-all">
 
               <div class="grid md:grid-cols-2 gap-6">
                 <input v-model="formData.title" type="text" placeholder="PROJEKT-TITEL" class="w-full bg-white border-2 border-gray-200 p-6 rounded-2xl font-black italic focus:border-red-600 outline-none transition-all">
-                <input v-model="formData.email" type="email" placeholder="EMAIL-ADRESSE" required class="w-full bg-white border-2 border-gray-200 p-6 rounded-2xl font-black italic focus:border-red-600 outline-none transition-all">
+                <input v-model="formData.email" type="email" placeholder="EMAIL-ADRESSE" autocomplete="email" required class="w-full bg-white border-2 border-gray-200 p-6 rounded-2xl font-black italic focus:border-red-600 outline-none transition-all">
               </div>
 
               <textarea v-model="formData.message" rows="5" placeholder="PROJEKT-DETAILS" required class="w-full bg-white border-2 border-gray-200 p-6 rounded-2xl font-black italic focus:border-red-600 outline-none resize-none transition-all"></textarea>
@@ -55,7 +55,7 @@
               <ClientOnly>
                 <div id="recaptcha-element" class="flex justify-center my-6 min-h-[78px]"></div>
                 <template #fallback>
-                  <div class="flex justify-center my-6 min-h-[78px] items-center border-2 border-dashed border-gray-200 rounded-2xl text-gray-400 text-xs italic uppercase font-black">
+                  <div class="flex justify-center my-6 min-h-[78px] items-center border-2 border-dashed border-gray-200 rounded-2xl text-gray-400 text-[10px] italic uppercase font-black">
                     Sicherheitsprüfung wird geladen...
                   </div>
                 </template>
@@ -71,167 +71,176 @@
       </div>
     </section>
 
-    <div class="fixed bottom-10 right-10 z-[100] flex flex-col gap-3 items-end">
+    <div class="fixed bottom-10 right-10 z-[100] flex flex-col gap-3 items-end pointer-events-none">
       <transition-group name="toast">
         <div v-for="toast in toasts" :key="toast.id"
           :class="toast.type === 'success' ? 'bg-gray-900' : 'bg-red-600'"
-             class="text-white px-8 py-4 rounded-xl font-black uppercase italic shadow-2xl flex items-center gap-3">
-             <span>{{ toast.text }}</span>
-             <button @click="removeToast(toast.id)" class="text-white/50 hover:text-white text-xs">✕</button>
-           </div>
-         </transition-group>
-       </div>
-     </div>
-   </template>
+          class="text-white px-8 py-4 rounded-xl font-black uppercase italic shadow-2xl flex items-center gap-3 pointer-events-auto">
+          <span>{{ toast.text }}</span>
+          <button @click="removeToast(toast.id)" class="text-white/50 hover:text-white text-xs p-1">✕</button>
+        </div>
+      </transition-group>
+    </div>
+  </div>
+</template>
 
-   <script setup>
-   import { nextTick, onMounted, onBeforeUnmount, watch } from 'vue'
+<script setup>
+import { nextTick, onMounted, onBeforeUnmount, watch, ref } from 'vue'
 
-   // Layout & SEO
-   definePageMeta({ layout: 'guest' })
-   useHead({
-     title: 'Dialog | VelWebSolutions',
-     meta: [{ name: 'description', content: 'Tobias Kubina - Webentwicklung aus Krefeld.' }]
-   })
+// Layout & SEO
+definePageMeta({ layout: 'guest' })
+useHead({
+  title: 'Dialog | VelWebSolutions',
+  meta: [{ name: 'description', content: 'Tobias Kubina - Webentwicklung aus Krefeld.' }]
+})
 
-   // State Management
-   const formData = useState('contact_form_data', () => ({ name: '', title: '', email: '', message: '' }))
-   const loading = useState('contact_loading', () => false)
-   const toasts = useState('contact_toasts', () => [])
-   const cooldownActive = useState('contact_cooldown_active', () => false)
-   const cooldownDisplay = useState('contact_cooldown_timer', () => '00:00')
-   const isBannerVisible = useState('cookie_banner_visible')
+// State Management
+const formData = useState('contact_form_data', () => ({ name: '', title: '', email: '', message: '' }))
+const loading = ref(false) // Lokal reicht hier völlig
+const toasts = ref([]) // ref statt useState für rein clientseitiges UI
+const cooldownActive = useState('contact_cooldown_active', () => false)
+const cooldownDisplay = useState('contact_cooldown_timer', () => '00:00')
+const isBannerVisible = useState('cookie_banner_visible')
 
-   const config = useRuntimeConfig()
-   const consentCookie = useCookie('user_consent')
-   const cooldownCookie = useCookie('contact_cooldown_timestamp')
+const config = useRuntimeConfig()
+const consentCookie = useCookie('user_consent')
+const cooldownCookie = useCookie('contact_cooldown_timestamp')
 
-   let recaptchaId = null
+let recaptchaId = null
 
-   // Toast Logic
-   const addToast = (text, type = 'error') => {
-     const id = Date.now()
-     toasts.value.push({ id, text, type })
-     // Auto-remove nach 5 Sekunden
-     setTimeout(() => removeToast(id), 5000)
-   }
+/**
+ * UI Feedback: Toasts
+ */
+const addToast = (text, type = 'error') => {
+  const id = Date.now()
+  toasts.value.push({ id, text, type })
+  setTimeout(() => removeToast(id), 5000)
+}
 
-   const removeToast = (id) => {
-     toasts.value = toasts.value.filter(t => t.id !== id)
-   }
+const removeToast = (id) => {
+  toasts.value = toasts.value.filter(t => t.id !== id)
+}
 
-   // reCAPTCHA Logic
-   const renderRecaptcha = () => {
-     if (process.client && document.getElementById('recaptcha-element') && window.grecaptcha?.render) {
-       try {
-         if (recaptchaId !== null) {
-           window.grecaptcha.reset(recaptchaId)
-         } else {
-           recaptchaId = window.grecaptcha.render('recaptcha-element', {
-             sitekey: config.public.recaptchaSiteKey,
-             theme: 'light'
-           })
-         }
-       } catch (e) {
-         console.error("reCAPTCHA Error:", e)
-       }
-     }
-   }
+/**
+ * Google reCAPTCHA v2 Logic
+ */
+const renderRecaptcha = () => {
+  const container = document.getElementById('recaptcha-element')
+  if (process.client && container && window.grecaptcha?.render) {
+    try {
+      // Container leeren für saubere Neu-Initialisierung (Hydration Fix)
+      container.innerHTML = ''
+      recaptchaId = window.grecaptcha.render('recaptcha-element', {
+        sitekey: config.public.recaptchaSiteKey,
+        theme: 'light'
+      })
+    } catch (e) {
+      console.warn("reCAPTCHA render skipped:", e)
+    }
+  }
+}
 
-   const loadRecaptchaScript = () => {
-     if (process.client && consentCookie.value === 'granted') {
-       if (window.grecaptcha?.render) {
-         nextTick(renderRecaptcha)
-       } else {
-         window.onRecaptchaLoad = () => { nextTick(renderRecaptcha) }
-         if (!document.querySelector('script[src*="recaptcha/api.js"]')) {
-           const script = document.createElement('script')
-           script.src = `https://www.google.com/recaptcha/api.js?render=explicit&onload=onRecaptchaLoad`
-           script.async = true
-           script.defer = true
-           document.head.appendChild(script)
-         }
-       }
-     }
-   }
+const loadRecaptchaScript = () => {
+  if (process.client && consentCookie.value === 'granted') {
+    if (window.grecaptcha?.render) {
+      nextTick(renderRecaptcha)
+    } else {
+      window.onRecaptchaLoad = () => { nextTick(renderRecaptcha) }
+      if (!document.querySelector('script[src*="recaptcha/api.js"]')) {
+        const script = document.createElement('script')
+        script.src = `https://www.google.com/recaptcha/api.js?render=explicit&onload=onRecaptchaLoad`
+        script.async = true; script.defer = true
+        document.head.appendChild(script)
+      }
+    }
+  }
+}
 
-   watch(consentCookie, (newVal) => { if (newVal === 'granted') loadRecaptchaScript() })
+// Beobachte Cookie-Einwilligung
+watch(consentCookie, (newVal) => {
+  if (newVal === 'granted') loadRecaptchaScript()
+})
 
-   // Sende-Logik
-   const sendEmail = async () => {
-     if (consentCookie.value !== 'granted' || cooldownActive.value || loading.value) return
+/**
+ * Form Submission
+ */
+const sendEmail = async () => {
+  if (consentCookie.value !== 'granted' || cooldownActive.value || loading.value) return
 
-     loading.value = true
-     try {
-       const token = (process.client && window.grecaptcha && recaptchaId !== null)
-         ? window.grecaptcha.getResponse(recaptchaId)
-         : ''
+  loading.value = true
+  try {
+    const token = (process.client && window.grecaptcha && recaptchaId !== null)
+      ? window.grecaptcha.getResponse(recaptchaId)
+      : ''
 
-       if (!token) {
-         addToast('⚠️ Sicherheitsprüfung erforderlich!')
-         loading.value = false
-         return
-       }
+    if (!token) {
+      addToast('⚠️ Sicherheitsprüfung erforderlich!')
+      loading.value = false
+      return
+    }
 
-       await $fetch('/api/contact', {
-         method: 'POST',
-         body: {
-           from_name: formData.value.name,
-           from_title: formData.value.title,
-           from_email: formData.value.email,
-           message: formData.value.message,
-           'g-recaptcha-response': token
-         }
-       })
+    await $fetch('/api/contact', {
+      method: 'POST',
+      body: {
+        from_name: formData.value.name,
+        from_title: formData.value.title,
+        from_email: formData.value.email,
+        message: formData.value.message,
+        'g-recaptcha-response': token
+      }
+    })
 
-       addToast('✅ Mission gestartet! Nachricht ist raus.', 'success')
-       cooldownCookie.value = Date.now() + (5 * 60 * 1000)
-       formData.value = { name: '', title: '', email: '', message: '' }
-       if (window.grecaptcha && recaptchaId !== null) window.grecaptcha.reset(recaptchaId)
+    addToast('✅ Mission gestartet! Nachricht ist raus.', 'success')
+    cooldownCookie.value = Date.now() + (5 * 60 * 1000)
+    formData.value = { name: '', title: '', email: '', message: '' }
 
-     } catch (err) {
-       if (window.grecaptcha && recaptchaId !== null) window.grecaptcha.reset(recaptchaId)
-       addToast(`⚠️ ${err.data?.statusMessage || 'Systemfehler beim Versand.'}`)
-     } finally {
-       loading.value = false
-     }
-   }
+    if (window.grecaptcha && recaptchaId !== null) window.grecaptcha.reset(recaptchaId)
 
-   // Timer Logik
-   const updateCooldown = () => {
-     if (!cooldownCookie.value) { cooldownActive.value = false; return }
-     const remaining = Math.max(0, cooldownCookie.value - Date.now())
-     if (remaining <= 0) {
-       cooldownActive.value = false
-       cooldownCookie.value = null
-       return
-     }
-     const m = Math.floor(remaining / 60000), s = Math.floor((remaining % 60000) / 1000)
-     cooldownDisplay.value = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`
-     cooldownActive.value = true
-   }
+  } catch (err) {
+    if (window.grecaptcha && recaptchaId !== null) window.grecaptcha.reset(recaptchaId)
+    addToast(`⚠️ ${err.data?.statusMessage || 'Systemfehler beim Versand.'}`)
+  } finally {
+    loading.value = false
+  }
+}
 
-   let interval = null
-   onMounted(() => {
-     loadRecaptchaScript()
-     updateCooldown()
-     interval = setInterval(updateCooldown, 1000)
-   })
+/**
+ * Cooldown Timer Logic
+ */
+const updateCooldown = () => {
+  if (!cooldownCookie.value) { cooldownActive.value = false; return }
+  const remaining = Math.max(0, cooldownCookie.value - Date.now())
+  if (remaining <= 0) {
+    cooldownActive.value = false
+    cooldownCookie.value = null
+    return
+  }
+  const m = Math.floor(remaining / 60000), s = Math.floor((remaining % 60000) / 1000)
+  cooldownDisplay.value = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`
+  cooldownActive.value = true
+}
 
-   onBeforeUnmount(() => {
-     if (interval) clearInterval(interval)
-     if (process.client) window.onRecaptchaLoad = null
-   })
-   </script>
+let interval = null
+onMounted(() => {
+  loadRecaptchaScript()
+  updateCooldown()
+  interval = setInterval(updateCooldown, 1000)
+})
 
-   <style scoped>
-   @keyframes grid-move { 0% { transform: translate(0, 0); } 100% { transform: translate(40px, 40px); } }
-   .shadow-3xl { box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.3); }
+onBeforeUnmount(() => {
+  if (interval) clearInterval(interval)
+  if (process.client) window.onRecaptchaLoad = null
+})
+</script>
 
-   /* Toast Animationen */
-   .toast-enter-active, .toast-leave-active {
-     transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-   }
-   .toast-enter-from { opacity: 0; transform: translateX(100px) skewX(-10deg); }
-   .toast-leave-to { opacity: 0; transform: scale(0.8) translateY(20px); }
-   </style>
+<style scoped>
+@keyframes grid-move { 0% { transform: translate(0, 0); } 100% { transform: translate(40px, 40px); } }
+.shadow-3xl { box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.3); }
+
+/* Toast Animationen (Optimiert für smoothe Bewegungen) */
+.toast-enter-active, .toast-leave-active {
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.toast-enter-from { opacity: 0; transform: translateX(50px) scale(0.9); }
+.toast-leave-to { opacity: 0; transform: scale(0.8) translateY(10px); }
+</style>
