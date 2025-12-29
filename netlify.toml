@@ -3,14 +3,13 @@
 # ============================================
 [build]
   command = "npm run build"
-  # Bei Nuxt 4 / Nitro ist das Standard-Verzeichnis oft direkt 'dist' oder '.output/public'
-  # Wir setzen es auf den Pfad, den Nitro für Netlify generiert:
-  publish = ".output/public"
+  # Wir nutzen hier den Pfad, den Nuxt 4 für Netlify erzwingt
+  publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
-  # WICHTIG: Zwingt Nuxt 4 das Netlify-Preset zu nutzen
-  NITRO_PRESET = "netlify"
+  # WICHTIG: Nuxt 4 braucht dieses spezifische Preset für die korrekte Ordnerstruktur
+  NITRO_PRESET = "netlify_edge"
 
 # ============================================
 # REDIRECTS (Die "Festungs"-Logik)
