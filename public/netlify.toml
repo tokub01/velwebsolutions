@@ -1,0 +1,50 @@
+[build]
+  command = "npm run build"
+  publish = ".output/public"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NITRO_PRESET = "static"
+
+# 1. Kanonische Weiterleitung (WWW auf Non-WWW)
+[[redirects]]
+  from = "https://www.velwebsolutions.de/*"
+  to = "https://velwebsolutions.de/:splat"
+  status = 301
+  force = true
+
+# 2. Nuxt Static Clean URLs
+# Netlify erkennt bei Nuxt-Static automatisch die HTML-Dateien.
+# Ein generischer Fallback auf /index.html ist bei SSG oft kontraproduktiv.
+# Falls du doch eine SPA-Komponente hast, nutzt man besser dies:
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
+
+# 3. Globale Sicherheits-Header (Bot- & Attack-Protection)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    # CSP: Optimiert für Nuxt Hydration & EmailJS
+    # 'unsafe-inline' ist bei Nuxt für das Inlining von CSS/Payloads (SSR) leider nötig.
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com https://cdn.emailjs.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://plus.unsplash.com; connect-src 'self' https://api.emailjs.com;"
+
+# 4. Aggressives Caching für unveränderliche Assets
+# Nuxt generiert Dateinamen mit Hashes (z.B. entry.abc123.js)
+[[headers]]
+  for = "/_nuxt/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# 5. Schutz für sensible Dateien
+[[headers]]
+  for = "/_payload.json"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

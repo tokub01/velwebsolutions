@@ -24,7 +24,10 @@
           </NuxtLink>
 
           <div class="relative py-2" @mouseenter="showDropdown = true" @mouseleave="showDropdown = false">
-            <button class="flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] italic text-gray-500 hover:text-red-600 transition-all focus:outline-none" :class="{ 'text-red-600': isDropdownRouteActive }">
+            <button
+              class="flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] italic text-gray-500 hover:text-red-600 transition-all focus:outline-none"
+              :class="{ 'text-red-600': isDropdownRouteActive }"
+            >
               Terminal <LucideChevronDown class="h-4 w-4 transition-transform" :class="{ 'rotate-180': showDropdown }" />
             </button>
             <transition name="dropdown-slide">
@@ -36,7 +39,7 @@
                   class="block px-8 py-3 text-[10px] font-black uppercase tracking-widest text-gray-400 hover:bg-red-50 hover:text-red-600 transition-all italic border-l-4 border-transparent hover:border-red-600"
                   active-class="text-red-600 bg-red-50 border-red-600"
                 >
-                  // {{ sub.label }}
+                  {{ sub.label }}
                 </NuxtLink>
               </div>
             </transition>
@@ -71,10 +74,6 @@
             </li>
           </ol>
         </nav>
-        <div class="hidden md:flex items-center gap-2">
-          <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-          <span class="text-[8px] font-black text-gray-400 uppercase tracking-widest italic">System Online</span>
-        </div>
       </div>
     </div>
 
@@ -90,7 +89,7 @@
             active-class="bg-red-600 text-white"
           >
             {{ link.label }}
-            <component :is="link.icon" class="h-6 w-6 opacity-20" />
+            <component :is="resolveComponent(link.icon)" class="h-6 w-6 opacity-20" />
           </NuxtLink>
         </nav>
       </div>
@@ -99,15 +98,11 @@
 </template>
 
 <script setup>
-/**
- * TECHNISCHE ANPASSUNGEN FÜR NUXT 3:
- * 1. Auto-Imports: ref, computed, useRoute werden automatisch bereitgestellt.
- * 2. Lucide Icons: Werden über das Modul mit dem Präfix 'Lucide' genutzt.
- */
 const route = useRoute()
 const mobileMenuOpen = ref(false)
 const showDropdown = ref(false)
 
+// Zurück zu Strings: Nuxt löst diese global über das nuxt-lucide-icons Modul auf
 const mainLinks = [
   { to: '/leistungen', label: 'Leistungen', icon: 'LucideCode' },
   { to: '/preise', label: 'Preise', icon: 'LucideDollarSign' },
@@ -142,19 +137,21 @@ const isDropdownRouteActive = computed(() => {
 </script>
 
 <style scoped>
-@reference "tailwindcss";
-
+/* Behalte dein bisheriges CSS bei */
 .nav-link::after {
-  content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 3px;
-  background-color: #dc2626; transition: width 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: #dc2626;
+  transition: width 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 }
 .nav-link:hover::after, .nav-link.is-active::after { width: 100%; }
-
-.dropdown-slide-enter-active, .dropdown-slide-leave-active { transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1); }
-.dropdown-slide-enter-from, .dropdown-slide-leave-to { opacity: 0; transform: translateY(10px) scale(0.95); }
-
+.dropdown-slide-enter-active, .dropdown-slide-leave-active { transition: all 0.3s ease; }
+.dropdown-slide-enter-from, .dropdown-slide-leave-to { opacity: 0; transform: translateY(10px); }
 .mobile-fade-enter-active, .mobile-fade-leave-active { transition: all 0.4s ease; }
 .mobile-fade-enter-from, .mobile-fade-leave-to { opacity: 0; transform: translateX(100%); }
-
 .shadow-3xl { box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.15); }
 </style>

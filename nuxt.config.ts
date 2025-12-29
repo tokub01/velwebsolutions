@@ -1,88 +1,71 @@
 import { defineNuxtConfig } from 'nuxt/config'
-// Import deiner Blog-Daten, um die Routen für das Prerendering zu generieren
 import { blogPosts } from './data/blogPosts'
 
 export default defineNuxtConfig({
-  // 1. Grundkonfiguration
-  // ssr muss true sein, damit Nuxt während des 'generate'-Prozesses HTML-Dateien rendert
   ssr: true,
+  compatibilityDate: '2024-11-01',
 
-  // 2. Module
   modules: [
-    '@nuxt/image'
+    '@nuxtjs/tailwindcss',
+    '@nuxt/image',
+    'nuxt-lucide-icons'
   ],
 
-  // 3. Modul-Konfiguration (@nuxt/image)
-  image: {
-    // Erlaubte Domains für externe Bilder (z.B. Unsplash)
-    domains: [
-      'images.unsplash.com',
-      'source.unsplash.com',
-      'plus.unsplash.com'
-    ],
-    // Standard-Konfiguration für Provider (optional)
-    provider: 'ipx'
+  // Sicherstellen, dass das Modul die Icons mit dem Präfix Lucide registriert
+  lucide: {
+    namePrefix: 'Lucide'
   },
 
-  // 4. Nitro & Deployment (Netlify SSG)
+  experimental: {
+    asyncContext: true,
+    componentIslands: true,
+    payloadExtraction: true,
+    inlineSSRStyles: true,
+    renderJsonPayloads: true
+  },
+
+  css: ['~/assets/css/main.css'],
+
+  tailwindcss: {
+    cssPath: '~/assets/css/main.css',
+    viewer: false,
+  },
+
+  image: {
+    domains: ['images.unsplash.com', 'plus.unsplash.com'],
+    provider: 'ipx',
+    format: ['webp', 'avif', 'jpeg'],
+    quality: 80,
+  },
+
   nitro: {
-    // 'static' ist das sicherste Preset für reines HTML-Exporting
     preset: 'static',
     prerender: {
-      crawlLinks: true, // Nuxt folgt automatisch allen internen Links
-      routes: [
-        '/',
-        '/leistungen',
-        '/blog',
-        '/sitemap.xml',
-        '/robots.txt',
-        // Dynamische Generierung aller Blog-Unterseiten
-        ...blogPosts.map(post => `/blog/${post.slug}`)
-      ],
-      // Verhindert, dass der Build bei fehlenden Bildern oder kleinen Fehlern komplett abbricht
-      failOnError: false
+      crawlLinks: true,
+      routes: ['/', '/leistungen', '/blog']
     }
   },
 
-  // 5. Routing-Regeln für die "Festungs"-Logik
-  routeRules: {
-    // Diese Seiten werden definitiv vorgerendert
-    '/': { prerender: true },
-    '/leistungen': { prerender: true },
-    '/blog/**': { prerender: true },
-    // SPA-Fallback für alle anderen Routen
-    '/**': { isr: false }
-  },
-
-  // 6. Globaler App-Head (SEO)
-  app: {
-    baseURL: '/',
-    buildAssetsDir: '/_nuxt/',
+ app: {
     head: {
-      htmlAttrs: {
-        lang: 'de'
-      },
+      htmlAttrs: { lang: 'de' },
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
       title: 'VelWebSolutions | Professionelle Webentwicklung',
       meta: [
-        {
-          name: 'description',
-          content: 'Webentwicklung mit Laravel und Vue.js - Informatik-Expertise für Ihre Website.'
-        }
+        { name: 'description', content: 'Webentwicklung mit Laravel und Vue.js.' }
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-      ],
+        // Pfade fangen direkt mit / an, da Nuxt sie im public-Ordner sucht
+        { rel: 'icon', type: 'image/x-icon', href: '/velweb-favicon-16x16.jpg' },
+        { rel: 'icon', type: 'image/jpeg', sizes: '32x32', href: '/velweb-favicon-32x32.jpg' },
+        { rel: 'icon', type: 'image/jpeg', sizes: '16x16', href: '/velweb-favicon-16x16.jpg' },
+        { rel: 'apple-touch-icon', href: '/velweb-favicon-32x32.jpg' },
+        { rel: 'manifest', href: '/site.webmanifest' },
 
+        { rel: 'dns-prefetch', href: 'https://images.unsplash.com' },
+        { rel: 'preconnect', href: 'https://images.unsplash.com', crossorigin: 'anonymous' }
+      ]
     }
   },
-
-  // 7. Nuxt 4 Optimierungen
-  experimental: {
-    payloadExtraction: false,
-  },
-
-  // Kompatibilitäts-Datum für Nuxt 4 Features
-  compatibilityDate: '2024-11-01'
 })

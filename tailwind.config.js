@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: [
     "./components/**/*.{js,vue,ts}",
     "./layouts/**/*.vue",
@@ -9,7 +9,14 @@ module.exports = {
     "./error.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        // Wir benennen '3xl' in 'xxxl' um, da CSS-Selektoren
+        // laut W3C-Standard nicht mit einer Zahl beginnen dürfen.
+        // Dies fixiert die [esbuild css minify] Warnung.
+        'xxxl': '2000px',
+      },
+    },
   },
   plugins: [],
 }
