@@ -4,7 +4,7 @@
 [build]
   command = "npm run build"
   # Ändere 'dist' zu '.output/public' - das ist der reale Pfad in Nuxt 4
-  publish = ".output"
+  publish = ".output/public"
 
 [build.environment]
   NODE_VERSION = "20"
