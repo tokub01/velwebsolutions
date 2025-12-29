@@ -80,7 +80,8 @@ export default defineNuxtConfig({
 
   // 7. Nuxt 4 Optimierungen
   experimental: {
-    payloadExtraction: false,
+    inlineSSRStyles: false
+  },
 
   // Kompatibilitäts-Datum für Nuxt 4 Features
   compatibilityDate: '2024-11-01'
