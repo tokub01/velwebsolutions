@@ -80,7 +80,7 @@ export default defineNuxtConfig({
 
   // 7. Nuxt 4 Optimierungen
   experimental: {
-    inlineSSRStyles: false
+    payloadExtraction: false,
   },
 
   // Kompatibilitäts-Datum für Nuxt 4 Features
