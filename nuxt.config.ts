@@ -7,7 +7,14 @@ import { blogPosts } from './data/blogPosts'
 export default defineNuxtConfig({
   // 1. Grundkonfiguration für SSG
   ssr: true, // Muss 'true' sein, damit HTML-Dateien generiert werden
+  modules: [
+    '@nuxt/image'
+  ],
 
+  image: {
+    // Hier kannst du Provider konfigurieren, z.B. für Unsplash
+    domains: ['images.unsplash.com', 'source.unsplash.com', 'plus.unsplash.com']
+  },
   // 2. Nitro & Netlify Integration
   nitro: {
     preset: 'netlify-static', // Speziell für statischen Export auf Netlify
