@@ -1,68 +1,86 @@
 import { defineNuxtConfig } from 'nuxt/config'
-
-// Wir gehen davon aus, dass deine Blog-Daten hier liegen
-// Falls der Pfad anders ist, bitte anpassen
+// Import deiner Blog-Daten, um die Routen für das Prerendering zu generieren
 import { blogPosts } from './data/blogPosts'
 
 export default defineNuxtConfig({
-  // 1. Grundkonfiguration für SSG
-  ssr: true, // Muss 'true' sein, damit HTML-Dateien generiert werden
+  // 1. Grundkonfiguration
+  // ssr muss true sein, damit Nuxt während des 'generate'-Prozesses HTML-Dateien rendert
+  ssr: true,
+
+  // 2. Module
   modules: [
     '@nuxt/image'
   ],
 
+  // 3. Modul-Konfiguration (@nuxt/image)
   image: {
-    // Hier kannst du Provider konfigurieren, z.B. für Unsplash
-    domains: ['images.unsplash.com', 'source.unsplash.com', 'plus.unsplash.com']
+    // Erlaubte Domains für externe Bilder (z.B. Unsplash)
+    domains: [
+      'images.unsplash.com',
+      'source.unsplash.com',
+      'plus.unsplash.com'
+    ],
+    // Standard-Konfiguration für Provider (optional)
+    provider: 'ipx'
   },
-  // 2. Nitro & Netlify Integration
+
+  // 4. Nitro & Deployment (Netlify SSG)
   nitro: {
-    preset: 'netlify-static', // Speziell für statischen Export auf Netlify
-    static: true,
-    // Verhindert, dass Nitro versucht, Server-Funktionen für statische Seiten zu bauen
+    // 'static' ist das sicherste Preset für reines HTML-Exporting
+    preset: 'static',
     prerender: {
-      crawlLinks: true, // Nuxt folgt allen internen Links automatisch
+      crawlLinks: true, // Nuxt folgt automatisch allen internen Links
       routes: [
         '/',
         '/leistungen',
         '/blog',
         '/sitemap.xml',
         '/robots.txt',
-        // Hier mappen wir deine Blog-Slugs explizit, damit sie garantiert gerendert werden
+        // Dynamische Generierung aller Blog-Unterseiten
         ...blogPosts.map(post => `/blog/${post.slug}`)
       ],
-      failOnError: false // Verhindert Build-Abbruch bei kleinen Warnungen
+      // Verhindert, dass der Build bei fehlenden Bildern oder kleinen Fehlern komplett abbricht
+      failOnError: false
     }
   },
 
-  // 3. Routing & SEO Optimierung
+  // 5. Routing-Regeln für die "Festungs"-Logik
   routeRules: {
-    // Statische Seiten werden beim Build generiert und als HTML ausgeliefert
+    // Diese Seiten werden definitiv vorgerendert
     '/': { prerender: true },
     '/leistungen': { prerender: true },
     '/blog/**': { prerender: true },
-
-    // Fallback für SPA-Funktionalität
+    // SPA-Fallback für alle anderen Routen
     '/**': { isr: false }
   },
 
-  // 4. Header & Meta (Wissenschaftlich fundiertes SEO)
+  // 6. Globaler App-Head (SEO)
   app: {
     head: {
-      htmlAttrs: { lang: 'de' },
+      htmlAttrs: {
+        lang: 'de'
+      },
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
       title: 'VelWebSolutions | Professionelle Webentwicklung',
       meta: [
-        { name: 'description', content: 'Webentwicklung mit Laravel und Vue.js - Informatik-Expertise für Ihre Website.' }
+        {
+          name: 'description',
+          content: 'Webentwicklung mit Laravel und Vue.js - Informatik-Expertise für Ihre Website.'
+        }
+      ],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
       ]
     }
   },
 
-  // 5. Build-Optimierung für Nuxt 4
+  // 7. Nuxt 4 Optimierungen
   experimental: {
-    payloadExtraction: true, // Verbessert die Performance bei der Navigation zwischen Blogposts
+    // Extrahiert die Daten-Payloads für schnellere Navigation zwischen statischen Seiten
+    payloadExtraction: true,
   },
 
-  compatibilityDate: '2024-11-01' // Nuxt 4 Kompatibilitäts-Flag
+  // Kompatibilitäts-Datum für Nuxt 4 Features
+  compatibilityDate: '2024-11-01'
 })

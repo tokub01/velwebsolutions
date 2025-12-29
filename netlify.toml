@@ -2,58 +2,35 @@
 # BUILD CONFIGURATION
 # ============================================
 [build]
-  # 'nuxi generate' ist der korrekte Befehl für statischen Export
   command = "npm run build"
-  # WICHTIG: Nuxt 4 / Nitro legt den statischen Output hier ab
-  publish = ".output/public"
+  # Wir nutzen 'dist', da Nuxt 4 bei 'nuxi generate' diesen Symlink meist automatisch erstellt
+  publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
-  # Erzwingt das korrekte Preset für Nuxt 4 auf Netlify
-  NITRO_PRESET = "netlify"
+  # 'static' sorgt lokal und auf Netlify für die sauberste HTML-Struktur
+  NITRO_PRESET = "static"
 
 # ============================================
 # REDIRECTS (Die "Festungs"-Logik)
 # ============================================
 
-# 1. SEO & Sicherheit: WWW auf Non-WWW
+# 1. SEO: WWW auf Non-WWW
 [[redirects]]
   from = "https://www.velwebsolutions.de/*"
   to = "https://velwebsolutions.de/:splat"
   status = 301
   force = true
 
-# 2. BOT-HONEPOT & ADMIN PROTECTION
+# 2. Sicherheit: Schutz vor Scannern
 [[redirects]]
   from = "/admin*"
   to = "/404"
   status = 404
   force = true
 
-[[redirects]]
-  from = "/wp-*"
-  to = "/404"
-  status = 404
-  force = true
-
-[[redirects]]
-  from = "/.env*"
-  to = "/404"
-  status = 404
-  force = true
-
-# 3. SEO-AUSNAHMEN
-[[redirects]]
-  from = "/sitemap.xml"
-  to = "/sitemap.xml"
-  status = 200
-
-[[redirects]]
-  from = "/robots.txt"
-  to = "/robots.txt"
-  status = 200
-
-# 4. SPA CATCH-ALL (Essentiell für clientseitiges Routing)
+# 3. SPA-Routing FIX: Verhindert den 404 bei /leistungen (Screenshot)
+# Diese Regel leitet Anfragen ohne physische Datei an die Nuxt-Engine weiter
 [[redirects]]
   from = "/*"
   to = "/index.html"
@@ -71,8 +48,3 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
     Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com https://cdn.emailjs.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://source.unsplash.com https://plus.unsplash.com https://www.google-analytics.com https://region1.google-analytics.com; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://region1.google-analytics.com; frame-src 'self' https://www.google.com https://recaptcha.google.com; object-src 'none'; base-uri 'self'; form-action 'self';"
-
-[[headers]]
-  for = "/_nuxt/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
