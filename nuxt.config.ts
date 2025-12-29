@@ -56,6 +56,8 @@ export default defineNuxtConfig({
 
   // 6. Globaler App-Head (SEO)
   app: {
+    baseURL: '/',
+    buildAssetsDir: '/_nuxt/',
     head: {
       htmlAttrs: {
         lang: 'de'
@@ -71,7 +73,8 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-      ]
+      ],
+
     }
   },
 
@@ -79,6 +82,7 @@ export default defineNuxtConfig({
   experimental: {
     // Extrahiert die Daten-Payloads für schnellere Navigation zwischen statischen Seiten
     payloadExtraction: true,
+    inlineSSRStyles: false
   },
 
   // Kompatibilitäts-Datum für Nuxt 4 Features
