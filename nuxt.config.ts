@@ -80,8 +80,6 @@ export default defineNuxtConfig({
 
   // 7. Nuxt 4 Optimierungen
   experimental: {
-    // Extrahiert die Daten-Payloads für schnellere Navigation zwischen statischen Seiten
-    payloadExtraction: true,
     inlineSSRStyles: false
   },
 
