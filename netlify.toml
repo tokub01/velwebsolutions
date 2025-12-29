@@ -3,12 +3,11 @@
 # ============================================
 [build]
   command = "npm run build"
-  # Wir nutzen 'dist', da Nuxt 4 bei 'nuxi generate' diesen Symlink meist automatisch erstellt
-  publish = "dist"
+  # Ändere 'dist' zu '.output/public' - das ist der reale Pfad in Nuxt 4
+  publish = ".output/public"
 
 [build.environment]
   NODE_VERSION = "20"
-  # 'static' sorgt lokal und auf Netlify für die sauberste HTML-Struktur
   NITRO_PRESET = "static"
 
 # ============================================
