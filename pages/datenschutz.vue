@@ -79,46 +79,45 @@
               <Server class="w-5 h-5 text-red-600" />
             </div>
             <div class="text-sm italic text-gray-600 space-y-4 leading-relaxed">
-              <p>Betreiber: <strong>Netlify, Inc.</strong>, 44 Montgomery Street, San Francisco, USA.</p>
-              <p>Zweck: Bereitstellung der Webinhalte (Content Delivery Network). Bei jedem Aufruf werden IP-Adresse und Browser-Metadaten verarbeitet.</p>
-              <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (Berechtigtes Interesse an Performance & Sicherheit).</p>
+              <p>Betreiber: <strong>Netlify, Inc.</strong>, USA.</p>
+              <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (Berechtigtes Interesse an IT-Sicherheit).</p>
             </div>
           </div>
 
           <div class="p-8 bg-gray-50 rounded-3xl border border-gray-100 relative group overflow-hidden">
             <div class="flex justify-between items-start mb-6">
-              <h3 class="font-black uppercase text-sm tracking-[0.2em] text-gray-900">03.2 // Formular (EmailJS)</h3>
-              <Mail class="w-5 h-5 text-red-600" />
-            </div>
-            <div class="text-sm italic text-gray-600 space-y-4 leading-relaxed">
-              <p>Betreiber: <strong>EmailJS</strong>, USA.</p>
-              <p>Zweck: Technische Weiterleitung von Kontaktformular-Daten an unsere Mailbox. Ihre Daten werden verschlüsselt durch das EmailJS-Gateway geleitet.</p>
-              <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung / Vorvertragliche Anfragen).</p>
-            </div>
-          </div>
-
-          <div class="p-8 bg-gray-50 rounded-3xl border border-gray-100 relative group overflow-hidden">
-            <div class="flex justify-between items-start mb-6">
-              <h3 class="font-black uppercase text-sm tracking-[0.2em] text-gray-900">03.3 // Analyse (GA4)</h3>
+              <h3 class="font-black uppercase text-sm tracking-[0.2em] text-gray-900">03.2 // Analyse (GA4)</h3>
               <Activity class="w-5 h-5 text-red-600" />
             </div>
             <div class="text-sm italic text-gray-600 space-y-4 leading-relaxed">
-              <p>Betreiber: <strong>Google Ireland Ltd.</strong>, Dublin, Irland (Muttergesellschaft: Google LLC, USA).</p>
-              <p>Konfiguration: Die IP-Anonymisierung ist in <strong>GA4 (G-Q1XCQZEC0C)</strong> nativ aktiv. Es werden keine Klardaten gespeichert.</p>
-              <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO & § 25 Abs. 1 TDDDG (Einwilligung via Consent-Banner).</p>
+              <p>Betreiber: <strong>Google Ireland Ltd.</strong>.</p>
+              <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung via Consent-Banner).</p>
             </div>
           </div>
 
           <div class="p-8 bg-gray-50 rounded-3xl border border-gray-100 relative group overflow-hidden">
             <div class="flex justify-between items-start mb-6">
-              <h3 class="font-black uppercase text-sm tracking-[0.2em] text-gray-900">03.4 // Security (reCAPTCHA)</h3>
+              <h3 class="font-black uppercase text-sm tracking-[0.2em] text-gray-900">03.3 // Security (reCAPTCHA)</h3>
               <Lock class="w-5 h-5 text-red-600" />
             </div>
             <div class="text-sm italic text-gray-600 space-y-4 leading-relaxed">
-              <p>Zweck: Schutz vor Spam-Bots und automatisierten Angriffen im Kontaktformular.</p>
-              <p>Technik: Analyse des Nutzerverhaltens zur Unterscheidung Mensch/Bot. Dabei können Daten an Google LLC in die USA übertragen werden.</p>
-              <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (Überwiegendes berechtigtes Interesse an IT-Sicherheit).</p>
+              <p>Zweck: Spam-Schutz. Das Skript wird erst nach Einwilligung im Privacy Panel geladen.</p>
+              <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO & § 25 Abs. 1 TDDDG (Einwilligung).</p>
             </div>
+          </div>
+        </section>
+
+        <section class="bg-gray-900 p-12 rounded-[3.5rem] text-center shadow-3xl border border-gray-800">
+          <div class="max-w-xl mx-auto">
+            <h3 class="text-2xl md:text-3xl font-black text-white uppercase italic tracking-tighter mb-4">Einwilligungen verwalten</h3>
+            <p class="text-gray-400 font-medium italic mb-8">
+              Sie können Ihre Cookie-Einstellungen jederzeit einsehen, ändern oder Ihre Einwilligung mit Wirkung für die Zukunft widerrufen.
+            </p>
+            <button
+              @click="isBannerVisible = true"
+              class="bg-red-600 text-white px-12 py-6 rounded-2xl font-black uppercase italic tracking-widest hover:bg-white hover:text-red-600 transition-all shadow-xl active:scale-95">
+              Einstellungen anpassen
+            </button>
           </div>
         </section>
 
@@ -142,10 +141,17 @@
 </template>
 
 <script setup>
+import {
+  ShieldCheck, User, Mail, Phone, Globe,
+  Server, Activity, Lock
+} from 'lucide-vue-next'
 
 definePageMeta({
   layout: 'guest'
 })
+
+// Zugriff auf den globalen Banner-Zustand für den Widerrufs-Button
+const isBannerVisible = useState('cookie_banner_visible')
 
 const rights = [
   { id: 1, ref: 'Art. 15 DSGVO', title: 'Auskunft', desc: 'Sie haben das Recht zu erfahren, welche Daten ich über Sie speichere.' },
@@ -165,8 +171,12 @@ useHead({
 
 <style scoped>
 @keyframes grid-move {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(40px, 40px); }
+  0% { transform: translateY(0); }
+  100% { transform: translateY(40px); }
 }
 p, span, h1, h2 { hyphens: none; }
+
+.shadow-3xl {
+  box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.3);
+}
 </style>

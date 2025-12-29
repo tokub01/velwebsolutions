@@ -95,7 +95,13 @@
         <span class="text-red-900/50 ml-2 hidden md:inline">|</span>
         Fullstack Software Engineering
       </p>
-      <div class="flex gap-8">
+      <div class="flex gap-8 items-center">
+        <button
+          @click="isBannerVisible = true"
+          class="text-[10px] font-black text-gray-500 hover:text-red-600 uppercase tracking-[0.2em] italic transition-colors outline-none"
+        >
+          Privacy_Settings
+        </button>
         <NuxtLink to="/impressum" class="text-[10px] font-black text-gray-500 hover:text-white uppercase tracking-[0.2em] italic">Impressum</NuxtLink>
         <NuxtLink to="/datenschutz" class="text-[10px] font-black text-gray-500 hover:text-white uppercase tracking-[0.2em] italic">Datenschutz</NuxtLink>
       </div>
@@ -107,6 +113,9 @@
 import { cityContent } from '~/data/cityContent'
 
 const currentYear = new Date().getFullYear()
+
+// Zugriff auf den globalen State des Cookie-Banners
+const isBannerVisible = useState('cookie_banner_visible')
 
 const scrollToTop = () => {
   if (process.client) {
