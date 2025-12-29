@@ -4,7 +4,7 @@ export default defineEventHandler(async (event) => {
 
   // 1. Debug-Logs für das Netlify-Panel (Nur in Logs sichtbar, nicht im Browser!)
   console.log('[API] Request erhalten von:', body.from_email);
-
+  
   // Überprüfung der Keys (ohne die echten Werte voll zu loggen aus Sicherheitsgründen)
   console.log('[API] Config Check:', {
     hasServiceId: !!config.emailjsServiceId,
@@ -27,7 +27,7 @@ export default defineEventHandler(async (event) => {
     // 3. reCAPTCHA Validierung
     const recaptchaToken = body['g-recaptcha-response'];
     const verifyURL = `https://www.google.com/recaptcha/api/siteverify?secret=${config.recaptchaSecretKey}&response=${recaptchaToken}`;
-
+    
     const recaptchaRes: any = await $fetch(verifyURL, { method: 'POST' });
     if (!recaptchaRes.success) {
       console.error('[API] reCAPTCHA Validierung fehlgeschlagen:', recaptchaRes['error-codes']);
