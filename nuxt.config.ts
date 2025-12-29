@@ -98,8 +98,11 @@ export default defineNuxtConfig({
 
   // Vite Build Options
   vite: {
+    css: {
+      transformer: 'postcss', 
+    },
     build: {
-      cssMinify: 'lightningcss'
+      cssMinify: 'esbuild', 
     }
   }
 })
