@@ -4,7 +4,6 @@
 
 [build.environment]
   NODE_VERSION = "20"
-  NITRO_PRESET = "static"
 
 # 1. Kanonische Weiterleitung (WWW auf Non-WWW)
 [[redirects]]
