@@ -1,60 +1,64 @@
-import { defineEventHandler, readBody, createError } from 'h3'
-
 export default defineEventHandler(async (event) => {
-  const config = useRuntimeConfig()
-  const body = await readBody(event)
-  const token = body['g-recaptcha-response']
+  const config = useRuntimeConfig();
+  const body = await readBody(event);
+
+  // 1. Debug-Logs für das Netlify-Panel (Nur in Logs sichtbar, nicht im Browser!)
+  console.log('[API] Request erhalten von:', body.from_email);
+
+  // Überprüfung der Keys (ohne die echten Werte voll zu loggen aus Sicherheitsgründen)
+  console.log('[API] Config Check:', {
+    hasServiceId: !!config.emailjsServiceId,
+    hasTemplateId: !!config.emailjsTemplateId,
+    hasPublicKey: !!config.emailjsPublicKey,
+    hasPrivateKey: !!config.emailjsPrivateKey,
+    hasRecaptchaSecret: !!config.recaptchaSecretKey
+  });
+
+  // 2. Validierung der Umgebungsvariablen
+  if (!config.emailjsPublicKey || !config.emailjsPrivateKey) {
+    console.error('[API] FEHLER: EmailJS Keys fehlen in den Environment Variables!');
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'Server-Konfigurationsfehler: Keys fehlen.',
+    });
+  }
 
   try {
-    // 1. Google Validierung (die ja bereits bei dir klappt)
-    const verify: any = await $fetch('https://www.google.com/recaptcha/api/siteverify', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({
-        secret: config.recaptchaSecretKey,
-        response: token
-      }).toString()
-    })
+    // 3. reCAPTCHA Validierung
+    const recaptchaToken = body['g-recaptcha-response'];
+    const verifyURL = `https://www.google.com/recaptcha/api/siteverify?secret=${config.recaptchaSecretKey}&response=${recaptchaToken}`;
 
-    if (!verify.success) {
-      throw createError({ statusCode: 403, statusMessage: 'Google reCAPTCHA abgelehnt' })
+    const recaptchaRes: any = await $fetch(verifyURL, { method: 'POST' });
+    if (!recaptchaRes.success) {
+      console.error('[API] reCAPTCHA Validierung fehlgeschlagen:', recaptchaRes['error-codes']);
+      throw createError({ statusCode: 400, statusMessage: 'Sicherheitsprüfung fehlgeschlagen.' });
     }
 
-    console.log('[API] Google Check OK. Starte EmailJS Versand...')
-
-    // 2. EmailJS Versand mit Deep-Error-Log
-    const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+    // 4. EmailJS Versand via REST API
+    // Wir nutzen hier direkt die API, da das SDK oft Probleme in Serverless Umgebungen macht
+    await $fetch('https://api.emailjs.com/api/v1.0/email/send', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        service_id: config.public.emailjsServiceId,
-        template_id: config.public.emailjsTemplateId,
-        user_id: config.public.emailjsPublicKey,
-        accessToken: config.emailjsPrivateKey,
+      body: {
+        service_id: config.emailjsServiceId,
+        template_id: config.emailjsTemplateId,
+        user_id: config.emailjsPublicKey, // EmailJS nennt den Public Key in der API "user_id"
+        accessToken: config.emailjsPrivateKey, // Der Private Key ist das "accessToken"
         template_params: {
           from_name: body.from_name,
+          from_title: body.from_title,
           from_email: body.from_email,
-          project_title: body.from_title,
           message: body.message
         }
-      })
-    })
+      }
+    });
 
-    if (!response.ok) {
-      const errorText = await response.text()
-      // DAS HIER ZEIGT UNS DEN WAHREN GRUND IM TERMINAL:
-      console.error('[EmailJS Error Details]:', errorText)
-      throw createError({
-        statusCode: response.status,
-        statusMessage: `EmailJS Fehler: ${errorText}`
-      })
-    }
-
-    console.log('[API] Nachricht erfolgreich versendet!')
-    return { status: 'success' }
+    return { status: 'success', message: 'Email versendet.' };
 
   } catch (error: any) {
-    console.error('[Final API Error]:', error.statusMessage || error.message)
-    throw error
+    console.error('[API] Finaler Fehler beim Versand:', error.data || error.message);
+    throw createError({
+      statusCode: error.statusCode || 500,
+      statusMessage: error.statusMessage || 'Systemfehler beim Versand.',
+    });
   }
-})
+});
