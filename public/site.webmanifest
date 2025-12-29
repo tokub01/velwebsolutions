@@ -1,0 +1,21 @@
+{
+    "name": "Tobias Kubina - VelWebSolutions",
+    "short_name": "VelWebSolutions",
+    "description": "Remote-Only Webentwicklung mit PHP/Laravel und JavaScript/Vue.js",
+    "icons": [
+        {
+            "src": "/velweb-favicon-16x16.jpg",
+            "sizes": "16x16",
+            "type": "image/jpeg"
+        },
+        {
+            "src": "/velweb-favicon-32x32.jpg",
+            "sizes": "32x32",
+            "type": "image/jpeg"
+        }
+    ],
+    "theme_color": "#dc2626",
+    "background_color": "#000000",
+    "display": "standalone",
+    "start_url": "/"
+}
