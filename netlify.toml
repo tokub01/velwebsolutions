@@ -28,6 +28,11 @@
   status = 404
   force = true
 
+[[redirects]]
+  from = "/_nuxt/*"
+  to = "/_nuxt/:splat"
+  status = 200
+
 # 3. SPA-Routing FIX: Verhindert den 404 bei /leistungen (Screenshot)
 # Diese Regel leitet Anfragen ohne physische Datei an die Nuxt-Engine weiter
 [[redirects]]
