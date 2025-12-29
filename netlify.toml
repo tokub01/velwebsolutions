@@ -24,6 +24,7 @@
   force = false
 
 # 3. Globale Sicherheits-Header (Bot- & Attack-Protection)
+# 3. Globale Sicherheits-Header (Bot- & Attack-Protection)
 [[headers]]
   for = "/*"
   [headers.values]
@@ -32,10 +33,8 @@
     X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    # CSP: Optimiert für Nuxt Hydration & EmailJS
-    # 'unsafe-inline' ist bei Nuxt für das Inlining von CSS/Payloads (SSR) leider nötig.
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com https://cdn.emailjs.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://plus.unsplash.com; connect-src 'self' https://api.emailjs.com;"
-
+    # CSP: Jetzt inkl. Netlify RUM und reCAPTCHA APIs
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com https://cdn.emailjs.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://plus.unsplash.com; connect-src 'self' https://api.emailjs.com https://ingesteer.services-prod.nsvcs.net https://www.google.com/recaptcha/;"
 # 4. Aggressives Caching für unveränderliche Assets
 # Nuxt generiert Dateinamen mit Hashes (z.B. entry.abc123.js)
 [[headers]]
