@@ -1,80 +1,61 @@
-// nuxt.config.ts
+import { defineNuxtConfig } from 'nuxt/config'
+
+// Wir gehen davon aus, dass deine Blog-Daten hier liegen
+// Falls der Pfad anders ist, bitte anpassen
+import { blogPosts } from './data/blogPosts'
+
 export default defineNuxtConfig({
-  // ... (deine anderen Einstellungen wie compatibilityDate, devtools, routeRules bleiben gleich)
-  routeRules: {
-    // 1. Einfaches Prerendering für statische Seiten
-    '/ueber-mich': { prerender: true },
-    '/leistungen': { prerender: true },
-    '/faq': { prerender: true },
-    '/impressum': { prerender: true },
-    '/datenschutz': { prerender: true },
+  // 1. Grundkonfiguration für SSG
+  ssr: true, // Muss 'true' sein, damit HTML-Dateien generiert werden
 
-    // 2. Prerendering mit Redirect (deine Startseite)
-    '/': {
-      redirect: { to: '/leistungen', statusCode: 301 },
-      prerender: true
-    },
-
-    // 3. Hybrid-Lösungen (SWR) - Alternative zum harten Prerendering
-    // Diese Seiten werden einmal generiert und nach Ablauf des TTL im Hintergrund aktualisiert.
-    '/blog/**': { swr: 3600 }, // 1 Stunde Cache
-
-    // 4. Ausschluss vom Prerendering (Wichtig für dein Kontaktformular!)
-    // Da hier reCAPTCHA und POST-Requests laufen, darf die Seite nicht statisch eingefroren werden.
-    '/kontakt': { ssr: true, static: false }
-  },
-  runtimeConfig: {
-    // 1. NUR auf dem Server verfügbar (für deine api/contact.post.ts)
-    // Nuxt mappt automatisch Umgebungsvariablen wie NUXT_EMAILJS_SERVICE_ID,
-    // aber wir weisen sie hier explizit deinen .env Namen zu:
-    emailjsServiceId: process.env.EMAILJS_SERVICE_ID,
-    emailjsTemplateId: process.env.EMAILJS_TEMPLATE_ID,
-    emailjsPrivateKey: process.env.EMAILJS_PRIVATE_KEY, // Dein glPA_... Key
-
-    // 2. Im Frontend UND Backend verfügbar
-    public: {
-      // Hier muss exakt der Name aus deiner .env stehen
-      recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY,
+  // 2. Nitro & Netlify Integration
+  nitro: {
+    preset: 'netlify-static', // Speziell für statischen Export auf Netlify
+    static: true,
+    // Verhindert, dass Nitro versucht, Server-Funktionen für statische Seiten zu bauen
+    prerender: {
+      crawlLinks: true, // Nuxt folgt allen internen Links automatisch
+      routes: [
+        '/',
+        '/leistungen',
+        '/blog',
+        '/sitemap.xml',
+        '/robots.txt',
+        // Hier mappen wir deine Blog-Slugs explizit, damit sie garantiert gerendert werden
+        ...blogPosts.map(post => `/blog/${post.slug}`)
+      ],
+      failOnError: false // Verhindert Build-Abbruch bei kleinen Warnungen
     }
   },
 
-  // ... (Rest deiner Config: modules, lucide, tailwindcss, nitro, app)
+  // 3. Routing & SEO Optimierung
+  routeRules: {
+    // Statische Seiten werden beim Build generiert und als HTML ausgeliefert
+    '/': { prerender: true },
+    '/leistungen': { prerender: true },
+    '/blog/**': { prerender: true },
 
-  // WICHTIG: Entferne den doppelten runtimeConfig Block am Ende der Datei,
-  // falls dieser noch aus deinem PHP/Laravel Kommentar-Snippet existiert.
-
-  modules: ['nuxt-lucide-icons', '@nuxtjs/tailwindcss', '@nuxt/image'],
-
-  lucide: {
-    namePrefix: 'Lucide'
+    // Fallback für SPA-Funktionalität
+    '/**': { isr: false }
   },
 
-  tailwindcss: {
-    cssPath: '@/assets/css/main.css',
-    configPath: 'tailwind.config.js',
-    exposeConfig: false,
-    viewer: true,
-  },
-
-  nitro: {
-    compressPublicAssets: true,
-  },
-
+  // 4. Header & Meta (Wissenschaftlich fundiertes SEO)
   app: {
     head: {
       htmlAttrs: { lang: 'de' },
-      titleTemplate: '%s | VelWebSolutions',
-      title: 'Tobias Kubina',
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1',
+      title: 'VelWebSolutions | Professionelle Webentwicklung',
       meta: [
-        { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Ihre Webentwicklung Agentur für maßgeschneiderte Websites & Web-Apps mit PHP/Laravel und Vue.js.' },
-        { name: 'theme-color', content: '#dc2626' }
-      ],
-      link: [
-        { rel: 'icon', type: 'image/jpeg', href: '/velweb-favicon-32x32.jpg' },
-        { rel: 'apple-touch-icon', href: '/velweb-favicon-32x32.jpg' }
+        { name: 'description', content: 'Webentwicklung mit Laravel und Vue.js - Informatik-Expertise für Ihre Website.' }
       ]
     }
-  }
+  },
+
+  // 5. Build-Optimierung für Nuxt 4
+  experimental: {
+    payloadExtraction: true, // Verbessert die Performance bei der Navigation zwischen Blogposts
+  },
+
+  compatibilityDate: '2024-11-01' // Nuxt 4 Kompatibilitäts-Flag
 })
