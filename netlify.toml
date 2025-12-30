@@ -7,6 +7,7 @@
 
 [build.environment]
   NODE_VERSION = "20"
+  # Verhindert Memory-Crashes während des Nuxt-Prerendering
   NODE_OPTIONS = "--max-old-space-size=4096"
 
 # ==========================================
@@ -15,32 +16,38 @@
 [[headers]]
   for = "/*"
   [headers.values]
+    # Schutz vor Clickjacking
     X-Frame-Options = "DENY"
+    # Schutz vor MIME-Type Sniffing
     X-Content-Type-Options = "nosniff"
+    # XSS-Filter für ältere Browser
     X-XSS-Protection = "1; mode=block"
-    # HSTS: Erzwingt HTTPS für 1 Jahr (inkl. Subdomains)
+    # HSTS: Erzwingt HTTPS (inkl. Subdomains & Preload-Ready)
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    # Kontrolliert die Informationen im Referer-Header
     Referrer-Policy = "strict-origin-when-cross-origin"
-    # Schutz vor Fingerprinting & unbefugtem Hardware-Zugriff
+    # Deaktiviert ungenutzte Browser-Features gegen Fingerprinting
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
-    # CSP: Erlaubt nur notwendige Quellen (Recaptcha & EmailJS inkludiert)
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://plus.unsplash.com; connect-src 'self' https://api.emailjs.com https://www.google.com/recaptcha/;"
+
+    # CONTENT SECURITY POLICY (CSP)
+    # Optimiert für: Nuxt SSR, Google reCAPTCHA, Google Analytics, EmailJS & Google Fonts
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://plus.unsplash.com https://www.gstatic.com https://www.google.com https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://api.emailjs.com https://www.google.com/recaptcha/ https://www.google-analytics.com https://stats.g.doubleclick.net; frame-src 'self' https://www.google.com https://recaptcha.google.com;"
 
 # ==========================================
-# 3. REDIRECTS (Priorität von oben nach unten!)
+# 3. REDIRECTS (Priorität: Oben nach unten)
 # ==========================================
 
-# A. DOMAIN CANONICALIZATION (Keine Loops, da force=true)
-# Verhindert Duplicate Content und stellt sicher, dass alle Header greifen
+# A. DOMAIN CANONICALIZATION
+# Zwingt alle Anfragen auf die Non-WWW Domain (SEO-Best-Practice)
 [[redirects]]
   from = "https://www.velwebsolutions.de/*"
   to = "https://velwebsolutions.de/:splat"
   status = 301
   force = true
 
-# B. BOT-BLOCKING (WAF-Pattern-Matching)
-# Wir nutzen 404/410, damit Scanner deine App-Instanz nicht unnötig triggern.
-# force = true ist hier essentiell, um Nuxt-Fallbacks zu überspringen.
+# B. WAF-BLOCKING (Edge-Sicherheit)
+# Diese Pfade werden sofort blockiert, bevor sie Nuxt/Nitro erreichen.
+# force = true sorgt dafür, dass Netlify diese Regeln priorisiert.
 
 [[redirects]]
   from = "/.env"
@@ -78,16 +85,22 @@
   status = 404
   force = true
 
-# C. NUXT ASSETS PROTECTION
-# Wir stellen sicher, dass Nuxt-Interne Dateien niemals umgeleitet werden.
+[[redirects]]
+  from = "/login"
+  to = "/404"
+  status = 404
+  force = true
+
+# C. NUXT STATIC ASSETS PROTECTION
+# Stoppt die Verarbeitung für interne JS/CSS Chunks (Performance)
 [[redirects]]
   from = "/_nuxt/*"
   to = "/_nuxt/:splat"
   status = 200
 
-# D. SPA FALLBACK (Die "Last Resort" Regel)
-# Diese Regel greift NUR, wenn keine Datei existiert UND keine obige Regel passt.
-# status = 200 hält die URL im Browser für das Vue-Routing sauber.
+# D. SPA FALLBACK
+# Leitet alle restlichen Routen an die index.html für das Client-seitige Routing weiter.
+# status = 200 ist wichtig für die korrekte Hydrierung.
 [[redirects]]
   from = "/*"
   to = "/index.html"
