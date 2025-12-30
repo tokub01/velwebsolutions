@@ -11,14 +11,16 @@ export default defineNuxtConfig({
     'nuxt-lucide-icons'
   ],
 
-  // 1. WICHTIG: Route Rules definieren, damit Nitro die API nicht statisch rendert
+  // WICHTIG: Definiere explizit, dass /api dynamisch ist
   routeRules: {
-    '/api/**': { ssr: false, cors: true }
+    '/api/**': { isr: false, cors: true }
   },
 
   runtimeConfig: {
+    // Private Keys (Netlify Dashboard)
     recaptchaSecretKey: process.env.RECAPTCHA_SECRET_KEY,
     emailjsPrivateKey: process.env.EMAILJS_PRIVATE_KEY,
+
     public: {
       recaptchaSiteKey: process.env.NUXT_PUBLIC_RECAPTCHA_SITE_KEY,
       emailjsServiceId: process.env.EMAILJS_SERVICE_ID,
@@ -28,16 +30,17 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    // KEIN Preset (Zero Config), aber wir schränken das Prerendering ein
     prerender: {
-      crawlLinks: false,
+      crawlLinks: false, // Verhindert RAM-Absturz (Exit Code 2)
       routes: [
         '/',
         '/leistungen',
         '/blog',
         '/kontakt',
         ...blogPosts.map(post => `/blog/${post.slug}`)
-      ]
+      ],
+      // API niemals vorrendern!
+      ignore: ['/api/**']
     }
   },
 

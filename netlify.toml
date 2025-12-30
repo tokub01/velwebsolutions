@@ -6,22 +6,23 @@
   NODE_VERSION = "20"
   NODE_OPTIONS = "--max-old-space-size=4096"
 
-# 1. WWW auf Non-WWW (Immer zuerst)
+# 1. WWW auf Non-WWW
 [[redirects]]
   from = "https://www.velwebsolutions.de/*"
   to = "https://velwebsolutions.de/:splat"
   status = 301
   force = true
 
-# 2. API-Routing: Das muss ZWINGEND vor dem /* Redirect stehen
-# Nuxt 3/4 mappt auf Netlify alles auf eine zentrale Function namens 'server'
+# 2. API-Routing (Netlify Functions)
+# WICHTIG: Wir leiten /api/* auf die server-function um.
+# Das 'force = true' ist entscheidend, damit Netlify nicht statisch sucht.
 [[redirects]]
   from = "/api/*"
-  to = "/.netlify/functions/server/api/:splat"
+  to = "/.netlify/functions/server"
   status = 200
   force = true
 
-# 3. Nuxt Render Redirect
+# 3. Nuxt Render Redirect (Für alle anderen Seiten)
 [[redirects]]
   from = "/*"
   to = "/.netlify/functions/server"
