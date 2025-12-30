@@ -1,30 +1,36 @@
 [build]
   command = "npm run build"
-  # Nuxt 3/4 generiert bei SSR diesen Ordner für die statischen Assets
+  # Überschreibt die 'dist' Einstellung aus der UI
   publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
-  # Erhöht das Speicherlimit, damit der Prerenderer nicht mit Exit Code 2 crasht
+  # RAM-Boost gegen Exit Code 2
   NODE_OPTIONS = "--max-old-space-size=4096"
 
-# WWW zu Non-WWW Redirect
+# 1. Kanonische Weiterleitung (WWW auf Non-WWW)
 [[redirects]]
   from = "https://www.velwebsolutions.de/*"
   to = "https://velwebsolutions.de/:splat"
   status = 301
   force = true
 
-# Fallback für die SPA-Hydrierung
+# 2. API-Routing (Netlify Functions)
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/api/*"
   status = 200
 
-# Sicherheits-Header
+# 3. Nuxt SSR / SPA Fallback
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/server"
+  status = 200
+
+# 4. Sicherheits-Header
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://plus.unsplash.com; connect-src 'self' https://api.emailjs.com https://www.google.com/recaptcha/;"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://plus.unsplash.com; connect-src 'self' https://api.emailjs.com https://www.google.com/recaptcha/; frame-src https://www.google.com/recaptcha/;"
