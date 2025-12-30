@@ -1,6 +1,12 @@
 import { defineNuxtConfig } from 'nuxt/config'
 import { blogPosts } from './data/blogPosts'
 
+// Import der SEO-Daten für das Prerendering
+import { cityContent } from './data/cityContent'
+import { phpLaravelContent } from './data/phpLaravelContent'
+import { softwareContent } from './data/softwareContent'
+import { vueContent } from './data/vueContent'
+
 export default defineNuxtConfig({
   ssr: true,
   compatibilityDate: '2024-11-01',
@@ -72,7 +78,6 @@ export default defineNuxtConfig({
           src: 'https://www.googletagmanager.com/gtag/js?id=G-6Y61X4Q09H',
           async: true
         },
-        // Inline GTAG Logic mit Consent-Check
         {
           children: `
             window.dataLayer = window.dataLayer || [];
@@ -95,10 +100,15 @@ export default defineNuxtConfig({
     '@nuxt/image',
     'nuxt-lucide-icons'
   ],
-  // SSR Optimierung: Caching & Route-Handling
+
+  // Image Optimization Config (Wichtig für Unsplash Proxy)
+  image: {
+    domains: ['images.unsplash.com']
+  },
+
   routeRules: {
     '/api/**': { isr: false, cors: true },
-    '/blog/**': { isr: 3600 }, // Cache Blog-Seiten für 1 Std (Incremental Static Regeneration)
+    '/blog/**': { isr: 3600 },
     '/kontakt': { ssr: true }
   },
 
@@ -112,7 +122,7 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    compressPublicAssets: true, // Optimiert SSR-Performance durch Gzip/Brotli
+    compressPublicAssets: true,
     prerender: {
       crawlLinks: false,
       routes: [
@@ -120,7 +130,19 @@ export default defineNuxtConfig({
         '/leistungen',
         '/blog',
         '/kontakt',
-        ...blogPosts.map(post => `/blog/${post.slug}`)
+        '/projekte',
+        '/erfolgsgeschichten',
+        '/kostenrechner',
+        // Dynamische Blog-Posts
+        ...blogPosts.map(post => `/blog/${post.slug}`),
+        // Dynamische SEO-Städte-Seiten (Webentwicklung)
+        ...Object.keys(cityContent).map(city => `/webentwicklung-${city}`),
+        // Dynamische SEO-Städte-Seiten (PHP/Laravel)
+        ...Object.keys(phpLaravelContent).map(city => `/php-laravel-agentur-${city}`),
+        // Dynamische SEO-Städte-Seiten (Softwareentwicklung)
+        ...Object.keys(softwareContent).map(city => `/softwareentwicklung-${city}`),
+        // Dynamische SEO-Städte-Seiten (Vue.js)
+        ...Object.keys(vueContent).map(city => `/vue-js-entwicklung-${city}`)
       ],
       ignore: ['/api/**']
     }
