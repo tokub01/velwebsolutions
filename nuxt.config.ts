@@ -95,9 +95,6 @@ export default defineNuxtConfig({
     '@nuxt/image',
     'nuxt-lucide-icons'
   ],
-  image: {
-    domains: ['images.unsplash.com']
-  },
   // SSR Optimierung: Caching & Route-Handling
   routeRules: {
     '/api/**': { isr: false, cors: true },
