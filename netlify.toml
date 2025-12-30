@@ -4,6 +4,8 @@
 
 [build.environment]
   NODE_VERSION = "20"
+  # Erhöht das RAM-Limit für den Node-Prozess (WICHTIG!)
+  NODE_OPTIONS = "--max-old-space-size=4096"
 
 [[redirects]]
   from = "https://www.velwebsolutions.de/*"
@@ -11,7 +13,7 @@
   status = 301
   force = true
 
-# API muss OHNE Ziel-Pfad stehen, damit Netlify die interne Function aufruft
+# API Fix: Keine Ziel-Zuweisung mit :splat, da Nitro dies intern regelt
 [[redirects]]
   from = "/api/*"
   status = 200

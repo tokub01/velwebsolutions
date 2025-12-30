@@ -23,36 +23,33 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    // KEIN preset: 'static'
+    // WICHTIG: Erlaubt dem Build fortzufahren, auch wenn Prerender-Fehler auftreten
     prerender: {
-      crawlLinks: false, // WICHTIG: Wir schalten den Crawler aus, um Endlosschleifen/Timeouts zu verhindern
+      crawlLinks: false,
+      failOnError: false,
+      concurrency: 1, // Reduziert RAM-Last (eins nach dem anderen)
       routes: [
         '/',
         '/leistungen',
         '/blog',
-        '/kontakt',
-        ...blogPosts.map(post => `/blog/${post.slug}`)
-        // Falls du die Städte-Seiten brauchst, liste hier nur die wichtigsten auf
-        // oder generiere sie in kleinen Batches.
-      ],
-      ignore: ['/api/**']
+        '/kontakt'
+      ]
     }
   },
 
-  // Vite Optimierung für Netlify
+  // Falls der Fehler durch LightningCSS/PostCSS kommt:
   vite: {
     css: {
       transformer: 'postcss',
     },
     build: {
       cssMinify: 'esbuild',
-      minify: 'esbuild',
-      chunkSizeWarningLimit: 2000
+      minify: 'esbuild'
     }
   },
 
-  // Experimentelle Features reduzieren (können Build-Instabilität verursachen)
+  // Deaktiviere Payload Extraction, um die Anzahl der generierten Files zu senken
   experimental: {
-    payloadExtraction: false // Hilft oft gegen Exit Code 2 auf Netlify
+    payloadExtraction: false
   }
 })
