@@ -11,16 +11,15 @@ export default defineNuxtConfig({
     'nuxt-lucide-icons'
   ],
 
-  // WICHTIG: Definiere explizit, dass /api dynamisch ist
+  // Hier erzwingen wir, dass die API niemals statisch angefasst wird
   routeRules: {
-    '/api/**': { isr: false, cors: true }
+    '/api/**': { ssr: false, cache: false },
   },
 
   runtimeConfig: {
-    // Private Keys (Netlify Dashboard)
+    // Diese müssen im Netlify Dashboard unter "Environment Variables" stehen
     recaptchaSecretKey: process.env.RECAPTCHA_SECRET_KEY,
     emailjsPrivateKey: process.env.EMAILJS_PRIVATE_KEY,
-
     public: {
       recaptchaSiteKey: process.env.NUXT_PUBLIC_RECAPTCHA_SITE_KEY,
       emailjsServiceId: process.env.EMAILJS_SERVICE_ID,
@@ -31,19 +30,13 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
-      crawlLinks: false, // Verhindert RAM-Absturz (Exit Code 2)
-      routes: [
-        '/',
-        '/leistungen',
-        '/blog',
-        '/kontakt',
-        ...blogPosts.map(post => `/blog/${post.slug}`)
-      ],
-      // API niemals vorrendern!
+      crawlLinks: false,
+      // Wir schließen die API hier doppelt aus
       ignore: ['/api/**']
     }
   },
 
+  // Vite Fix für CSS
   vite: {
     css: { transformer: 'postcss' },
     build: { cssMinify: 'esbuild' }
