@@ -6,22 +6,23 @@
   NODE_VERSION = "20"
   NODE_OPTIONS = "--max-old-space-size=4096"
 
-# 1. WWW Redirect
+# 1. WWW auf Non-WWW
 [[redirects]]
   from = "https://www.velwebsolutions.de/*"
   to = "https://velwebsolutions.de/:splat"
   status = 301
   force = true
 
-# 2. API Routing - Der präziseste Weg für Nitro
-# Wir schicken alles an die Haupt-Function 'server'
+# 2. API-Routing (Netlify Functions)
+# WICHTIG: Wir leiten /api/* auf die server-function um.
+# Das 'force = true' ist entscheidend, damit Netlify nicht statisch sucht.
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/server"
   status = 200
   force = true
 
-# 3. SPA/SSR Fallback
+# 3. Nuxt Render Redirect (Für alle anderen Seiten)
 [[redirects]]
   from = "/*"
   to = "/.netlify/functions/server"
