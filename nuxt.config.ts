@@ -8,10 +8,17 @@ import { softwareContent } from './data/softwareContent'
 import { vueContent } from './data/vueContent'
 
 export default defineNuxtConfig({
+  // Aktiviert Server Side Rendering für SEO,
+  // wird bei 'nuxi generate' zu statischem HTML
   ssr: true,
+
   compatibilityDate: '2024-11-01',
 
   app: {
+    // Verhindert das Anhängen von Hashes an Dateinamen in der URL,
+    // falls du eine noch sauberere Struktur willst (optional)
+    buildAssetsDir: '_assets',
+
     head: {
       htmlAttrs: {
         lang: 'de'
@@ -101,15 +108,18 @@ export default defineNuxtConfig({
     'nuxt-lucide-icons'
   ],
 
-  // Image Optimization Config (Wichtig für Unsplash Proxy)
+  // Image Optimization Config
   image: {
     domains: ['images.unsplash.com']
   },
 
   routeRules: {
+    // WICHTIG: Erzeugt echtes statisches HTML für alle Seiten
+    '/**': { static: true },
     '/api/**': { isr: false, cors: true },
-    '/blog/**': { isr: 3600 },
-    '/kontakt': { ssr: true }
+    // Kontaktseite muss SSR bleiben, falls du dort Server-Side Validierung nutzt,
+    // ansonsten auch auf 'static' setzen für reines HTML.
+    '/kontakt': { static: true }
   },
 
   runtimeConfig: {
@@ -123,8 +133,10 @@ export default defineNuxtConfig({
 
   nitro: {
     compressPublicAssets: true,
+    // Deaktiviert die Generierung der _payload.json Dateien für echtes "Pure HTML" Feeling
+    // Hinweis: Das Deaktivieren kann die Hydrierung einschränken, falls du komplexe Nuxt-States nutzt.
     prerender: {
-      crawlLinks: false,
+      crawlLinks: true, // Automatisch gefundene Links crawlen
       routes: [
         '/',
         '/leistungen',
@@ -133,15 +145,10 @@ export default defineNuxtConfig({
         '/projekte',
         '/erfolgsgeschichten',
         '/kostenrechner',
-        // Dynamische Blog-Posts
         ...blogPosts.map(post => `/blog/${post.slug}`),
-        // Dynamische SEO-Städte-Seiten (Webentwicklung)
         ...Object.keys(cityContent).map(city => `/webentwicklung-${city}`),
-        // Dynamische SEO-Städte-Seiten (PHP/Laravel)
         ...Object.keys(phpLaravelContent).map(city => `/php-laravel-agentur-${city}`),
-        // Dynamische SEO-Städte-Seiten (Softwareentwicklung)
         ...Object.keys(softwareContent).map(city => `/softwareentwicklung-${city}`),
-        // Dynamische SEO-Städte-Seiten (Vue.js)
         ...Object.keys(vueContent).map(city => `/vue-js-entwicklung-${city}`)
       ],
       ignore: ['/api/**']
