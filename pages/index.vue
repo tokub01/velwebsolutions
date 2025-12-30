@@ -71,7 +71,6 @@
           <div class="absolute -inset-4 bg-red-600/10 rounded-[4rem] rotate-3 -z-10"></div>
           <div class="bg-gray-100 rounded-[3.5rem] p-4 shadow-2xl overflow-hidden group">
             <NuxtImg
-              provider="static"
               src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
               alt="Webdesign Interface"
               class="rounded-[2.8rem] shadow-inner group-hover:scale-105 transition-transform duration-700 object-cover w-full h-[500px]"
