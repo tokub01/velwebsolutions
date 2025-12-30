@@ -1,28 +1,27 @@
 [build]
   command = "npm run build"
+  # Nuxt 3/4 generiert bei SSR diesen Ordner für die statischen Assets
   publish = ".output/public"
 
 [build.environment]
   NODE_VERSION = "20"
-  # Erhöht das RAM-Limit für den Node-Prozess (WICHTIG!)
+  # Erhöht das Speicherlimit, damit der Prerenderer nicht mit Exit Code 2 crasht
   NODE_OPTIONS = "--max-old-space-size=4096"
 
+# WWW zu Non-WWW Redirect
 [[redirects]]
   from = "https://www.velwebsolutions.de/*"
   to = "https://velwebsolutions.de/:splat"
   status = 301
   force = true
 
-# API Fix: Keine Ziel-Zuweisung mit :splat, da Nitro dies intern regelt
-[[redirects]]
-  from = "/api/*"
-  status = 200
-
+# Fallback für die SPA-Hydrierung
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
+# Sicherheits-Header
 [[headers]]
   for = "/*"
   [headers.values]

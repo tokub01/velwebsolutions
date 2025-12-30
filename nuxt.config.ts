@@ -2,6 +2,7 @@ import { defineNuxtConfig } from 'nuxt/config'
 import { blogPosts } from './data/blogPosts'
 
 export default defineNuxtConfig({
+  // Nuxt 4 Standard
   ssr: true,
   compatibilityDate: '2024-11-01',
 
@@ -10,6 +11,12 @@ export default defineNuxtConfig({
     '@nuxt/image',
     'nuxt-lucide-icons'
   ],
+
+  // API-Routing via Route Rules (Empfehlung aus der Nuxt-Doku)
+  // Das sorgt dafür, dass die API-Routen als Serverless Functions behandelt werden
+  routeRules: {
+    '/api/**': { isr: false }, // Verhindert Prerendering für API
+  },
 
   runtimeConfig: {
     recaptchaSecretKey: process.env.RECAPTCHA_SECRET_KEY,
@@ -23,33 +30,35 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    // WICHTIG: Erlaubt dem Build fortzufahren, auch wenn Prerender-Fehler auftreten
+    // KEIN preset setzen, wir lassen die Auto-Detection arbeiten (Zero Config)
     prerender: {
-      crawlLinks: false,
-      failOnError: false,
-      concurrency: 1, // Reduziert RAM-Last (eins nach dem anderen)
+      crawlLinks: false, // WICHTIG: Stoppt das automatische Finden von hunderten SEO-Links
+      failOnError: false, // Build läuft weiter, auch wenn eine Seite hakt
       routes: [
         '/',
         '/leistungen',
         '/blog',
-        '/kontakt'
+        '/kontakt',
+        ...blogPosts.map(post => `/blog/${post.slug}`)
       ]
     }
   },
 
-  // Falls der Fehler durch LightningCSS/PostCSS kommt:
+  // Vite Optimierung
   vite: {
-    css: {
-      transformer: 'postcss',
-    },
-    build: {
-      cssMinify: 'esbuild',
-      minify: 'esbuild'
-    }
+    css: { transformer: 'postcss' },
+    build: { cssMinify: 'esbuild' }
   },
 
-  // Deaktiviere Payload Extraction, um die Anzahl der generierten Files zu senken
-  experimental: {
-    payloadExtraction: false
+  // SEO & Head
+  app: {
+    head: {
+      htmlAttrs: { lang: 'de' },
+      title: 'VelWebSolutions | Professionelle Webentwicklung',
+      meta: [{ name: 'description', content: 'Webentwicklung mit Laravel und Vue.js.' }],
+      link: [
+        { rel: 'icon', type: 'image/jpeg', sizes: '32x32', href: '/velweb-favicon-32x32.jpg' }
+      ]
+    }
   }
 })
