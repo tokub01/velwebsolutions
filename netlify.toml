@@ -1,7 +1,7 @@
 [build]
   command = "npm run build"
   # Nuxt 3/4 generiert bei SSR diesen Ordner für die statischen Assets
-  publish = ".output/public"
+  publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
