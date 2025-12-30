@@ -5,23 +5,20 @@ export default defineNuxtConfig({
   ssr: true,
   compatibilityDate: '2024-11-01',
 
-  // 1. Module
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxt/image',
     'nuxt-lucide-icons'
   ],
 
-  // 2. Icon-Konfiguration
-  lucide: {
-    namePrefix: 'Lucide'
+  // 1. WICHTIG: Route Rules definieren, damit Nitro die API nicht statisch rendert
+  routeRules: {
+    '/api/**': { ssr: false, cors: true }
   },
 
-  // 3. Runtime Configuration (Environment Variables)
   runtimeConfig: {
     recaptchaSecretKey: process.env.RECAPTCHA_SECRET_KEY,
     emailjsPrivateKey: process.env.EMAILJS_PRIVATE_KEY,
-
     public: {
       recaptchaSiteKey: process.env.NUXT_PUBLIC_RECAPTCHA_SITE_KEY,
       emailjsServiceId: process.env.EMAILJS_SERVICE_ID,
@@ -30,55 +27,22 @@ export default defineNuxtConfig({
     }
   },
 
-  // 4. Nitro & Prerendering (Stabilisierung)
   nitro: {
-    // Auto-Detection für Netlify (Zero Config)
+    // KEIN Preset (Zero Config), aber wir schränken das Prerendering ein
     prerender: {
-      crawlLinks: false, // Wichtig gegen RAM-Absturz
+      crawlLinks: false,
       routes: [
         '/',
         '/leistungen',
         '/blog',
         '/kontakt',
         ...blogPosts.map(post => `/blog/${post.slug}`)
-      ],
-      ignore: ['/api/**']
-    }
-  },
-
-  // 5. Hybrid Rendering Rules
-  routeRules: {
-    '/api/**': { ssr: false, cache: false }
-  },
-
-  // 6. Vite & CSS Fixes
-  vite: {
-    css: {
-      transformer: 'postcss',
-    },
-    build: {
-      cssMinify: 'esbuild',
-    }
-  },
-
-  // 7. App Head & SEO
-  app: {
-    head: {
-      htmlAttrs: { lang: 'de' },
-      charset: 'utf-8',
-      viewport: 'width=device-width, initial-scale=1',
-      title: 'VelWebSolutions | Professionelle Webentwicklung',
-      meta: [
-        { name: 'description', content: 'Webentwicklung mit Laravel und Vue.js. Professionelle Fullstack-Lösungen.' }
-      ],
-      link: [
-        { rel: 'icon', type: 'image/jpeg', sizes: '32x32', href: '/velweb-favicon-32x32.jpg' },
-        { rel: 'manifest', href: '/site.webmanifest' }
       ]
     }
   },
 
-  experimental: {
-    payloadExtraction: false // Erhöht die Stabilität beim Deployment
+  vite: {
+    css: { transformer: 'postcss' },
+    build: { cssMinify: 'esbuild' }
   }
 })

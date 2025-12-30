@@ -1,36 +1,35 @@
 [build]
   command = "npm run build"
-  # Überschreibt die 'dist' Einstellung aus der UI
-  publish = "dist"
+  publish = ".output/public"
 
 [build.environment]
   NODE_VERSION = "20"
-  # RAM-Boost gegen Exit Code 2
   NODE_OPTIONS = "--max-old-space-size=4096"
 
-# 1. Kanonische Weiterleitung (WWW auf Non-WWW)
+# 1. WWW auf Non-WWW (Immer zuerst)
 [[redirects]]
   from = "https://www.velwebsolutions.de/*"
   to = "https://velwebsolutions.de/:splat"
   status = 301
   force = true
 
-# 2. API-Routing (Netlify Functions)
+# 2. API-Routing: Das muss ZWINGEND vor dem /* Redirect stehen
+# Nuxt 3/4 mappt auf Netlify alles auf eine zentrale Function namens 'server'
 [[redirects]]
   from = "/api/*"
+  to = "/.netlify/functions/server/api/:splat"
   status = 200
+  force = true
 
-# 3. Nuxt SSR / SPA Fallback
+# 3. Nuxt Render Redirect
 [[redirects]]
   from = "/*"
   to = "/.netlify/functions/server"
   status = 200
 
-# 4. Sicherheits-Header
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://plus.unsplash.com; connect-src 'self' https://api.emailjs.com https://www.google.com/recaptcha/; frame-src https://www.google.com/recaptcha/;"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://plus.unsplash.com; connect-src 'self' https://api.emailjs.com https://www.google.com/recaptcha/;"
