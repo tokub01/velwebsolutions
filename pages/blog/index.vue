@@ -134,13 +134,6 @@ useHead({
 </script>
 
 <style scoped>
-/* Support für Ultra-Wide Monitore jenseits des Standard-Tailwind Grids */
-@media (min-width: 2000px) {
-  .3xl\:grid-cols-5 {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-  }
-}
-
 /* Sanfter Bildübergang beim Laden */
 img {
   opacity: 0;
