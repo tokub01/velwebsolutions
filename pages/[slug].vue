@@ -1,95 +1,86 @@
 <template>
   <div class="font-sans text-gray-900 bg-white selection:bg-red-100 selection:text-red-600" v-if="isValidCity">
 
-    <nav class="bg-gray-50 py-4 px-6 mt-16 border-b border-gray-200" aria-label="Breadcrumb">
-      <ol class="max-w-7xl mx-auto flex items-center space-x-2 text-sm">
-        <li><NuxtLink to="/" class="text-red-600 font-bold hover:underline">Startseite</NuxtLink></li>
-        <li class="text-gray-400">/</li>
-        <li class="text-gray-700 font-semibold uppercase tracking-tighter">{{ cityName }}</li>
-      </ol>
-    </nav>
-
-    <header class="relative py-24 md:py-44 bg-gradient-to-br from-red-700 via-red-600 to-red-500 text-white px-6 overflow-hidden">
-      <div class="relative z-10 max-w-7xl mx-auto text-center">
-        <span class="inline-block px-5 py-2 mb-6 rounded-full bg-white text-red-600 text-[10px] font-black uppercase tracking-[0.2em] shadow-xl animate-pulse">
-          ● Kapazitäten für Projekte in {{ cityName }} verfügbar
-        </span>
-        <h1 class="text-5xl md:text-8xl font-black mb-10 leading-[0.9] tracking-tighter uppercase italic">
-          {{ displayContent.h1Prefix }}<br />
-          <span class="text-white/90 underline decoration-white/30">{{ cityName }}</span>
-        </h1>
-        <p class="text-xl md:text-3xl text-red-50 max-w-4xl mx-auto mb-12 leading-relaxed font-medium">
-          Wir lösen komplexe digitale Herausforderungen für Unternehmen in <strong>{{ cityName }}</strong>. Technisch fundiert, wissenschaftlich orientiert und messbar erfolgreich.
-        </p>
-
-        <div class="flex flex-col items-center gap-6">
-          <NuxtLink to="/kontakt" class="w-full md:w-auto px-12 py-6 bg-white text-red-600 font-black rounded-2xl shadow-2xl text-2xl transition transform hover:scale-105 uppercase italic text-center">
-            Kostenlosen Architektur-Check starten
-          </NuxtLink>
-          <p class="text-red-100 text-sm font-bold uppercase tracking-widest opacity-80">
-            Dauert nur 2 Minuten • Unverbindlich & Kostenfrei
-          </p>
-        </div>
+    <header class="relative pt-32 pb-24 md:pt-48 md:pb-40 bg-gradient-to-br from-red-700 via-red-600 to-red-500 text-white px-6 overflow-hidden">
+      <div class="absolute inset-0 opacity-10 pointer-events-none">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_2px_2px,white_1px,transparent_0)] bg-[size:40px_40px]"></div>
       </div>
-      <div class="absolute inset-0 opacity-10 pointer-events-none" aria-hidden="true">
-        <div class="absolute inset-0 bg-[grid-white_1px] [mask-image:radial-gradient(white,transparent_70%)]"></div>
+
+      <div class="relative z-10 max-w-6xl mx-auto text-center">
+        <span class="inline-block px-5 py-2 mb-6 rounded-full bg-white text-red-600 text-[10px] font-black uppercase tracking-[0.2em] shadow-xl animate-bounce italic">
+          ✓ Kapazitäten in {{ cityName }} verfügbar
+        </span>
+        <h1 class="text-5xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tighter uppercase italic">
+          {{ displayContent.h1Prefix }} <br />
+          <span class="text-white/90 underline decoration-white/30 italic">{{ cityName }}.</span>
+        </h1>
+        <p class="text-xl md:text-3xl text-red-50 font-medium max-w-4xl mx-auto leading-relaxed italic opacity-90">
+          Ich entwickle für Unternehmen in <strong>{{ cityName }}</strong> digitale Werkzeuge, die Ordnung in den Betrieb bringen. Technisch fundiert, wissenschaftlich orientiert und exakt auf Ihren Alltag zugeschnitten.
+        </p>
       </div>
     </header>
 
     <section class="py-12 bg-gray-900 text-white border-y border-white/10">
       <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-        <div v-for="stat in stats" :key="stat.label" class="group">
-          <div class="text-3xl md:text-5xl font-black text-red-600 mb-1 leading-none tracking-tighter italic">{{ stat.value }}</div>
-          <div class="text-[10px] uppercase font-bold text-gray-400 tracking-widest group-hover:text-white transition-colors">{{ stat.label }}</div>
+        <div v-for="stat in stats" :key="stat.label">
+          <div class="text-3xl md:text-5xl font-black text-red-600 mb-1 italic tracking-tighter">{{ stat.value }}</div>
+          <div class="text-[10px] uppercase font-bold text-gray-400 tracking-widest">{{ stat.label }}</div>
         </div>
       </div>
     </section>
 
-    <section class="py-32 px-6 bg-white">
+    <section class="py-32 px-6 bg-white overflow-hidden">
       <div class="max-w-7xl mx-auto">
-        <header class="max-w-3xl mb-20">
-          <span class="text-red-600 font-bold uppercase tracking-widest text-sm mb-4 block">Expertise am Standort</span>
-          <h2 class="text-4xl md:text-7xl font-black uppercase italic text-gray-900 leading-[0.8] tracking-tighter">
-            Lösungen für <span class="text-red-600">{{ cityName }}</span>.
+        <div class="mb-20">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-red-50 text-red-700 font-black text-[10px] mb-8 uppercase tracking-widest border border-red-100 italic">
+            // Expertise am Standort
+          </div>
+          <h2 class="text-4xl md:text-7xl font-black mb-8 leading-[0.9] uppercase italic tracking-tighter">
+            Digitale Lösungen <br/><span class="text-red-600">für {{ cityName }}.</span>
           </h2>
-        </header>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div v-for="(service, sIndex) in expandedServices" :key="sIndex"
-               :class="['group p-10 rounded-[2.5rem] border transition-all hover:shadow-2xl', sIndex === 0 ? 'bg-red-50 border-red-100 ring-2 ring-red-600/10' : 'bg-gray-50 border-gray-100 hover:bg-white']">
-            <div class="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center text-white mb-8 shadow-lg group-hover:scale-110 transition-transform">
-              <component :is="service.icon" class="w-8 h-8" />
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <div v-for="(service, sIndex) in expandedServices" :key="sIndex" class="group">
+            <div class="flex gap-6">
+              <div class="flex-shrink-0 w-16 h-16 bg-gray-900 rounded-2xl flex items-center justify-center text-3xl group-hover:rotate-6 transition-transform shadow-lg">
+                <component :is="service.icon" class="w-8 h-8 text-white" />
+              </div>
+              <div>
+                <h4 class="font-black text-xl uppercase italic tracking-tighter mb-3">{{ service.title }}</h4>
+                <p class="text-gray-500 font-medium italic leading-snug mb-6">{{ service.description }}</p>
+                <ul class="space-y-2">
+                  <li v-for="item in service.bullets" :key="item" class="flex items-center gap-2 text-[10px] font-black text-red-600 uppercase tracking-widest italic">
+                    <span class="w-1.5 h-1.5 bg-red-600 rounded-full"></span> {{ item }}
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div v-if="sIndex === 0" class="inline-block px-3 py-1 bg-red-600 text-white text-[10px] font-black uppercase rounded-lg mb-4">Meistgefragt in {{ cityName }}</div>
-            <h3 class="text-2xl font-black uppercase italic tracking-tighter mb-4">{{ service.title }}</h3>
-            <p class="text-gray-600 leading-relaxed font-medium mb-8">{{ service.description }}</p>
-            <ul class="space-y-3 border-t border-gray-200 pt-6">
-              <li v-for="item in service.bullets" :key="item" class="flex items-center gap-3 text-xs font-black text-gray-500 uppercase italic">
-                <span class="text-red-600">→</span> {{ item }}
-              </li>
-            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="py-32 px-6 bg-gray-50 rounded-[4rem] mx-4 shadow-inner">
+    <section class="py-32 px-6 bg-gray-900 text-white rounded-[4rem] mx-4 shadow-3xl">
       <div class="max-w-5xl mx-auto">
-        <header class="text-center mb-20">
-          <span class="text-red-600 font-bold uppercase tracking-widest text-sm mb-4 block">Deep Dive</span>
-          <h2 class="text-4xl md:text-6xl font-black uppercase italic text-gray-900 leading-none">Wissen schafft <span class="text-red-600">Vertrauen.</span></h2>
-          <p class="mt-4 text-gray-500 font-medium italic">Wir klären die wichtigsten Begriffe für Ihr Vorhaben in {{ cityName }}.</p>
-        </header>
+        <div class="text-center mb-20">
+          <span class="text-red-500 font-black uppercase tracking-[0.3em] text-[10px] mb-6 block italic">Knowledge_Base</span>
+          <h2 class="text-4xl md:text-7xl font-black mb-8 leading-[0.9] uppercase italic tracking-tighter">Wissen schafft <span class="text-red-600">Vertrauen.</span></h2>
+          <p class="text-xl text-gray-400 font-medium italic leading-relaxed">
+            Wir klären die wichtigsten Begriffe für Ihr Vorhaben in {{ cityName }} – verständlich und ohne Fach-Chinesisch.
+          </p>
+        </div>
 
-        <div class="grid gap-6">
-          <article v-for="(faq, index) in localFaqs" :key="index" class="group bg-white rounded-[2.5rem] border border-gray-100 shadow-sm overflow-hidden transition-all hover:shadow-xl">
-            <details class="w-full">
+        <div class="space-y-6">
+          <article v-for="(faq, index) in localFaqs" :key="index" class="bg-white/5 rounded-[2.5rem] border border-white/10 backdrop-blur-md overflow-hidden transition-all hover:bg-white/10">
+            <details class="group w-full">
               <summary class="flex justify-between items-center p-8 cursor-pointer list-none focus:outline-none">
-                <h3 class="text-xl md:text-2xl font-black uppercase italic text-gray-900 pr-4">{{ faq.question }}</h3>
-                <div class="flex-shrink-0 w-10 h-10 rounded-2xl bg-gray-50 border-2 border-gray-100 flex items-center justify-center text-red-600 transition-transform group-open:rotate-45">
-                  <span class="text-3xl font-light">+</span>
+                <h3 class="text-lg md:text-xl font-black uppercase italic text-white pr-4 tracking-tighter">{{ faq.question }}</h3>
+                <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-red-600 flex items-center justify-center text-white transition-transform group-open:rotate-45 shadow-lg">
+                  <span class="text-2xl font-bold">+</span>
                 </div>
               </summary>
-              <div class="px-8 pb-10 text-gray-700 leading-relaxed text-lg border-t border-gray-50 pt-8 whitespace-pre-line font-medium italic">
+              <div class="px-8 pb-10 text-gray-300 leading-relaxed font-medium italic border-t border-white/5 pt-8 whitespace-pre-line">
                 {{ faq.answer }}
               </div>
             </details>
@@ -99,31 +90,35 @@
     </section>
 
     <section class="py-32 px-6 text-center">
-      <div class="max-w-4xl mx-auto p-12 bg-gray-900 rounded-[3rem] text-white shadow-2xl relative overflow-hidden">
+      <div class="max-w-4xl mx-auto bg-gray-900 p-16 rounded-[4rem] text-white shadow-3xl relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5 bg-[size:40px_40px] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)]"></div>
         <div class="relative z-10">
-          <h2 class="text-4xl md:text-6xl font-black mb-6 uppercase italic tracking-tighter">Bereit für den <br/><span class="text-red-600 text-5xl md:text-8xl leading-none">nächsten Schritt?</span></h2>
-          <div class="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto mt-12">
-            <NuxtLink to="/kontakt?ref=check" class="p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-white hover:text-gray-900 transition-all text-center">
-              <span class="block font-black uppercase italic text-xl mb-1">Technik-Check</span>
-              <span class="text-sm opacity-60">Wir analysieren Ihre aktuelle Seite.</span>
+          <h3 class="text-4xl md:text-6xl font-black mb-8 italic uppercase tracking-tighter leading-none">
+            Bereit für den <br/><span class="text-red-600 text-5xl md:text-8xl">nächsten Schritt?</span>
+          </h3>
+          <p class="text-xl text-gray-400 mb-12 font-medium italic">
+            Lassen Sie uns gemeinsam schauen, wie wir Ihren Arbeitsalltag in {{ cityName }} leichter machen können.
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center gap-6">
+            <NuxtLink to="/kontakt?ref=check" class="bg-white text-gray-900 px-10 py-6 rounded-[2rem] font-black text-xl hover:bg-red-600 hover:text-white transition-all shadow-2xl uppercase italic">
+              Technik-Check
             </NuxtLink>
-            <NuxtLink to="/kontakt?ref=call" class="p-6 bg-red-600 rounded-2xl hover:bg-red-700 transition-all text-center">
-              <span class="block font-black uppercase italic text-xl mb-1">Strategie-Call</span>
-              <span class="text-sm text-red-100 italic">Persönliche Beratung in {{ cityName }}.</span>
+            <NuxtLink to="/kontakt?ref=call" class="bg-red-600 text-white px-10 py-6 rounded-[2rem] font-black text-xl hover:bg-white hover:text-red-600 transition-all shadow-2xl uppercase italic">
+              Strategie-Call
             </NuxtLink>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="py-20 px-6">
+    <section class="py-20 px-6 border-t border-gray-100 bg-gray-50/50">
       <div class="max-w-7xl mx-auto text-center">
-        <h4 class="text-[10px] font-black uppercase tracking-[0.4em] text-gray-400 mb-12">Regionales Netzwerk</h4>
-        <div class="flex flex-wrap justify-center gap-2">
+        <h4 class="text-[10px] font-black uppercase tracking-[0.4em] text-gray-400 mb-12 italic">// Regionales Netzwerk</h4>
+        <div class="flex flex-wrap justify-center gap-3">
           <NuxtLink
             v-for="city in nearbyCities" :key="city.slug"
             :to="`/${currentType}-${city.slug}`"
-            class="px-5 py-3 bg-gray-50 hover:bg-red-50 text-gray-500 hover:text-red-600 rounded-xl font-bold text-[11px] transition-all uppercase italic border border-gray-100"
+            class="px-6 py-3 bg-white hover:bg-red-600 text-gray-500 hover:text-white rounded-xl font-black text-[11px] transition-all uppercase italic border border-gray-200 shadow-sm hover:shadow-lg"
           >
             {{ city.name }}
           </NuxtLink>

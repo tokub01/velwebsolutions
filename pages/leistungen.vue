@@ -8,14 +8,14 @@
 
       <div class="relative z-10 max-w-6xl mx-auto text-center">
         <span class="inline-block px-5 py-2 mb-6 rounded-full bg-white text-red-600 text-[10px] font-black uppercase tracking-[0.2em] shadow-xl animate-bounce italic">
-          ✓ Digitaler Vorsprung durch Technik
+          ✓ Maßgeschneiderte Software-Lösungen
         </span>
         <h1 class="text-5xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tighter uppercase italic">
-          Technik, die sich <br />
-          <span class="text-white/90 underline decoration-white/30 italic">Ihnen anpasst.</span>
+          Ihre Prozesse in <br />
+          <span class="text-white/90 underline decoration-white/30 italic">einer Hand.</span>
         </h1>
         <p class="text-xl md:text-3xl text-red-50 font-medium max-w-4xl mx-auto leading-relaxed italic opacity-90">
-          Wir unterstützen Sie dabei, Ihren Betrieb digital aufzustellen. Ohne Stress, ohne komplizierte Begriffe – dafür mit Lösungen, die Ihren Alltag spürbar entlasten.
+          Ich entwickle für Sie digitale Werkzeuge, die Ordnung in Ihren Betrieb bringen. Vom intelligenten Kunden-Archiv bis zur kompletten Firmen-Steuerung – alles einfach bedienbar und genau auf Ihren Alltag zugeschnitten.
         </p>
       </div>
     </section>
@@ -32,10 +32,10 @@
     <section class="py-24 px-6 bg-gray-50 border-b border-gray-100 text-center">
       <div class="max-w-4xl mx-auto">
         <h2 class="text-4xl md:text-6xl font-black mb-8 uppercase italic tracking-tighter leading-none">
-          Digitalisierung muss <br /><span class="text-red-600 text-3xl md:text-5xl">nicht schwer sein.</span>
+          Schluss mit Zettelwirtschaft <br /><span class="text-red-600 text-3xl md:text-5xl">und Excel-Chaos.</span>
         </h2>
         <p class="text-xl md:text-2xl text-gray-600 leading-relaxed font-medium italic">
-          Viele unserer Kunden möchten einfach, dass ihre IT funktioniert. Wir haben uns darauf spezialisiert, komplexe Systeme so zu bauen, dass sie für jeden intuitiv bedienbar sind. Wir sind Ihr Partner, der zuhört und umsetzt.
+          Mein Ziel ist es, dass Sie sich wieder auf Ihr Kerngeschäft konzentrieren können. Ich baue Software, die Ihnen die Sucherei nach Informationen abnimmt und Routine-Aufgaben fast von alleine erledigt. Keine komplizierten Handbücher – einfach einloggen und loslegen.
         </p>
       </div>
     </section>
@@ -44,25 +44,25 @@
       <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
         <div class="relative">
           <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-red-50 text-red-700 font-black text-[10px] mb-8 uppercase tracking-widest border border-red-100 italic">
-            // Ihr Internet-Auftritt
+            // Digitale Präsenz
           </div>
-          <h2 class="text-4xl md:text-7xl font-black mb-8 leading-[0.9] uppercase italic tracking-tighter">Gefunden werden & <br/><span class="text-red-600">Eindruck machen.</span></h2>
+          <h2 class="text-4xl md:text-7xl font-black mb-8 leading-[0.9] uppercase italic tracking-tighter">Professionell auftreten, <br/><span class="text-red-600">Kunden gewinnen.</span></h2>
           <p class="text-xl text-gray-600 mb-12 leading-relaxed font-medium italic">
-            Ihre Webseite ist oft der erste Kontakt zu neuen Kunden. Wir gestalten sie so, dass sie Professionalität ausstrahlt und Ihre Besucher nicht durch zu viele Knöpfe verwirrt.
+            Ich gestalte Webseiten, die nicht nur modern aussehen, sondern echtes Vertrauen bei Ihren Besuchern wecken. Klar in der Botschaft und kinderleicht zu bedienen.
           </p>
           <div class="space-y-8">
             <div class="flex gap-6 group">
-              <div class="flex-shrink-0 w-16 h-16 bg-gray-900 rounded-2xl flex items-center justify-center text-3xl group-hover:rotate-6 transition-transform shadow-lg">👓</div>
+              <div class="flex-shrink-0 w-16 h-16 bg-gray-900 rounded-2xl flex items-center justify-center text-3xl group-hover:rotate-6 transition-transform shadow-lg">📑</div>
               <div>
-                <h4 class="font-black text-xl uppercase italic tracking-tighter">Bestens lesbar</h4>
-                <p class="text-gray-500 font-medium italic leading-snug">Wir nutzen große Schriften und klare Kontraste – für Augen, die nicht mehr alles wie mit 20 sehen.</p>
+                <h4 class="font-black text-xl uppercase italic tracking-tighter">Strukturierte Klarheit</h4>
+                <p class="text-gray-500 font-medium italic leading-snug">Ihre Kunden finden sofort, was sie suchen. Keine unnötigen Spielereien, sondern Fokus auf das Wesentliche.</p>
               </div>
             </div>
             <div class="flex gap-6 group">
               <div class="flex-shrink-0 w-16 h-16 bg-gray-900 rounded-2xl flex items-center justify-center text-3xl group-hover:rotate-6 transition-transform shadow-lg">⚡</div>
               <div>
-                <h4 class="font-black text-xl uppercase italic tracking-tighter">Keine Wartezeiten</h4>
-                <p class="text-gray-500 font-medium italic leading-snug">Ihre Seite lädt blitzschnell (Lighthouse Score 95+), damit Ihre Kunden nicht die Geduld verlieren.</p>
+                <h4 class="font-black text-xl uppercase italic tracking-tighter">Schnelle Ladezeiten</h4>
+                <p class="text-gray-500 font-medium italic leading-snug">Niemand wartet gerne. Ich sorge dafür, dass Ihre Seite blitzschnell auf jedem Smartphone und Computer lädt.</p>
               </div>
             </div>
           </div>
@@ -84,7 +84,7 @@
     <section class="py-32 px-6 bg-gray-900 text-white rounded-[4rem] mx-4 shadow-3xl">
       <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
         <div class="order-2 md:order-1 bg-white/5 p-12 rounded-[3.5rem] border border-white/10 backdrop-blur-md">
-          <h3 class="text-2xl font-black mb-8 text-red-500 uppercase italic tracking-tighter">// Der digitale Vorsprung</h3>
+          <h3 class="text-2xl font-black mb-8 text-red-500 uppercase italic tracking-tighter">// Digitale Kundenverwaltung (CRM)</h3>
           <ul class="space-y-8 text-lg">
             <li v-for="benefit in crmBenefits" :key="benefit.title" class="flex items-start gap-5">
               <span class="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center flex-shrink-0 text-white font-bold italic">✓</span>
@@ -95,13 +95,13 @@
           </ul>
         </div>
         <div class="order-1 md:order-2">
-          <span class="text-red-500 font-black uppercase tracking-[0.3em] text-[10px] mb-6 block italic">Customer Relationship Management</span>
-          <h2 class="text-4xl md:text-7xl font-black mb-8 leading-[0.9] uppercase italic tracking-tighter">Nie wieder den <br/><span class="text-red-600">Überblick verlieren.</span></h2>
+          <span class="text-red-500 font-black uppercase tracking-[0.3em] text-[10px] mb-6 block italic">CRM - Customer Relationship Management</span>
+          <h2 class="text-4xl md:text-7xl font-black mb-8 leading-[0.9] uppercase italic tracking-tighter">Das Gedächtnis <br/><span class="text-red-600">Ihrer Firma.</span></h2>
           <p class="text-xl text-gray-400 mb-10 leading-relaxed font-medium italic">
-            Ein CRM-System ist ein elektronisches Kunden-Archiv, das mitdenkt. Wir bauen es technisch fundiert auf Basis von Laravel, damit Sie nur das sehen, was Sie wirklich brauchen.
+            Ein CRM ist wie ein digitales Archiv für alle Ihre Kontakte. Ich entwickle für Sie ein System, in dem Sie auf Knopfdruck sehen, was Sie wann mit welchem Kunden besprochen haben. Nie wieder verlorene Notizen oder vergessene Rückrufe.
           </p>
           <div class="p-8 bg-white/5 rounded-3xl border-l-8 border-red-600 italic text-gray-300 text-xl font-medium">
-            "Stellen Sie sich vor, Ihr Adressbuch würde Ihnen morgens sagen, wen Sie heute anrufen sollten."
+            "Stellen Sie sich vor, Sie hätten für jeden Kunden eine digitale Akte, die sich quasi von selbst sortiert."
           </div>
         </div>
       </div>
@@ -110,10 +110,10 @@
     <section class="py-32 px-6 bg-white">
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-24">
-          <span class="text-red-600 font-black uppercase tracking-[0.3em] text-[10px] mb-6 block italic">Enterprise Resource Planning</span>
-          <h2 class="text-4xl md:text-8xl font-black mb-8 uppercase italic tracking-tighter leading-none">Ihre Firmenzentrale <br/><span class="text-red-600">in einer Hand.</span></h2>
+          <span class="text-red-600 font-black uppercase tracking-[0.3em] text-[10px] mb-6 block italic">ERP - Enterprise Resource Planning</span>
+          <h2 class="text-4xl md:text-8xl font-black mb-8 uppercase italic tracking-tighter leading-none">Ihre Firmenzentrale <br/><span class="text-red-600">auf einem Bildschirm.</span></h2>
           <p class="text-xl text-gray-600 max-w-3xl mx-auto font-medium italic">
-            Wir verbinden alle Abteilungen – vom Lager bis zur Buchhaltung – in einem einzigen, schnellen Web-Programm.
+            Ein ERP verbindet alle Ihre Abteilungen. Ich baue Ihnen ein Programm, mit dem Sie Angebote schreiben, Rechnungen verwalten und Ihren Lagerbestand prüfen können – alles an einem Ort, ohne zwischen Programmen hin- und herzuwechseln.
           </p>
         </div>
 
@@ -129,19 +129,19 @@
 
     <section class="py-32 px-6 bg-red-50 rounded-[4rem] mx-4 mb-8">
       <div class="max-w-5xl mx-auto text-center">
-        <h2 class="text-4xl md:text-7xl font-black mb-16 uppercase italic tracking-tighter leading-tight">Technik ohne <br/><span class="text-red-600">Kopfschmerzen.</span></h2>
+        <h2 class="text-4xl md:text-7xl font-black mb-16 uppercase italic tracking-tighter leading-tight">Keine Angst vor <br/><span class="text-red-600">der Technik.</span></h2>
         <div class="grid md:grid-cols-2 gap-10 text-left">
           <div class="bg-white p-10 rounded-[3rem] shadow-xl border border-red-100 group">
             <h4 class="text-2xl font-black mb-6 flex items-center gap-3 uppercase italic tracking-tighter">
-              <span class="w-12 h-12 bg-red-600 rounded-xl flex items-center justify-center text-white text-xl shadow-lg">🛡️</span> Wartung & Sicherheit
+              <span class="w-12 h-12 bg-red-600 rounded-xl flex items-center justify-center text-white text-xl shadow-lg">🛡️</span> Rundum-Sorglos-Wartung
             </h4>
-            <p class="text-gray-600 leading-relaxed font-medium italic">Wir halten Ihr System im Hintergrund sauber. Sie müssen keine Updates installieren oder sich um Hacker-Angriffe sorgen – das übernehmen wir für Sie.</p>
+            <p class="text-gray-600 leading-relaxed font-medium italic">Ich kümmere mich darum, dass Ihr System sicher und aktuell bleibt. Sie müssen sich nicht um Updates oder Datensicherheit sorgen – das erledige ich im Hintergrund für Sie.</p>
           </div>
           <div class="bg-white p-10 rounded-[3rem] shadow-xl border border-red-100 group">
             <h4 class="text-2xl font-black mb-6 flex items-center gap-3 uppercase italic tracking-tighter">
-              <span class="w-12 h-12 bg-red-600 rounded-xl flex items-center justify-center text-white text-xl shadow-lg">📞</span> Persönliche Begleitung
+              <span class="w-12 h-12 bg-red-600 rounded-xl flex items-center justify-center text-white text-xl shadow-lg">✉️</span> Ihr persönlicher Ansprechpartner
             </h4>
-            <p class="text-gray-600 leading-relaxed font-medium italic">Wenn Sie eine Frage haben, erreichen Sie uns direkt. Wir erklären Ihnen die Funktionen so lange, bis Sie sich absolut sicher im Umgang mit der Software fühlen.</p>
+            <p class="text-gray-600 leading-relaxed font-medium italic">Wenn Sie eine Frage haben, schreiben Sie mir direkt. Ich erkläre Ihnen alles ohne Fachbegriffe und begleite Sie, bis Sie sich mit Ihrer neuen Software absolut sicher fühlen.</p>
           </div>
         </div>
       </div>
@@ -150,12 +150,12 @@
     <section class="py-32 px-6 bg-white text-center">
       <div class="max-w-4xl mx-auto bg-gray-900 p-16 rounded-[4rem] text-white shadow-3xl relative overflow-hidden">
         <div class="relative z-10">
-          <h3 class="text-4xl md:text-6xl font-black mb-8 italic uppercase tracking-tighter leading-none">Lassen Sie uns <br/><span class="text-red-600 text-5xl md:text-8xl">drüber sprechen.</span></h3>
+          <h3 class="text-4xl md:text-6xl font-black mb-8 italic uppercase tracking-tighter leading-none">Einfach mal <br/><span class="text-red-600 text-5xl md:text-8xl">unverbindlich fragen.</span></h3>
           <p class="text-xl text-gray-400 mb-12 font-medium italic">
-            In einem unverbindlichen Strategie-Check finden wir heraus, welche Lösung für Sie den größten Nutzen bringt.
+            Lassen Sie uns gemeinsam schauen, wie wir Ihren Arbeitsalltag leichter machen können. Ein kurzes Gespräch bringt meistens mehr Klarheit als langes Grübeln.
           </p>
           <NuxtLink to="/kontakt" class="inline-block bg-red-600 text-white px-14 py-7 rounded-[2rem] font-black text-2xl hover:bg-white hover:text-red-600 transition-all shadow-2xl uppercase italic transform hover:scale-105">
-            Strategie-Check vereinbaren
+            Beratungs-Termin vereinbaren
           </NuxtLink>
         </div>
       </div>
@@ -165,50 +165,33 @@
 </template>
 
 <script setup>
-
 definePageMeta({
   layout: 'guest'
 })
 
 useHead({
-  title: 'Leistungen | VelWebSolutions - Technik einfach erklärt',
+  title: 'Leistungen | VelWebSolutions - Webentwicklung einfach erklärt',
   meta: [
-    { name: 'description', content: 'Individuelle Webentwicklung, CRM & ERP-Lösungen mit Laravel & Vue.js. Wir digitalisieren Ihren Betrieb effizient und verständlich.' }
+    { name: 'description', content: 'Ich entwickle individuelle Kundenverwaltungen (CRM) und Firmen-Software (ERP) mit Laravel & Vue.js. Einfach, effizient und persönlich.' }
   ]
 })
 
 const stats = [
-  { label: 'Individuell', value: '100%' },
-  { label: 'Reaktionszeit', value: '< 2h' },
-  { label: 'Architecture', value: 'Clean' },
-  { label: 'Cloud Tech', value: 'Native' }
+  { label: 'Einfachheit', value: '100%' },
+  { label: 'Erreichbarkeit', value: 'Direkt' },
+  { label: 'Technik', value: 'Modern' },
+  { label: 'Beratung', value: 'Ehrlich' }
 ]
 
 const crmBenefits = [
-  { title: 'Zentrales Archiv', text: 'Alle Adressen an einem Ort – kein Suchen mehr in Excel.' },
-  { title: 'Kontakthistorie', text: '"Was wurde besprochen?" – Ein Blick in die digitale Akte genügt.' },
-  { title: 'Wiedervorlage', text: 'Das System erinnert Sie automatisch an wichtige Termine.' }
+  { title: 'Alles an einem Ort', text: 'Alle Telefonnummern, E-Mails und Notizen sortiert in einer digitalen Akte.' },
+  { title: 'Nie wieder vergessen', text: 'Das System erinnert Sie automatisch, wenn ein Kunde seit Wochen keine Rückmeldung gegeben hat.' },
+  { title: 'Einfache Suche', text: 'Finden Sie jeden Kontakt und jede Absprache in Sekunden – ganz ohne langes Suchen.' }
 ]
 
 const erpFeatures = [
-  { icon: '💰', title: 'Rechnungsstellung', desc: 'Angebote und Rechnungen schreiben so einfach wie einen Brief. Alles automatisch berechnet.' },
-  { icon: '📦', title: 'Lagerverwaltung', desc: 'Behalten Sie den Bestand im Auge. Das System warnt bei Engpässen automatisch.' },
-  { icon: '📊', title: 'Live-Auswertung', desc: 'Sehen Sie auf Knopfdruck, wie sich Ihr Unternehmen entwickelt. Klar und ohne Tabellen-Chaos.' }
+  { icon: '💰', title: 'Rechnungen schreiben', desc: 'Erstellen Sie Angebote und Rechnungen per Mausklick. Das System rechnet alles zusammen und speichert es ab.' },
+  { icon: '📦', title: 'Lager & Bestand', desc: 'Sehen Sie sofort, was noch auf Lager ist. Wenn etwas knapp wird, meldet sich das Programm bei Ihnen.' },
+  { icon: '📊', title: 'Übersicht behalten', desc: 'Sehen Sie grafisch aufbereitet, wie viel Umsatz Sie machen und welche Bereiche am besten laufen.' }
 ]
 </script>
-
-<style scoped>
-/* Tailwind Utilities */
-.shadow-3xl {
-  box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.4);
-}
-
-/* Nuxt-spezifische Page-Transitions können hier gesteuert werden */
-.page-enter-active, .page-leave-active {
-  transition: all 0.4s;
-}
-.page-enter-from, .page-leave-to {
-  opacity: 0;
-  filter: blur(1rem);
-}
-</style>
