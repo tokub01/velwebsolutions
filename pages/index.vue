@@ -7,7 +7,7 @@
       </div>
 
       <div class="relative z-10 max-w-6xl mx-auto text-center">
-        <span class="inline-block px-5 py-2 mb-6 rounded-full bg-white text-red-600 text-[10px] font-black uppercase tracking-[0.2em] shadow-xl animate-bounce italic">
+        <span class="inline-block px-5 py-2 mb-6 rounded-full bg-white text-red-600 text-[10px] font-black uppercase tracking-[0.2em] shadow-xl italic">
           ✓ Maßgeschneiderte Software-Lösungen
         </span>
         <h1 class="text-5xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tighter uppercase italic">
