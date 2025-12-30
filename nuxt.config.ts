@@ -17,18 +17,18 @@ export default defineNuxtConfig({
     namePrefix: 'Lucide'
   },
 
-  // 3. Runtime Configuration (Environment Variables)
+  // 3. Runtime Configuration (Mapping der Netlify Environment Variables)
   runtimeConfig: {
-    // Nuxt mappt NUXT_RECAPTCHA_SECRET_KEY automatisch hierauf
-    recaptchaSecretKey: '',
-    emailjsPrivateKey: '',
+    // Private Keys (Nur serverseitig in der API verfügbar)
+    recaptchaSecretKey: process.env.RECAPTCHA_SECRET_KEY,
+    emailjsPrivateKey: process.env.EMAILJS_PRIVATE_KEY,
 
     public: {
-      // Nuxt mappt NUXT_PUBLIC_RECAPTCHA_SITE_KEY automatisch hierauf
-      recaptchaSiteKey: '',
-      emailjsServiceId: '',
-      emailjsTemplateId: '',
-      emailjsPublicKey: ''
+      // Public Keys (Im Browser und Server verfügbar)
+      recaptchaSiteKey: process.env.NUXT_PUBLIC_RECAPTCHA_SITE_KEY,
+      emailjsServiceId: process.env.EMAILJS_SERVICE_ID,
+      emailjsTemplateId: process.env.EMAILJS_TEMPLATE_ID,
+      emailjsPublicKey: process.env.EMAILJS_PUBLIC_KEY
     }
   },
 
@@ -57,9 +57,10 @@ export default defineNuxtConfig({
     quality: 80,
   },
 
-  // 7. Nitro Server & Prerendering
+  // 7. Nitro Server & Hybrid Rendering (DAS HERZSTÜCK DER ÄNDERUNG)
   nitro: {
-    preset: 'static',
+    // 'preset: static' wurde entfernt, damit Netlify Functions (SSR) aktiv werden können.
+    // Nitro erkennt Netlify automatisch und baut die API als Functions.
     prerender: {
       crawlLinks: true,
       routes: [
@@ -67,7 +68,9 @@ export default defineNuxtConfig({
         '/leistungen',
         '/blog',
         ...blogPosts.map(post => `/blog/${post.slug}`)
-      ]
+      ],
+      // WICHTIG: Die API darf nicht vorgerendert werden, da sie zur Laufzeit ausgeführt wird.
+      ignore: ['/api']
     }
   },
 
@@ -90,13 +93,13 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://images.unsplash.com', crossorigin: 'anonymous' }
       ],
       script: [
-        // Optional: Globaler reCAPTCHA Load als Fallback
+        // reCAPTCHA Load als Fallback
         { src: 'https://www.google.com/recaptcha/api.js?render=explicit', async: true, defer: true }
       ]
     }
   },
 
-  // Vite Build Options
+  // 9. Vite Build Options (Behebt den LightningCSS Fehler auf Netlify)
   vite: {
     css: {
       transformer: 'postcss',
