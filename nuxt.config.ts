@@ -2,7 +2,6 @@ import { defineNuxtConfig } from 'nuxt/config'
 import { blogPosts } from './data/blogPosts'
 
 export default defineNuxtConfig({
-  // Nuxt 4 Standard
   ssr: true,
   compatibilityDate: '2024-11-01',
 
@@ -12,10 +11,9 @@ export default defineNuxtConfig({
     'nuxt-lucide-icons'
   ],
 
-  // API-Routing via Route Rules (Empfehlung aus der Nuxt-Doku)
-  // Das sorgt dafür, dass die API-Routen als Serverless Functions behandelt werden
+  // Mapping für Netlify
   routeRules: {
-    '/api/**': { isr: false }, // Verhindert Prerendering für API
+    '/api/**': { isr: false },
   },
 
   runtimeConfig: {
@@ -30,10 +28,8 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    // KEIN preset setzen, wir lassen die Auto-Detection arbeiten (Zero Config)
     prerender: {
-      crawlLinks: false, // WICHTIG: Stoppt das automatische Finden von hunderten SEO-Links
-      failOnError: false, // Build läuft weiter, auch wenn eine Seite hakt
+      crawlLinks: false, // VERHINDERT DEN RAM-ABSTURZ
       routes: [
         '/',
         '/leistungen',
@@ -44,21 +40,12 @@ export default defineNuxtConfig({
     }
   },
 
-  // Vite Optimierung
   vite: {
     css: { transformer: 'postcss' },
     build: { cssMinify: 'esbuild' }
   },
 
-  // SEO & Head
-  app: {
-    head: {
-      htmlAttrs: { lang: 'de' },
-      title: 'VelWebSolutions | Professionelle Webentwicklung',
-      meta: [{ name: 'description', content: 'Webentwicklung mit Laravel und Vue.js.' }],
-      link: [
-        { rel: 'icon', type: 'image/jpeg', sizes: '32x32', href: '/velweb-favicon-32x32.jpg' }
-      ]
-    }
+  experimental: {
+    payloadExtraction: false // Stabiler auf Netlify
   }
 })
