@@ -1,33 +1,27 @@
 [build]
   command = "npm run build"
+  # Nuxt 3/4 generiert bei SSR diesen Ordner für die statischen Assets
   publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
+  # Erhöht das Speicherlimit, damit der Prerenderer nicht mit Exit Code 2 crasht
   NODE_OPTIONS = "--max-old-space-size=4096"
 
-# 1. WWW auf Non-WWW
+# WWW zu Non-WWW Redirect
 [[redirects]]
   from = "https://www.velwebsolutions.de/*"
   to = "https://velwebsolutions.de/:splat"
   status = 301
   force = true
 
-# 2. API-Routing (Netlify Functions)
-# WICHTIG: Wir leiten /api/* auf die server-function um.
-# Das 'force = true' ist entscheidend, damit Netlify nicht statisch sucht.
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/server"
-  status = 200
-  force = true
-
-# 3. Nuxt Render Redirect (Für alle anderen Seiten)
+# Fallback für die SPA-Hydrierung
 [[redirects]]
   from = "/*"
-  to = "/.netlify/functions/server"
+  to = "/index.html"
   status = 200
 
+# Sicherheits-Header
 [[headers]]
   for = "/*"
   [headers.values]
