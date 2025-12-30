@@ -116,17 +116,25 @@
       </div>
     </section>
 
-    <section class="py-32 px-6 bg-white text-center">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-5xl md:text-8xl font-black mb-12 tracking-tighter uppercase italic leading-[0.8]">
-          Kein Legacy Code. <br/><span class="text-red-600">Nur Performance.</span>
+    <section class="py-20 md:py-32 px-4 sm:px-6 bg-white text-center overflow-hidden">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-[clamp(2.5rem,12vw,6.5rem)] md:text-[clamp(4rem,10vw,8.5rem)] font-[1000] mb-8 md:mb-12 tracking-tighter uppercase italic leading-[1.1] md:leading-[0.85] px-2">
+          Kein Legacy Code. <br class="hidden sm:block" />
+          <span class="text-red-600 block sm:inline">Nur Performance.</span>
         </h2>
-        <p class="text-2xl text-gray-600 mb-16 leading-relaxed font-medium italic max-w-2xl mx-auto">
-          Lassen Sie uns Ihre technische Vision in eine performante Realität umsetzen.
+
+        <p class="text-lg md:text-3xl text-gray-600 mb-12 md:mb-20 leading-relaxed font-medium italic max-w-3xl mx-auto px-4">
+          Lassen Sie uns Ihre technische Vision in eine performante Realität umsetzen – ohne Altlasten, dafür mit modernster Architektur.
         </p>
-        <NuxtLink to="/kontakt" class="px-14 py-8 bg-red-600 text-white font-black rounded-[2rem] shadow-2xl hover:scale-105 transition-all text-2xl uppercase italic tracking-widest">
-          Projekt besprechen
-        </NuxtLink>
+
+        <div class="flex justify-center px-4">
+          <NuxtLink
+            to="/kontakt"
+            class="w-full sm:w-auto px-8 md:px-16 py-6 md:py-9 bg-red-600 text-white font-[1000] rounded-2xl md:rounded-[2.5rem] shadow-[0_20px_50px_rgba(220,38,38,0.3)] hover:scale-105 active:scale-95 transition-all text-xl md:text-3xl uppercase italic tracking-widest text-center"
+          >
+            Projekt besprechen
+          </NuxtLink>
+        </div>
       </div>
     </section>
   </div>
