@@ -4,8 +4,6 @@
 
 [build.environment]
   NODE_VERSION = "20"
-  # Wir setzen hier KEIN NITRO_PRESET=static, damit Nitro
-  # automatisch erkennt, dass es auf Netlify läuft.
 
 # 1. Kanonische Weiterleitung (WWW auf Non-WWW)
 [[redirects]]
@@ -14,7 +12,8 @@
   status = 301
   force = true
 
-# 2. API-Routing (WICHTIG: Damit die Functions nicht vom SPA-Redirect abgefangen werden)
+# 2. API-Routing für Netlify Functions
+# Dies sorgt dafür, dass /api-Requests direkt an die Serverless Function gehen
 [[redirects]]
   from = "/api/*"
   status = 200
@@ -25,7 +24,7 @@
   to = "/index.html"
   status = 200
 
-# 4. Globale Sicherheits-Header & CSP
+# 4. Globale Sicherheits-Header
 [[headers]]
   for = "/*"
   [headers.values]
@@ -33,9 +32,8 @@
     X-Content-Type-Options = "nosniff"
     X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    # CSP: Erlaubt reCAPTCHA (Frames & Scripts), EmailJS und Netlify RUM
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com https://cdn.emailjs.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://plus.unsplash.com; connect-src 'self' https://api.emailjs.com https://ingesteer.services-prod.nsvcs.net https://www.google.com/recaptcha/; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/;"
+    # Gelockerte CSP für reCAPTCHA und API-Connect
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://plus.unsplash.com; connect-src 'self' https://api.emailjs.com https://www.google.com/recaptcha/ https://*.nsvcs.net; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/;"
 
 # 5. Caching für Nuxt Assets
 [[headers]]

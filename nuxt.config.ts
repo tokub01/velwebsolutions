@@ -17,14 +17,13 @@ export default defineNuxtConfig({
     namePrefix: 'Lucide'
   },
 
-  // 3. Runtime Configuration (Mapping der Netlify Environment Variables)
+  // 3. Runtime Configuration (Environment Variables)
   runtimeConfig: {
-    // Private Keys (Nur serverseitig in der API verfügbar)
+    // Diese Variablen müssen im Netlify Dashboard hinterlegt sein
     recaptchaSecretKey: process.env.RECAPTCHA_SECRET_KEY,
     emailjsPrivateKey: process.env.EMAILJS_PRIVATE_KEY,
 
     public: {
-      // Public Keys (Im Browser und Server verfügbar)
       recaptchaSiteKey: process.env.NUXT_PUBLIC_RECAPTCHA_SITE_KEY,
       emailjsServiceId: process.env.EMAILJS_SERVICE_ID,
       emailjsTemplateId: process.env.EMAILJS_TEMPLATE_ID,
@@ -57,10 +56,9 @@ export default defineNuxtConfig({
     quality: 80,
   },
 
-  // 7. Nitro Server & Hybrid Rendering (DAS HERZSTÜCK DER ÄNDERUNG)
+  // 7. Nitro Server & Hybrid Rendering
   nitro: {
-    // 'preset: static' wurde entfernt, damit Netlify Functions (SSR) aktiv werden können.
-    // Nitro erkennt Netlify automatisch und baut die API als Functions.
+    // KEIN preset: 'static' setzen. Nitro erkennt Netlify automatisch.
     prerender: {
       crawlLinks: true,
       routes: [
@@ -69,8 +67,14 @@ export default defineNuxtConfig({
         '/blog',
         ...blogPosts.map(post => `/blog/${post.slug}`)
       ],
-      // WICHTIG: Die API darf nicht vorgerendert werden, da sie zur Laufzeit ausgeführt wird.
-      ignore: ['/api']
+      // WICHTIG: Verhindert, dass der Prerenderer die API-Endpunkte crawlt
+      ignore: [
+        '/api/**',
+        '/_payload.json'
+      ],
+      // Sicherheit für den großen Build (viele Stadt-Seiten)
+      concurrency: 10,
+      failOnError: false
     }
   },
 
@@ -93,19 +97,19 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://images.unsplash.com', crossorigin: 'anonymous' }
       ],
       script: [
-        // reCAPTCHA Load als Fallback
         { src: 'https://www.google.com/recaptcha/api.js?render=explicit', async: true, defer: true }
       ]
     }
   },
 
-  // 9. Vite Build Options (Behebt den LightningCSS Fehler auf Netlify)
+  // 9. Vite Build Options (Behebt LightningCSS & Exit Code 2 Probleme)
   vite: {
     css: {
       transformer: 'postcss',
     },
     build: {
       cssMinify: 'esbuild',
+      chunkSizeWarningLimit: 1500
     }
   }
 })
