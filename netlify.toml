@@ -10,6 +10,13 @@
   NODE_OPTIONS = "--max-old-space-size=4096"
 
 # ==========================================
+# 1.1 IMAGE OPTIMIZATION (Fix für 400 Error)
+# ==========================================
+[images]
+  # Erlaubt dem Netlify Image CDN, externe Bilder von Unsplash zu laden
+  remote_images = ["https://images.unsplash.com/.*"]
+
+# ==========================================
 # 2. SECURITY HEADERS (Browser Hardening)
 # ==========================================
 [[headers]]
@@ -44,12 +51,18 @@
   force = true
 
 [[redirects]]
+  from = "/.git/*"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
   from = "/wp-*"
   to = "/404"
   status = 404
   force = true
 
-# C. NETLIFY IMAGE CDN BYPASS (Neu: Fix für NuxtImg)
+# C. NETLIFY IMAGE CDN BYPASS
 # Stoppt den SPA-Fallback für den Image-Proxy
 [[redirects]]
   from = "/.netlify/images/*"
