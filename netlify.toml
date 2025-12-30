@@ -1,30 +1,94 @@
+# ==========================================
+# 1. BUILD & ENVIRONMENT
+# ==========================================
 [build]
   command = "npm run build"
-  # Nuxt 3/4 generiert bei SSR diesen Ordner für die statischen Assets
   publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
-  # Erhöht das Speicherlimit, damit der Prerenderer nicht mit Exit Code 2 crasht
   NODE_OPTIONS = "--max-old-space-size=4096"
 
-# WWW zu Non-WWW Redirect
+# ==========================================
+# 2. SECURITY HEADERS (Browser Hardening)
+# ==========================================
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    # HSTS: Erzwingt HTTPS für 1 Jahr (inkl. Subdomains)
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    # Schutz vor Fingerprinting & unbefugtem Hardware-Zugriff
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    # CSP: Erlaubt nur notwendige Quellen (Recaptcha & EmailJS inkludiert)
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://plus.unsplash.com; connect-src 'self' https://api.emailjs.com https://www.google.com/recaptcha/;"
+
+# ==========================================
+# 3. REDIRECTS (Priorität von oben nach unten!)
+# ==========================================
+
+# A. DOMAIN CANONICALIZATION (Keine Loops, da force=true)
+# Verhindert Duplicate Content und stellt sicher, dass alle Header greifen
 [[redirects]]
   from = "https://www.velwebsolutions.de/*"
   to = "https://velwebsolutions.de/:splat"
   status = 301
   force = true
 
-# Fallback für die SPA-Hydrierung
+# B. BOT-BLOCKING (WAF-Pattern-Matching)
+# Wir nutzen 404/410, damit Scanner deine App-Instanz nicht unnötig triggern.
+# force = true ist hier essentiell, um Nuxt-Fallbacks zu überspringen.
+
+[[redirects]]
+  from = "/.env"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/.git/*"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/wp-*"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/xmlrpc.php"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/phpmyadmin*"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/404"
+  status = 404
+  force = true
+
+# C. NUXT ASSETS PROTECTION
+# Wir stellen sicher, dass Nuxt-Interne Dateien niemals umgeleitet werden.
+[[redirects]]
+  from = "/_nuxt/*"
+  to = "/_nuxt/:splat"
+  status = 200
+
+# D. SPA FALLBACK (Die "Last Resort" Regel)
+# Diese Regel greift NUR, wenn keine Datei existiert UND keine obige Regel passt.
+# status = 200 hält die URL im Browser für das Vue-Routing sauber.
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-# Sicherheits-Header
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://plus.unsplash.com; connect-src 'self' https://api.emailjs.com https://www.google.com/recaptcha/;"
