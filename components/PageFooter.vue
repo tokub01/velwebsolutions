@@ -74,16 +74,22 @@
           <span class="text-[10px] font-black uppercase tracking-[0.3em] italic">System Registry // Local SEO Units</span>
           <LucideChevronDown class="w-5 h-5 transition-transform group-open:rotate-180" />
         </summary>
-        <div class="pb-10">
-          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-8 gap-y-4">
-            <NuxtLink
-              v-for="(data, slug) in cityContent"
-              :key="slug"
-              :to="'/vue-js-entwicklung-' + slug"
-              class="text-[10px] text-gray-600 hover:text-white font-bold uppercase tracking-widest italic transition-colors"
-            >
-              ./{{ data.cityName }}
-            </NuxtLink>
+
+        <div class="pb-10 space-y-12">
+          <div v-for="category in seoCategories" :key="category.label" class="space-y-4">
+            <h5 class="text-[9px] font-bold text-gray-700 uppercase tracking-[0.2em] border-b border-gray-800 pb-2">
+              // {{ category.label }}
+            </h5>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-8 gap-y-3">
+              <NuxtLink
+                v-for="(content, slug) in category.data"
+                :key="slug"
+                :to="baseUrl + category.prefix + slug"
+                class="text-[9px] text-gray-600 hover:text-white font-bold uppercase tracking-widest italic transition-colors"
+              >
+                ./{{ slug }}
+              </NuxtLink>
+            </div>
           </div>
         </div>
       </details>
@@ -111,17 +117,22 @@
 
 <script setup>
 import { cityContent } from '~/data/cityContent'
+import { phpLaravelContent } from '~/data/phpLaravelContent'
+import { vueContent } from '~/data/vueContent'
+import { softwareContent } from '~/data/softwareContent'
 
 const currentYear = new Date().getFullYear()
-
-// Zugriff auf den globalen State des Cookie-Banners
 const isBannerVisible = useState('cookie_banner_visible')
 
-const scrollToTop = () => {
-  if (process.client) {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-}
+// Basis-URL für absolute Verlinkung (SEO Best Practice für LCP)
+const baseUrl = 'https://velwebsolutions.de'
+
+const seoCategories = [
+  { label: 'Webentwicklung Units', prefix: '/webentwicklung-', data: cityContent },
+  { label: 'PHP & Laravel Nodes', prefix: '/php-laravel-agentur-', data: phpLaravelContent },
+  { label: 'Vue.js Frontend Clusters', prefix: '/vue-js-entwicklung-', data: vueContent },
+  { label: 'Software Engineering Cores', prefix: '/softwareentwicklung-', data: softwareContent }
+]
 </script>
 
 <style scoped>
