@@ -120,6 +120,8 @@ import { cityContent } from '~/data/cityContent'
 import { phpLaravelContent } from '~/data/phpLaravelContent'
 import { vueContent } from '~/data/vueContent'
 import { softwareContent } from '~/data/softwareContent'
+import { watch, onMounted } from 'vue'
+import { useHead, useRoute } from '#app'
 
 const currentYear = new Date().getFullYear()
 const isBannerVisible = useState('cookie_banner_visible')
@@ -133,6 +135,61 @@ const seoCategories = [
   { label: 'Vue.js Frontend Clusters', prefix: '/vue-js-entwicklung-', data: vueContent },
   { label: 'Software Engineering Cores', prefix: '/softwareentwicklung-', data: softwareContent }
 ]
+
+const GA_ID = 'G-Q1XCQZEC0C'
+const userConsent = useCookie('user_consent')
+const route = useRoute()
+
+const loadGA = () => {
+  if (userConsent.value === 'granted') {
+    useHead({
+      script: [
+        {
+          src: `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`,
+          async: true,
+        },
+        {
+          innerHTML: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            // Initialer Aufruf mit expliziter Übergabe des Seitennamens
+            gtag('config', '${GA_ID}', {
+              'page_title': document.title,
+              'page_path': window.location.pathname,
+              'anonymize_ip': true
+            });
+          `,
+          type: 'text/javascript',
+        },
+      ],
+    })
+  }
+}
+
+// Initialer Check beim Laden
+onMounted(() => {
+  loadGA()
+})
+
+// Falls der User während der Sitzung zustimmt
+watch(userConsent, (newVal) => {
+  if (newVal === 'granted') {
+    loadGA()
+  }
+})
+
+// WICHTIG: Manuelles Tracking des Seitennamens bei Routenwechsel (für Nuxt/SPA)
+watch(() => route.path, () => {
+  if (userConsent.value === 'granted' && typeof gtag === 'function') {
+    gtag('event', 'page_view', {
+      page_title: document.title,
+      page_location: window.location.href,
+      page_path: route.path
+    })
+  }
+}, { flush: 'post' }) // flush: 'post' stellt sicher, dass der DOM (und Titel) bereits aktualisiert ist
+
 </script>
 
 <style scoped>
