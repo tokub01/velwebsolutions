@@ -121,12 +121,10 @@ import { phpLaravelContent } from '~/data/phpLaravelContent'
 import { vueContent } from '~/data/vueContent'
 import { softwareContent } from '~/data/softwareContent'
 import { watch, onMounted } from 'vue'
-import { useHead, useRoute } from '#app'
+import { useHead, useRoute, useState, useCookie } from '#app'
 
 const currentYear = new Date().getFullYear()
 const isBannerVisible = useState('cookie_banner_visible')
-
-// Basis-URL für absolute Verlinkung (SEO Best Practice für LCP)
 const baseUrl = 'https://velwebsolutions.de'
 
 const seoCategories = [
@@ -136,51 +134,72 @@ const seoCategories = [
   { label: 'Software Engineering Cores', prefix: '/softwareentwicklung-', data: softwareContent }
 ]
 
+// ================================================
+// ANALYTICS & BOT PROTECTION LOGIC
+// ================================================
 const GA_ID = 'G-Q1XCQZEC0C'
 const userConsent = useCookie('user_consent')
 const route = useRoute()
+let isGaInitialized = false
 
-const loadGA = () => {
-  if (userConsent.value === 'granted') {
-    useHead({
-      script: [
-        {
-          src: `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`,
-          async: true,
-        },
-        {
-          innerHTML: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            // Initialer Aufruf mit expliziter Übergabe des Seitennamens
-            gtag('config', '${GA_ID}', {
-              'page_title': document.title,
-              'page_path': window.location.pathname,
-              'anonymize_ip': true
-            });
-          `,
-          type: 'text/javascript',
-        },
-      ],
-    })
-  }
+/**
+ * Kernfunktion zur Identifizierung von Bots und automatisierten Systemen
+ * Schützt die Analytics-Daten vor Verfälschung (Dirty Data)
+ */
+const detectBot = () => {
+  if (!process.client) return true
+
+  // 1. User-Agent Analyse (Standard & AI Bots)
+  const botPattern = /bot|googlebot|crawler|spider|robot|crawling|lighthouse|inspect|screenshot|headless|chrome-lighthouse|playwright|puppeteer|cypress/i
+  const uaMatch = botPattern.test(navigator.userAgent)
+
+  // 2. Technische Footprints (Headless Browser Erkennung)
+  const isAutomated = navigator.webdriver || !(navigator.languages && navigator.languages.length > 0)
+
+  return uaMatch || isAutomated
 }
 
-// Initialer Check beim Laden
-onMounted(() => {
-  loadGA()
-})
+/**
+ * Lädt Google Analytics nur bei Consent und wenn kein Bot erkannt wurde
+ */
+const loadGA = () => {
+  // Guard-Clauses
+  if (userConsent.value !== 'granted' || isGaInitialized) return
+  if (detectBot()) return
 
-// Falls der User während der Sitzung zustimmt
-watch(userConsent, (newVal) => {
-  if (newVal === 'granted') {
-    loadGA()
-  }
-})
+  isGaInitialized = true
 
-// WICHTIG: Manuelles Tracking des Seitennamens bei Routenwechsel (für Nuxt/SPA)
-watch(() => route.path, () => {
+  useHead({
+    script: [
+      {
+        src: `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`,
+        async: true,
+      },
+      {
+        innerHTML: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${GA_ID}', {
+            'page_title': document.title,
+            'page_path': window.location.pathname,
+            'anonymize_ip': true,
+            'send_page_view': false // Verhindert Auto-Track beim Load (wir tracken manuell)
+          });
+        `,
+        type: 'text/javascript',
+      },
+    ],
+  })
+
+  // Initialer Pageview nach Injektion
+  sendPageView()
+}
+
+/**
+ * Hilfsfunktion für konsistentes Page-View Tracking
+ */
+const sendPageView = () => {
   if (userConsent.value === 'granted' && typeof gtag === 'function') {
     gtag('event', 'page_view', {
       page_title: document.title,
@@ -188,7 +207,24 @@ watch(() => route.path, () => {
       page_path: route.path
     })
   }
-}, { flush: 'post' }) // flush: 'post' stellt sicher, dass der DOM (und Titel) bereits aktualisiert ist
+}
+
+// Lifecycle: GA initialisieren
+onMounted(() => {
+  loadGA()
+})
+
+// Watcher: Consent-Änderung (wenn User im Banner auf "Akzeptieren" klickt)
+watch(userConsent, (newVal) => {
+  if (newVal === 'granted') {
+    loadGA()
+  }
+})
+
+// Watcher: Routenwechsel (SPA-Tracking)
+watch(() => route.path, () => {
+  sendPageView()
+}, { flush: 'post' })
 
 </script>
 
