@@ -1,64 +1,82 @@
 # ================================================
 # Robots.txt für velwebsolutions.de
-# VelWebSolutions - Webentwicklung
-# Letzte Aktualisierung: 2025-12-18
+# VelWebSolutions - High-End Web Engineering
+# Letzte Aktualisierung: 2026-01-03
 # ================================================
 
 User-agent: *
 Allow: /
+Allow: /_nuxt/
+Allow: /static/
 
 # Sitemaps
 Sitemap: https://velwebsolutions.de/sitemap.xml
 
 # ================================================
-# BLOCKIERTE BEREICHE
+# BACKEND & SECURITY (Framework Protection)
 # ================================================
 
-# Backend & Frameworks
+# Laravel / PHP Internals
 Disallow: /vendor/
 Disallow: /storage/
 Disallow: /bootstrap/
+Disallow: /config/
+Disallow: /database/
+Disallow: /resources/
 Disallow: /.env
 Disallow: /artisan
+Disallow: /composer.json
+Disallow: /composer.lock
+Disallow: /package.json
+Disallow: /package-lock.json
+
+# API & Auth
 Disallow: /api/
 Disallow: /sanctum/
-
-# Admin & Entwicklung
-Disallow: /admin/
+Disallow: /_sanctum/
 Disallow: /login
 Disallow: /register
+Disallow: /password/
+
+# Admin & Dev
+Disallow: /admin/
+Disallow: /dashboard/
 Disallow: /node_modules/
 Disallow: /.git/
+Disallow: /.github/
 Disallow: /tmp/
 Disallow: /logs/
 
 # ================================================
-# KI & AGGRESSIVE BOTS - BLOCKIERT
+# AGGRESSIVE BOTS & KI (Data Protection)
 # ================================================
 
+# Verhindert KI-Training durch deinen Fach-Content
 User-agent: GPTBot
-Disallow: /
-
+User-agent: ChatGPT-User
 User-agent: CCBot
+User-agent: Google-Extended
 Disallow: /
 
-User-agent: PetalBot
-Disallow: /
-
-User-agent: MJ12bot
-Disallow: /
-
-User-agent: DotBot
-Disallow: /
-
-User-agent: SEOkicks
-Disallow: /
-
+# Verhindert unnötiges Crawling durch SEO-Tools (Crawl-Budget sparen)
 User-agent: AhrefsBot
-Disallow: /
-
-User-agent: Rogerbot
-Disallow: /
-
 User-agent: SemrushBot
+User-agent: Rogerbot
+User-agent: DotBot
+User-agent: MJ12bot
+User-agent: SEOkicks
+User-agent: BLEXBot
 Disallow: /
+
+# Verhindert aggressive chinesische & russische Bots
+User-agent: Baiduspider
+User-agent: YandexBot
+Disallow: /
+
+# ================================================
+# CRAWL-DELAY (Server Performance Protection)
+# ================================================
+
+# Zwingt langsamere Bots zu einer Pause (schont LCP-Werte)
+User-agent: *
+Crawl-delay: 1
