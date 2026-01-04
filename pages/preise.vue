@@ -13,172 +13,147 @@
       <div class="absolute inset-0 opacity-10 pointer-events-none">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_2px_2px,white_1px,transparent_0)] bg-[size:40px_40px]"></div>
       </div>
+
       <div class="relative z-10 max-w-6xl mx-auto text-center">
         <span class="inline-block px-5 py-2 mb-6 rounded-full bg-white text-red-600 text-[10px] font-black uppercase tracking-[0.2em] shadow-xl italic">
-          ✓ Engineering auf Industriestandard
+          ✓ Professionelles Engineering: 125,00 € NETTO
         </span>
         <h1 class="text-5xl md:text-9xl font-black mb-10 leading-[0.85] tracking-tighter uppercase italic">
-          Keine Rätsel.<br/><span class="text-white/90 underline decoration-white/30">Nur Ergebnisse.</span>
+          Ehrliches Handwerk.<br/><span class="text-white/90 underline decoration-white/30">Keine Rätsel.</span>
         </h1>
         <p class="text-xl md:text-3xl text-red-50 max-w-4xl mx-auto leading-relaxed font-medium italic">
-          Transparente Kalkulation ist die Basis für Vertrauen. Ich biete Fullstack-Entwicklung (Laravel & Vue.js) mit klar definierten Leistungsstufen und fairem Zeit-Tracking.
+          Qualität hat ihren Preis, aber sie zahlt sich aus. Ich biete Fullstack-Entwicklung auf höchstem Niveau – transparent abgerechnet und ohne technische Schulden.
         </p>
       </div>
     </header>
 
-    <section class="py-12 bg-gray-50 border-b border-gray-100">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div v-for="unit in matrixUnits" :key="unit.label" class="p-6 bg-white rounded-3xl shadow-sm border border-gray-100 hover:border-red-600 transition-colors">
-            <p class="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-4 italic">{{ unit.label }}</p>
-            <div class="flex flex-col">
-              <span class="text-2xl font-black italic">{{ unit.netto }} € <span class="text-[10px] text-gray-400">NETTO</span></span>
-              <span class="text-sm font-bold text-gray-400 italic">{{ unit.brutto }} € <span class="text-[8px]">BRUTTO</span></span>
+    <section class="py-20 md:py-32 px-6 bg-white overflow-hidden">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+        <div class="order-2 lg:order-1 lg:col-span-6 relative group">
+          <div class="absolute -inset-6 bg-red-600/5 rounded-[3rem] md:rounded-[4rem] -rotate-1 group-hover:rotate-0 transition-transform duration-700"></div>
+          <div class="relative bg-gray-50 p-8 md:p-16 rounded-[2.5rem] md:rounded-[3.5rem] border border-gray-100 shadow-sm">
+            <h3 class="text-3xl md:text-5xl font-black uppercase italic tracking-tighter mb-4 text-gray-900">Sprint Paket</h3>
+            <p class="text-xl md:text-2xl font-black text-red-600 mb-10 italic uppercase tracking-widest">40h FOKUS-ENTWICKLUNG</p>
+            <ul class="space-y-3 mb-10 text-gray-600 font-medium italic">
+              <li><span class="text-red-600 font-black">✓</span> Konzeption & UI/UX Design</li>
+              <li><span class="text-red-600 font-black">✓</span> Performance-Landingpage (Vue.js)</li>
+              <li><span class="text-red-600 font-black">✓</span> SEO-Grundoptimierung</li>
+            </ul>
+            <div class="bg-white p-6 rounded-3xl border border-gray-200 mb-8">
+              <div class="flex justify-between items-end mb-2">
+                <span class="text-gray-600 font-bold italic">40h á 125,00 € (Netto)</span>
+                <span class="text-xl font-black">5.000,00 €</span>
+              </div>
             </div>
+            <NuxtLink to="/kontakt" class="block w-full text-center py-6 bg-gray-900 text-white font-black rounded-2xl hover:bg-red-600 transition-all uppercase italic tracking-widest">Projekt starten</NuxtLink>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="py-20 md:py-32 px-6">
-      <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-7xl font-black uppercase italic tracking-tighter mb-4">Der Leistungskatalog</h2>
-          <p class="text-gray-500 italic font-medium max-w-2xl mx-auto">
-            Vom ersten Gedanken bis zum langfristigen Betrieb. Ich bündele Kompetenz in drei klare Phasen, um Ihr Projekt effizient ans Ziel zu bringen.
+        <div class="order-1 lg:order-2 lg:col-span-6 text-center lg:text-left">
+          <span class="text-red-600 font-black uppercase tracking-[0.3em] text-[10px] mb-4 block italic">Einstieg & Sichtbarkeit</span>
+          <h2 class="text-4xl md:text-7xl font-black mb-8 leading-[0.9] uppercase italic tracking-tighter">Das digitale <br/><span class="text-red-600">Fundament.</span></h2>
+          <p class="text-lg md:text-xl text-gray-600 leading-relaxed font-medium italic max-w-xl mx-auto lg:mx-0">
+            Ideal für den Aufbau einer professionellen Web-Präsenz. Ich nutze modernste Web-Technologien, um eine Basis zu schaffen, die heute überzeugt und morgen skaliert.
           </p>
         </div>
+      </div>
+    </section>
 
-        <div class="space-y-8">
-          <div class="bg-gray-50 p-8 md:p-12 rounded-[2.5rem] border-l-8 border-red-600">
-            <div class="flex flex-col lg:flex-row justify-between items-start gap-8">
-              <div class="max-w-3xl">
-                <span class="text-red-600 font-black text-[10px] uppercase tracking-widest italic mb-2 block">01 / Analyse & Architektur</span>
-                <h3 class="text-3xl font-black uppercase italic tracking-tight mb-4">Digitale Strategie & Konzeption</h3>
-                <p class="text-gray-600 text-sm italic mb-6 leading-relaxed">
-                  Bevor die erste Zeile Code geschrieben wird, eliminieren wir Risiken. In dieser Phase entwickeln wir die "Blueprints" Ihrer Software. Dies schützt vor teuren Fehlentwicklungen und sichert die Skalierbarkeit Ihres Geschäftsmodells.
-                </p>
-                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px] font-bold uppercase tracking-tighter text-gray-500 italic">
-                  <li><span class="text-red-600">✓</span> Erstellung von Lasten- & Pflichtenheften</li>
-                  <li><span class="text-red-600">✓</span> Software-Architektur & Systemdesign</li>
-                  <li><span class="text-red-600">✓</span> Datenbankmodellierung & Datenfluss-Diagramme</li>
-                  <li><span class="text-red-600">✓</span> API-Spezifikation (Schnittstellenplanung)</li>
-                  <li><span class="text-red-600">✓</span> DSGVO-Konforme Sicherheitskonzepte</li>
-                  <li><span class="text-red-600">✓</span> UI/UX Prototyping & Wireframing</li>
-                </ul>
+    <section class="py-20 md:py-32 px-4 md:px-6 bg-gray-900 text-white rounded-[2.5rem] md:rounded-[4rem] mx-2 md:mx-4 shadow-3xl overflow-hidden relative">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+        <div class="lg:col-span-7 z-10 text-center lg:text-left">
+          <span class="text-red-500 font-black uppercase tracking-[0.3em] text-[10px] mb-4 block italic">Wachstum & Logik</span>
+          <h2 class="text-4xl md:text-6xl xl:text-7xl font-black mb-10 leading-[0.9] uppercase italic tracking-tighter break-words lg:max-w-[90%]">
+            Eigene Software <br/>
+            <span class="text-red-500 underline decoration-red-500/30 inline-block mt-2">maßgeschneidert.</span>
+          </h2>
+          <p class="text-lg md:text-xl text-gray-400 mb-10 leading-relaxed font-medium italic max-w-xl mx-auto lg:mx-0">
+            Der Standard für individuelle Kundenportale oder spezialisierte Prozesse. Hier entwickeln wir die Logik, die Ihren Arbeitsalltag wirklich automatisiert.
+          </p>
+          <ul class="hidden sm:block space-y-4 mb-10 text-gray-300 font-medium italic max-w-md mx-auto lg:mx-0">
+            <li class="flex items-center gap-3"> <span class="text-red-500 font-black">✓</span> Clean-Code Architektur (Laravel)</li>
+            <li class="flex items-center gap-3"> <span class="text-red-500 font-black">✓</span> Automatisierte Software-Tests</li>
+            <li class="flex items-center gap-3"> <span class="text-red-500 font-black">✓</span> API-Anbindungen & Datensynchronisation</li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-5 relative z-20">
+          <div class="bg-white/5 p-8 md:p-12 rounded-[2.5rem] md:rounded-[4rem] border border-white/10 backdrop-blur-md relative shadow-2xl">
+            <div class="absolute -top-4 -right-2 bg-red-600 text-white px-4 py-2 rounded-xl font-black text-[9px] md:text-[10px] uppercase tracking-[0.2em] shadow-2xl rotate-12 z-30">Meistgewählt</div>
+            <h3 class="text-xl font-black uppercase italic tracking-tighter mb-8 text-white/50">Business Paket</h3>
+            <div class="space-y-4 mb-10">
+              <div class="flex justify-between items-baseline text-2xl md:text-4xl font-black gap-4">
+                <span class="italic text-white">NETTO</span>
+                <span class="text-white whitespace-nowrap">10.000,00 €</span>
               </div>
-              <div class="text-right bg-white p-6 rounded-2xl shadow-sm border border-gray-100 min-w-[220px] w-full lg:w-auto">
-                <div class="text-3xl font-black italic text-gray-900">145,00 €</div>
-                <div class="text-[10px] font-bold text-gray-400 uppercase italic">Netto / Stunde</div>
-                <div class="text-sm font-bold text-gray-300 italic mt-1">172,55 € Brutto</div>
+              <div class="flex justify-between items-baseline text-lg font-bold text-gray-500 border-t border-white/10 pt-4 gap-4">
+                <span class="italic">BRUTTO</span>
+                <span class="whitespace-nowrap font-black text-gray-400">11.900,00 €</span>
               </div>
             </div>
-          </div>
-
-          <div class="bg-gray-900 text-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl transform lg:scale-105 z-10 border border-white/5">
-            <div class="flex flex-col lg:flex-row justify-between items-start gap-8">
-              <div class="max-w-3xl">
-                <span class="text-red-500 font-black text-[10px] uppercase tracking-widest italic mb-2 block">02 / Entwicklung & Umsetzung</span>
-                <h3 class="text-3xl font-black uppercase italic tracking-tight text-white mb-4">Fullstack Engineering</h3>
-                <p class="text-gray-400 text-sm italic mb-6 leading-relaxed">
-                  Moderne Web-Technologien (Laravel & Vue.js) treffen auf sauberes Handwerk. Ich entwickle robuste, performante und wartbare Anwendungen nach "Clean Code"-Prinzipien. Jedes Feature wird automatisiert getestet, um höchste Qualität zu garantieren.
-                </p>
-                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px] font-bold uppercase tracking-tighter text-gray-400 italic">
-                  <li><span class="text-red-500">✓</span> Programmierung komplexer Backends (Laravel)</li>
-                  <li><span class="text-red-500">✓</span> Reaktive Oberflächenentwicklung (Vue.js)</li>
-                  <li><span class="text-red-500">✓</span> Automatisierte Tests (Unit- & Feature-Tests)</li>
-                  <li><span class="text-red-500">✓</span> Code-Review & Qualitätssicherung</li>
-                  <li><span class="text-red-500">✓</span> Anbindung externer Dienste (Stripe, Lexware, etc.)</li>
-                  <li><span class="text-red-500">✓</span> Performance-Optimierung & Refactoring</li>
-                </ul>
-              </div>
-              <div class="text-right bg-white/10 p-6 rounded-2xl border border-white/10 min-w-[220px] w-full lg:w-auto">
-                <div class="text-3xl font-black italic text-white">125,00 €</div>
-                <div class="text-[10px] font-bold text-gray-500 uppercase italic">Netto / Stunde</div>
-                <div class="text-sm font-bold text-gray-500 italic mt-1">148,75 € Brutto</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-gray-50 p-8 md:p-12 rounded-[2.5rem] border-l-8 border-gray-400">
-            <div class="flex flex-col lg:flex-row justify-between items-start gap-8">
-              <div class="max-w-3xl">
-                <span class="text-gray-400 font-black text-[10px] uppercase tracking-widest italic mb-2 block">03 / Wartung & Pflege</span>
-                <h3 class="text-3xl font-black uppercase italic tracking-tight text-gray-700 mb-4">Instandhaltung & Werterhalt</h3>
-                <p class="text-gray-500 text-sm italic mb-6 leading-relaxed">
-                  Software lebt. Um die Sicherheit und Performance langfristig zu sichern, biete ich einen vergünstigten Satz für die Systempflege an. Hier fließen auch operative Aufgaben wie Textänderungen oder Support ein.
-                </p>
-                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px] font-bold uppercase tracking-tighter text-gray-400 italic">
-                  <li><span class="text-gray-400">✓</span> Inhaltliche Anpassungen (Wording & Texte)</li>
-                  <li><span class="text-gray-400">✓</span> Einspielung kritischer Sicherheits-Updates</li>
-                  <li><span class="text-gray-400">✓</span> Kontinuierliches System-Monitoring</li>
-                  <li><span class="text-gray-400">✓</span> Fehleranalyse (Bug-Investigation)</li>
-                  <li><span class="text-gray-400">✓</span> Erstellung technischer Dokumentation</li>
-                  <li><span class="text-gray-400">✓</span> Technischer Anwender-Support</li>
-                </ul>
-              </div>
-              <div class="text-right bg-white p-6 rounded-2xl shadow-sm border border-gray-100 min-w-[220px] w-full lg:w-auto">
-                <div class="text-3xl font-black italic text-gray-900">110,00 €</div>
-                <div class="text-[10px] font-bold text-gray-400 uppercase italic">Netto / Stunde</div>
-                <div class="text-sm font-bold text-gray-300 italic mt-1">130,90 € Brutto</div>
-              </div>
-            </div>
+            <p class="text-[9px] md:text-[10px] text-gray-500 mb-10 italic border-l-2 border-red-600 pl-4 uppercase tracking-widest font-black leading-tight">
+              Kalkulation: 80h á 125,00 € <br/>(Detailliertes Zeit-Tracking inkl. Reporting)
+            </p>
+            <NuxtLink to="/kontakt" class="block w-full text-center py-6 bg-red-600 text-white font-black rounded-2xl hover:bg-white hover:text-red-600 transition-all uppercase italic tracking-widest shadow-2xl text-lg md:text-xl font-black">Entwicklung starten</NuxtLink>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="py-24 bg-gray-50 border-t border-gray-100 overflow-hidden">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <div>
-            <h2 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-8 leading-[0.9]">Handwerk statt <br/><span class="text-red-600">Standard-Fließband.</span></h2>
-            <div class="space-y-6 text-gray-600 italic font-medium">
-              <p>In der IT gibt es keine "Abkürzungen", die nicht später zu technischen Schulden führen. Eine saubere Dokumentation und automatisierte Tests sind keine Extras, sondern Standard meiner Arbeit.</p>
-              <p>Jedes Projekt wird in Jira dokumentiert. Sie sehen minutengenau, welche Tätigkeit an welcher Stelle erfolgt ist. Das schafft Sicherheit für Ihre Buchhaltung und Vertrauen für unsere Partnerschaft.</p>
-            </div>
+    <section class="py-20 md:py-32 px-6 bg-white overflow-hidden">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+        <div class="order-2 lg:order-1 lg:col-span-7 text-center lg:text-left">
+          <span class="text-gray-400 font-black uppercase tracking-[0.3em] text-[10px] mb-4 block italic">Skalierung & ERP</span>
+          <h2 class="text-4xl md:text-7xl font-black mb-8 leading-[0.9] uppercase italic tracking-tighter">Das digitale <br/><span class="text-gray-400">Betriebssystem.</span></h2>
+          <p class="text-lg md:text-xl text-gray-600 mb-10 leading-relaxed font-medium italic max-w-xl mx-auto lg:mx-0">
+            Für Unternehmen ohne Kompromisse. Wir digitalisieren komplexe Warenwirtschafts- oder ERP-Systeme mit Fokus auf Ausfallsicherheit.
+          </p>
+          <div class="inline-block p-5 bg-gray-50 rounded-2xl border-l-8 border-gray-900 text-left">
+            <p class="text-gray-900 font-black italic uppercase tracking-tighter text-sm">Enterprise-Garantie</p>
+            <p class="text-gray-500 font-bold italic text-xs">120h geballte Engineering-Power</p>
           </div>
-          <div class="bg-gray-900 p-8 md:p-12 rounded-[3rem] text-white shadow-2xl rotate-2">
-            <h4 class="text-xl font-black uppercase italic mb-6 text-red-500 tracking-widest">Projekt-Garantie</h4>
-            <ul class="space-y-4 text-sm font-bold uppercase tracking-tight italic">
-              <li class="flex items-center gap-3"><span class="text-red-500">✓</span> 100% Transparenz via Jira</li>
-              <li class="flex items-center gap-3"><span class="text-red-500">✓</span> Deployment auf Profi-Servern</li>
-              <li class="flex items-center gap-3"><span class="text-red-500">✓</span> Dokumentation & Übergabe</li>
-              <li class="flex items-center gap-3"><span class="text-red-500">✓</span> Feste Ansprechpartner (Freelance)</li>
-            </ul>
+        </div>
+        <div class="order-1 lg:order-2 lg:col-span-5 relative group">
+          <div class="absolute -inset-6 bg-gray-100 rounded-[3rem] md:rounded-[4rem] rotate-1 group-hover:rotate-0 transition-transform duration-700"></div>
+          <div class="relative bg-white p-8 md:p-16 rounded-[2.5rem] md:rounded-[3.5rem] border border-gray-200 shadow-2xl">
+            <h3 class="text-2xl md:text-3xl font-black uppercase italic tracking-tighter mb-4 text-gray-400">Enterprise Paket</h3>
+            <div class="mb-8">
+              <div class="text-3xl md:text-5xl font-black text-gray-900 whitespace-nowrap">15.000,00 € <span class="text-[10px] font-bold text-gray-400 uppercase">Netto</span></div>
+              <div class="text-lg md:text-2xl font-bold text-gray-400 mt-2">17.850,00 € <span class="text-[9px] uppercase">Brutto</span></div>
+            </div>
+            <p class="text-[9px] md:text-[10px] text-gray-400 font-black uppercase tracking-[0.2em] italic border-t pt-6">Kalkulation: 120h á 125,00 € Netto</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="py-20 md:py-40 px-6 text-center">
+    <section class="py-20 md:py-32 px-6 bg-gray-50 border-t border-gray-100 text-center rounded-[2.5rem] md:rounded-[4rem] mx-2 md:mx-4 mb-12">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-4xl md:text-8xl font-black uppercase italic tracking-tighter mb-12 text-gray-900">Bereit für <br/><span class="text-red-600">High-End?</span></h2>
-        <div class="flex flex-col sm:flex-row justify-center gap-6">
-          <NuxtLink to="/kontakt" class="px-12 py-6 bg-red-600 text-white font-black rounded-2xl shadow-2xl hover:bg-gray-900 transition-all text-xl uppercase italic tracking-widest">Projekt anfragen</NuxtLink>
-          <NuxtLink to="/portfolio" class="px-12 py-6 bg-white border-4 border-gray-100 text-gray-900 font-black rounded-2xl hover:border-red-600 transition-all text-xl uppercase italic tracking-widest">Arbeitsweise entdecken</NuxtLink>
+        <h2 class="text-4xl md:text-9xl font-black mb-8 md:mb-12 tracking-tighter uppercase italic text-gray-900 leading-[0.8] shadow-text">
+          Zeit ist <br/><span class="text-red-600">messbar.</span>
+        </h2>
+        <p class="text-lg md:text-2xl text-gray-600 mb-12 leading-relaxed font-medium italic">
+          Keine versteckten Gebühren. Ich arbeite mit professionellen Tracking-Tools. Das ist meine Garantie für eine faire Partnerschaft.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4 md:gap-8">
+          <NuxtLink to="/kostenrechner" class="px-8 md:px-14 py-5 md:py-8 bg-red-600 text-white font-black rounded-2xl md:rounded-[2rem] shadow-2xl hover:scale-105 transition-all text-lg md:text-2xl uppercase italic tracking-widest">Kosten berechnen</NuxtLink>
+          <NuxtLink to="/kontakt" class="px-8 md:px-14 py-5 md:py-8 bg-white border-2 md:border-4 border-gray-200 text-gray-800 font-black rounded-2xl md:rounded-[2rem] hover:bg-gray-900 hover:text-white transition-all text-lg md:text-2xl uppercase italic tracking-widest">Jetzt anfragen</NuxtLink>
         </div>
       </div>
     </section>
-
   </div>
 </template>
 
 <script setup>
-const matrixUnits = [
-  { label: 'Pro Stunde', netto: '125,00', brutto: '148,75' },
-  { label: 'Pro Tag (8h)', netto: '1.000,00', brutto: '1.190,00' },
-  { label: 'Pro Woche (40h)', netto: '5.000,00', brutto: '5.950,00' },
-  { label: 'Pro Monat (160h)', netto: '20.000,00', brutto: '23.800,00' }
-]
-
 definePageMeta({ layout: 'guest' })
 useHead({
-  title: 'Investition & Transparenz | VelWebSolutions',
-  meta: [{ name: 'description', content: 'Detaillierte Honorar-Übersicht für professionelle Laravel & Vue.js Entwicklung. Netto- & Bruttopreise.' }]
+  title: 'Investition & Pakete | VelWebSolutions',
+  meta: [{ name: 'description', content: 'Transparente Preise für individuelle Laravel & Vue.js Entwicklung.' }]
 })
 </script>
 
 <style scoped>
+.shadow-3xl { box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.4); }
+.shadow-text { text-shadow: 0 10px 20px rgba(0,0,0,0.05); }
 html { scroll-behavior: smooth; }
 </style>
