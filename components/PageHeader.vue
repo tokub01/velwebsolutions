@@ -58,7 +58,7 @@
         <div class="flex items-center gap-2 sm:gap-4 md:gap-6 shrink-0">
           <NuxtLink
             to="/kontakt"
-            class="cta-button relative group/cta overflow-hidden bg-gray-900 text-white px-3 py-2.5 sm:px-5 sm:py-3 md:px-8 md:py-4 rounded-xl md:rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-[0.1em] md:tracking-[0.2em] hover:bg-red-600 transition-all shadow-xl italic flex items-center gap-2 active:scale-95"
+            class="cta-button relative ml-3 sm:ml-0 group/cta overflow-hidden bg-gray-900 text-white px-3 py-2.5 sm:px-5 sm:py-3 md:px-8 md:py-4 rounded-xl md:rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-[0.1em] md:tracking-[0.2em] hover:bg-red-600 transition-all shadow-xl italic flex items-center gap-2 active:scale-95"
           >
             <span class="relative flex h-1.5 w-1.5 md:h-2 md:w-2">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
