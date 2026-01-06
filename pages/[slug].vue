@@ -1,223 +1,173 @@
 <template>
-  <div class="font-sans text-gray-900 bg-white selection:bg-red-100 selection:text-red-600 antialiased overflow-x-hidden" v-if="isValidCity">
+  <div class="font-sans text-slate-900 bg-white selection:bg-red-500 selection:text-white antialiased overflow-x-hidden" v-if="isValidCity">
 
-    <header class="relative pt-24 pb-16 md:pt-48 md:pb-40 bg-gradient-to-br from-red-700 via-red-600 to-red-500 text-white px-4 sm:px-6 overflow-hidden mt-[60px] md:mt-[73px]">
-      <div class="absolute inset-0 opacity-10 pointer-events-none">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_2px_2px,white_1px,transparent_0)] bg-[size:30px_30px] md:bg-[size:40px_40px]"></div>
+    <header class="relative pt-32 pb-20 md:pt-56 md:pb-48 bg-red-600 text-white px-4 overflow-hidden mt-[60px] md:mt-[73px]">
+      <div class="absolute inset-0 opacity-20 pointer-events-none">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_2px_2px,white_1px,transparent_0)] bg-[size:40px_40px]"></div>
       </div>
+      <div class="absolute -top-24 -right-24 w-96 h-96 bg-white opacity-10 blur-[100px] rounded-full"></div>
 
-      <div class="relative z-10 max-w-7xl mx-auto text-center px-4">
-        <span class="inline-block px-4 py-1.5 mb-6 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] italic">
-          ✓ Kapazitäten in {{ cityName }} verfügbar
-        </span>
-        <h1 class="
-            /* Dynamische Schriftgröße: Kleinerer Startwert für mobile Endgeräte */
-            text-[clamp(1.7rem,8vw,4.5rem)]
-            md:text-[clamp(3.5rem,10vw,8rem)]
+      <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-6 text-left">
+        <div class="inline-flex items-center gap-3 px-3 py-1 mb-8 rounded-full bg-white/10 border border-white/20 backdrop-blur-md">
+          <span class="text-[10px] font-black uppercase tracking-[0.2em] italic">✓ Remote Software Expert</span>
+        </div>
 
-            /* Font-Styling */
-            font-[1000]
-            mb-6 md:mb-8
+        <h1 class="text-[clamp(2.5rem,9vw,7.5rem)] font-[1000] mb-8 leading-[0.85] tracking-tighter uppercase italic break-words">
+          {{ displayContent.h1Prefix }}<br />
+          <span class="text-white underline decoration-white/30">{{ cityName }}.</span>
+        </h1>
 
-            /* Zeilenabstand & Kerning */
-            leading-[1.1]
-            md:leading-[0.9]
-            tracking-tighter
-            uppercase
-            italic
-
-            /* Die magischen Klassen für lange Wörter */
-            break-words
-            hyphens-auto
-
-            /* Schutzabstand */
-            px-2
-          ">
-            {{ displayContent.h1Prefix }}
-            <br class="hidden sm:block" />
-            <span class="text-white underline decoration-white/30 italic">
-              {{ cityName }}.
-            </span>
-          </h1>
-        <p class="text-base sm:text-xl md:text-2xl lg:text-3xl text-red-50 font-medium max-w-3xl mx-auto leading-relaxed italic opacity-95 mb-10">
-          Ich entwickle für Unternehmen in <span class="text-white border-b-2 border-white/20">{{ cityName }}</span> digitale Werkzeuge, die Ordnung in den Betrieb bringen.
-        </p>
-
-        <div class="flex flex-col sm:flex-row justify-center gap-4">
-          <NuxtLink to="/kontakt" class="bg-white text-red-600 px-8 py-4 rounded-2xl font-[1000] text-sm uppercase italic shadow-2xl hover:bg-gray-900 hover:text-white transition-all transform active:scale-95 text-center">
-            Projekt anfragen
-          </NuxtLink>
+        <div class="grid lg:grid-cols-2 gap-12 items-end">
+          <p class="text-lg md:text-2xl text-red-50 font-medium leading-relaxed italic max-w-2xl">
+            {{ cityData.heroSlogan || `Wir entwickeln die digitale Infrastruktur für den modernen Mittelstand.` }}
+            Realisiert via <a href="https://laravel.cloud" target="_blank" class="text-white font-black underline decoration-white/40 hover:decoration-white transition-all">Laravel Cloud</a> & <a href="https://www.netlify.com" target="_blank" class="text-white font-black underline decoration-white/40 hover:decoration-white transition-all">Netlify</a>.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <NuxtLink to="/kontakt" class="group bg-white text-red-600 hover:bg-slate-900 hover:text-white px-10 py-5 rounded-2xl font-[1000] text-sm uppercase italic transition-all shadow-[0_20px_50px_rgba(0,0,0,0.2)]">
+              Analyse Session starten
+            </NuxtLink>
+          </div>
         </div>
       </div>
     </header>
 
-    <section class="py-12 bg-gray-900 text-white border-y border-white/10">
-      <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-y-12 gap-x-6 text-center">
-        <div v-for="stat in stats" :key="stat.label" class="flex flex-col items-center">
-          <div class="text-3xl sm:text-4xl md:text-5xl font-[1000] text-red-600 mb-1 italic tracking-tighter">{{ stat.value }}</div>
-          <div class="text-[9px] md:text-[10px] uppercase font-black text-gray-500 tracking-widest leading-tight max-w-[120px]">{{ stat.label }}</div>
+    <section class="py-12 bg-white border-b border-slate-100">
+      <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div v-for="stat in engineeringStats" :key="stat.label" class="flex flex-col">
+          <span class="text-4xl font-[1000] text-red-600 italic tracking-tighter">{{ stat.value }}</span>
+          <span class="text-[10px] font-black uppercase text-slate-400 tracking-widest">{{ stat.label }}</span>
         </div>
       </div>
     </section>
 
-    <section class="py-10 px-4 bg-gray-50 border-b border-gray-100">
-      <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 bg-white p-8 md:p-10 rounded-3xl border border-gray-200 shadow-sm">
-        <div class="text-center md:text-left">
-          <h3 class="text-xl md:text-2xl font-black uppercase italic tracking-tighter leading-tight">Bereit für die Digitalisierung in {{ cityName }}?</h3>
-          <p class="text-sm md:text-base text-gray-500 font-medium italic mt-2">Unverbindliche Erstberatung & technisches Audit anfordern.</p>
-        </div>
-        <NuxtLink to="/kontakt" class="w-full md:w-auto bg-red-600 text-white px-10 py-5 rounded-xl font-black text-xs md:text-sm uppercase italic hover:bg-gray-900 transition-all text-center shadow-lg shadow-red-100 whitespace-nowrap">
-          Jetzt Termin sichern
-        </NuxtLink>
-      </div>
-    </section>
-
-    <section class="py-16 md:py-32 px-4 sm:px-6 bg-white overflow-hidden text-gray-900">
+    <section class="py-24 md:py-40 px-4 bg-slate-50">
       <div class="max-w-7xl mx-auto">
-        <div class="mb-12 md:mb-24 text-center md:text-left">
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-red-50 text-red-700 font-black text-[9px] md:text-[10px] mb-6 uppercase tracking-widest border border-red-100 italic">
-            // Expertise am Standort
+        <div class="mb-20">
+          <h2 class="text-sm font-black uppercase tracking-[0.3em] text-red-600 mb-4 italic">// Engineering Core</h2>
+          <p class="text-4xl md:text-7xl font-[1000] tracking-tighter italic uppercase leading-none">Methodik trifft <br/> Performance.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+          <div class="md:col-span-8 p-8 md:p-12 bg-white rounded-[3rem] border border-slate-200 flex flex-col justify-between group hover:shadow-2xl transition-all duration-500">
+            <div class="max-w-xl">
+              <GitBranch class="w-12 h-12 text-red-600 mb-8" />
+              <h3 class="text-3xl font-[1000] uppercase italic mb-6">Phase 01: Requirement Engineering</h3>
+              <p class="text-slate-500 font-medium italic text-lg leading-relaxed">
+                Kein Code ohne Plan. Wir modellieren Ihre Prozesse in {{ cityName }} mittels BPMN und Domain-Driven Design (DDD). Das sichert die logische Integrität Ihres ERP- oder CRM-Systems, bevor die erste Zeile Code geschrieben wird.
+              </p>
+            </div>
+
+
+[Image of software development lifecycle V-model diagram]
+
+            <div class="flex flex-wrap gap-2 mt-12">
+              <span v-for="tag in ['UML', 'BPMN 2.0', 'User Stories', 'System Architecture']" :key="tag" class="px-4 py-2 bg-slate-50 rounded-xl text-[10px] font-black uppercase tracking-tight">{{ tag }}</span>
+            </div>
           </div>
-          <h2 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-[1000] mb-6 leading-[1.1] uppercase italic tracking-tighter">
-            Digitale Lösungen <br class="hidden md:block"/><span class="text-red-600">für {{ cityName }}.</span>
+
+          <div class="md:col-span-4 p-8 bg-slate-900 rounded-[3rem] text-white flex flex-col justify-between">
+            <div class="space-y-6">
+              <div class="w-12 h-12 bg-red-600 rounded-2xl flex items-center justify-center">
+                <Cpu class="w-6 h-6 text-white" />
+              </div>
+              <h3 class="text-2xl font-[1000] uppercase italic leading-tight">100% Remote <br/> Delivery</h3>
+              <p class="text-slate-400 text-sm italic font-medium">Wir nutzen Netlify & Laravel Cloud für ein nahtloses, serverloses Deployment Ihrer Anwendung in {{ cityName }}.</p>
+            </div>
+            <div class="pt-8 border-t border-white/10">
+              <div class="flex items-center gap-3">
+                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span class="text-[10px] font-black uppercase tracking-widest italic">Live Staging Ready</span>
+              </div>
+            </div>
+          </div>
+
+          <div v-for="service in bottomServices" :key="service.title" class="md:col-span-4 p-8 bg-white border border-slate-200 rounded-[2.5rem] hover:border-red-600 transition-colors group">
+            <component :is="service.icon" class="w-8 h-8 text-red-600 mb-6" />
+            <h4 class="text-xl font-[1000] uppercase italic mb-4">{{ service.title }}</h4>
+            <p class="text-slate-500 text-sm font-medium italic leading-relaxed">{{ service.desc }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 md:py-40 px-4 bg-white overflow-hidden">
+      <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+        <div class="w-full lg:w-1/2">
+          <h2 class="text-4xl md:text-6xl font-[1000] uppercase italic tracking-tighter leading-none mb-8">
+            The <span class="text-red-600">Cloud Stack.</span>
           </h2>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16">
-          <div v-for="(service, sIndex) in expandedServices" :key="sIndex" class="group flex flex-col items-start">
-            <div class="w-14 h-14 md:w-16 md:h-16 bg-gray-900 rounded-2xl flex items-center justify-center text-2xl md:text-3xl mb-6 group-hover:rotate-6 transition-transform shadow-xl shadow-gray-200">
-              <component :is="service.icon" class="w-6 h-6 md:w-8 md:h-8 text-white" />
-            </div>
-            <div class="w-full">
-              <h4 class="font-[1000] text-xl md:text-2xl uppercase italic tracking-tighter mb-4 leading-tight">{{ service.title }}</h4>
-              <p class="text-gray-600 text-base md:text-lg font-medium italic leading-relaxed mb-6">{{ service.description }}</p>
-
-              <div class="flex flex-wrap gap-2">
-                <span v-for="item in service.bullets" :key="item" class="px-3 py-1 bg-gray-50 text-red-600 text-[9px] font-black uppercase tracking-widest border border-gray-100 rounded-lg italic">
-                  {{ item }}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-12 md:py-24 bg-white">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6">
-        <div class="bg-red-600 text-white p-8 md:p-16 rounded-[2.5rem] md:rounded-[4rem] shadow-2xl relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full -mr-24 -mt-24 blur-3xl pointer-events-none"></div>
-
-          <div class="relative z-10 flex flex-col lg:flex-row items-center gap-10 text-center lg:text-left">
-            <div class="shrink-0 w-20 h-20 bg-white/20 rounded-full flex items-center justify-center animate-pulse">
-               <Rocket class="w-10 h-10 text-white" />
-            </div>
-            <div class="flex-1 space-y-4">
-              <h3 class="text-2xl md:text-4xl font-[1000] uppercase italic tracking-tighter leading-tight">Projekt-Checkup {{ cityName }}</h3>
-              <p class="text-red-100 font-medium italic text-base md:text-lg leading-relaxed max-w-xl">Sicherheits- & Performance-Check für Ihr Unternehmen. <br class="hidden md:block" /> Kostenfrei für lokale Betriebe.</p>
-            </div>
-            <NuxtLink to="/kontakt?ref=checkup" class="w-full lg:w-auto bg-white text-red-600 px-10 py-5 rounded-2xl font-[1000] text-lg uppercase italic hover:bg-gray-900 hover:text-white transition-all shadow-xl text-center active:scale-95">
-              Check anfordern
-            </NuxtLink>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-16 md:py-32 px-4 sm:px-6 bg-gray-900 text-white rounded-[2.5rem] md:rounded-[4rem] mx-2 sm:mx-4 shadow-3xl">
-      <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12 md:mb-24 px-4">
-          <span class="text-red-500 font-black uppercase tracking-[0.3em] text-[9px] mb-4 block italic">Knowledge_Base</span>
-          <h2 class="text-3xl md:text-6xl font-[1000] mb-6 leading-none uppercase italic tracking-tighter">Wissen schafft <span class="text-red-600">Vertrauen.</span></h2>
-          <p class="text-base md:text-xl text-gray-400 font-medium italic leading-relaxed max-w-2xl mx-auto">
-            Komplexe Technik verständlich erklärt für Ihr Vorhaben in {{ cityName }}.
+          <p class="text-slate-500 text-lg md:text-xl font-medium italic leading-relaxed mb-10">
+            Maximale Performance durch modernste Cloud-Dienste. Wir trennen das Frontend (Netlify) strikt vom Backend (Laravel Cloud), um höchste Sicherheit und Skalierbarkeit zu gewährleisten.
           </p>
-        </div>
-
-        <div class="space-y-4 md:space-y-6">
-          <article v-for="(faq, index) in localFaqs" :key="index" class="bg-white/[0.03] rounded-3xl border border-white/10 transition-all hover:bg-white/[0.06] overflow-hidden">
-            <details class="group w-full">
-              <summary class="flex justify-between items-center p-6 md:p-10 cursor-pointer list-none focus:outline-none select-none">
-                <h3 class="text-base md:text-xl font-black uppercase italic text-white pr-6 tracking-tight leading-snug text-left">{{ faq.question }}</h3>
-                <div class="shrink-0 w-8 h-8 md:w-12 md:h-12 rounded-full bg-red-600 flex items-center justify-center text-white transition-all duration-300 group-open:rotate-45 group-hover:scale-110 shadow-lg">
-                  <span class="text-xl md:text-2xl font-bold">+</span>
-                </div>
-              </summary>
-              <div class="px-6 pb-10 md:px-10 md:pb-12 text-sm md:text-lg text-gray-400 leading-relaxed font-medium italic border-t border-white/5 pt-8 whitespace-pre-line text-left transition-opacity duration-500 opacity-0 group-open:opacity-100">
-                {{ faq.answer }}
+          <div class="space-y-6">
+            <div v-for="feature in cloudFeatures" :key="feature.title" class="flex items-start gap-4">
+              <div class="w-6 h-6 rounded-full bg-red-50 text-red-600 flex items-center justify-center text-xs font-bold mt-1">✓</div>
+              <div>
+                <h5 class="font-black uppercase italic text-sm">{{ feature.title }}</h5>
+                <p class="text-slate-400 text-sm italic">{{ feature.desc }}</p>
               </div>
-            </details>
-          </article>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
-
-    <section class="py-20 px-4 text-center">
-      <div class="max-w-4xl mx-auto bg-gray-900 p-10 md:p-24 rounded-[3rem] md:rounded-[4rem] text-white shadow-3xl relative overflow-hidden">
-        <div class="absolute inset-0 opacity-5 bg-[size:30px_30px] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)]"></div>
-        <div class="relative z-10 px-2">
-          <h3 class="text-3xl md:text-6xl font-[1000] mb-8 md:mb-12 italic uppercase tracking-tighter leading-none">
-            Bereit für den <br/><span class="text-red-600 text-4xl md:text-8xl">nächsten Schritt?</span>
-          </h3>
-          <div class="flex flex-col sm:flex-row justify-center gap-4 md:gap-6">
-            <NuxtLink to="/kontakt?ref=check" class="w-full sm:w-auto bg-white text-gray-900 px-8 py-5 rounded-2xl font-black text-lg md:text-xl hover:bg-red-600 hover:text-white transition-all shadow-xl uppercase italic text-center active:scale-95">
-              Technik-Check
-            </NuxtLink>
-            <NuxtLink to="/kontakt?ref=call" class="w-full sm:w-auto bg-red-600 text-white px-8 py-5 rounded-2xl font-black text-lg md:text-xl hover:bg-white hover:text-red-600 transition-all shadow-xl uppercase italic text-center active:scale-95">
-              Strategie-Call
-            </NuxtLink>
+        <div class="w-full lg:w-1/2 relative">
+          <div class="bg-slate-900 rounded-[3rem] p-1 shadow-2xl overflow-hidden group">
+            <div class="bg-slate-950 p-6 md:p-10 rounded-[2.8rem]">
+               <div class="flex gap-2 mb-8">
+                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                <div class="w-3 h-3 rounded-full bg-slate-700"></div>
+                <div class="w-3 h-3 rounded-full bg-slate-700"></div>
+              </div>
+              <div class="font-mono text-xs md:text-sm space-y-3">
+                <p class="text-blue-400">// Deployment Strategy</p>
+                <p><span class="text-red-500">frontend:</span> <span class="text-white">Netlify (Global CDN)</span></p>
+                <p><span class="text-red-500">backend:</span> <span class="text-white">Laravel Cloud (Serverless)</span></p>
+                <p><span class="text-red-500">database:</span> <span class="text-white">Managed Postgres</span></p>
+                <div class="h-px bg-white/5 my-6"></div>
+                <p class="text-green-400 animate-pulse">>> System Online for {{ cityName }}.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="py-16 md:py-24 px-4 sm:px-6 border-t border-gray-100 bg-gray-50/50">
-      <div class="max-w-7xl mx-auto text-center">
-        <h4 class="text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] text-gray-400 mb-8 md:mb-12 italic">// Regionales Netzwerk</h4>
-        <div class="flex flex-wrap justify-center gap-2 md:gap-4 px-2">
-          <NuxtLink
-            v-for="city in nearbyCities" :key="city.slug"
-            :to="`/${currentType}-${city.slug}`"
-            class="px-4 py-2.5 md:px-6 md:py-3.5 bg-white hover:bg-red-600 text-gray-500 hover:text-white rounded-lg md:rounded-xl font-black text-[9px] md:text-[11px] transition-all uppercase italic border border-gray-200 shadow-sm hover:shadow-lg active:scale-95"
-          >
-            {{ city.name }}
-          </NuxtLink>
+    <section class="py-24 md:py-40 px-4 bg-slate-50">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-4xl md:text-7xl font-[1000] text-center mb-20 uppercase italic tracking-tighter">FAQ.</h2>
+        <div class="space-y-4">
+          <details v-for="faq in engineeringFaqs" :key="faq.q" class="group border border-slate-200 rounded-3xl bg-white overflow-hidden hover:shadow-xl transition-all">
+            <summary class="p-8 flex justify-between items-center cursor-pointer list-none focus:outline-none">
+              <h3 class="text-base md:text-lg font-black uppercase italic tracking-tight">{{ faq.q }}</h3>
+              <div class="w-10 h-10 rounded-full border border-slate-100 flex items-center justify-center group-open:bg-red-600 group-open:text-white transition-all">+</div>
+            </summary>
+            <div class="px-8 pb-10 text-slate-500 italic font-medium leading-relaxed border-t border-slate-50 pt-6">
+              {{ faq.a }}
+            </div>
+          </details>
         </div>
+      </div>
+    </section>
+
+    <section class="py-24 px-4 bg-white">
+      <div class="max-w-6xl mx-auto bg-red-600 rounded-[3rem] md:rounded-[4rem] p-12 md:p-32 text-center text-white relative shadow-3xl overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1),transparent)]"></div>
+        <h2 class="text-4xl md:text-8xl font-[1000] uppercase italic tracking-tighter leading-none mb-12">
+          Start your <br/>Project.
+        </h2>
+        <NuxtLink to="/kontakt" class="inline-block bg-white text-red-600 px-12 py-6 rounded-2xl font-black text-lg uppercase italic hover:bg-slate-900 hover:text-white transition-all shadow-xl active:scale-95">
+          Audit anfordern
+        </NuxtLink>
       </div>
     </section>
 
   </div>
 </template>
 
-<style scoped>
-details > summary {
-  list-style: none;
-}
-details > summary::-webkit-details-marker {
-  display: none;
-}
-
-details[open] summary ~ * {
-  animation: sweep .5s ease-in-out;
-}
-
-@keyframes sweep {
-  0%    {opacity: 0; transform: translateY(-10px)}
-  100%  {opacity: 1; transform: translateY(0)}
-}
-
-@keyframes grid-move {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(40px); }
-}
-</style>
-
 <script setup>
 import { computed } from 'vue'
 import { useRoute, createError, useHead } from '#app'
-import { Code2, Layout, Database, Rocket, ShieldCheck, Search } from 'lucide-vue-next'
+import { Code2, Database, Rocket, ShieldCheck, Cpu, GitBranch } from 'lucide-vue-next'
 
-// Layout Definition
 definePageMeta({
   layout: 'guest',
   validate: (route) => {
@@ -227,7 +177,7 @@ definePageMeta({
   }
 })
 
-// Datenquellen
+// Import Data
 import { cityContent } from '~/data/cityContent'
 import { phpLaravelContent } from '~/data/phpLaravelContent'
 import { softwareContent } from '~/data/softwareContent'
@@ -237,106 +187,60 @@ const route = useRoute()
 const slug = computed(() => route.params.slug || '')
 
 const clusterMapping = {
-  'webentwicklung': { topic: 'Webentwicklung', h1Prefix: 'Webentwicklung für', dataSource: cityContent },
-  'php-laravel-agentur': { topic: 'Laravel', h1Prefix: 'PHP & Laravel Agentur in', dataSource: phpLaravelContent },
-  'softwareentwicklung': { topic: 'Software', h1Prefix: 'Softwareentwicklung in', dataSource: softwareContent },
-  'vue-js-entwicklung': { topic: 'Vue.js', h1Prefix: 'Vue.js Experten in', dataSource: vueContent }
+  'webentwicklung': { topic: 'Web Engineering', h1Prefix: 'Web Engineering in', dataSource: cityContent },
+  'php-laravel-agentur': { topic: 'Laravel Engineering', h1Prefix: 'Laravel Expert in', dataSource: phpLaravelContent },
+  'softwareentwicklung': { topic: 'Software Engineering', h1Prefix: 'Software Engineering in', dataSource: softwareContent },
+  'vue-js-entwicklung': { topic: 'Frontend Engineering', h1Prefix: 'Vue.js Specialist in', dataSource: vueContent }
 }
 
 const cityData = computed(() => {
   const fullSlug = slug.value
-  if (!fullSlug || fullSlug.startsWith('_') || fullSlug.includes('.')) return null
-
-  const matchedPrefix = Object.keys(clusterMapping)
-    .sort((a, b) => b.length - a.length)
-    .find(p => fullSlug.startsWith(p))
-
+  const matchedPrefix = Object.keys(clusterMapping).find(p => fullSlug.startsWith(p))
   if (!matchedPrefix) return null
-
   const config = clusterMapping[matchedPrefix]
   const cityKey = fullSlug.replace(`${matchedPrefix}-`, '').toLowerCase()
   const data = config.dataSource[cityKey]
   if (!data) return null
-
   return { ...data, config, typeKey: matchedPrefix, cityKey }
 })
 
 const isValidCity = computed(() => !!cityData.value)
-if (!cityData.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Seite nicht gefunden', fatal: true })
-}
+if (!cityData.value) throw createError({ statusCode: 404, fatal: true })
 
 const cityName = computed(() => cityData.value?.cityName || '')
 const displayContent = computed(() => cityData.value?.config || {})
-const currentType = computed(() => cityData.value?.typeKey || 'webentwicklung')
 
-const stats = [
-  { value: '98%', label: 'Code-Effizienz' },
-  { value: '< 2h', label: 'Reaktionszeit' },
-  { value: 'Clean', label: 'Architecture' },
-  { value: 'NRW', label: 'Fokus Region' }
+const engineeringStats = [
+  { value: 'Remote', label: 'Work Model' },
+  { value: 'Laravel', label: 'Cloud Native' },
+  { value: 'SOLID', label: 'Architecture' },
+  { value: '125€', label: 'Hourly Rate' }
 ]
 
-const expandedServices = computed(() => [
-  { icon: Code2, title: 'Individuelle Programmierung', description: `In ${cityName.value} setzen wir auf Clean-Code Prinzipien. Wir bauen keine Wegwerf-Software, sondern nachhaltige Backends.`, bullets: ['Wartbar', 'Skalierbar', 'API-First'] },
-  { icon: Layout, title: 'UI/UX & Webdesign', description: `Design ist Psychologie. Wir gestalten Interfaces für ${cityName.value}, die Nutzer ohne langes Nachdenken zum Ziel führen.`, bullets: ['Conversion Fokus', 'Responsive', 'Intuitive UX'] },
-  { icon: Database, title: 'Business Software', description: `Vom CRM bis zur Automatisierung – wir entwickeln Web-Apps für ${cityName.value}, die Prozesse wirklich beschleunigen.`, bullets: ['Cloud-Native', 'Sicher', 'Performant'] },
-  { icon: Search, title: 'Technische SEO-Beratung', description: `Gefunden werden in ${cityName.value}. Wir optimieren die Technik unter der Haube für maximale Google-Sichtbarkeit.`, bullets: ['Lighthouse 95+', 'Strukturierte Daten', 'Speed'] },
-  { icon: ShieldCheck, title: 'Security & Wartung', description: `Sicherheit am Standort ${cityName.value} ist Pflicht. Wir schützen Ihre Anwendung durch proaktive Updates.`, bullets: ['DSGVO Check', 'SSL Audit', '24/7 Monitoring'] },
-  { icon: Rocket, title: 'Core Web Vitals', description: `Performance ist Geld. Wir trimmen Ihre Webanwendung in ${cityName.value} auf Ladezeiten im Millisekundenbereich.`, bullets: ['Edge Caching', 'Asset Minify', 'Next-Gen Images'] }
-])
+const bottomServices = [
+  { icon: Code2, title: 'Clean Backend', desc: 'Wartbare PHP 8.3/Laravel Architekturen mit höchster Testabdeckung (TDD).' },
+  { icon: Rocket, title: 'Vite Frontends', desc: 'Hochperformante Vue.js 3 Interfaces für komplexe Business-Dashboards.' },
+  { icon: ShieldCheck, title: 'Security First', desc: 'Durchgängige Verschlüsselung und DSGVO-konforme Infrastruktur.' }
+]
 
-const localFaqs = computed(() => [
-  {
-    question: `Wieso zeichnet sich unsere Webentwicklung-Agentur in ${cityName.value} aus?`,
-    answer: `Eine führende Webentwicklungs-Agentur zeichnet sich durch die Kombination aus agiler Arbeitsweise (z.B. SCRUM), maßgeschneiderten technischen Lösungen und einem tiefen Verständnis für Nutzerzentrierung aus. Wir liefern messbare Ergebnisse am Standort ${cityName.value}.`
-  },
-  {
-    question: `Welche Vorteile bietet die Zusammenarbeit in ${cityName.value}?`,
-    answer: `• Agile SCRUM-Methodik für volle Transparenz.\n• Individuelle Programmierung (kein Baukasten).\n• Höchste Sicherheitsstandards und technisches Consulting.\n• ROI-orientierte Entwicklung für Ihr Unternehmen.`
-  },
-  {
-    question: "Was ist Software?",
-    answer: `Software ist der nicht-physische Teil eines Computers, eine Sammlung von Anweisungen, Daten und Programmen, die dem Gerät sagen, was es tun soll. Für Projekte in ${cityName.value} entwickeln wir Individualsoftware, die exakt auf Hardware und Prozesse abgestimmt ist.`
-  },
-  {
-    question: "Was ist Webentwicklung?",
-    answer: `In Bezug auf den Standort ${cityName.value} gilt: Webentwicklung ist die Erstellung und Pflege von Websites und Webanwendungen, die über den Browser zugänglich sind. Wir programmieren sowohl das Frontend als auch das Backend für funktionale Erlebnisse.`
-  },
-  {
-    question: "Was ist Softwareentwicklung?",
-    answer: `Für Unternehmen in ${cityName.value} ist Softwareentwicklung der umfassende Prozess der Planung, Erstellung, Prüfung und Wartung von Programmen. Es geht um UI-Design, Datenstrukturen und den gesamten Lebenszyklus der Anwendung.`
-  }
-])
+const cloudFeatures = [
+  { title: 'Serverless Backend', desc: 'Laravel Cloud übernimmt Skalierung und Maintenance.' },
+  { title: 'Global Frontend', desc: 'Netlify CDNs garantieren Ladezeiten < 1s weltweit.' },
+  { title: 'CI/CD Pipelines', desc: 'Automatisierte Tests und Deployments bei jedem Push.' }
+]
 
-const nearbyCities = computed(() => {
-  const source = displayContent.value.dataSource || {}
-  const currentKey = cityData.value?.cityKey
-  return Object.keys(source)
-    .filter(k => k !== currentKey)
-    .sort(() => 0.5 - Math.random())
-    .slice(0, 15)
-    .map(k => ({ slug: k, name: source[k].cityName }))
-})
+const engineeringFaqs = [
+  { q: "Warum setzen Sie auf Laravel Cloud und Netlify?", a: "Diese Kombination trennt Logik (Backend) und Präsentation (Frontend). Netlify liefert das Frontend global optimiert aus, während Laravel Cloud eine skalierbare, wartungsfreie Infrastruktur für komplexe Prozesse bietet." },
+  { q: "Wie sieht der Remote-Engineering-Prozess aus?", a: "Wir arbeiten in wöchentlichen Sprints. Über Videocalls, kollaborative Architektur-Tools und Slack bleiben Sie jederzeit in den Entwicklungsprozess eingebunden." },
+  { q: "Erhalte ich Zugriff auf den Quellcode?", a: "Ja. Sie besitzen den vollständigen Source-Code. Wir übergeben das Projekt inklusive Dokumentation und Deployment-Pipelines." }
+]
 
 useHead({
-  title: computed(() => `${displayContent.value.h1Prefix} ${cityName.value} | VelWebSolutions`),
-  meta: [
-    { name: 'description', content: computed(() => cityData.value?.heroDesc || `Ihr Experte für ${displayContent.value.topic} in ${cityName.value}.`) }
-  ],
-  script: [
-    {
-      type: 'application/ld+json',
-      innerHTML: computed(() => JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": localFaqs.value.map(f => ({
-          "@type": "Question",
-          "name": f.question,
-          "acceptedAnswer": { "@type": "Answer", "text": f.answer }
-        }))
-      }))
-    }
-  ]
+  title: computed(() => `${displayContent.value.h1Prefix} ${cityName.value} | VelWeb Engineering`),
 })
 </script>
+
+<style scoped>
+details > summary { list-style: none; }
+details > summary::-webkit-details-marker { display: none; }
+</style>
