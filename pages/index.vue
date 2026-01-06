@@ -100,7 +100,7 @@ const marketingArguments = [
 const techGrid = [
   { tag: '// Backend', title: 'Laravel Kernel', img: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop', desc: 'Transaktionssichere Business-Logik und skalierbare Datenbank-Modellierung.' },
   { tag: '// Frontend', title: 'Vue.js SPA', img: 'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=800&auto=format&fit=crop', desc: 'Hochreaktive Interfaces mit modernem State-Management für maximale UX.' },
-  { tag: '// Infrastructure', title: 'Web Ops', img: 'https://images.unsplash.com/photo-1451187534963-1d1911700b3d?q=80&w=800&auto=format&fit=crop', desc: 'Containerisierung und CI/CD Pipelines für ausfallsicheres Deployment.' }
+  { tag: '// Infrastructure', title: 'Web Ops', img: 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=1200&auto=format&fit=crop', desc: 'Containerisierung und CI/CD Pipelines für ausfallsicheres Deployment.' }
 ]
 
 const imageFallback = (event) => {
