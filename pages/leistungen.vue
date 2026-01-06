@@ -78,7 +78,7 @@
           </div>
         </div>
         <div class="lg:w-1/2 relative">
-          <img src="https://images.unsplash.com/photo-1451187534963-1d1911700b3d?q=80&w=1000&auto=format&fit=crop" @error="imageFallback" class="rounded-[3rem] shadow-2xl object-cover aspect-square grayscale" />
+          <img src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?q=80&w=1200&auto=format&fit=crop" @error="imageFallback" class="rounded-[3rem] shadow-2xl object-cover aspect-square grayscale" />
         </div>
       </div>
     </section>
