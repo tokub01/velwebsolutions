@@ -56,10 +56,7 @@
                 Kein Code ohne Plan. Wir modellieren Ihre Prozesse in {{ cityName }} mittels BPMN und Domain-Driven Design (DDD). Das sichert die logische Integrität Ihres ERP- oder CRM-Systems, bevor die erste Zeile Code geschrieben wird.
               </p>
             </div>
-
-
-[Image of software development lifecycle V-model diagram]
-
+            
             <div class="flex flex-wrap gap-2 mt-12">
               <span v-for="tag in ['UML', 'BPMN 2.0', 'User Stories', 'System Architecture']" :key="tag" class="px-4 py-2 bg-slate-50 rounded-xl text-[10px] font-black uppercase tracking-tight">{{ tag }}</span>
             </div>
