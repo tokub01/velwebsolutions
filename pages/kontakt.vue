@@ -19,7 +19,7 @@
 
     <section class="bg-gray-50 py-12 md:py-16 border-y border-gray-100">
       <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           <div v-for="(usp, index) in usps" :key="index" class="group">
             <div class="flex items-center gap-4 mb-3 md:mb-4">
               <div class="h-10 w-10 md:h-12 md:w-12 rounded-xl md:rounded-2xl bg-red-600 flex items-center justify-center text-white font-mono font-bold shadow-lg italic shrink-0">
@@ -48,6 +48,14 @@
           <h2 class="text-4xl md:text-6xl font-black mb-8 md:mb-12 uppercase italic tracking-tighter text-gray-900 leading-none">
             Projekt <br/><span class="text-red-600">Briefing.</span>
           </h2>
+
+          <div class="mb-10 p-6 bg-red-50 rounded-[1.5rem] border-l-8 border-red-600 italic">
+            <p class="text-[10px] font-black text-red-600 uppercase tracking-widest mb-1">// Workflow-Protokoll</p>
+            <p class="text-gray-900 font-bold text-sm leading-relaxed">
+              Projektstarts erfolgen nach 100% Vorkasse (zzgl. gesetzl. MwSt. | Zahlungsziel 7 Tage).
+              Dies garantiert die sofortige Reservierung Ihrer Kapazitäten und einen verzugsfreien Entwicklungs-Prozess.
+            </p>
+          </div>
 
           <client-only>
             <div v-if="hasConsent && isMounted">
@@ -82,7 +90,6 @@
                 </div>
 
                 <input type="hidden" name="g-recaptcha-response" ref="recaptchaInput" />
-
                 <div ref="recaptchaContainer" class="mt-2 min-h-[1px]"></div>
 
                 <button type="submit" :disabled="loading" :class="['w-full py-6 md:py-8 rounded-2xl font-black text-lg md:text-xl uppercase tracking-widest transition-all shadow-2xl active:scale-[0.98] italic', loading ? 'bg-gray-300 cursor-not-allowed text-gray-500' : 'bg-red-600 text-white hover:bg-gray-900']">
@@ -128,8 +135,19 @@
                 <div class="space-y-1 text-sm md:text-base text-gray-300 font-medium italic border-l-2 border-red-600 pl-4 md:pl-6">
                   <p>Gubener Str. 14</p>
                   <p>47829 Krefeld</p>
-                  <div class="mt-6 pt-4 border-t border-white/10">
-                    <p class="text-[9px] text-gray-400 uppercase leading-relaxed tracking-wider">Gemäß § 19 UStG wird keine Umsatzsteuer erhoben.</p>
+
+                  <div class="mt-8 pt-6 border-t border-white/10 space-y-4">
+                    <div>
+                      <p class="text-[9px] text-red-500 font-black uppercase tracking-widest italic mb-1">Billing-Konditionen</p>
+                      <p class="text-[11px] text-gray-400 leading-tight uppercase font-bold">
+                        Alle Preise zzgl. gesetzlicher Umsatzsteuer. Zahlbar innerhalb von 7 Tagen (Vorkasse).
+                      </p>
+                    </div>
+                    <div>
+                      <p class="text-[9px] text-gray-400 uppercase leading-relaxed tracking-wider italic">
+                        Umsatzsteuer wird auf der Rechnung separat ausgewiesen.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -161,8 +179,9 @@ const config = useRuntimeConfig()
 // --- DATA ---
 const usps = [
   { title: 'Stack Expertise', desc: 'High-End Entwicklung mit <span class="text-red-600 underline">PHP/Laravel</span> & <span class="text-red-600 underline">JS/Vue.js</span>.' },
-  { title: 'Remote Only', desc: 'Effiziente digitale Kollaboration. Deutschlandweite Realisierung Ihrer Vision.' },
-  { title: 'Academic Level', desc: 'Fundierte Beratung durch <span class="text-gray-900">Bachelor of Science</span> Informatik.' }
+  { title: 'Academic Level', desc: 'Fundierte Beratung durch <span class="text-gray-900 font-black">Bachelor of Science</span> Informatik.' },
+  { title: 'Fast Lane', desc: 'Projektstart <span class="text-red-600 underline">unmittelbar</span> nach Zahlungseingang (Vorkasse).' },
+  { title: 'Remote Only', desc: 'Effiziente digitale Kollaboration. Deutschlandweite Realisierung.' }
 ]
 
 // --- STATE ---
