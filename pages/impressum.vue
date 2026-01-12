@@ -68,17 +68,40 @@
             <h3 class="text-red-600 font-black uppercase text-[10px] tracking-[0.2em] italic flex items-center gap-2">
               <Scale class="w-3 h-3" /> Steuerliche Einordnung
             </h3>
-            <div class="italic text-gray-600 text-sm leading-relaxed space-y-2">
-              <p>Gemäß <strong>§ 19 UStG</strong> (Kleinunternehmerregelung) wird keine Umsatzsteuer erhoben.</p>
-              <p class="text-xs font-black text-gray-900 uppercase tracking-widest italic">W-ID: <span class="text-red-600">[Beantragt]</span></p>
+            <div class="italic text-gray-600 text-sm leading-relaxed space-y-5">
+              <p class="text-gray-900 font-bold border-l-2 border-red-600 pl-4 bg-gray-50 py-1">
+                Regelbesteuerung <span class="text-[10px] text-gray-400 font-black uppercase tracking-widest ml-2 block sm:inline">// Vorsteuerabzugsberechtigt</span>
+              </p>
+
+              <div class="space-y-3">
+                <div class="space-y-1">
+                  <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest italic leading-none">Umsatzsteuer-Identifikationsnummer (§ 27a UStG)</p>
+                  <p class="text-red-600 font-black text-lg tracking-wider">DE459259380</p>
+                </div>
+
+                <div class="space-y-1">
+                  <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest italic leading-none">Wirtschafts-Identifikationsnummer (§ 139c AO)</p>
+                  <p class="text-gray-900 font-bold">DE459259380-00001</p>
+                </div>
+
+                <div class="space-y-1">
+                  <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest italic leading-none">Zuständiges Finanzamt</p>
+                  <p class="text-gray-900 font-medium">Krefeld <span class="text-gray-400 ml-2 font-mono text-[11px]">(St.-Nr. 117/5212/2908)</span></p>
+                </div>
+              </div>
             </div>
           </div>
+
           <div class="space-y-4">
             <h3 class="text-red-600 font-black uppercase text-[10px] tracking-[0.2em] italic flex items-center gap-2">
               <PenTool class="w-3 h-3" /> Redaktionelle Leitung
             </h3>
-            <p class="font-bold italic text-gray-900">Tobias Kubina, B.Sc.</p>
-            <p class="text-[10px] text-gray-400 uppercase font-black leading-tight">Verantwortlich gemäß § 18 Abs. 2 MStV</p>
+            <div class="space-y-2">
+              <p class="font-bold italic text-gray-900">Tobias Kubina, B.Sc.</p>
+              <p class="text-[10px] text-gray-400 uppercase font-black leading-tight max-w-[200px]">
+                Inhaltlich verantwortlich gemäß § 18 Abs. 2 MStV
+              </p>
+            </div>
           </div>
         </section>
 
@@ -101,17 +124,18 @@
         </section>
 
         <section class="grid md:grid-cols-2 gap-8 pt-8">
-          <div class="p-8 bg-white rounded-3xl border border-gray-100 space-y-4">
+          <div class="p-8 bg-white rounded-3xl border border-gray-100 space-y-4 shadow-sm">
             <h4 class="font-black text-gray-900 uppercase text-xs italic tracking-widest">// OS-Schlichtung</h4>
             <p class="text-[11px] text-gray-500 italic leading-relaxed">
-              Plattform der EU-Kommission: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" class="text-red-600 underline font-bold">ec.europa.eu/consumers/odr</a>.
+              Plattform der EU-Kommission zur Online-Streitbeilegung:
+              <a href="https://ec.europa.eu/consumers/odr/" target="_blank" class="text-red-600 underline font-bold">ec.europa.eu/consumers/odr</a>.
               Wir sind zur Teilnahme an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle weder verpflichtet noch bereit (§ 36 VSBG).
             </p>
           </div>
-          <div class="p-8 bg-white rounded-3xl border border-gray-100 space-y-4">
+          <div class="p-8 bg-white rounded-3xl border border-gray-100 space-y-4 shadow-sm">
             <h4 class="font-black text-gray-900 uppercase text-xs italic tracking-widest">// Urheberrecht</h4>
             <p class="text-[11px] text-gray-500 italic leading-relaxed">
-              Inhalte unterliegen deutschem Urheberrecht. Bildquellen: Eigene Aufnahmen, Unsplash License, KI-Assets. Externe Links wurden zum Zeitpunkt der Verlinkung auf Rechtsverstöße geprüft.
+              Die durch den Seitenbetreiber erstellten Inhalte unterliegen dem deutschen Urheberrecht. Bildquellen: Eigene Aufnahmen, Unsplash License, KI-Assets. Externe Links wurden zum Zeitpunkt der Verlinkung auf Rechtsverstöße geprüft.
             </p>
           </div>
         </section>
@@ -122,7 +146,6 @@
 </template>
 
 <script setup>
-
 definePageMeta({
   layout: 'guest'
 })
@@ -130,7 +153,7 @@ definePageMeta({
 useHead({
   title: 'Impressum | VelWebSolutions',
   meta: [
-    { name: 'description', content: 'Gesetzliches Impressum von Tobias Kubina, B.Sc. Informatik. DDG, TDDDG und EU AI Act konform.' },
+    { name: 'description', content: 'Gesetzliches Impressum von Tobias Kubina, B.Sc. Informatik. DDG, TDDDG, EU AI Act und UStG konform.' },
     { name: 'robots', content: 'noindex, follow' }
   ]
 })
