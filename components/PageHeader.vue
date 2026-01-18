@@ -1,13 +1,13 @@
 <template>
   <div class="fixed top-0 left-0 w-full z-[100]">
     <header class="relative z-[110] bg-white/95 backdrop-blur-xl border-b border-gray-100 transition-all duration-500">
-      <div class="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-10 py-3 md:py-4">
+      <div class="max-w-7xl mx-auto flex justify-between items-center px-2 sm:px-4 md:px-10 py-3 md:py-4">
 
-        <NuxtLink to="/" class="flex items-center space-x-2 md:space-x-3 group shrink-0">
-          <div class="bg-red-600 p-1.5 md:p-2 rounded-xl group-hover:rotate-12 transition-transform duration-300 shadow-lg shadow-red-200">
-            <LucideLaptop class="h-5 w-5 md:h-6 md:w-6 text-white" />
+        <NuxtLink to="/" class="flex items-center space-x-1.5 sm:space-x-3 group shrink-0">
+          <div class="bg-red-600 p-1 md:p-2 rounded-lg md:rounded-xl group-hover:rotate-12 transition-transform duration-300 shadow-lg shadow-red-200">
+            <LucideLaptop class="h-4 w-4 md:h-6 md:w-6 text-white" />
           </div>
-          <span class="text-base sm:text-lg md:text-2xl font-black text-gray-900 uppercase tracking-tighter italic group-hover:text-red-600 transition-colors leading-none">
+          <span class="text-[11px] xs:text-sm sm:text-lg md:text-2xl font-[1000] text-gray-900 uppercase tracking-tighter italic group-hover:text-red-600 transition-colors leading-none">
             VelWeb<span class="text-red-600 group-hover:text-gray-900">Solutions</span>
           </span>
         </NuxtLink>
@@ -55,47 +55,47 @@
           </div>
         </nav>
 
-        <div class="flex items-center gap-2 sm:gap-4 md:gap-6 shrink-0">
+        <div class="flex items-center gap-1.5 sm:gap-4 md:gap-6 shrink-0">
           <NuxtLink
             to="/kontakt"
-            class="cta-button relative ml-3 sm:ml-0 group/cta overflow-hidden bg-gray-900 text-white px-3 py-2.5 sm:px-5 sm:py-3 md:px-8 md:py-4 rounded-xl md:rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-[0.1em] md:tracking-[0.2em] hover:bg-red-600 transition-all shadow-xl italic flex items-center gap-2 active:scale-95"
+            class="cta-button relative group/cta overflow-hidden bg-gray-900 text-white px-2.5 py-2 sm:px-5 sm:py-3 md:px-8 md:py-4 rounded-lg md:rounded-2xl font-black text-[9px] md:text-xs uppercase tracking-tighter sm:tracking-[0.2em] hover:bg-red-600 transition-all shadow-xl italic flex items-center gap-1.5 active:scale-95"
           >
-            <span class="relative flex h-1.5 w-1.5 md:h-2 md:w-2">
+            <span class="relative flex h-1.5 w-1.5">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-1.5 w-1.5 md:h-2 md:w-2 bg-red-500"></span>
+              <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-red-500"></span>
             </span>
 
             <span class="hidden sm:inline">Anfrage.exe</span>
-            <span class="sm:hidden">Start.exe</span>
+            <span class="hidden xs:inline sm:hidden">Start.exe</span>
+            <span class="xs:hidden">GO</span>
 
             <LucideTerminal class="w-3 h-3 text-red-500 group-hover/cta:text-white transition-colors" />
-
             <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover/cta:animate-[shimmer_2s_infinite]"></div>
           </NuxtLink>
 
           <button
             @click="mobileMenuOpen = !mobileMenuOpen"
-            class="lg:hidden p-2.5 sm:p-3 bg-gray-50 rounded-xl text-gray-900 focus:outline-none active:scale-90 transition-all border border-gray-100"
+            class="lg:hidden p-2 bg-gray-50 rounded-lg text-gray-900 focus:outline-none active:scale-90 transition-all border border-gray-100"
           >
-            <LucideMenu v-if="!mobileMenuOpen" class="h-5 w-5" />
-            <LucideX v-else class="h-5 w-5 text-red-600" />
+            <LucideMenu v-if="!mobileMenuOpen" class="h-4 w-4" />
+            <LucideX v-else class="h-4 w-4 text-red-600" />
           </button>
         </div>
       </div>
     </header>
 
-    <div class="relative z-[100] bg-gray-50/80 backdrop-blur-md border-b border-gray-100 py-2 px-4 md:px-6">
-      <div class="max-w-7xl mx-auto flex items-center">
-        <nav aria-label="Breadcrumb">
-          <ol class="flex items-center space-x-2 text-[9px] font-black uppercase tracking-[0.2em] italic">
-            <li>
+    <div class="relative z-[100] bg-gray-50/80 backdrop-blur-md border-b border-gray-100 py-1.5 px-2 md:px-6">
+      <div class="max-w-7xl mx-auto flex items-center overflow-hidden">
+        <nav aria-label="Breadcrumb" class="w-full">
+          <ol class="flex items-center space-x-1.5 text-[8px] md:text-[9px] font-black uppercase tracking-wider italic whitespace-nowrap overflow-x-auto no-scrollbar mask-fade">
+            <li class="shrink-0">
               <NuxtLink to="/" class="text-red-600 flex items-center gap-1 opacity-70 hover:opacity-100 transition-opacity">
-                <LucideHome class="w-3 h-3" /> ROOT
+                <LucideHome class="w-2.5 h-2.5" /> ROOT
               </NuxtLink>
             </li>
-            <li class="text-gray-300">/</li>
-            <li class="text-gray-900 flex items-center gap-1 truncate max-w-[140px] sm:max-w-none">
-              <LucideTerminal class="w-3 h-3 text-red-600" /> {{ currentPathName }}
+            <li class="text-gray-300 shrink-0">/</li>
+            <li class="text-gray-900 flex items-center gap-1 shrink-0">
+              <LucideTerminal class="w-2.5 h-2.5 text-red-600" /> {{ currentPathName }}
             </li>
           </ol>
         </nav>
@@ -103,17 +103,17 @@
     </div>
 
     <transition name="mobile-fade">
-      <div v-if="mobileMenuOpen" class="lg:hidden fixed inset-x-0 top-[57px] sm:top-[65px] md:top-[73px] bg-white border-t-4 border-red-600 shadow-2xl h-[calc(100vh-57px)] overflow-y-auto z-[105]">
-        <div class="p-6 pb-24 space-y-2">
-          <p class="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] mb-4 ml-4 italic">// System_Navigation</p>
+      <div v-if="mobileMenuOpen" class="lg:hidden fixed inset-x-0 top-[54px] sm:top-[65px] bg-white border-t-4 border-red-600 shadow-2xl h-[calc(100vh-54px)] overflow-y-auto z-[105]">
+        <div class="p-4 sm:p-6 pb-24 space-y-2">
+          <p class="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] mb-4 ml-2 italic">// System_Navigation</p>
 
           <NuxtLink
             v-for="link in allLinks"
             :key="link.to"
             :to="link.to"
             @click="mobileMenuOpen = false"
-            class="px-6 py-4 rounded-2xl text-xl font-black uppercase tracking-tighter italic flex items-center justify-between transition-all hover:bg-gray-50 active:bg-red-50"
-            active-class="bg-red-600 text-white shadow-lg shadow-red-200"
+            class="px-5 py-4 rounded-xl text-lg font-black uppercase tracking-tighter italic flex items-center justify-between transition-all hover:bg-gray-50 active:bg-red-50 border border-transparent hover:border-gray-100"
+            active-class="bg-red-600 text-white shadow-lg shadow-red-200 border-red-600"
           >
             {{ link.label }}
             <component :is="link.icon" class="h-5 w-5 opacity-30" />
@@ -122,13 +122,13 @@
           <NuxtLink
             to="/kontakt"
             @click="mobileMenuOpen = false"
-            class="mt-8 px-6 py-8 rounded-3xl bg-gray-900 text-white text-2xl font-black uppercase italic flex items-center justify-between shadow-2xl active:scale-95 transition-transform"
+            class="mt-6 px-6 py-6 rounded-2xl bg-gray-900 text-white text-xl font-black uppercase italic flex items-center justify-between shadow-2xl active:scale-95 transition-transform"
           >
             <div class="flex flex-col">
-              <span class="text-[10px] text-red-500 tracking-[0.3em] mb-1">INITIALIZE</span>
+              <span class="text-[9px] text-red-500 tracking-[0.3em] mb-1">INITIALIZE</span>
               <span>PROJEKT START</span>
             </div>
-            <LucideZap class="h-8 w-8 text-red-500 animate-pulse" />
+            <LucideZap class="h-6 w-6 text-red-500 animate-pulse" />
           </NuxtLink>
         </div>
       </div>
@@ -151,6 +151,7 @@ const dropdownContainer = ref(null)
 
 const toggleDropdown = () => { showDropdown.value = !showDropdown.value }
 
+// Click Outside Logic
 if (process.client) {
   window.addEventListener('click', (e) => {
     if (dropdownContainer.value && !dropdownContainer.value.contains(e.target)) {
@@ -159,6 +160,7 @@ if (process.client) {
   })
 }
 
+// Disable Scroll on Mobile Menu
 watch(mobileMenuOpen, (val) => {
   if (process.client) {
     document.body.style.overflow = val ? 'hidden' : 'auto'
@@ -201,24 +203,28 @@ const isDropdownRouteActive = computed(() => dropdownLinks.some(link => route.pa
 </script>
 
 <style scoped>
-/* AGGRESSIVE MECHANICAL WOBBLE - Kurze Frequenz, langes Intervall (12s) */
+/* Responsive Breakpoint Helpers */
+@media (max-width: 350px) {
+  .xs\:hidden { display: none; }
+  .xs\:inline { display: inline; }
+}
+
+/* Animations */
 @keyframes aggressive-wobble {
   0%, 92%, 100% { transform: rotate(0deg) scale(1); }
-  93% { transform: rotate(-4deg) scale(1.08); }
-  94% { transform: rotate(4deg) scale(1.08); }
-  95% { transform: rotate(-4deg) scale(1.08); }
-  96% { transform: rotate(4deg) scale(1.08); }
+  93% { transform: rotate(-3deg) scale(1.05); }
+  94% { transform: rotate(3deg) scale(1.05); }
+  95% { transform: rotate(-3deg) scale(1.05); }
+  96% { transform: rotate(3deg) scale(1.05); }
   97% { transform: rotate(0deg) scale(1); }
 }
 
-/* RADAR SCANNER GLOW - Sanftes aber stetiges Pulsieren */
 @keyframes radar-glow {
-  0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.5); }
-  70% { box-shadow: 0 0 20px 10px rgba(220, 38, 38, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+  70% { box-shadow: 0 0 15px 8px rgba(220, 38, 38, 0); }
   100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
 }
 
-/* SHIMMER EFFECT */
 @keyframes shimmer {
   0% { transform: translateX(-150%); opacity: 0; }
   50% { opacity: 1; }
@@ -226,35 +232,31 @@ const isDropdownRouteActive = computed(() => dropdownLinks.some(link => route.pa
 }
 
 .cta-button {
-  /* Kombiniert Wobble und Radar-Glow */
-  animation:
-    aggressive-wobble 12s infinite ease-in-out,
-    radar-glow 3s infinite ease-in-out;
+  animation: aggressive-wobble 12s infinite ease-in-out, radar-glow 3s infinite ease-in-out;
   transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.cta-button:hover {
-  animation: none;
-  transform: scale(1.05) rotate(-1deg);
-  background-color: #dc2626;
-  box-shadow: 0 20px 40px -10px rgba(220, 38, 38, 0.4);
-}
-
-/* NAV LINKS */
 .nav-link::after {
-  content: ''; position: absolute; bottom: -4px; left: 0;
-  width: 0; height: 3px; background-color: #dc2626;
-  transition: width 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  content: ''; position: absolute; bottom: -2px; left: 0;
+  width: 0; height: 2px; background-color: #dc2626;
+  transition: width 0.3s ease;
 }
 .nav-link:hover::after, .nav-link.is-active::after { width: 100%; }
 
-/* TRANSITIONS */
-.dropdown-slide-enter-active, .dropdown-slide-leave-active { transition: all 0.3s ease; }
-.dropdown-slide-enter-from, .dropdown-slide-leave-to { opacity: 0; transform: translateY(10px); }
+/* Mobile Optimization Classes */
+.mask-fade {
+  mask-image: linear-gradient(to right, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
+}
 
-.mobile-fade-enter-active, .mobile-fade-leave-active { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-.mobile-fade-enter-from { opacity: 0; transform: translateY(-20px); }
-.mobile-fade-leave-to { opacity: 0; transform: translateY(-20px); }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-.shadow-3xl { box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.15); }
+.dropdown-slide-enter-active, .dropdown-slide-leave-active { transition: all 0.2s ease; }
+.dropdown-slide-enter-from, .dropdown-slide-leave-to { opacity: 0; transform: translateY(5px); }
+
+.mobile-fade-enter-active, .mobile-fade-leave-active { transition: all 0.3s ease-out; }
+.mobile-fade-enter-from, .mobile-fade-leave-to { opacity: 0; transform: translateY(-10px); }
+
+.shadow-3xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); }
 </style>
