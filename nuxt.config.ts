@@ -76,6 +76,9 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    output: {
+      publicDir: 'dist' 
+    },
     compressPublicAssets: true,
     // --- NEU: NITRO OPTIMIERUNG ---
     // Verhindert, dass Nitro Ordner mit index.html generiert (was den Slash erzwingt)
