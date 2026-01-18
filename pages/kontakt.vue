@@ -248,12 +248,17 @@ const handleSubmit = async () => {
 
 const onCaptchaVerified = async (token) => {
   try {
-    if (recaptchaInput.value) recaptchaInput.value.value = token
-
-    await emailjs.sendForm(
+    // Wir senden die Daten direkt als Objekt
+    await emailjs.send(
       config.public.emailjsServiceId,
       config.public.emailjsTemplateId,
-      formRef.value,
+      {
+        name: formData.value.name,
+        email: formData.value.email,
+        title: formData.value.title,
+        message: formData.value.message,
+        'g-recaptcha-response': token // Das Token wird explizit mitgeschickt
+      },
       config.public.emailjsPublicKey
     )
 
