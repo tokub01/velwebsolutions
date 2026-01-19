@@ -144,7 +144,7 @@ import { cityContent } from '~/data/cityContent'
 import { phpLaravelContent } from '~/data/phpLaravelContent'
 import { softwareContent } from '~/data/softwareContent'
 import { vueContent } from '~/data/vueContent'
-
+definePageMeta({ layout: 'guest' })
 const route = useRoute()
 const slug = computed(() => route.params.slug || '')
 
