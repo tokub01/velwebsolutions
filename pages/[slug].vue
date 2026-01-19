@@ -9,7 +9,7 @@
 
       <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-6 text-left">
         <div class="inline-flex items-center gap-3 px-3 py-1 mb-8 rounded-full bg-white/10 border border-white/20 backdrop-blur-md">
-          <span class="text-[10px] font-black uppercase tracking-[0.2em] italic">✓ Remote Software Expert</span>
+          <span class="text-[10px] font-black uppercase tracking-[0.2em] italic">✓ Remote Engineering für {{ cityName }}</span>
         </div>
 
         <h1 class="text-[clamp(2.5rem,9vw,7.5rem)] font-[1000] mb-8 leading-[0.85] tracking-tighter uppercase italic break-words">
@@ -19,12 +19,13 @@
 
         <div class="grid lg:grid-cols-2 gap-12 items-end">
           <p class="text-lg md:text-2xl text-red-50 font-medium leading-relaxed italic max-w-2xl">
-            {{ cityData.heroSlogan || `Wir entwickeln die digitale Infrastruktur für den modernen Mittelstand.` }}
-            Realisiert via <a href="https://laravel.cloud" target="_blank" class="text-white font-black underline decoration-white/40 hover:decoration-white transition-all">Laravel Cloud</a> & <a href="https://www.netlify.com" target="_blank" class="text-white font-black underline decoration-white/40 hover:decoration-white transition-all">Netlify</a>.
+            {{ cityData.heroDesc || cityData.heroSlogan || `Wir entwickeln die digitale Infrastruktur für den modernen Mittelstand in ${cityName}.` }}
+            <br class="hidden md:block" />
+            Engineering via <span class="text-white font-black border-b-2 border-white/20">Laravel Cloud</span> & <span class="text-white font-black border-b-2 border-white/20">Netlify</span>.
           </p>
           <div class="flex flex-wrap gap-4">
             <NuxtLink to="/kontakt" class="group bg-white text-red-600 hover:bg-slate-900 hover:text-white px-10 py-5 rounded-2xl font-[1000] text-sm uppercase italic transition-all shadow-[0_20px_50px_rgba(0,0,0,0.2)]">
-              Analyse Session starten
+              Analyse in {{ cityName }} starten
             </NuxtLink>
           </div>
         </div>
@@ -43,7 +44,7 @@
     <section class="py-24 md:py-40 px-4 bg-slate-50">
       <div class="max-w-7xl mx-auto">
         <div class="mb-20">
-          <h2 class="text-sm font-black uppercase tracking-[0.3em] text-red-600 mb-4 italic">// Engineering Core</h2>
+          <h2 class="text-sm font-black uppercase tracking-[0.3em] text-red-600 mb-4 italic">// Engineering Core {{ cityName }}</h2>
           <p class="text-4xl md:text-7xl font-[1000] tracking-tighter italic uppercase leading-none">Methodik trifft <br/> Performance.</p>
         </div>
 
@@ -53,10 +54,9 @@
               <GitBranch class="w-12 h-12 text-red-600 mb-8" />
               <h3 class="text-3xl font-[1000] uppercase italic mb-6">Phase 01: Requirement Engineering</h3>
               <p class="text-slate-500 font-medium italic text-lg leading-relaxed">
-                Kein Code ohne Plan. Wir modellieren Ihre Prozesse in {{ cityName }} mittels BPMN und Domain-Driven Design (DDD). Das sichert die logische Integrität Ihres ERP- oder CRM-Systems, bevor die erste Zeile Code geschrieben wird.
+                Kein Code ohne Plan. Wir modellieren Ihre Prozesse für den Standort {{ cityName }} mittels BPMN und Domain-Driven Design (DDD). Das sichert die logische Integrität Ihres ERP- oder CRM-Systems.
               </p>
             </div>
-            
             <div class="flex flex-wrap gap-2 mt-12">
               <span v-for="tag in ['UML', 'BPMN 2.0', 'User Stories', 'System Architecture']" :key="tag" class="px-4 py-2 bg-slate-50 rounded-xl text-[10px] font-black uppercase tracking-tight">{{ tag }}</span>
             </div>
@@ -68,7 +68,7 @@
                 <Cpu class="w-6 h-6 text-white" />
               </div>
               <h3 class="text-2xl font-[1000] uppercase italic leading-tight">100% Remote <br/> Delivery</h3>
-              <p class="text-slate-400 text-sm italic font-medium">Wir nutzen Netlify & Laravel Cloud für ein nahtloses, serverloses Deployment Ihrer Anwendung in {{ cityName }}.</p>
+              <p class="text-slate-400 text-sm italic font-medium">Nahtloses Deployment für {{ cityName }} durch serverlose Architekturen.</p>
             </div>
             <div class="pt-8 border-t border-white/10">
               <div class="flex items-center gap-3">
@@ -87,50 +87,9 @@
       </div>
     </section>
 
-    <section class="py-24 md:py-40 px-4 bg-white overflow-hidden">
-      <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-        <div class="w-full lg:w-1/2">
-          <h2 class="text-4xl md:text-6xl font-[1000] uppercase italic tracking-tighter leading-none mb-8">
-            The <span class="text-red-600">Cloud Stack.</span>
-          </h2>
-          <p class="text-slate-500 text-lg md:text-xl font-medium italic leading-relaxed mb-10">
-            Maximale Performance durch modernste Cloud-Dienste. Wir trennen das Frontend (Netlify) strikt vom Backend (Laravel Cloud), um höchste Sicherheit und Skalierbarkeit zu gewährleisten.
-          </p>
-          <div class="space-y-6">
-            <div v-for="feature in cloudFeatures" :key="feature.title" class="flex items-start gap-4">
-              <div class="w-6 h-6 rounded-full bg-red-50 text-red-600 flex items-center justify-center text-xs font-bold mt-1">✓</div>
-              <div>
-                <h5 class="font-black uppercase italic text-sm">{{ feature.title }}</h5>
-                <p class="text-slate-400 text-sm italic">{{ feature.desc }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="w-full lg:w-1/2 relative">
-          <div class="bg-slate-900 rounded-[3rem] p-1 shadow-2xl overflow-hidden group">
-            <div class="bg-slate-950 p-6 md:p-10 rounded-[2.8rem]">
-               <div class="flex gap-2 mb-8">
-                <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                <div class="w-3 h-3 rounded-full bg-slate-700"></div>
-                <div class="w-3 h-3 rounded-full bg-slate-700"></div>
-              </div>
-              <div class="font-mono text-xs md:text-sm space-y-3">
-                <p class="text-blue-400">// Deployment Strategy</p>
-                <p><span class="text-red-500">frontend:</span> <span class="text-white">Netlify (Global CDN)</span></p>
-                <p><span class="text-red-500">backend:</span> <span class="text-white">Laravel Cloud (Serverless)</span></p>
-                <p><span class="text-red-500">database:</span> <span class="text-white">Managed Postgres</span></p>
-                <div class="h-px bg-white/5 my-6"></div>
-                <p class="text-green-400 animate-pulse">>> System Online for {{ cityName }}.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="py-24 md:py-40 px-4 bg-slate-50">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-4xl md:text-7xl font-[1000] text-center mb-20 uppercase italic tracking-tighter">FAQ.</h2>
+        <h2 class="text-4xl md:text-7xl font-[1000] text-center mb-20 uppercase italic tracking-tighter">FAQ <span class="text-red-600">.</span></h2>
         <div class="space-y-4">
           <details v-for="faq in engineeringFaqs" :key="faq.q" class="group border border-slate-200 rounded-3xl bg-white overflow-hidden hover:shadow-xl transition-all">
             <summary class="p-8 flex justify-between items-center cursor-pointer list-none focus:outline-none">
@@ -145,11 +104,26 @@
       </div>
     </section>
 
-    <section class="py-24 px-4 bg-white">
-      <div class="max-w-6xl mx-auto bg-red-600 rounded-[3rem] md:rounded-[4rem] p-12 md:p-32 text-center text-white relative shadow-3xl overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1),transparent)]"></div>
+    <section class="py-12 bg-white border-t border-slate-100">
+      <div class="max-w-7xl mx-auto px-6">
+        <span class="text-[10px] font-black uppercase text-slate-400 tracking-[0.2em] mb-6 block italic">Verfügbare Standorte in der Region:</span>
+        <div class="flex flex-wrap gap-x-6 gap-y-2">
+          <NuxtLink
+            v-for="neighbor in neighborCities"
+            :key="neighbor.slug"
+            :to="`/${typeKey}-${neighbor.slug}`"
+            class="text-[11px] font-bold uppercase italic text-slate-500 hover:text-red-600 transition-colors"
+          >
+            {{ neighbor.name }}
+          </NuxtLink>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 px-4 bg-white text-center">
+      <div class="max-w-6xl mx-auto bg-red-600 rounded-[3rem] p-12 md:p-32 text-white relative shadow-3xl overflow-hidden">
         <h2 class="text-4xl md:text-8xl font-[1000] uppercase italic tracking-tighter leading-none mb-12">
-          Start your <br/>Project.
+          Start in <br/>{{ cityName }}.
         </h2>
         <NuxtLink to="/kontakt" class="inline-block bg-white text-red-600 px-12 py-6 rounded-2xl font-black text-lg uppercase italic hover:bg-slate-900 hover:text-white transition-all shadow-xl active:scale-95">
           Audit anfordern
@@ -163,18 +137,9 @@
 <script setup>
 import { computed } from 'vue'
 import { useRoute, createError, useHead } from '#app'
-import { Code2, Database, Rocket, ShieldCheck, Cpu, GitBranch } from 'lucide-vue-next'
+import { Code2, Rocket, ShieldCheck, Cpu, GitBranch } from 'lucide-vue-next'
 
-definePageMeta({
-  layout: 'guest',
-  validate: (route) => {
-    const slug = route.params.slug || ''
-    const validPrefixes = ['webentwicklung-', 'php-laravel-agentur-', 'softwareentwicklung-', 'vue-js-entwicklung-']
-    return validPrefixes.some(prefix => slug.startsWith(prefix))
-  }
-})
-
-// Import Data
+// Data Imports
 import { cityContent } from '~/data/cityContent'
 import { phpLaravelContent } from '~/data/phpLaravelContent'
 import { softwareContent } from '~/data/softwareContent'
@@ -206,6 +171,17 @@ if (!cityData.value) throw createError({ statusCode: 404, fatal: true })
 
 const cityName = computed(() => cityData.value?.cityName || '')
 const displayContent = computed(() => cityData.value?.config || {})
+const typeKey = computed(() => cityData.value?.typeKey || '')
+
+// Interlinking: Nimm 8 zufällige andere Städte aus demselben Cluster
+const neighborCities = computed(() => {
+  const source = displayContent.value.dataSource
+  return Object.keys(source)
+    .filter(key => key !== cityData.value.cityKey)
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 10)
+    .map(key => ({ slug: key, name: source[key].cityName }))
+})
 
 const engineeringStats = [
   { value: 'Remote', label: 'Work Model' },
@@ -220,21 +196,42 @@ const bottomServices = [
   { icon: ShieldCheck, title: 'Security First', desc: 'Durchgängige Verschlüsselung und DSGVO-konforme Infrastruktur.' }
 ]
 
-const cloudFeatures = [
-  { title: 'Serverless Backend', desc: 'Laravel Cloud übernimmt Skalierung und Maintenance.' },
-  { title: 'Global Frontend', desc: 'Netlify CDNs garantieren Ladezeiten < 1s weltweit.' },
-  { title: 'CI/CD Pipelines', desc: 'Automatisierte Tests und Deployments bei jedem Push.' }
-]
-
 const engineeringFaqs = [
-  { q: "Warum setzen Sie auf Laravel Cloud und Netlify?", a: "Diese Kombination trennt Logik (Backend) und Präsentation (Frontend). Netlify liefert das Frontend global optimiert aus, während Laravel Cloud eine skalierbare, wartungsfreie Infrastruktur für komplexe Prozesse bietet." },
-  { q: "Wie sieht der Remote-Engineering-Prozess aus?", a: "Wir arbeiten in wöchentlichen Sprints. Über Videocalls, kollaborative Architektur-Tools und Slack bleiben Sie jederzeit in den Entwicklungsprozess eingebunden." },
-  { q: "Erhalte ich Zugriff auf den Quellcode?", a: "Ja. Sie besitzen den vollständigen Source-Code. Wir übergeben das Projekt inklusive Dokumentation und Deployment-Pipelines." }
+  { q: `Bieten Sie Vor-Ort-Termine in ${cityName.value} an?`, a: `Unser Modell ist 100% Remote-First ausgelegt, um die besten Engineering-Talente effizient einzusetzen. Für strategische Workshops in ${cityName.value} nutzen wir moderne Kollaborations-Tools oder besuchen Sie nach Absprache.` },
+  { q: "Warum setzen Sie auf Laravel Cloud und Netlify?", a: "Diese Kombination trennt Logik (Backend) und Präsentation (Frontend). Netlify liefert das Frontend global optimiert aus, während Laravel Cloud eine skalierbare Infrastruktur bietet." },
+  { q: "Erhalte ich Zugriff auf den Quellcode?", a: "Ja. Sie besitzen den vollständigen Source-Code (Git-Repository). Wir übergeben das Projekt inklusive Dokumentation und Deployment-Pipelines." }
 ]
 
+// SEO: JSON-LD & META
 useHead({
   title: computed(() => `${displayContent.value.h1Prefix} ${cityName.value} | VelWeb Engineering`),
+  meta: [
+    { name: 'description', content: computed(() => `Professionelles ${displayContent.value.topic} für Unternehmen in ${cityName.value}. Skalierbare Lösungen mit Laravel & Vue.js. Jetzt Audit anfordern!`) },
+    { property: 'og:title', content: computed(() => `${displayContent.value.h1Prefix} ${cityName.value}`) },
+    { name: 'robots', content: 'index, follow' }
+  ],
+  link: [{ rel: 'canonical', href: `https://velwebsolutions.de${route.path}` }]
 })
+
+useJsonld([
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    'name': displayContent.value.topic,
+    'description': `Individuelle Softwarelösungen in ${cityName.value}.`,
+    'areaServed': { '@type': 'City', 'name': cityName.value },
+    'provider': { '@type': 'LocalBusiness', 'name': 'VelWeb Engineering' }
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': engineeringFaqs.map(f => ({
+      '@type': 'Question',
+      'name': f.q,
+      'acceptedAnswer': { '@type': 'Answer', 'text': f.a }
+    }))
+  }
+])
 </script>
 
 <style scoped>
