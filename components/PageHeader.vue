@@ -1,13 +1,13 @@
 <template>
   <div class="fixed top-0 left-0 w-full z-[100]">
     <header class="bg-white/95 backdrop-blur-xl border-b border-gray-100 transition-all duration-500">
-      <div class="max-w-7xl mx-auto flex justify-between items-center px-6 md:px-10 py-4">
+      <div class="max-w-7xl mx-auto flex justify-between items-center px-3 sm:px-6 md:px-10 py-3 sm:py-4">
 
-        <NuxtLink to="/" class="flex items-center space-x-3 group">
+        <NuxtLink to="/" class="flex items-center gap-2 group shrink-0">
           <div class="bg-red-600 p-2 rounded-xl group-hover:rotate-12 transition-transform duration-300 shadow-lg shadow-red-200">
-            <LucideLaptop class="h-6 w-6 text-white" />
+            <LucideLaptop class="h-5 w-5 sm:h-6 sm:w-6 text-white" />
           </div>
-          <span class="text-xl md:text-2xl font-black text-gray-900 uppercase tracking-tighter italic group-hover:text-red-600 transition-colors">
+          <span class="hidden xs:block text-lg sm:text-xl md:text-2xl font-black text-gray-900 uppercase tracking-tighter italic group-hover:text-red-600 transition-colors">
             VelWeb<span class="text-red-600 group-hover:text-gray-900">Solutions</span>
           </span>
         </NuxtLink>
@@ -46,31 +46,42 @@
           </div>
         </nav>
 
-        <div class="hidden lg:block">
-          <NuxtLink to="/kontakt" class="bg-gray-900 text-white px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:bg-red-600 transition-all shadow-xl hover:-rotate-1 italic">
-            Anfrage.exe
-          </NuxtLink>
-        </div>
+        <div class="flex items-center gap-2">
 
-        <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden p-3 bg-gray-50 rounded-2xl text-gray-900">
-          <LucideMenu v-if="!mobileMenuOpen" class="h-6 w-6" />
-          <LucideX v-else class="h-6 w-6 text-red-600" />
-        </button>
+          <div class="relative group">
+            <span class="absolute -inset-1 bg-red-600 rounded-2xl blur opacity-20 group-hover:opacity-50 animate-pulse transition duration-1000"></span>
+
+            <NuxtLink
+              to="/kontakt"
+              class="relative flex items-center gap-2 bg-gray-900 text-white px-4 py-2.5 sm:px-7 sm:py-3.5 rounded-xl sm:rounded-2xl font-black text-[10px] sm:text-xs uppercase tracking-[0.15em] hover:bg-red-600 transition-all shadow-2xl italic border-b-4 border-black/50 overflow-hidden active:translate-y-1 active:border-b-0 animate-[system-ping_15s_infinite]"
+            >
+              <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shine_4s_infinite]"></span>
+
+              <span class="relative">GO.EXE</span>
+              <LucideSend class="relative h-3.5 w-3.5 sm:h-4 sm:w-4 text-red-500 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            </NuxtLink>
+          </div>
+
+          <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden p-2.5 bg-gray-100 rounded-xl text-gray-900 hover:bg-gray-200 transition-colors">
+            <LucideMenu v-if="!mobileMenuOpen" class="h-5 w-5 sm:h-6 sm:w-6" />
+            <LucideX v-else class="h-5 w-5 sm:h-6 sm:w-6 text-red-600" />
+          </button>
+        </div>
       </div>
     </header>
 
-    <div class="bg-gray-50/80 backdrop-blur-md border-b border-gray-100 py-2 px-6">
+    <div class="bg-gray-50/80 backdrop-blur-md border-b border-gray-100 py-1.5 px-4 sm:px-6">
       <div class="max-w-7xl mx-auto flex items-center justify-between">
         <nav aria-label="Breadcrumb">
-          <ol class="flex items-center space-x-2 text-[9px] font-black uppercase tracking-[0.2em] italic">
+          <ol class="flex items-center space-x-2 text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] italic">
             <li>
               <NuxtLink to="/" class="text-red-600 flex items-center gap-1 opacity-70 hover:opacity-100">
-                <LucideHome class="w-3 h-3" /> ROOT
+                <LucideHome class="w-2.5 h-2.5" /> ROOT
               </NuxtLink>
             </li>
             <li class="text-gray-300">/</li>
             <li class="text-gray-900 flex items-center gap-1">
-              <LucideTerminal class="w-3 h-3 text-red-600" /> {{ currentPathName }}
+              <LucideTerminal class="w-2.5 h-2.5 text-red-600" /> {{ currentPathName }}
             </li>
           </ol>
         </nav>
@@ -78,18 +89,18 @@
     </div>
 
     <transition name="mobile-fade">
-      <div v-if="mobileMenuOpen" class="lg:hidden absolute inset-x-0 top-full bg-white border-t-4 border-red-600 shadow-2xl h-[calc(100vh-80px)] overflow-y-auto p-8">
+      <div v-if="mobileMenuOpen" class="lg:hidden absolute inset-x-0 top-full bg-white border-t-4 border-red-600 shadow-2xl h-[calc(100vh-80px)] overflow-y-auto p-6">
         <nav class="flex flex-col space-y-2">
           <NuxtLink
             v-for="link in allLinks"
             :key="link.to"
             :to="link.to"
             @click="mobileMenuOpen = false"
-            class="px-6 py-5 rounded-2xl text-2xl font-black uppercase tracking-tighter italic flex items-center justify-between transition-colors"
-            active-class="bg-red-600 text-white"
+            class="px-6 py-5 rounded-2xl text-xl font-black uppercase tracking-tighter italic flex items-center justify-between transition-colors border border-gray-50"
+            active-class="bg-red-600 text-white border-red-600"
           >
             {{ link.label }}
-            <component :is="iconMap[link.icon]" class="h-6 w-6 opacity-20" />
+            <component :is="iconMap[link.icon]" class="h-5 w-5 opacity-20" />
           </NuxtLink>
         </nav>
       </div>
@@ -98,8 +109,8 @@
 </template>
 
 <script setup>
-// 1. Importiere die benötigten Icons einzeln
 import {
+  Laptop, ChevronDown, Menu, X, Home, Terminal, Send,
   Code, DollarSign, Layers, BookOpen,
   Award, Zap, User, Calculator, HelpCircle
 } from 'lucide-vue-next'
@@ -108,7 +119,14 @@ const route = useRoute()
 const mobileMenuOpen = ref(false)
 const showDropdown = ref(false)
 
-// 2. Erstelle ein Mapping-Objekt, damit Vue die Strings den Komponenten zuordnen kann
+const LucideLaptop = Laptop
+const LucideChevronDown = ChevronDown
+const LucideMenu = Menu
+const LucideX = X
+const LucideHome = Home
+const LucideTerminal = Terminal
+const LucideSend = Send
+
 const iconMap = {
   LucideCode: Code,
   LucideDollarSign: DollarSign,
@@ -140,13 +158,10 @@ const allLinks = [...mainLinks, ...dropdownLinks]
 
 const currentPathName = computed(() => {
   const path = route.path
-  if (path.includes('kontakt')) return 'Schnittstelle_Kontakt'
-  if (path.includes('preise')) return 'Investitions_Modelle'
-  if (path.includes('faq')) return 'Knowledge_Base'
-  if (path.includes('leistungen')) return 'Service_Engineering'
-  if (path.includes('projekte')) return 'Referenz_Protokolle'
-  if (path.includes('blog')) return 'Dev_Journal'
-  return 'System_Core'
+  if (path.includes('kontakt')) return 'Kontakt'
+  if (path.includes('preise')) return 'Preise'
+  if (path.includes('blog')) return 'Journal'
+  return 'Core'
 })
 
 const isDropdownRouteActive = computed(() => {
@@ -155,20 +170,38 @@ const isDropdownRouteActive = computed(() => {
 </script>
 
 <style scoped>
+@media (min-width: 400px) { .xs\:block { display: block; } }
+@media (max-width: 399px) { .xs\:block { display: none; } }
+
+/* 15 SEKUNDEN SYSTEM-PING (Wiggle) */
+@keyframes system-ping {
+  /* 0% bis 96% der Zeit passiert NICHTS */
+  0%, 96% { transform: rotate(0deg) scale(1); }
+  /* In den letzten 4% (ca. 0.6 Sek) wackelt er */
+  97% { transform: rotate(3deg) scale(1.05); }
+  98% { transform: rotate(-3deg) scale(1.05); }
+  99% { transform: rotate(3deg) scale(1.05); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+/* Shine Animation */
+@keyframes shine {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  25% { transform: translateX(200%) skewX(-15deg); }
+  100% { transform: translateX(200%) skewX(-15deg); }
+}
+
 .nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 3px;
-  background-color: #dc2626;
-  transition: width 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 3px;
+  background-color: #dc2626; transition: width 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 }
 .nav-link:hover::after, .nav-link.is-active::after { width: 100%; }
+
 .dropdown-slide-enter-active, .dropdown-slide-leave-active { transition: all 0.3s ease; }
 .dropdown-slide-enter-from, .dropdown-slide-leave-to { opacity: 0; transform: translateY(10px); }
+
 .mobile-fade-enter-active, .mobile-fade-leave-active { transition: all 0.4s ease; }
 .mobile-fade-enter-from, .mobile-fade-leave-to { opacity: 0; transform: translateX(100%); }
+
 .shadow-3xl { box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.15); }
 </style>
