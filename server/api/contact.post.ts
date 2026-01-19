@@ -1,13 +1,12 @@
 import nodemailer from 'nodemailer'
 
 export default defineEventHandler(async (event) => {
-  try {
-    // In Nitro/Nuxt 3 Server-Routes müssen readBody und useRuntimeConfig
-    // NICHT importiert werden, sie sind global verfügbar.
-    const body = await readBody(event)
-    const config = useRuntimeConfig()
+  const config = useRuntimeConfig()
 
-    // 1. Validierung der Eingaben
+  try {
+    const body = await readBody(event)
+
+    // 1. Validierung
     if (!body.token || !body.email || !body.message || !body.name) {
       throw createError({
         statusCode: 400,
@@ -15,7 +14,18 @@ export default defineEventHandler(async (event) => {
       })
     }
 
-    // 2. Google reCAPTCHA Check
+    // 2. Sicherheits-Check (Runtime Config Test)
+    // Wir wandeln alles in Strings um, um den html.replace Fehler zu vermeiden
+    if (!config.smtpUser || !config.smtpPass) {
+      const missing = !config.smtpUser ? 'USER fehlt' : 'PASS fehlt';
+      console.error("SMTP Konfigurationsfehler:", missing);
+      throw createError({
+        statusCode: 500,
+        statusMessage: `Mail-Konfiguration unvollständig: ${missing}`
+      })
+    }
+
+    // 3. Google reCAPTCHA Check
     const verification: any = await $fetch('https://www.google.com/recaptcha/api/siteverify', {
       method: 'POST',
       params: {
@@ -27,40 +37,57 @@ export default defineEventHandler(async (event) => {
     if (!verification.success) {
       throw createError({
         statusCode: 403,
-        statusMessage: 'Sicherheits-Check fehlgeschlagen.'
+        statusMessage: 'Sicherheits-Check (reCAPTCHA) fehlgeschlagen.'
       })
     }
 
-    // 3. SMTP Transporter (Direkt mit Nodemailer)
+    // 4. SMTP Transporter
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || 'smtp.ionos.de',
-      port: 587,
-      secure: false,
+      host: config.smtpHost,
+      port: Number(config.smtpPort),
+      secure: false, // STARTTLS (Port 587)
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
+        user: config.smtpUser,
+        pass: config.smtpPass,
       },
       tls: {
-        rejectUnauthorized: false
+        rejectUnauthorized: false // Wichtig für IONOS Zertifikate
       }
     })
 
-    // 4. Mail-Versand
-    await transporter.sendMail({
-      from: `"Kontaktformular" <${process.env.SMTP_USER}>`,
+    // 5. Mail-Optionen
+    const mailOptions = {
+      from: `"Kontaktformular" <${config.smtpUser}>`,
       to: 'info@velwebsolutions.de',
       replyTo: body.email,
-      subject: `[Briefing] ${body.title || 'Anfrage'} - von ${body.name}`,
-      text: `Name: ${body.name}\nE-Mail: ${body.email}\n\nNachricht:\n${body.message}`
-    })
+      subject: `[Anfrage] ${body.title || 'Neue Nachricht'} - von ${body.name}`,
+      text: `Name: ${body.name}\nE-Mail: ${body.email}\n\nNachricht:\n${body.message}`,
+      html: `
+        <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee;">
+          <h2 style="color: #dc2626;">Neue Kontaktanfrage</h2>
+          <p><strong>Name:</strong> ${body.name}</p>
+          <p><strong>E-Mail:</strong> ${body.email}</p>
+          <hr />
+          <p><strong>Nachricht:</strong></p>
+          <p style="white-space: pre-wrap;">${body.message}</p>
+        </div>
+      `
+    }
 
+    await transporter.sendMail(mailOptions)
     return { success: true }
 
   } catch (error: any) {
-    console.error("--- API FEHLER ---", error.message)
+    // DER FIX FÜR html.replace:
+    // Wir stellen sicher, dass statusMessage IMMER ein einfacher String ist.
+    const rawMessage = error.statusMessage || error.message || 'Server-Fehler';
+    const cleanMessage = typeof rawMessage === 'string' ? rawMessage : JSON.stringify(rawMessage);
+
+    console.error("--- API FEHLER ---", cleanMessage);
+
     throw createError({
       statusCode: error.statusCode || 500,
-      statusMessage: error.statusMessage || 'Server-Fehler beim Mail-Versand'
+      statusMessage: cleanMessage
     })
   }
 })

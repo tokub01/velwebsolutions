@@ -35,7 +35,6 @@
 
     <section class="py-16 md:py-32 px-4 sm:px-6 bg-white">
       <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
-
         <div class="order-2 lg:order-1">
           <div class="flex items-center gap-2 mb-6">
             <span class="relative flex h-3 w-3">
@@ -59,7 +58,7 @@
 
           <client-only>
             <div v-if="hasConsent && isMounted">
-              <div v-if="cooldownActive" class="bg-gray-900 p-8 md:p-10 rounded-[2rem] text-white shadow-2xl mb-12 flex flex-col sm:flex-row items-center gap-6 border-l-8 border-red-600">
+              <div v-show="cooldownActive" class="bg-gray-900 p-8 md:p-10 rounded-[2rem] text-white shadow-2xl mb-12 flex flex-col sm:flex-row items-center gap-6 border-l-8 border-red-600">
                 <div class="bg-red-600 p-4 rounded-2xl text-white text-3xl">✓</div>
                 <div class="text-center sm:text-left">
                   <h3 class="text-xl md:text-2xl font-black italic uppercase tracking-tighter">Nachricht im System</h3>
@@ -67,7 +66,7 @@
                 </div>
               </div>
 
-              <form v-else @submit.prevent="handleSubmit" class="space-y-4 md:space-y-6">
+              <form v-show="!cooldownActive" @submit.prevent="handleSubmit" class="space-y-4 md:space-y-6">
                 <div class="space-y-1">
                   <label class="block text-[9px] md:text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-4 italic">Betreff *</label>
                   <input type="text" v-model="formData.title" placeholder="Worum geht es?" class="w-full p-4 md:p-6 rounded-2xl border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-red-600 outline-none transition-all font-bold italic" required />
@@ -169,7 +168,6 @@
 <script setup>
 import { Mail, Lock, User } from 'lucide-vue-next'
 
-// LAYOUT DEFINITION
 definePageMeta({ layout: 'guest' })
 
 const config = useRuntimeConfig()
@@ -207,7 +205,6 @@ useHead({
       async: true,
       defer: true,
       onload: () => {
-        console.log("reCAPTCHA Script loaded");
         isScriptLoaded.value = true
       }
     }
@@ -216,32 +213,28 @@ useHead({
 
 // --- CORE LOGIC ---
 const initRecaptcha = async () => {
-  if (!process.client) return
+  if (!process.client || !window.grecaptcha) return
 
-  // Warten auf Container
-  let attempts = 0
-  while (!recaptchaContainer.value && attempts < 10) {
-    await new Promise(resolve => setTimeout(resolve, 100))
-    attempts++
+  // Kurz warten, falls das DOM noch nicht bereit ist
+  if (!recaptchaContainer.value) {
+    await nextTick()
   }
 
-  if (window.grecaptcha && recaptchaContainer.value && recaptchaId === null) {
+  // Falls bereits gerendert wurde, nichts tun (oder resetten)
+  if (recaptchaContainer.value && recaptchaId === null) {
     try {
-      console.log("Starte Rendering mit Key:", config.public.recaptchaSiteKey)
-
       recaptchaId = window.grecaptcha.render(recaptchaContainer.value, {
         sitekey: config.public.recaptchaSiteKey,
         size: 'invisible',
         callback: (token) => onCaptchaVerified(token),
-        'error-callback': (err) => {
+        'error-callback': () => {
           loading.value = false;
-          console.error("Google reCAPTCHA Error-Callback:", err);
-          addToast('reCAPTCHA Konfigurations-Fehler.');
+          addToast('Sicherheits-Check fehlgeschlagen.');
         }
       })
     } catch (e) {
-      console.error("reCAPTCHA Catch-Block Fehler:", e);
-      addToast('reCAPTCHA konnte nicht gerendert werden.');
+      // Meistens "already rendered" Fehler - abfangen
+      console.warn("reCAPTCHA Init Warning:", e)
     }
   }
 }
@@ -253,13 +246,13 @@ const handleSubmit = async () => {
   if (window.grecaptcha && recaptchaId !== null) {
     window.grecaptcha.execute(recaptchaId)
   } else {
-    // Falls noch nicht bereit, jetzt versuchen zu laden
+    // Falls ID verloren ging (z.B. durch DOM-Wechsel), neu versuchen
     await initRecaptcha()
     if (recaptchaId !== null) {
       window.grecaptcha.execute(recaptchaId)
     } else {
       loading.value = false
-      addToast('Sicherheits-Check blockiert. Bitte Seite neu laden.')
+      addToast('System bereitstellen... Bitte erneut klicken.')
     }
   }
 }
@@ -273,10 +266,14 @@ const onCaptchaVerified = async (token) => {
 
     addToast('✅ Nachricht gesendet!', 'success')
     formData.value = { name: '', title: '', email: '', message: '' }
-    cooldownEnd.value = Date.now() + (5 * 60 * 1000)
+
+    // Cooldown setzen
+    const duration = 5 * 60 * 1000
+    cooldownEnd.value = Date.now() + duration
     localStorage.setItem('contactCooldown', cooldownEnd.value.toString())
+    updateCooldown()
   } catch (err) {
-    addToast('Fehler: Übertragung fehlgeschlagen')
+    addToast(err.statusMessage || 'Fehler beim Senden.')
   } finally {
     if (window.grecaptcha && recaptchaId !== null) window.grecaptcha.reset(recaptchaId)
     loading.value = false
@@ -285,9 +282,24 @@ const onCaptchaVerified = async (token) => {
 
 // --- HELPERS ---
 const updateCooldown = () => {
-  const rem = Math.max(0, (cooldownEnd.value || 0) - Date.now())
-  cooldownActive.value = rem > 0
-  const m = Math.floor(rem / 60000), s = Math.floor((rem % 60000) / 1000)
+  const now = Date.now()
+  const rem = Math.max(0, (cooldownEnd.value || 0) - now)
+
+  if (rem <= 0) {
+    if (cooldownActive.value) {
+      // War gerade noch aktiv, jetzt nicht mehr -> reinit reCAPTCHA
+      cooldownActive.value = false
+      nextTick(() => initRecaptcha())
+    }
+    cooldownActive.value = false
+    cooldownDisplay.value = '0:00'
+    localStorage.removeItem('contactCooldown')
+    return
+  }
+
+  cooldownActive.value = true
+  const m = Math.floor(rem / 60000)
+  const s = Math.floor((rem % 60000) / 1000)
   cooldownDisplay.value = `${m}:${s.toString().padStart(2, '0')}`
 }
 
@@ -299,28 +311,41 @@ const addToast = (m, t = 'error') => {
 
 const triggerConsentModal = () => {
   userConsent.value = 'granted'
-  // Nach Consent sofort Initialisierung triggern
-  nextTick(() => initRecaptcha())
+  // Wenn das Script schon geladen ist, sofort init
+  if (isScriptLoaded.value) {
+    nextTick(() => initRecaptcha())
+  }
 }
 
 // --- LIFECYCLE ---
 onMounted(() => {
   isMounted.value = true
   const stored = localStorage.getItem('contactCooldown')
-  if (stored) cooldownEnd.value = parseInt(stored)
-  setInterval(updateCooldown, 1000)
-
-  if (hasConsent.value) {
-    initRecaptcha()
+  if (stored) {
+    cooldownEnd.value = parseInt(stored)
   }
+
+  // Initialer Check
+  updateCooldown()
+
+  // Interval starten
+  const timer = setInterval(updateCooldown, 1000)
+
+  // Falls Consent schon da, reCAPTCHA laden
+  if (hasConsent.value) {
+    // Kleiner Delay damit Script onload sicher gefeuert hat
+    setTimeout(() => initRecaptcha(), 500)
+  }
+
+  onUnmounted(() => clearInterval(timer))
 })
 
-// Reagieren wenn Skript geladen wird ODER Consent gegeben wird
+// Watcher für externe Script-Ladevorgänge
 watch([isScriptLoaded, hasConsent], ([sOk, cOk]) => {
-  if (sOk && cOk) {
+  if (sOk && cOk && !cooldownActive.value) {
     nextTick(() => initRecaptcha())
   }
-}, { immediate: true })
+})
 </script>
 
 <style scoped>

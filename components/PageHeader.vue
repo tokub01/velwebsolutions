@@ -5,7 +5,7 @@
 
         <NuxtLink to="/" class="flex items-center space-x-3 group">
           <div class="bg-red-600 p-2 rounded-xl group-hover:rotate-12 transition-transform duration-300 shadow-lg shadow-red-200">
-            <LucideLaptop class="h-header6 w-6 text-white" />
+            <LucideLaptop class="h-6 w-6 text-white" />
           </div>
           <span class="text-xl md:text-2xl font-black text-gray-900 uppercase tracking-tighter italic group-hover:text-red-600 transition-colors">
             VelWeb<span class="text-red-600 group-hover:text-gray-900">Solutions</span>
@@ -85,11 +85,11 @@
             :key="link.to"
             :to="link.to"
             @click="mobileMenuOpen = false"
-            class="px-6 py-5 rounded-2xl text-2xl font-black uppercase tracking-tighter italic flex items-center justify-between"
+            class="px-6 py-5 rounded-2xl text-2xl font-black uppercase tracking-tighter italic flex items-center justify-between transition-colors"
             active-class="bg-red-600 text-white"
           >
             {{ link.label }}
-            <component :is="resolveComponent(link.icon)" class="h-6 w-6 opacity-20" />
+            <component :is="iconMap[link.icon]" class="h-6 w-6 opacity-20" />
           </NuxtLink>
         </nav>
       </div>
@@ -98,11 +98,29 @@
 </template>
 
 <script setup>
+// 1. Importiere die benötigten Icons einzeln
+import {
+  Code, DollarSign, Layers, BookOpen,
+  Award, Zap, User, Calculator, HelpCircle
+} from 'lucide-vue-next'
+
 const route = useRoute()
 const mobileMenuOpen = ref(false)
 const showDropdown = ref(false)
 
-// Zurück zu Strings: Nuxt löst diese global über das nuxt-lucide-icons Modul auf
+// 2. Erstelle ein Mapping-Objekt, damit Vue die Strings den Komponenten zuordnen kann
+const iconMap = {
+  LucideCode: Code,
+  LucideDollarSign: DollarSign,
+  LucideLayers: Layers,
+  LucideBookOpen: BookOpen,
+  LucideAward: Award,
+  LucideZap: Zap,
+  LucideUser: User,
+  LucideCalculator: Calculator,
+  LucideHelpCircle: HelpCircle
+}
+
 const mainLinks = [
   { to: '/leistungen', label: 'Leistungen', icon: 'LucideCode' },
   { to: '/preise', label: 'Preise', icon: 'LucideDollarSign' },
@@ -137,7 +155,6 @@ const isDropdownRouteActive = computed(() => {
 </script>
 
 <style scoped>
-/* Behalte dein bisheriges CSS bei */
 .nav-link::after {
   content: '';
   position: absolute;
