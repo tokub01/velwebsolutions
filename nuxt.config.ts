@@ -25,7 +25,8 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxt/image',
-    'nuxt-lucide-icons'
+    'nuxt-lucide-icons',
+    'nuxt-jsonld'
   ],
 
   // --- 3. APP CONFIG ---
