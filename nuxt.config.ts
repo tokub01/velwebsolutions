@@ -6,9 +6,7 @@ import { softwareContent } from './data/softwareContent'
 import { vueContent } from './data/vueContent'
 
 export default defineNuxtConfig({
-  // SSR für SEO, wird bei 'generate' zu statischem HTML
   ssr: true,
-
   compatibilityDate: '2024-11-01',
 
   app: {
@@ -42,11 +40,9 @@ export default defineNuxtConfig({
     }
   },
 
-  // --- NEU: ROUTER KONFIGURATION ---
-  // Steuert das Verhalten der internen Links (NuxtLink)
   router: {
     options: {
-      trailingSlash: false, // Erzwingt intern URLs ohne Slash
+      trailingSlash: false,
       linkActiveClass: 'active-link'
     }
   },
@@ -54,25 +50,47 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxt/image',
-    'nuxt-lucide-icons'
+    'nuxt-lucide-icons',
+    'nuxt-mail'
   ],
+
+  // --- MAIL KONFIGURATION (Optimiert für Port 587) ---
+  mail: {
+    message: {
+      to: 'info@velwebsolutions.de',
+    },
+    smtp: {
+      host: 'smtp.ionos.de',
+      port: 587,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+      secure: false, // WICHTIG für Port 587
+      tls: {
+        rejectUnauthorized: false
+      }
+    },
+  },
 
   image: {
     domains: ['images.unsplash.com']
   },
 
-  routeRules: {
-    '/**': { static: true },
-    '/api/**': { isr: false, cors: true }
+  // --- RUNTIME CONFIG (Sorgt für korrekte Keys im Front- & Backend) ---
+  runtimeConfig: {
+    // Nur Server-seitig verfügbar
+    recaptchaSecretKey: process.env.NUXT_RECAPTCHA_SECRET_KEY,
+
+    public: {
+      // Auch im Browser verfügbar
+      recaptchaSiteKey: process.env.NUXT_PUBLIC_RECAPTCHA_SITE_KEY,
+    }
   },
 
-  runtimeConfig: {
-    public: {
-      recaptchaSiteKey: process.env.NUXT_PUBLIC_RECAPTCHA_SITE_KEY,
-      emailjsServiceId: process.env.NUXT_PUBLIC_EMAILJS_SERVICE_ID,
-      emailjsTemplateId: process.env.NUXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-      emailjsPublicKey: process.env.NUXT_PUBLIC_EMAILJS_PUBLIC_KEY,
-    }
+  routeRules: {
+    '/api/contact': { isr: false, cors: true },
+    '/**': { static: true },
   },
 
   nitro: {
@@ -80,10 +98,6 @@ export default defineNuxtConfig({
       publicDir: 'dist' 
     },
     compressPublicAssets: true,
-    // --- NEU: NITRO OPTIMIERUNG ---
-    // Verhindert, dass Nitro Ordner mit index.html generiert (was den Slash erzwingt)
-    // Wenn auf true, wird aus /projekte -> /projekte/index.html
-    // Wenn auf false, wird aus /projekte -> /projekte.html
     prerender: {
       crawlLinks: true,
       routes: [
@@ -100,7 +114,7 @@ export default defineNuxtConfig({
         ...Object.keys(softwareContent).map(city => `/softwareentwicklung-${city}`),
         ...Object.keys(vueContent).map(city => `/vue-js-entwicklung-${city}`)
       ],
-      ignore: ['/api/**']
+      ignore: ['/api']
     }
   },
 

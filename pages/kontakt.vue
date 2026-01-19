@@ -67,29 +67,28 @@
                 </div>
               </div>
 
-              <form v-else ref="formRef" @submit.prevent="handleSubmit" class="space-y-4 md:space-y-6">
+              <form v-else @submit.prevent="handleSubmit" class="space-y-4 md:space-y-6">
                 <div class="space-y-1">
                   <label class="block text-[9px] md:text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-4 italic">Betreff *</label>
-                  <input type="text" v-model="formData.title" name="title" placeholder="Worum geht es?" class="w-full p-4 md:p-6 rounded-2xl border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-red-600 outline-none transition-all font-bold italic" required />
+                  <input type="text" v-model="formData.title" placeholder="Worum geht es?" class="w-full p-4 md:p-6 rounded-2xl border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-red-600 outline-none transition-all font-bold italic" required />
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                   <div class="space-y-1">
                     <label class="block text-[9px] md:text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-4 italic">Name *</label>
-                    <input type="text" v-model="formData.name" name="name" placeholder="Ihr Name" class="w-full p-4 md:p-6 rounded-2xl border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-red-600 outline-none transition-all font-bold italic" required />
+                    <input type="text" v-model="formData.name" placeholder="Ihr Name" class="w-full p-4 md:p-6 rounded-2xl border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-red-600 outline-none transition-all font-bold italic" required />
                   </div>
                   <div class="space-y-1">
                     <label class="block text-[9px] md:text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-4 italic">E-Mail *</label>
-                    <input type="email" v-model="formData.email" name="email" placeholder="mail@beispiel.de" class="w-full p-4 md:p-6 rounded-2xl border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-red-600 outline-none transition-all font-bold italic" required />
+                    <input type="email" v-model="formData.email" placeholder="mail@beispiel.de" class="w-full p-4 md:p-6 rounded-2xl border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-red-600 outline-none transition-all font-bold italic" required />
                   </div>
                 </div>
 
                 <div class="space-y-1">
                   <label class="block text-[9px] md:text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-4 italic">Nachricht *</label>
-                  <textarea v-model="formData.message" name="message" rows="5" placeholder="Beschreiben Sie Ihr Vorhaben..." class="w-full p-4 md:p-6 rounded-2xl border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-red-600 outline-none transition-all font-bold italic" required></textarea>
+                  <textarea v-model="formData.message" rows="5" placeholder="Beschreiben Sie Ihr Vorhaben..." class="w-full p-4 md:p-6 rounded-2xl border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-red-600 outline-none transition-all font-bold italic" required></textarea>
                 </div>
 
-                <input type="hidden" name="g-recaptcha-response" ref="recaptchaInput" />
                 <div ref="recaptchaContainer" class="mt-2 min-h-[1px]"></div>
 
                 <button type="submit" :disabled="loading" :class="['w-full py-6 md:py-8 rounded-2xl font-black text-lg md:text-xl uppercase tracking-widest transition-all shadow-2xl active:scale-[0.98] italic', loading ? 'bg-gray-300 cursor-not-allowed text-gray-500' : 'bg-red-600 text-white hover:bg-gray-900']">
@@ -169,7 +168,6 @@
 
 <script setup>
 import { Mail, Lock, User } from 'lucide-vue-next'
-import emailjs from '@emailjs/browser'
 
 // LAYOUT DEFINITION
 definePageMeta({ layout: 'guest' })
@@ -197,9 +195,7 @@ const cooldownActive = ref(false)
 const cooldownDisplay = ref('')
 const loading = ref(false)
 
-const formRef = ref(null)
 const recaptchaContainer = ref(null)
-const recaptchaInput = ref(null)
 let recaptchaId = null
 
 // --- SCRIPTS ---
@@ -210,23 +206,42 @@ useHead({
       src: 'https://www.google.com/recaptcha/api.js?render=explicit',
       async: true,
       defer: true,
-      onload: () => { isScriptLoaded.value = true }
+      onload: () => {
+        console.log("reCAPTCHA Script loaded");
+        isScriptLoaded.value = true
+      }
     }
   ]
 })
 
 // --- CORE LOGIC ---
-const initRecaptcha = () => {
-  if (process.client && window.grecaptcha && recaptchaContainer.value && recaptchaId === null) {
+const initRecaptcha = async () => {
+  if (!process.client) return
+
+  // Warten auf Container
+  let attempts = 0
+  while (!recaptchaContainer.value && attempts < 10) {
+    await new Promise(resolve => setTimeout(resolve, 100))
+    attempts++
+  }
+
+  if (window.grecaptcha && recaptchaContainer.value && recaptchaId === null) {
     try {
+      console.log("Starte Rendering mit Key:", config.public.recaptchaSiteKey)
+
       recaptchaId = window.grecaptcha.render(recaptchaContainer.value, {
         sitekey: config.public.recaptchaSiteKey,
         size: 'invisible',
         callback: (token) => onCaptchaVerified(token),
-        'error-callback': () => { loading.value = false; addToast('reCAPTCHA Fehler.'); }
+        'error-callback': (err) => {
+          loading.value = false;
+          console.error("Google reCAPTCHA Error-Callback:", err);
+          addToast('reCAPTCHA Konfigurations-Fehler.');
+        }
       })
     } catch (e) {
-      console.warn("reCAPTCHA Rendering suppressed.");
+      console.error("reCAPTCHA Catch-Block Fehler:", e);
+      addToast('reCAPTCHA konnte nicht gerendert werden.');
     }
   }
 }
@@ -238,60 +253,37 @@ const handleSubmit = async () => {
   if (window.grecaptcha && recaptchaId !== null) {
     window.grecaptcha.execute(recaptchaId)
   } else {
-    initRecaptcha()
-    setTimeout(() => {
-        if (recaptchaId !== null) window.grecaptcha.execute(recaptchaId)
-        else { loading.value = false; addToast('Captcha Dienst nicht bereit.'); }
-    }, 1000)
+    // Falls noch nicht bereit, jetzt versuchen zu laden
+    await initRecaptcha()
+    if (recaptchaId !== null) {
+      window.grecaptcha.execute(recaptchaId)
+    } else {
+      loading.value = false
+      addToast('Sicherheits-Check blockiert. Bitte Seite neu laden.')
+    }
   }
 }
 
 const onCaptchaVerified = async (token) => {
   try {
-    // Wir senden die Daten direkt als Objekt
-    await emailjs.send(
-      config.public.emailjsServiceId,
-      config.public.emailjsTemplateId,
-      {
-        name: formData.value.name,
-        email: formData.value.email,
-        title: formData.value.title,
-        message: formData.value.message,
-        'g-recaptcha-response': token // Das Token wird explizit mitgeschickt
-      },
-      config.public.emailjsPublicKey
-    )
+    await $fetch('/api/contact', {
+      method: 'POST',
+      body: { ...formData.value, token }
+    })
 
     addToast('✅ Nachricht gesendet!', 'success')
     formData.value = { name: '', title: '', email: '', message: '' }
     cooldownEnd.value = Date.now() + (5 * 60 * 1000)
     localStorage.setItem('contactCooldown', cooldownEnd.value.toString())
   } catch (err) {
-    console.error("Submission Error:", err)
-    addToast(`Fehler: ${err.text || 'Übertragung fehlgeschlagen'}`)
+    addToast('Fehler: Übertragung fehlgeschlagen')
   } finally {
-    if (window.grecaptcha) window.grecaptcha.reset(recaptchaId)
+    if (window.grecaptcha && recaptchaId !== null) window.grecaptcha.reset(recaptchaId)
     loading.value = false
   }
 }
 
-// --- LIFECYCLE ---
-onMounted(() => {
-  isMounted.value = true
-  const stored = localStorage.getItem('contactCooldown')
-  if (stored) cooldownEnd.value = parseInt(stored)
-
-  setInterval(updateCooldown, 1000)
-
-  if (hasConsent.value) {
-    nextTick(() => setTimeout(initRecaptcha, 2000))
-  }
-})
-
-watch([isScriptLoaded, hasConsent], ([sOk, cOk]) => {
-  if (sOk && cOk) nextTick(initRecaptcha)
-})
-
+// --- HELPERS ---
 const updateCooldown = () => {
   const rem = Math.max(0, (cooldownEnd.value || 0) - Date.now())
   cooldownActive.value = rem > 0
@@ -300,10 +292,35 @@ const updateCooldown = () => {
 }
 
 const addToast = (m, t = 'error') => {
-  const id = Date.now(); toasts.value.push({ id, message: m, type: t })
+  const id = Date.now()
+  toasts.value.push({ id, message: m, type: t })
   setTimeout(() => { toasts.value = toasts.value.filter(x => x.id !== id) }, 4000)
 }
-const triggerConsentModal = () => { userConsent.value = 'granted' }
+
+const triggerConsentModal = () => {
+  userConsent.value = 'granted'
+  // Nach Consent sofort Initialisierung triggern
+  nextTick(() => initRecaptcha())
+}
+
+// --- LIFECYCLE ---
+onMounted(() => {
+  isMounted.value = true
+  const stored = localStorage.getItem('contactCooldown')
+  if (stored) cooldownEnd.value = parseInt(stored)
+  setInterval(updateCooldown, 1000)
+
+  if (hasConsent.value) {
+    initRecaptcha()
+  }
+})
+
+// Reagieren wenn Skript geladen wird ODER Consent gegeben wird
+watch([isScriptLoaded, hasConsent], ([sOk, cOk]) => {
+  if (sOk && cOk) {
+    nextTick(() => initRecaptcha())
+  }
+}, { immediate: true })
 </script>
 
 <style scoped>
