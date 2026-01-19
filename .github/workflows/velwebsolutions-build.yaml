@@ -31,15 +31,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: v22.x
+          cache: 'npm' # Beschleunigt zukünftige Builds
 
       - name: Build Node assets
         env:
           CI: true
           NODE_OPTIONS: --max-old-space-size=4096
-          NODE_VERSION: 20
-          NUXT_PUBLIC_EMAILJS_PUBLIC_KEY: ${{ secrets.NUXT_PUBLIC_EMAILJS_PUBLIC_KEY }}
-          NUXT_PUBLIC_EMAILJS_SERVICE_ID: ${{ secrets.NUXT_PUBLIC_EMAILJS_SERVICE_ID }}
-          NUXT_PUBLIC_EMAILJS_TEMPLATE_ID: ${{ secrets.NUXT_PUBLIC_EMAILJS_TEMPLATE_ID }}
+          # Hier werden die Secrets aus GitHub in die Umgebung des Builds gereicht
+          NUXT_SMTP_HOST: ${{ secrets.NUXT_SMTP_HOST }}
+          NUXT_SMTP_PORT: ${{ secrets.NUXT_SMTP_PORT }}
+          NUXT_SMTP_USER: ${{ secrets.NUXT_SMTP_USER }}
+          NUXT_SMTP_PASS: ${{ secrets.NUXT_SMTP_PASS }}
+          NUXT_RECAPTCHA_SECRET_KEY: ${{ secrets.NUXT_RECAPTCHA_SECRET_KEY }}
           NUXT_PUBLIC_RECAPTCHA_SITE_KEY: ${{ secrets.NUXT_PUBLIC_RECAPTCHA_SITE_KEY }}
           SITE_URL: ${{ inputs.site-url }}
         run: |
