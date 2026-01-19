@@ -10,17 +10,13 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
 
   // --- 1. RUNTIME CONFIG ---
-  // Diese Werte werden in deiner API-Route via useRuntimeConfig() genutzt
   runtimeConfig: {
-    // Nur Server-seitig (Private)
-    smtpHost: process.env.NUXT_SMTP_HOST || 'smtp.ionos.de',
-    smtpPort: process.env.NUXT_SMTP_PORT || 587,
-    smtpUser: process.env.NUXT_SMTP_USER,
-    smtpPass: process.env.NUXT_SMTP_PASS,
-    recaptchaSecretKey: process.env.NUXT_RECAPTCHA_SECRET_KEY,
-
+    // Private Keys (hier leer lassen, da EmailJS im Frontend läuft)
     public: {
-      // Auch im Frontend sichtbar
+      // Diese Werte sind im Frontend via useRuntimeConfig() erreichbar
+      emailjsServiceId: process.env.NUXT_PUBLIC_EMAILJS_SERVICE_ID,
+      emailjsTemplateId: process.env.NUXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+      emailjsPublicKey: process.env.NUXT_PUBLIC_EMAILJS_PUBLIC_KEY,
       recaptchaSiteKey: process.env.NUXT_PUBLIC_RECAPTCHA_SITE_KEY,
     }
   },
@@ -30,9 +26,6 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxt/image',
     'nuxt-lucide-icons'
-    // Hinweis: 'nuxt-mail' habe ich entfernt, da du eine eigene
-    // API-Route (/server/api/contact.post.ts) mit Nodemailer nutzt.
-    // Zwei Systeme gleichzeitig führen oft zu Port-Konflikten.
   ],
 
   // --- 3. APP CONFIG ---
@@ -55,7 +48,7 @@ export default defineNuxtConfig({
 
   // --- 4. BUILD & STYLING ---
   build: {
-    transpile: ['lucide-vue-next']
+    transpile: ['lucide-vue-next', '@emailjs/browser']
   },
 
   postcss: {

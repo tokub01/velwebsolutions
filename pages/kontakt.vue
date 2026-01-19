@@ -20,15 +20,17 @@
     <section class="bg-gray-50 py-12 md:py-16 border-y border-gray-100">
       <div class="max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-          <div v-for="(usp, index) in usps" :key="index" class="group">
-            <div class="flex items-center gap-4 mb-3 md:mb-4">
-              <div class="h-10 w-10 md:h-12 md:w-12 rounded-xl md:rounded-2xl bg-red-600 flex items-center justify-center text-white font-mono font-bold shadow-lg italic shrink-0">
-                0{{ index + 1 }}
+          <client-only>
+            <div v-for="(usp, index) in usps" :key="index" class="group">
+              <div class="flex items-center gap-4 mb-3 md:mb-4">
+                <div class="h-10 w-10 md:h-12 md:w-12 rounded-xl md:rounded-2xl bg-red-600 flex items-center justify-center text-white font-mono font-bold shadow-lg italic shrink-0">
+                  0{{ index + 1 }}
+                </div>
+                <h3 class="text-lg md:text-xl font-black uppercase italic tracking-tighter text-gray-900">{{ usp.title }}</h3>
               </div>
-              <h3 class="text-lg md:text-xl font-black uppercase italic tracking-tighter text-gray-900">{{ usp.title }}</h3>
+              <p class="text-gray-600 text-sm md:text-base font-medium italic" v-html="usp.desc || ''"></p>
             </div>
-            <p class="text-gray-600 text-sm md:text-base font-medium italic" v-html="usp.desc"></p>
-          </div>
+          </client-only>
         </div>
       </div>
     </section>
@@ -51,8 +53,7 @@
           <div class="mb-10 p-6 bg-red-50 rounded-[1.5rem] border-l-8 border-red-600 italic">
             <p class="text-[10px] font-black text-red-600 uppercase tracking-widest mb-1">// Workflow-Protokoll</p>
             <p class="text-gray-900 font-bold text-sm leading-relaxed">
-              Projektstarts erfolgen nach 100% Vorkasse (zzgl. gesetzl. MwSt. | Zahlungsziel 7 Tage).
-              Dies garantiert die sofortige Reservierung Ihrer Kapazitäten und einen verzugsfreien Entwicklungs-Prozess.
+              Projektstarts erfolgen nach 100% Vorkasse. Dies garantiert die sofortige Reservierung Ihrer Kapazitäten.
             </p>
           </div>
 
@@ -133,20 +134,6 @@
                 <div class="space-y-1 text-sm md:text-base text-gray-300 font-medium italic border-l-2 border-red-600 pl-4 md:pl-6">
                   <p>Gubener Str. 14</p>
                   <p>47829 Krefeld</p>
-
-                  <div class="mt-8 pt-6 border-t border-white/10 space-y-4">
-                    <div>
-                      <p class="text-[9px] text-red-500 font-black uppercase tracking-widest italic mb-1">Billing-Konditionen</p>
-                      <p class="text-[11px] text-gray-400 leading-tight uppercase font-bold">
-                        Alle Preise zzgl. gesetzlicher Umsatzsteuer. Zahlbar innerhalb von 7 Tagen (Vorkasse).
-                      </p>
-                    </div>
-                    <div>
-                      <p class="text-[9px] text-gray-400 uppercase leading-relaxed tracking-wider italic">
-                        Umsatzsteuer wird auf der Rechnung separat ausgewiesen.
-                      </p>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -167,6 +154,7 @@
 
 <script setup>
 import { Mail, Lock, User } from 'lucide-vue-next'
+import emailjs from '@emailjs/browser'
 
 definePageMeta({ layout: 'guest' })
 
@@ -204,9 +192,7 @@ useHead({
       src: 'https://www.google.com/recaptcha/api.js?render=explicit',
       async: true,
       defer: true,
-      onload: () => {
-        isScriptLoaded.value = true
-      }
+      onload: () => { isScriptLoaded.value = true }
     }
   ]
 })
@@ -214,13 +200,8 @@ useHead({
 // --- CORE LOGIC ---
 const initRecaptcha = async () => {
   if (!process.client || !window.grecaptcha) return
+  if (!recaptchaContainer.value) await nextTick()
 
-  // Kurz warten, falls das DOM noch nicht bereit ist
-  if (!recaptchaContainer.value) {
-    await nextTick()
-  }
-
-  // Falls bereits gerendert wurde, nichts tun (oder resetten)
   if (recaptchaContainer.value && recaptchaId === null) {
     try {
       recaptchaId = window.grecaptcha.render(recaptchaContainer.value, {
@@ -233,7 +214,6 @@ const initRecaptcha = async () => {
         }
       })
     } catch (e) {
-      // Meistens "already rendered" Fehler - abfangen
       console.warn("reCAPTCHA Init Warning:", e)
     }
   }
@@ -246,7 +226,6 @@ const handleSubmit = async () => {
   if (window.grecaptcha && recaptchaId !== null) {
     window.grecaptcha.execute(recaptchaId)
   } else {
-    // Falls ID verloren ging (z.B. durch DOM-Wechsel), neu versuchen
     await initRecaptcha()
     if (recaptchaId !== null) {
       window.grecaptcha.execute(recaptchaId)
@@ -259,21 +238,31 @@ const handleSubmit = async () => {
 
 const onCaptchaVerified = async (token) => {
   try {
-    await $fetch('/api/contact', {
-      method: 'POST',
-      body: { ...formData.value, token }
-    })
+    const templateParams = {
+      from_name: String(formData.value.name),
+      from_email: String(formData.value.email),
+      subject: String(formData.value.title),
+      message: String(formData.value.message),
+      'g-recaptcha-response': token
+    };
+
+    await emailjs.send(
+      config.public.emailjsServiceId,
+      config.public.emailjsTemplateId,
+      templateParams,
+      config.public.emailjsPublicKey
+    );
 
     addToast('✅ Nachricht gesendet!', 'success')
     formData.value = { name: '', title: '', email: '', message: '' }
 
-    // Cooldown setzen
     const duration = 5 * 60 * 1000
     cooldownEnd.value = Date.now() + duration
     localStorage.setItem('contactCooldown', cooldownEnd.value.toString())
     updateCooldown()
   } catch (err) {
-    addToast(err.statusMessage || 'Fehler beim Senden.')
+    console.error("EmailJS Error:", err)
+    addToast('Fehler beim Senden via EmailJS.')
   } finally {
     if (window.grecaptcha && recaptchaId !== null) window.grecaptcha.reset(recaptchaId)
     loading.value = false
@@ -282,12 +271,12 @@ const onCaptchaVerified = async (token) => {
 
 // --- HELPERS ---
 const updateCooldown = () => {
+  if (!process.client) return
   const now = Date.now()
   const rem = Math.max(0, (cooldownEnd.value || 0) - now)
 
   if (rem <= 0) {
     if (cooldownActive.value) {
-      // War gerade noch aktiv, jetzt nicht mehr -> reinit reCAPTCHA
       cooldownActive.value = false
       nextTick(() => initRecaptcha())
     }
@@ -311,7 +300,6 @@ const addToast = (m, t = 'error') => {
 
 const triggerConsentModal = () => {
   userConsent.value = 'granted'
-  // Wenn das Script schon geladen ist, sofort init
   if (isScriptLoaded.value) {
     nextTick(() => initRecaptcha())
   }
@@ -321,26 +309,18 @@ const triggerConsentModal = () => {
 onMounted(() => {
   isMounted.value = true
   const stored = localStorage.getItem('contactCooldown')
-  if (stored) {
-    cooldownEnd.value = parseInt(stored)
-  }
+  if (stored) cooldownEnd.value = parseInt(stored)
 
-  // Initialer Check
   updateCooldown()
-
-  // Interval starten
   const timer = setInterval(updateCooldown, 1000)
 
-  // Falls Consent schon da, reCAPTCHA laden
   if (hasConsent.value) {
-    // Kleiner Delay damit Script onload sicher gefeuert hat
     setTimeout(() => initRecaptcha(), 500)
   }
 
   onUnmounted(() => clearInterval(timer))
 })
 
-// Watcher für externe Script-Ladevorgänge
 watch([isScriptLoaded, hasConsent], ([sOk, cOk]) => {
   if (sOk && cOk && !cooldownActive.value) {
     nextTick(() => initRecaptcha())
