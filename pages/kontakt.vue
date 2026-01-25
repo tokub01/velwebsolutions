@@ -116,9 +116,9 @@
             <div class="group bg-gray-50 p-6 md:p-8 rounded-[2rem] border border-gray-100 hover:bg-white hover:shadow-3xl transition-all duration-500">
               <div class="flex items-center gap-4 md:gap-6">
                 <div class="bg-red-600 p-4 rounded-xl text-white shadow-lg group-hover:rotate-6 transition-transform shrink-0"><Mail class="w-5 h-5" /></div>
-                <div class="overflow-hidden">
+                <div class="overflow-hidden w-full">
                   <p class="text-[9px] font-black text-gray-400 uppercase tracking-widest italic">// E-Mail Terminal</p>
-                  <a href="mailto:info@velwebsolutions.de" class="text-base sm:text-lg font-black text-gray-900 hover:text-red-600 italic uppercase transition-colors truncate block">info@velwebsolutions.de</a>
+                  <a href="mailto:info@velwebsolutions.de" class="text-[clamp(0.85rem,4vw,1.125rem)] font-black text-gray-900 hover:text-red-600 italic uppercase transition-colors break-all block leading-tight">info@velwebsolutions.de</a>
                 </div>
               </div>
             </div>
