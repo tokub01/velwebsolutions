@@ -14,7 +14,7 @@
           Data<span class="text-white/80 underline decoration-white/30 italic">Privacy.</span>
         </h1>
         <p class="text-base md:text-xl text-red-50 max-w-3xl mx-auto leading-relaxed font-medium italic opacity-90">
-          Umfassende Dokumentation der Datenverarbeitungsprozesse und US-Transfer-Logik.
+          Umfassende Dokumentation der Datenverarbeitungsprozesse und Infrastruktur-Logik.
         </p>
       </div>
     </header>
@@ -36,33 +36,31 @@
                 <p class="text-2xl md:text-3xl font-black tracking-tight italic uppercase">Tobias Kubina, B.Sc.</p>
                 <p class="text-red-500 font-bold uppercase tracking-widest text-sm">VelWebSolutions</p>
               </div>
-              <p class="text-gray-400 font-medium">Gubener Str. 14, 47829 Krefeld</p>
+              <p class="text-gray-400 font-medium">Gubener Str. 14, 47829 Krefeld, Deutschland</p>
               <div class="pt-4 flex flex-wrap gap-6 text-xs font-bold uppercase tracking-widest">
+                <NuxtLink to="/kontakt" class="flex items-center gap-2 hover:text-red-500 transition-colors"><Mail class="w-4 h-4"/> Kontaktformular</NuxtLink>
                 <a href="mailto:info@velwebsolutions.de" class="flex items-center gap-2 hover:text-red-500 transition-colors"><Mail class="w-4 h-4"/> info@velwebsolutions.de</a>
-                <a href="tel:+4917632544620" class="flex items-center gap-2 hover:text-red-500 transition-colors"><Phone class="w-4 h-4"/> +49 176 32544620</a>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="bg-red-50 p-8 md:p-12 rounded-[3rem] border-2 border-dashed border-red-200">
+        <section class="bg-gray-50 p-8 md:p-12 rounded-[3rem] border border-gray-200">
           <div class="flex items-center gap-4 mb-8">
-            <Globe class="text-red-600 w-8 h-8" />
-            <h2 class="text-2xl md:text-3xl font-black text-gray-900 uppercase italic tracking-tighter">US-Transfer-Protokoll</h2>
+            <Code class="text-red-600 w-8 h-8" />
+            <h2 class="text-2xl md:text-3xl font-black text-gray-900 uppercase italic tracking-tighter">Technologische Basis</h2>
           </div>
-          <div class="text-sm md:text-base italic text-gray-700 leading-relaxed space-y-6">
+          <div class="text-sm md:text-base italic text-gray-700 leading-relaxed space-y-4">
             <p>
-              Diese Website nutzt Dienste von US-Unternehmen. Da die USA laut EuGH kein angemessenes Datenschutzniveau bieten, sichern wir diese Transfers wie folgt ab:
+              Diese Website wurde mit dem Framework <strong>Nuxt.js (v3)</strong> entwickelt. Nuxt basiert auf <strong>Vue.js</strong> und ermöglicht die Bereitstellung einer performanten Single-Page-Application. Das Design-System basiert auf <strong>Tailwind CSS</strong>.
             </p>
-            <div class="grid md:grid-cols-2 gap-4">
-              <div class="bg-white p-5 rounded-2xl border border-red-100 shadow-sm">
-                <p class="font-black text-red-600 text-xs uppercase mb-2">// DPF Zertifizierung</p>
-                <p class="text-[11px] leading-tight text-gray-500">Nutzung des EU-U.S. Data Privacy Frameworks für zertifizierte Unternehmen (z.B. Google).</p>
-              </div>
-              <div class="bg-white p-5 rounded-2xl border border-red-100 shadow-sm">
-                <p class="font-black text-red-600 text-xs uppercase mb-2">// SCC Klauseln</p>
-                <p class="text-[11px] leading-tight text-gray-500">Abschluss von Standardvertragsklauseln gemäß Art. 46 DSGVO für maximale Rechtssicherheit.</p>
-              </div>
+            <p>
+              Im Sinne der maximalen Transparenz („Open Source“) ist die Code-Basis dieser Website öffentlich einsehbar. Dies unterstreicht den Anspruch an eine saubere Architektur und die Einhaltung technischer Standards.
+            </p>
+            <div class="pt-2">
+              <a href="https://github.com/tokub01/velwebsolutions" target="_blank" class="inline-flex items-center gap-2 text-red-600 font-bold hover:underline">
+                <Github class="w-4 h-4" /> // View Source on GitHub
+              </a>
             </div>
           </div>
         </section>
@@ -70,68 +68,64 @@
         <section class="space-y-12">
           <div class="flex items-center gap-4">
             <span class="text-red-600 font-black text-2xl italic tracking-tighter">03 //</span>
-            <h2 class="text-2xl md:text-3xl font-black text-gray-900 uppercase italic tracking-tighter">Technischer Stack</h2>
+            <h2 class="text-2xl md:text-3xl font-black text-gray-900 uppercase italic tracking-tighter">Drittanbieter & Hosting</h2>
           </div>
 
           <div class="p-8 bg-gray-50 rounded-3xl border border-gray-100 relative group overflow-hidden">
             <div class="flex justify-between items-start mb-6">
-              <h3 class="font-black uppercase text-sm tracking-[0.2em] text-gray-900">03.1 // Hosting (Netlify)</h3>
+              <h3 class="font-black uppercase text-sm tracking-[0.2em] text-gray-900">03.1 // Hosting (IONOS)</h3>
               <Server class="w-5 h-5 text-red-600" />
             </div>
             <div class="text-sm italic text-gray-600 space-y-4 leading-relaxed">
-              <p>Betreiber: <strong>Netlify, Inc.</strong>, USA.</p>
-              <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (Berechtigtes Interesse an IT-Sicherheit).</p>
+              <p>Betreiber: <strong>IONOS SE</strong>, Elgendorfer Str. 57, 56410 Montabaur, Deutschland.</p>
+              <p>Rechtliches: Ein Vertrag zur Auftragsverarbeitung (AVV) nach Art. 28 DSGVO wurde geschlossen. Die Datenverarbeitung erfolgt ausschließlich auf deutschen Servern.</p>
+              <p>Link: <a href="https://www.ionos.de/terms-gtc/datenschutzerklaerung/" target="_blank" class="text-red-600 underline">IONOS Datenschutzerklärung</a></p>
             </div>
           </div>
 
           <div class="p-8 bg-gray-50 rounded-3xl border border-gray-100 relative group overflow-hidden">
             <div class="flex justify-between items-start mb-6">
-              <h3 class="font-black uppercase text-sm tracking-[0.2em] text-gray-900">03.2 // Analyse (GA4)</h3>
+              <h3 class="font-black uppercase text-sm tracking-[0.2em] text-gray-900">03.2 // Mail-API (EmailJS)</h3>
+              <Mail class="w-5 h-5 text-red-600" />
+            </div>
+            <div class="text-sm italic text-gray-600 space-y-4 leading-relaxed">
+              <p>Betreiber: <strong>EmailJS.com</strong> (gBridge s.r.o.), Loretánské náměstí 109/3, 118 00 Prag, Tschechien.</p>
+              <p>Details: Übermittlung der Formulardaten zur E-Mail-Zustellung. Absicherung durch EU-Standardvertragsklauseln (SCC).</p>
+              <p>Link: <a href="https://www.emailjs.com/legal/privacy-policy/" target="_blank" class="text-red-600 underline">EmailJS Privacy Policy</a></p>
+            </div>
+          </div>
+
+          <div class="p-8 bg-gray-50 rounded-3xl border border-gray-100 relative group overflow-hidden">
+            <div class="flex justify-between items-start mb-6">
+              <h3 class="font-black uppercase text-sm tracking-[0.2em] text-gray-900">03.3 // Analyse (GA4)</h3>
               <Activity class="w-5 h-5 text-red-600" />
             </div>
             <div class="text-sm italic text-gray-600 space-y-4 leading-relaxed">
-              <p>Betreiber: <strong>Google Ireland Ltd.</strong>.</p>
-              <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung via Consent-Banner).</p>
+              <p>Betreiber: <strong>Google Ireland Ltd.</strong>, Gordon House, Barrow Street, Dublin 4, Irland.</p>
+              <p>Rechtliches: Ein AV-Vertrag nach Art. 28 DSGVO wurde geschlossen. Die Übermittlung in die USA ist durch das Data Privacy Framework (DPF) abgesichert.</p>
+              <p>Link: <a href="https://policies.google.com/privacy?hl=de" target="_blank" class="text-red-600 underline">Google Datenschutzerklärung</a></p>
             </div>
           </div>
 
           <div class="p-8 bg-gray-50 rounded-3xl border border-gray-100 relative group overflow-hidden">
             <div class="flex justify-between items-start mb-6">
-              <h3 class="font-black uppercase text-sm tracking-[0.2em] text-gray-900">03.3 // Security (reCAPTCHA)</h3>
+              <h3 class="font-black uppercase text-sm tracking-[0.2em] text-gray-900">03.4 // Security (reCAPTCHA)</h3>
               <Lock class="w-5 h-5 text-red-600" />
             </div>
             <div class="text-sm italic text-gray-600 space-y-4 leading-relaxed">
-              <p>Zweck: Spam-Schutz. Das Skript wird erst nach Einwilligung im Privacy Panel geladen.</p>
-              <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO & § 25 Abs. 1 TDDDG (Einwilligung).</p>
+              <p>Betreiber: <strong>Google Ireland Ltd.</strong>, Gordon House, Barrow Street, Dublin 4, Irland.</p>
+              <p>Zweck: Missbrauchsschutz der Formulare. Das Skript wird erst nach expliziter Einwilligung im Cookie-Banner geladen.</p>
+              <p>Link: <a href="https://policies.google.com/terms?hl=de" target="_blank" class="text-red-600 underline">Google Nutzungsbedingungen</a></p>
             </div>
           </div>
         </section>
 
-        <section class="bg-gray-900 p-12 rounded-[3.5rem] text-center shadow-3xl border border-gray-800">
-          <div class="max-w-xl mx-auto">
-            <h3 class="text-2xl md:text-3xl font-black text-white uppercase italic tracking-tighter mb-4">Einwilligungen verwalten</h3>
-            <p class="text-gray-400 font-medium italic mb-8">
-              Sie können Ihre Cookie-Einstellungen jederzeit einsehen, ändern oder Ihre Einwilligung mit Wirkung für die Zukunft widerrufen.
-            </p>
-            <button
-              @click="isBannerVisible = true"
-              class="bg-red-600 text-white px-12 py-6 rounded-2xl font-black uppercase italic tracking-widest hover:bg-white hover:text-red-600 transition-all shadow-xl active:scale-95">
-              Einstellungen anpassen
-            </button>
-          </div>
-        </section>
-
-        <section>
-          <div class="flex items-center gap-4 mb-8">
-            <span class="text-red-600 font-black text-2xl italic tracking-tighter">04 //</span>
-            <h2 class="text-2xl md:text-3xl font-black text-gray-900 uppercase italic tracking-tighter">Ihre Rechte</h2>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div v-for="r in rights" :key="r.id" class="p-6 bg-white border border-gray-100 rounded-2xl shadow-sm hover:border-red-600 transition-all group">
-              <div class="text-red-600 font-black text-xs uppercase tracking-widest mb-2 group-hover:translate-x-2 transition-transform italic">{{ r.ref }}</div>
-              <h4 class="font-bold text-gray-900 text-lg italic tracking-tight">{{ r.title }}</h4>
-              <p class="text-xs text-gray-500 italic mt-2">{{ r.desc }}</p>
-            </div>
+        <section class="border-t border-gray-100 pt-16">
+          <div class="flex flex-wrap gap-8 text-xs font-black uppercase tracking-widest italic text-gray-400">
+            <NuxtLink to="/" class="hover:text-red-600 transition-colors">Startseite</NuxtLink>
+            <NuxtLink to="/impressum" class="hover:text-red-600 transition-colors">Impressum</NuxtLink>
+            <NuxtLink to="/projekte" class="hover:text-red-600 transition-colors">Projekte</NuxtLink>
+            <NuxtLink to="/kontakt" class="hover:text-red-600 transition-colors">Kontakt</NuxtLink>
           </div>
         </section>
 
@@ -142,15 +136,14 @@
 
 <script setup>
 import {
-  ShieldCheck, User, Mail, Phone, Globe,
-  Server, Activity, Lock
+  ShieldCheck, User, Mail, Globe,
+  Server, Activity, Lock, Code, Github
 } from 'lucide-vue-next'
 
 definePageMeta({
   layout: 'guest'
 })
 
-// Zugriff auf den globalen Banner-Zustand für den Widerrufs-Button
 const isBannerVisible = useState('cookie_banner_visible')
 
 const rights = [
@@ -163,7 +156,7 @@ const rights = [
 useHead({
   title: 'Datenschutz & Compliance | VelWebSolutions',
   meta: [
-    { name: 'description', content: 'DSGVO & TDDDG konforme Datenschutzerklärung von Tobias Kubina (B.Sc.). Transparente Dokumentation von Netlify, EmailJS, GA4 und reCAPTCHA.' },
+    { name: 'description', content: 'DSGVO Dokumentation der Web-Infrastruktur: Nuxt.js, IONOS, EmailJS und Google Services.' },
     { name: 'robots', content: 'noindex, follow' }
   ]
 })
