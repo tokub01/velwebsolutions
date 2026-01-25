@@ -1,240 +1,173 @@
 <template>
-  <div class="font-sans text-slate-900 bg-white selection:bg-red-500 selection:text-white antialiased overflow-x-hidden" v-if="isValidCity">
+  <NuxtLayout name="guest">
+    <div v-if="isValidCity" class="font-sans text-zinc-900 bg-white selection:bg-red-100 selection:text-red-600 antialiased overflow-x-hidden min-h-screen flex flex-col">
 
-    <header class="relative pt-32 pb-20 md:pt-56 md:pb-48 bg-red-600 text-white px-4 overflow-hidden mt-[60px] md:mt-[73px]">
-      <div class="absolute inset-0 opacity-20 pointer-events-none">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_2px_2px,white_1px,transparent_0)] bg-[size:40px_40px]"></div>
-      </div>
-      <div class="absolute -top-24 -right-24 w-96 h-96 bg-white opacity-10 blur-[100px] rounded-full"></div>
-
-      <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-6 text-left">
-        <div class="inline-flex items-center gap-3 px-3 py-1 mb-8 rounded-full bg-white/10 border border-white/20 backdrop-blur-md">
-          <span class="text-[10px] font-black uppercase tracking-[0.2em] italic">✓ Remote Engineering für {{ cityName }}</span>
+      <header class="relative pt-48 pb-24 md:pt-80 md:pb-64 bg-red-600 text-white px-4 overflow-hidden text-center">
+        <div class="absolute inset-0 z-0">
+          <div class="absolute inset-0 bg-gradient-to-b from-red-700 via-red-600 to-red-500"></div>
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,white_1px,transparent_0)] bg-[size:40px_40px] opacity-10"></div>
         </div>
 
-        <h1 class="text-[clamp(2.5rem,9vw,7.5rem)] font-[1000] mb-8 leading-[0.85] tracking-tighter uppercase italic break-words">
-          {{ displayContent.h1Prefix }}<br />
-          <span class="text-white underline decoration-white/30">{{ cityName }}.</span>
-        </h1>
+        <div class="relative z-10 max-w-5xl mx-auto flex flex-col items-center">
+          <div class="inline-flex items-center gap-3 px-5 py-2.5 mb-12 rounded-full bg-black/15 backdrop-blur-xl border border-white/10 text-[10px] md:text-xs font-black uppercase tracking-[0.4em] italic">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute h-full w-full rounded-full bg-red-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+            </span>
+            {{ typeKey?.replace(/-/g, '_') }} // {{ cityName }}
+          </div>
 
-        <div class="grid lg:grid-cols-2 gap-12 items-end">
-          <p class="text-lg md:text-2xl text-red-50 font-medium leading-relaxed italic max-w-2xl">
-            {{ cityData.heroDesc || cityData.heroSlogan || `Wir entwickeln die digitale Infrastruktur für den modernen Mittelstand in ${cityName}.` }}
-            <br class="hidden md:block" />
-            Engineering via <span class="text-white font-black border-b-2 border-white/20">Laravel Cloud</span> & <span class="text-white font-black border-b-2 border-white/20">Netlify</span>.
+          <h1 class="text-[clamp(2.6rem,12vw,9.5rem)] font-[1000] mb-12 leading-[0.9] tracking-tighter uppercase italic break-words">
+            {{ displayTitle.main }}<br />
+            <span class="text-white/30 block mt-2">
+              {{ displayTitle.sub }}
+            </span>
+          </h1>
+
+          <p class="text-xl md:text-3xl lg:text-4xl text-red-50 font-light max-w-3xl leading-relaxed italic opacity-90 tracking-tight">
+            {{ cityData?.heroDesc }}
           </p>
-          <div class="flex flex-wrap gap-4">
-            <NuxtLink to="/kontakt" class="group bg-white text-red-600 hover:bg-slate-900 hover:text-white px-10 py-5 rounded-2xl font-[1000] text-sm uppercase italic transition-all shadow-[0_20px_50px_rgba(0,0,0,0.2)]">
-              Analyse in {{ cityName }} starten
-            </NuxtLink>
+        </div>
+      </header>
+
+      <section class="py-32 md:py-64 bg-white px-4 text-center">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-5xl md:text-9xl font-[1000] uppercase italic tracking-tighter mb-12 leading-none text-zinc-900">
+            The <span class="text-red-600">Mission.</span>
+          </h2>
+          <div class="h-1.5 w-24 bg-red-600 mx-auto mb-16"></div>
+          <p class="text-zinc-500 text-xl md:text-4xl italic leading-[1.4] tracking-tight max-w-3xl mx-auto">
+            {{ cityData?.subline }}
+          </p>
+        </div>
+
+        <div class="max-w-7xl mx-auto mt-24 md:mt-40">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div v-for="(item, idx) in (cityData?.highlights || defaultHighlights)" :key="idx"
+                 class="bg-zinc-50 p-12 rounded-[3rem] border border-zinc-100 hover:border-red-600 transition-all duration-500 group">
+              <div class="text-6xl mb-8 group-hover:scale-110 transition-transform duration-500">{{ item.icon }}</div>
+              <h4 class="text-2xl font-black uppercase italic mb-4 tracking-tighter">{{ item.title }}</h4>
+              <p class="text-zinc-400 text-sm md:text-base italic leading-relaxed">{{ item.desc }}</p>
+            </div>
           </div>
         </div>
-      </div>
-    </header>
+      </section>
 
-    <section class="py-12 bg-white border-b border-slate-100">
-      <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
-        <div v-for="stat in engineeringStats" :key="stat.label" class="flex flex-col">
-          <span class="text-4xl font-[1000] text-red-600 italic tracking-tighter">{{ stat.value }}</span>
-          <span class="text-[10px] font-black uppercase text-slate-400 tracking-widest">{{ stat.label }}</span>
-        </div>
-      </div>
-    </section>
+      <section class="py-32 md:py-64 bg-zinc-950 px-4 text-white relative">
+        <div class="max-w-7xl mx-auto flex flex-col items-center">
+          <div class="text-center mb-24 md:mb-48">
+            <h2 class="text-6xl md:text-[12rem] font-[1000] uppercase italic tracking-tighter leading-none text-white">Pricing<span class="text-red-600">.</span></h2>
+            <p class="text-zinc-600 font-mono mt-10 uppercase tracking-[0.6em] text-[10px] md:text-xs">Flat Rate Engineering Units</p>
+          </div>
 
-    <section class="py-24 md:py-40 px-4 bg-slate-50">
-      <div class="max-w-7xl mx-auto">
-        <div class="mb-20">
-          <h2 class="text-sm font-black uppercase tracking-[0.3em] text-red-600 mb-4 italic">// Engineering Core {{ cityName }}</h2>
-          <p class="text-4xl md:text-7xl font-[1000] tracking-tighter italic uppercase leading-none">Methodik trifft <br/> Performance.</p>
-        </div>
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 w-full">
+            <div v-for="plan in pakete" :key="plan.hours"
+                 class="group relative bg-zinc-900/30 p-12 md:p-16 rounded-[4rem] border border-white/5 hover:border-red-600/30 transition-all duration-700 flex flex-col items-center text-center">
 
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-          <div class="md:col-span-8 p-8 md:p-12 bg-white rounded-[3rem] border border-slate-200 flex flex-col justify-between group hover:shadow-2xl transition-all duration-500">
-            <div class="max-w-xl">
-              <GitBranch class="w-12 h-12 text-red-600 mb-8" />
-              <h3 class="text-3xl font-[1000] uppercase italic mb-6">Phase 01: Requirement Engineering</h3>
-              <p class="text-slate-500 font-medium italic text-lg leading-relaxed">
-                Kein Code ohne Plan. Wir modellieren Ihre Prozesse für den Standort {{ cityName }} mittels BPMN und Domain-Driven Design (DDD). Das sichert die logische Integrität Ihres ERP- oder CRM-Systems.
+              <div class="text-red-600 font-black italic tracking-widest text-xs uppercase mb-8 opacity-50">Core_Unit</div>
+              <div class="text-8xl font-[1000] italic text-white mb-8 tracking-tighter transition-transform duration-500 group-hover:scale-110">{{ plan.hours }}h</div>
+
+              <p class="text-zinc-400 italic mb-16 text-lg leading-relaxed max-w-[280px]">
+                {{ plan.desc }}
               </p>
-            </div>
-            <div class="flex flex-wrap gap-2 mt-12">
-              <span v-for="tag in ['UML', 'BPMN 2.0', 'User Stories', 'System Architecture']" :key="tag" class="px-4 py-2 bg-slate-50 rounded-xl text-[10px] font-black uppercase tracking-tight">{{ tag }}</span>
-            </div>
-          </div>
 
-          <div class="md:col-span-4 p-8 bg-slate-900 rounded-[3rem] text-white flex flex-col justify-between">
-            <div class="space-y-6">
-              <div class="w-12 h-12 bg-red-600 rounded-2xl flex items-center justify-center">
-                <Cpu class="w-6 h-6 text-white" />
-              </div>
-              <h3 class="text-2xl font-[1000] uppercase italic leading-tight">100% Remote <br/> Delivery</h3>
-              <p class="text-slate-400 text-sm italic font-medium">Nahtloses Deployment für {{ cityName }} durch serverlose Architekturen.</p>
-            </div>
-            <div class="pt-8 border-t border-white/10">
-              <div class="flex items-center gap-3">
-                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span class="text-[10px] font-black uppercase tracking-widest italic">Live Staging Ready</span>
+              <div class="mt-auto w-full pt-10 border-t border-white/5">
+                <div class="text-5xl font-[1000] italic tracking-tighter text-white mb-2">{{ plan.priceNetto }}€</div>
+                <div class="text-zinc-600 text-xs font-bold uppercase tracking-widest">{{ plan.priceBrutto }}€ <span class="opacity-30 italic ml-1">Gross</span></div>
               </div>
             </div>
           </div>
-
-          <div v-for="service in bottomServices" :key="service.title" class="md:col-span-4 p-8 bg-white border border-slate-200 rounded-[2.5rem] hover:border-red-600 transition-colors group">
-            <component :is="service.icon" class="w-8 h-8 text-red-600 mb-6" />
-            <h4 class="text-xl font-[1000] uppercase italic mb-4">{{ service.title }}</h4>
-            <p class="text-slate-500 text-sm font-medium italic leading-relaxed">{{ service.desc }}</p>
-          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="py-24 md:py-40 px-4 bg-slate-50">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-4xl md:text-7xl font-[1000] text-center mb-20 uppercase italic tracking-tighter">FAQ <span class="text-red-600">.</span></h2>
-        <div class="space-y-4">
-          <details v-for="faq in engineeringFaqs" :key="faq.q" class="group border border-slate-200 rounded-3xl bg-white overflow-hidden hover:shadow-xl transition-all">
-            <summary class="p-8 flex justify-between items-center cursor-pointer list-none focus:outline-none">
-              <h3 class="text-base md:text-lg font-black uppercase italic tracking-tight">{{ faq.q }}</h3>
-              <div class="w-10 h-10 rounded-full border border-slate-100 flex items-center justify-center group-open:bg-red-600 group-open:text-white transition-all">+</div>
-            </summary>
-            <div class="px-8 pb-10 text-slate-500 italic font-medium leading-relaxed border-t border-slate-50 pt-6">
-              {{ faq.a }}
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-12 bg-white border-t border-slate-100">
-      <div class="max-w-7xl mx-auto px-6">
-        <span class="text-[10px] font-black uppercase text-slate-400 tracking-[0.2em] mb-6 block italic">Verfügbare Standorte in der Region:</span>
-        <div class="flex flex-wrap gap-x-6 gap-y-2">
-          <NuxtLink
-            v-for="neighbor in neighborCities"
-            :key="neighbor.slug"
-            :to="`/${typeKey}-${neighbor.slug}`"
-            class="text-[11px] font-bold uppercase italic text-slate-500 hover:text-red-600 transition-colors"
-          >
-            {{ neighbor.name }}
+      <section class="py-40 md:py-80 bg-white px-4 text-center">
+        <div class="max-w-5xl mx-auto">
+          <h2 class="text-6xl md:text-[11rem] font-[1000] uppercase italic tracking-tighter leading-[0.8] mb-16 text-zinc-900">
+            Initialize <br /> <span class="text-zinc-200">Production.</span>
+          </h2>
+          <NuxtLink to="/kontakt" class="inline-flex items-center justify-center px-16 py-8 font-black text-white bg-zinc-950 rounded-full hover:bg-red-600 transition-all shadow-2xl hover:scale-105 active:scale-95 transform">
+             <span class="uppercase italic tracking-[0.4em] text-sm">Start_Project_Sync</span>
           </NuxtLink>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="py-24 px-4 bg-white text-center">
-      <div class="max-w-6xl mx-auto bg-red-600 rounded-[3rem] p-12 md:p-32 text-white relative shadow-3xl overflow-hidden">
-        <h2 class="text-4xl md:text-8xl font-[1000] uppercase italic tracking-tighter leading-none mb-12">
-          Start in <br/>{{ cityName }}.
-        </h2>
-        <NuxtLink to="/kontakt" class="inline-block bg-white text-red-600 px-12 py-6 rounded-2xl font-black text-lg uppercase italic hover:bg-slate-900 hover:text-white transition-all shadow-xl active:scale-95">
-          Audit anfordern
-        </NuxtLink>
-      </div>
-    </section>
-
-  </div>
+    </div>
+  </NuxtLayout>
 </template>
 
 <script setup>
 import { computed } from 'vue'
 import { useRoute, createError, useHead } from '#app'
-import { Code2, Rocket, ShieldCheck, Cpu, GitBranch } from 'lucide-vue-next'
 
-// Data Imports
+// Imports (Pfade beibehalten)
 import { cityContent } from '~/data/cityContent'
 import { phpLaravelContent } from '~/data/phpLaravelContent'
 import { softwareContent } from '~/data/softwareContent'
 import { vueContent } from '~/data/vueContent'
 definePageMeta({ layout: 'guest' })
 const route = useRoute()
-const slug = computed(() => route.params.slug || '')
+const slugParam = computed(() => route.params.slug || '')
 
 const clusterMapping = {
-  'webentwicklung': { topic: 'Web Engineering', h1Prefix: 'Web Engineering in', dataSource: cityContent },
-  'php-laravel-agentur': { topic: 'Laravel Engineering', h1Prefix: 'Laravel Expert in', dataSource: phpLaravelContent },
-  'softwareentwicklung': { topic: 'Software Engineering', h1Prefix: 'Software Engineering in', dataSource: softwareContent },
-  'vue-js-entwicklung': { topic: 'Frontend Engineering', h1Prefix: 'Vue.js Specialist in', dataSource: vueContent }
+  'webentwicklung': { topic: 'Web', dataSource: cityContent },
+  'php-laravel-agentur': { topic: 'Laravel', dataSource: phpLaravelContent },
+  'softwareentwicklung': { topic: 'Software', dataSource: softwareContent },
+  'vue-js-entwicklung': { topic: 'Vue.js', dataSource: vueContent }
 }
 
 const cityData = computed(() => {
-  const fullSlug = slug.value
-  const matchedPrefix = Object.keys(clusterMapping).find(p => fullSlug.startsWith(p))
-  if (!matchedPrefix) return null
-  const config = clusterMapping[matchedPrefix]
-  const cityKey = fullSlug.replace(`${matchedPrefix}-`, '').toLowerCase()
-  const data = config.dataSource[cityKey]
-  if (!data) return null
-  return { ...data, config, typeKey: matchedPrefix, cityKey }
+  const fullSlug = slugParam.value
+  const prefix = Object.keys(clusterMapping).find(p => fullSlug.startsWith(p))
+  if (!prefix) return null
+  const config = clusterMapping[prefix]
+  const cityKey = fullSlug.replace(`${prefix}-`, '').toLowerCase()
+  return config.dataSource[cityKey] ? { ...config.dataSource[cityKey], prefix, cityKey } : null
 })
 
-const isValidCity = computed(() => !!cityData.value)
 if (!cityData.value) throw createError({ statusCode: 404, fatal: true })
 
+const isValidCity = computed(() => !!cityData.value)
 const cityName = computed(() => cityData.value?.cityName || '')
-const displayContent = computed(() => cityData.value?.config || {})
-const typeKey = computed(() => cityData.value?.typeKey || '')
+const typeKey = computed(() => cityData.value?.prefix || '')
 
-// Interlinking: Nimm 8 zufällige andere Städte aus demselben Cluster
-const neighborCities = computed(() => {
-  const source = displayContent.value.dataSource
-  return Object.keys(source)
-    .filter(key => key !== cityData.value.cityKey)
-    .sort(() => 0.5 - Math.random())
-    .slice(0, 10)
-    .map(key => ({ slug: key, name: source[key].cityName }))
+const displayTitle = computed(() => {
+  const title = cityData.value?.h1Title || 'Engineering:Core'
+  const parts = title.includes(':') ? title.split(':') : [title, 'System']
+  return { main: parts[0].trim(), sub: parts[1].trim() }
 })
 
-const engineeringStats = [
-  { value: 'Remote', label: 'Work Model' },
-  { value: 'Laravel', label: 'Cloud Native' },
-  { value: 'SOLID', label: 'Architecture' },
-  { value: '125€', label: 'Hourly Rate' }
+const pakete = [
+  { hours: 40, priceNetto: '5.000,00', priceBrutto: '5.950,00', desc: 'Sprints für System-Audits & Architektur-Quicklinks.' },
+  { hours: 80, priceNetto: '10.000,00', priceBrutto: '11.900,00', desc: 'Core-Feature Entwicklung & technische Realisierung.' },
+  { hours: 120, priceNetto: '15.000,00', priceBrutto: '17.850,00', desc: 'Enterprise Launch & High-Performance Scaling.' }
 ]
 
-const bottomServices = [
-  { icon: Code2, title: 'Clean Backend', desc: 'Wartbare PHP 8.3/Laravel Architekturen mit höchster Testabdeckung (TDD).' },
-  { icon: Rocket, title: 'Vite Frontends', desc: 'Hochperformante Vue.js 3 Interfaces für komplexe Business-Dashboards.' },
-  { icon: ShieldCheck, title: 'Security First', desc: 'Durchgängige Verschlüsselung und DSGVO-konforme Infrastruktur.' }
+const defaultHighlights = [
+  { icon: '🚀', title: 'Speed', desc: 'Next-Gen Performance' },
+  { icon: '🛡️', title: 'Security', desc: 'Hardened Codebase' },
+  { icon: '💎', title: 'Quality', desc: 'Clean Architecture' }
 ]
 
-const engineeringFaqs = [
-  { q: `Bieten Sie Vor-Ort-Termine in ${cityName.value} an?`, a: `Unser Modell ist 100% Remote-First ausgelegt, um die besten Engineering-Talente effizient einzusetzen. Für strategische Workshops in ${cityName.value} nutzen wir moderne Kollaborations-Tools oder besuchen Sie nach Absprache.` },
-  { q: "Warum setzen Sie auf Laravel Cloud und Netlify?", a: "Diese Kombination trennt Logik (Backend) und Präsentation (Frontend). Netlify liefert das Frontend global optimiert aus, während Laravel Cloud eine skalierbare Infrastruktur bietet." },
-  { q: "Erhalte ich Zugriff auf den Quellcode?", a: "Ja. Sie besitzen den vollständigen Source-Code (Git-Repository). Wir übergeben das Projekt inklusive Dokumentation und Deployment-Pipelines." }
-]
-
-// SEO: JSON-LD & META
 useHead({
-  title: computed(() => `${displayContent.value.h1Prefix} ${cityName.value} | VelWeb Engineering`),
-  meta: [
-    { name: 'description', content: computed(() => `Professionelles ${displayContent.value.topic} für Unternehmen in ${cityName.value}. Skalierbare Lösungen mit Laravel & Vue.js. Jetzt Audit anfordern!`) },
-    { property: 'og:title', content: computed(() => `${displayContent.value.h1Prefix} ${cityName.value}`) },
-    { name: 'robots', content: 'index, follow' }
-  ],
-  link: [{ rel: 'canonical', href: `https://velwebsolutions.de${route.path}` }]
+  title: `${cityData.value?.h1Title} | VelWebSolutions`,
+  meta: [{ name: 'description', content: cityData.value?.heroDesc }]
 })
-
-useJsonld([
-  {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    'name': displayContent.value.topic,
-    'description': `Individuelle Softwarelösungen in ${cityName.value}.`,
-    'areaServed': { '@type': 'City', 'name': cityName.value },
-    'provider': { '@type': 'LocalBusiness', 'name': 'VelWeb Engineering' }
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': engineeringFaqs.map(f => ({
-      '@type': 'Question',
-      'name': f.q,
-      'acceptedAnswer': { '@type': 'Answer', 'text': f.a }
-    }))
-  }
-])
 </script>
 
 <style scoped>
-details > summary { list-style: none; }
-details > summary::-webkit-details-marker { display: none; }
+@media (max-width: 350px) {
+  h1 { font-size: 2.4rem !important; }
+  h2 { font-size: 3.4rem !important; }
+  .text-8xl { font-size: 4rem !important; }
+}
+
+/* Perfekter Fluss für Texte */
+p, h1, h2 {
+  hyphens: auto;
+  text-wrap: balance;
+}
+
+.tracking-tighter {
+  letter-spacing: -0.04em;
+}
 </style>

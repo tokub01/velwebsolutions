@@ -56,10 +56,6 @@
               <Mail class="w-6 h-6 text-red-600" />
               <span class="group-hover:text-red-600">info@velwebsolutions.de</span>
             </a>
-            <a href="tel:+4917632544620" class="flex items-center gap-4 p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:border-red-600 transition-all group shadow-sm">
-              <Phone class="w-6 h-6 text-red-600" />
-              <span class="group-hover:text-red-600">+49 176 32544620</span>
-            </a>
           </div>
         </section>
 

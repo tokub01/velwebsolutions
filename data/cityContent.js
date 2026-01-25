@@ -4,824 +4,786 @@ export const cityContent = {
     h1Title: 'Webentwicklung Berlin: Skalierbare Web-Apps für die Hauptstadt',
     heroDesc: 'Vom Startup-MVP bis zur komplexen Enterprise-Lösung. Als Laravel & Vue.js Experten entwickeln wir in Berlin digitale Produkte mit höchster Performance.',
     highlights: [
-      { icon: '🚀', title: 'Startup Speed', desc: 'Schnelle Time-to-Market für Berliner Gründer durch agiles Prototyping.' },
-      { icon: '🛡️', title: 'High Security', desc: 'Sichere Web-Systeme nach aktuellsten Standards für etablierte Unternehmen.' },
-      { icon: '🌐', title: 'Fullstack Power', desc: 'Nahtlose Integration von Backend (Laravel) und Frontend (Vue.js).' }
+      { icon: '🚀', title: 'Startup Speed', desc: 'Schnelle Time-to-Market für Berliner Gründer.' },
+      { icon: '🛡️', title: 'High Security', desc: 'Sichere Web-Systeme nach aktuellsten Standards.' },
+      { icon: '🌐', title: 'Fullstack Power', desc: 'Nahtlose Integration von Backend und Frontend.' }
     ],
     testimonial: { name: 'M. Weber', position: 'Tech-Lead, Berlin' }
   },
   'hamburg': {
     cityName: 'Hamburg',
     h1Title: 'Webdesign & Webentwicklung Hamburg: Performance für den Norden',
-    heroDesc: 'Individuelle Programmierung statt Baukasten. Wir realisieren in Hamburg Web-Projekte, die durch Geschwindigkeit und exzellente UX überzeugen.',
+    heroDesc: 'Individuelle Programmierung statt Baukasten. Wir realisieren in Hamburg Web-Projekte mit hanseatischer Zuverlässigkeit und Fokus auf Core Web Vitals.',
     highlights: [
-      { icon: '⚓', title: 'Hanseatisch Digital', desc: 'Zuverlässige Projektabwicklung und klare Kommunikation auf Augenhöhe.' },
-      { icon: '⚡', title: 'Core Web Vitals', desc: 'Maximale Optimierung für Google-Rankings und Nutzererfahrung.' },
-      { icon: '🛠️', title: 'Custom Solutions', desc: '100% maßgeschneiderter Code, genau auf Ihre Hamburger Marke zugeschnitten.' }
+      { icon: '⚓', title: 'Hanseatisch Digital', desc: 'Zuverlässige Projektabwicklung auf Augenhöhe.' },
+      { icon: '⚡', title: 'High Performance', desc: 'Maximale Geschwindigkeit für bessere Google-Rankings.' },
+      { icon: '🛠️', title: 'Custom Solutions', desc: 'Passgenaue Software für Hamburger Unternehmen.' }
     ],
-    testimonial: { name: 'S. Hansen', position: 'Marketing Manager, Hamburg' }
+    testimonial: { name: 'L. Jansen', position: 'Marketing Director, Hamburg' }
   },
   'muenchen': {
     cityName: 'München',
-    h1Title: 'Webentwicklung München: High-End Lösungen für High-Tech Unternehmen',
-    heroDesc: 'In München setzen wir auf technologische Exzellenz. Wir bauen Web-Apps und Portale, die technologisch führend und absolut zukunftssicher sind.',
+    h1Title: 'Web-Agentur München: High-End Webentwicklung & UX',
+    heroDesc: 'In München entwickeln wir Web-Applikationen für anspruchsvolle Marken. Engineering-Exzellenz trifft auf modernes Design für maximale Conversion.',
     highlights: [
-      { icon: '💎', title: 'Premium Code', desc: 'Clean Code Architektur für langfristige Wartbarkeit und Skalierbarkeit.' },
-      { icon: '📊', title: 'Business Logic', desc: 'Abbildung komplexer Geschäftsprozesse in intuitiven Web-Interfaces.' },
-      { icon: '💡', title: 'Innovation', desc: 'Einsatz modernster Frameworks wie Vue 3 und Tailwind CSS.' }
+      { icon: '🦁', title: 'Premium Qualität', desc: 'Software-Architektur auf höchstem bayerischem Niveau.' },
+      { icon: '📱', title: 'Mobile First', desc: 'Perfekte Darstellung auf allen Endgeräten.' },
+      { icon: '💎', title: 'Clean Code', desc: 'Wartbare Systeme für langfristigen Erfolg.' }
     ],
-    testimonial: { name: 'Dr. T. Müller', position: 'CTO, München' }
+    testimonial: { name: 'Dr. T. Bauer', position: 'Geschäftsführer, München' }
   },
   'koeln': {
     cityName: 'Köln',
-    h1Title: 'Webentwicklung Köln: Kreativität trifft auf technisches Know-how',
-    heroDesc: 'Ihre Agentur für moderne Web-Apps in Köln. Wir verbinden ansprechendes Design mit einer robusten Architektur auf Basis von Laravel.',
+    h1Title: 'Webentwicklung Köln: Digitale Lösungen mit Herz und Verstand',
+    heroDesc: 'Wir modernisieren die Kölner Web-Landschaft. Mit Laravel und Vue.js bauen wir Web-Apps, die Ihre Kunden begeistern und Prozesse automatisieren.',
     highlights: [
-      { icon: '🦁', title: 'Kölner Spirit', desc: 'Leidenschaftliche Entwicklung für lokale Unternehmen und Global Player.' },
-      { icon: '📱', title: 'Mobile First', desc: 'Optimale Darstellung auf allen Endgeräten für maximale Reichweite.' },
-      { icon: '🔌', title: 'API-Integration', desc: 'Anbindung Ihrer Web-App an bestehende CRM- oder ERP-Systeme.' }
+      { icon: '🎡', title: 'Kölner Dynamik', desc: 'Agile Entwicklung für schnelle Projekterfolge.' },
+      { icon: '📊', title: 'Data Driven', desc: 'Optimierung basierend auf echtem Nutzerverhalten.' },
+      { icon: '🔗', title: 'API-Expertise', desc: 'Anbindung Ihrer bestehenden IT-Systeme.' }
     ],
-    testimonial: { name: 'L. Schmitz', position: 'Inhaberin, Köln' }
+    testimonial: { name: 'S. Schmitz', position: 'Gründer, Köln' }
   },
   'frankfurt': {
-    cityName: 'Frankfurt am Main',
-    h1Title: 'Webentwicklung Frankfurt: Performance für FinTech & Business',
-    heroDesc: 'Sicherheit und Geschwindigkeit sind in Frankfurt entscheidend. Wir entwickeln hochperformante Plattformen für anspruchsvolle digitale Geschäftsmodelle.',
+    cityName: 'Frankfurt',
+    h1Title: 'Webentwicklung Frankfurt: Enterprise-Systeme für den Finanzplatz',
+    heroDesc: 'Hochverfügbare Web-Apps und sichere Schnittstellen. In Frankfurt sind wir Ihr Partner für anspruchsvolle Software-Projekte im Web-Bereich.',
     highlights: [
-      { icon: '🏙️', title: 'Skalierbarkeit', desc: 'Systeme, die mit Ihrem Frankfurter Unternehmen problemlos mitwachsen.' },
-      { icon: '🔒', title: 'Data Security', desc: 'Höchste Datenschutzstandards für sensible Unternehmensdaten.' },
-      { icon: '📈', title: 'Conversion Fokus', desc: 'Optimierte Nutzerführung zur Steigerung Ihrer geschäftlichen Ziele.' }
+      { icon: '🏙️', title: 'Scalability', desc: 'Systeme, die mit Ihrem Frankfurter Business wachsen.' },
+      { icon: '🔒', title: 'Security First', desc: 'Höchste Sicherheitsstandards für sensible Daten.' },
+      { icon: '⚙️', title: 'Backend Power', desc: 'Robuste Logik für komplexe Anforderungen.' }
     ],
-    testimonial: { name: 'A. Fischer', position: 'FinTech Founder, Frankfurt' }
+    testimonial: { name: 'J. Goldstein', position: 'IT-Leiter, Frankfurt' }
+  },
+  'stuttgart': {
+    cityName: 'Stuttgart',
+    h1Title: 'Webentwicklung Stuttgart: Innovation für den Mittelstand',
+    heroDesc: 'Wir bringen die Stuttgarter Ingenieurskunst ins Web. Präzise Programmierung und effiziente Workflows für Ihren digitalen Erfolg.',
+    highlights: [
+      { icon: '🚗', title: 'Präzision', desc: 'Fehlerfreie Ausführung und saubere Dokumentation.' },
+      { icon: '🔋', title: 'High Energy', desc: 'Performante Frontends für maximale Interaktion.' },
+      { icon: '🤝', title: 'Partnerschaft', desc: 'Langfristige Betreuung Ihres Stuttgarter Projekts.' }
+    ],
+    testimonial: { name: 'A. Müller', position: 'Inhaber, Stuttgart' }
   },
   'duesseldorf': {
     cityName: 'Düsseldorf',
-    h1Title: 'Webentwicklung Düsseldorf: Exklusive Web-Lösungen für Ihr Business',
-    heroDesc: 'In der Landeshauptstadt Düsseldorf realisieren wir Web-Projekte auf höchstem Niveau. Wir liefern Performance, Design und Sicherheit aus einer Hand.',
+    h1Title: 'Webentwicklung Düsseldorf: Design trifft Technologie',
+    heroDesc: 'In der Modestadt Düsseldorf setzen wir auf ästhetische Web-Apps, die technisch perfekt unter der Haube sind. UX-Design auf Weltklasse-Niveau.',
     highlights: [
-      { icon: '👠', title: 'Modernes Design', desc: 'Ästhetik trifft Funktion für einen starken Auftritt in Düsseldorf.' },
-      { icon: '⚙️', title: 'Backend Power', desc: 'Stabile Laravel-Systeme für reibungslose Abläufe im Hintergrund.' },
-      { icon: '🤝', title: 'Partnerschaft', desc: 'Enger Austausch während der gesamten Entwicklungsphase.' }
+      { icon: '🎨', title: 'Creative Tech', desc: 'Einzigartige Designs, die Ihre Marke stärken.' },
+      { icon: '📈', title: 'ROI Fokus', desc: 'Entwicklungen, die messbare Ergebnisse liefern.' },
+      { icon: '⚡', title: 'Vite Speed', desc: 'Ultraschnelle Ladezeiten durch moderne Tooling.' }
     ],
-    testimonial: { name: 'K. Wagner', position: 'Agenturleiter, Düsseldorf' }
-  },
-  'krefeld': {
-    cityName: 'Krefeld',
-    h1Title: 'Webentwicklung Krefeld: Ihr lokaler Partner für digitale Erfolge',
-    heroDesc: 'Direkt vor Ort in Krefeld unterstützen wir Unternehmen bei der Digitalisierung. Kurze Wege, schnelle Umsetzung, maximale Qualität.',
-    highlights: [
-      { icon: '🏠', title: 'Lokal verwurzelt', desc: 'Persönlicher Ansprechpartner für Krefelder Mittelständler.' },
-      { icon: '🏗️', title: 'Starker Mittelstand', desc: 'Digitalisierung klassischer Branchen mit modernen Web-Technologien.' },
-      { icon: '✅', title: 'Full-Service', desc: 'Von der ersten Beratung bis zum Hosting und Wartung in Krefeld.' }
-    ],
-    testimonial: { name: 'J. Sommer', position: 'Geschäftsführer, Krefeld' }
+    testimonial: { name: 'C. Wagner', position: 'Art Director, Düsseldorf' }
   },
   'leipzig': {
     cityName: 'Leipzig',
-    h1Title: 'Webentwicklung Leipzig: Moderne Lösungen für den digitalen Aufbruch',
-    heroDesc: 'In Leipzig unterstützen wir wachsende Unternehmen mit individueller Softwareentwicklung. Wir bauen die digitale Basis für Ihren Erfolg.',
+    h1Title: 'Webentwicklung Leipzig: Frischer Wind für digitale Projekte',
+    heroDesc: 'Leipzig boomt – wir liefern die passende Technik. Agile Webentwicklung für wachsende Unternehmen und innovative Startups im Osten.',
     highlights: [
-      { icon: '🎨', title: 'Innovation', desc: 'Frische Ideen und moderne Tech-Stacks für den Standort Leipzig.' },
-      { icon: '📦', title: 'SaaS-Lösungen', desc: 'Entwicklung von Cloud-Plattformen und Web-Software.' },
-      { icon: '💬', title: 'Transparenz', desc: 'Klare Prozesse und regelmäßige Updates zum Projektstatus.' }
+      { icon: '🌱', title: 'Wachstum', desc: 'Skalierbare Software für expandierende Betriebe.' },
+      { icon: '💻', title: 'Modern Stack', desc: 'Einsatz von Nuxt.js, Vue 3 und Laravel.' },
+      { icon: '📧', title: 'Support', desc: 'Direkter Draht zu Ihren Entwicklern in Leipzig.' }
     ],
-    testimonial: { name: 'R. Richter', position: 'CEO, Leipzig' }
+    testimonial: { name: 'K. Lehmann', position: 'Projektmanager, Leipzig' }
   },
   'dortmund': {
     cityName: 'Dortmund',
-    h1Title: 'Webentwicklung Dortmund: IT-Power für das Ruhrgebiet',
-    heroDesc: 'Vom IT-Standort Dortmund aus entwickeln wir robuste Web-Lösungen für das gesamte Revier. Ehrlich, direkt und technisch auf dem neuesten Stand.',
+    h1Title: 'Webentwicklung Dortmund: Echter Code für das Revier',
+    heroDesc: 'Bodenständige und leistungsstarke Web-Lösungen aus Dortmund. Wir transformieren Ihre Geschäftsideen in funktionierende Software.',
     highlights: [
-      { icon: '⚽', title: 'Echte Teamarbeit', desc: 'Gemeinsame Entwicklung Ihrer Vision am Standort Dortmund.' },
-      { icon: '🛠️', title: 'Praxisnah', desc: 'Lösungen, die im Arbeitsalltag funktionieren und echten Mehrwert bieten.' },
-      { icon: '⚡', title: 'Vite Speed', desc: 'Moderne Build-Tools für blitzschnelle Frontend-Erlebnisse.' }
+      { icon: '⚒️', title: 'Struktur', desc: 'Sauberer Aufbau und logische Architektur.' },
+      { icon: '⚽', title: 'Teamgeist', desc: 'Enge Zusammenarbeit für Ihr optimales Ergebnis.' },
+      { icon: '📦', title: 'Deployment', desc: 'Automatisierte Prozesse für schnellen Launch.' }
     ],
-    testimonial: { name: 'H. Knapp', position: 'Betriebsleiter, Dortmund' }
+    testimonial: { name: 'M. Hoppe', position: 'E-Commerce Leiter, Dortmund' }
   },
   'essen': {
     cityName: 'Essen',
-    h1Title: 'Webentwicklung Essen: Digitale Transformation für den Mittelstand',
-    heroDesc: 'In Essen begleiten wir Unternehmen beim Schritt in die digitale Zukunft. Wir bauen Web-Applikationen, die Ihre Effizienz nachhaltig steigern.',
+    h1Title: 'Webentwicklung Essen: Digitale Transformation im Ruhrgebiet',
+    heroDesc: 'Wir begleiten Essener Unternehmen beim Schritt in die digitale Zukunft. Maßgeschneiderte Web-Applikationen für Industrie und Handel.',
     highlights: [
-      { icon: '⚒️', title: 'Stabile Architektur', desc: 'Belastbare Systeme für den Essener Mittelstand und Großbetriebe.' },
-      { icon: '📈', title: 'SEO inklusive', desc: 'Strukturierte Daten und schnelle Ladezeiten für lokale Sichtbarkeit.' },
-      { icon: '🔒', title: 'DSGVO Konform', desc: 'Sichere Datenverarbeitung nach höchsten deutschen Standards.' }
+      { icon: '🏗️', title: 'Robustheit', desc: 'Software, die auch bei hoher Last stabil bleibt.' },
+      { icon: '🧠', title: 'Smart Logic', desc: 'Automatisierung komplexer Business-Regeln.' },
+      { icon: '📱', title: 'Responsive', desc: 'Optimiert für Desktop, Tablet und Smartphone.' }
     ],
-    testimonial: { name: 'B. Steiger', position: 'Marketing, Essen' }
-  },
-  'duisburg': {
-    cityName: 'Duisburg',
-    h1Title: 'Webentwicklung Duisburg: Web-Apps so stark wie Stahl',
-    heroDesc: 'Wir entwickeln in Duisburg digitale Lösungen, die halten, was sie versprechen. Individuelle Programmierung für Logistik, Industrie und Handel.',
-    highlights: [
-      { icon: '🚢', title: 'Logistik-Expertise', desc: 'Spezialisierte Interfaces für komplexe Datenflüsse in Duisburg.' },
-      { icon: '⚙️', title: 'Automatisierung', desc: 'Manuelle Prozesse durch intelligente Web-Software effizienter machen.' },
-      { icon: '📱', title: 'Cross-Device', desc: 'Optimale Bedienbarkeit auf Tablet, Smartphone und Desktop.' }
-    ],
-    testimonial: { name: 'G. Vogt', position: 'Logistikleiter, Duisburg' }
-  },
-  // --- PAKET 2: GROSSSTÄDTE & STRATEGISCHE STANDORTE ---
-  'stuttgart': {
-    cityName: 'Stuttgart',
-    h1Title: 'Webentwicklung Stuttgart: Engineering-Exzellenz für digitale Produkte',
-    heroDesc: 'Wir übertragen schwäbische Präzision auf den Code. In Stuttgart entwickeln wir Web-Apps, die technisch perfekt, performant und absolut zukunftssicher sind.',
-    highlights: [
-      { icon: '⚙️', title: 'Clean Architecture', desc: 'Modularer Code für einfache Wartung und Erweiterbarkeit.' },
-      { icon: '⚡', title: 'High Performance', desc: 'Optimierte Ladezeiten für erstklassige User Experience (UX).' },
-      { icon: '🛡️', title: 'Security First', desc: 'Sichere Backend-Systeme zum Schutz Ihrer Unternehmensdaten.' }
-    ],
-    testimonial: { name: 'P. Schneider', position: 'Projektleiter, Stuttgart' }
+    testimonial: { name: 'P. König', position: 'Geschäftsführer, Essen' }
   },
   'bremen': {
     cityName: 'Bremen',
-    h1Title: 'Webdesign & Webentwicklung Bremen: Ihr Partner für digitale Innovation',
-    heroDesc: 'Individuelle Lösungen statt Standard-Baukasten. Wir realisieren in Bremen Web-Projekte mit Laravel & Vue.js, die Ihre Konkurrenz abhängen.',
+    h1Title: 'Webentwicklung Bremen: Digitale Innovation an der Weser',
+    heroDesc: 'Wir entwickeln für Bremer Unternehmen performante Web-Apps. Von der maritimen Logistik-Schnittstelle bis zum modernen E-Commerce-Frontend.',
     highlights: [
-      { icon: '⚓', title: 'Hanseatisch klar', desc: 'Transparente Prozesse und direkte Kommunikation ohne Umwege.' },
-      { icon: '📈', title: 'SEO-Optimiert', desc: 'Strukturierte Daten für bessere Sichtbarkeit in den Suchergebnissen.' },
-      { icon: '💡', title: 'SaaS-Expertise', desc: 'Entwicklung individueller Software-as-a-Service Plattformen.' }
+      { icon: '🚢', title: 'Hafen-Speed', desc: 'Ultraschnelle Ladezeiten für maximale Conversion.' },
+      { icon: '🛠️', title: 'Maßarbeit', desc: 'Individuelle Programmierung statt Standard-Templates.' },
+      { icon: '📈', title: 'SEO-Fokus', desc: 'Strukturierte Daten für Top-Rankings in Bremen.' }
     ],
-    testimonial: { name: 'F. Meyer', position: 'Gründer, Bremen' }
+    testimonial: { name: 'H. Meyer', position: 'Logistik-Manager, Bremen' }
   },
   'dresden': {
     cityName: 'Dresden',
-    h1Title: 'Webentwicklung Dresden: High-Tech Softwarelösungen aus der Region',
-    heroDesc: 'Im Silicon Saxony setzen wir auf technologische Spitze. Wir bauen in Dresden komplexe Web-Applikationen für Industrie und Mittelstand.',
+    h1Title: 'Webentwicklung Dresden: High-Tech Lösungen für Elbflorenz',
+    heroDesc: 'In Dresden vereinen wir Ästhetik mit technischer Präzision. Wir bauen Web-Applikationen auf Basis von Laravel & Vue.js für den sächsischen Mittelstand.',
     highlights: [
-      { icon: '🔬', title: 'Tech-Fokus', desc: 'Einsatz modernster Frameworks wie Vue 3 und Vite.' },
-      { icon: '🏭', title: 'Industrie 4.0', desc: 'Schnittstellenanbindung und Prozessautomatisierung im Web.' },
-      { icon: '📱', title: 'Responsive Design', desc: 'Perfekte Bedienbarkeit auf allen Endgeräten.' }
+      { icon: '💎', title: 'Präzision', desc: 'Sauberer Code nach höchsten Engineering-Standards.' },
+      { icon: '🎨', title: 'UX Design', desc: 'Benutzerfreundliche Interfaces für Dresdner Kunden.' },
+      { icon: '⚡', title: 'Performance', desc: 'Optimiert für mobile Endgeräte und Google.' }
     ],
-    testimonial: { name: 'T. Wagner', position: 'CTO, Dresden' }
+    testimonial: { name: 'F. Richter', position: 'Inhaber, Dresden' }
   },
   'hannover': {
     cityName: 'Hannover',
-    h1Title: 'Webentwicklung Hannover: Digitale Lösungen für Messestadt & Region',
-    heroDesc: 'Wir machen Ihr Unternehmen in Hannover digital sichtbar. Professionelle Programmierung von Web-Apps, Portalen und Unternehmens-Websites.',
+    h1Title: 'Webentwicklung Hannover: Ihr Partner für digitale Messen & Portale',
+    heroDesc: 'Wir digitalisieren die Messestadt. Moderne Web-Systeme für Unternehmen in Hannover, die Wert auf Skalierbarkeit und Sicherheit legen.',
     highlights: [
-      { icon: '📊', title: 'Business Fokus', desc: 'Web-Lösungen, die Ihre Geschäftsprozesse aktiv unterstützen.' },
-      { icon: '🚀', title: 'Skalierbarkeit', desc: 'Systeme, die problemlos mit Ihrem Erfolg mitwachsen.' },
-      { icon: '✅', title: 'Full-Service', desc: 'Von der Konzeption bis zum Deployment und Support.' }
+      { icon: '🏟️', title: 'Messe-Power', desc: 'Systeme, die auch bei hohem Traffic stabil bleiben.' },
+      { icon: '🔒', title: 'Sicherheit', desc: 'DSGVO-konforme Entwicklung in Niedersachsen.' },
+      { icon: '⚙️', title: 'Backend', desc: 'Robuste Logik für komplexe Geschäftsprozesse.' }
     ],
-    testimonial: { name: 'S. Fischer', position: 'Marketing Lead, Hannover' }
+    testimonial: { name: 'S. Brandt', position: 'IT-Leiter, Hannover' }
   },
   'nuernberg': {
     cityName: 'Nürnberg',
-    h1Title: 'Webentwicklung Nürnberg: Moderne Web-Apps für Franken',
-    heroDesc: 'Wir entwickeln in Nürnberg Software, die begeistert. Effiziente Workflows und modernes Frontend-Design basierend auf Vue.js.',
+    h1Title: 'Webentwicklung Nürnberg: Tradition trifft digitale Zukunft',
+    heroDesc: 'In Nürnberg programmieren wir Web-Apps, die Ihre Marke stärken. Effiziente Lösungen für Handel, Industrie und Dienstleistung im Frankenland.',
     highlights: [
-      { icon: '🥨', title: 'Regionaler Partner', desc: 'Persönliche Betreuung für Unternehmen in der Metropolregion.' },
-      { icon: '🔧', title: 'Custom Development', desc: 'Keine Themes, kein Ballast – 100% individueller Code.' },
-      { icon: '🔒', title: 'DSGVO Safe', desc: 'Datenschutzkonforme Entwicklung "Made in Germany".' }
+      { icon: '🥨', title: 'Franken-Tech', desc: 'Bodenständige und zuverlässige Zusammenarbeit.' },
+      { icon: '📱', title: 'Mobile First', desc: 'Optimale Darstellung auf Smartphones und Tablets.' },
+      { icon: '🚀', title: 'Agilität', desc: 'Schnelle Umsetzung durch moderne Frameworks.' }
     ],
-    testimonial: { name: 'M. Hofmann', position: 'Inhaber, Nürnberg' }
+    testimonial: { name: 'M. Wagner', position: 'Marketing, Nürnberg' }
+  },
+  'duisburg': {
+    cityName: 'Duisburg',
+    h1Title: 'Webentwicklung Duisburg: Strukturwandel durch Software',
+    heroDesc: 'Wir bringen das Ruhrgebiet online. In Duisburg entwickeln wir Web-Lösungen, die Ihre internen Abläufe automatisieren und Kunden binden.',
+    highlights: [
+      { icon: '🏗️', title: 'Industrie 4.0', desc: 'Schnittstellen zu Ihren bestehenden Systemen.' },
+      { icon: '📊', title: 'Conversion', desc: 'Optimierte User-Journeys für mehr Anfragen.' },
+      { icon: '💻', title: 'Fullstack', desc: 'Alles aus einer Hand: Vom Design bis zum Hosting.' }
+    ],
+    testimonial: { name: 'B. Nowak', position: 'Geschäftsführer, Duisburg' }
   },
   'bochum': {
     cityName: 'Bochum',
-    h1Title: 'Webentwicklung Bochum: Digitaler Wandel im Herzen des Reviers',
-    heroDesc: 'Ehrlich, direkt und technisch versiert. Wir bauen in Bochum Web-Lösungen für den Mittelstand – von der API bis zum UI.',
+    h1Title: 'Webentwicklung Bochum: Moderner Code für das Revier',
+    heroDesc: 'Tief im Westen entwickeln wir Web-Apps für die Zukunft. Wir realisieren Ihre digitalen Projekte in Bochum mit Fokus auf Performance und UX.',
     highlights: [
-      { icon: '⚒️', title: 'Revier-Power', desc: 'Anpackende Mentalität für schnelle Projekterfolge.' },
-      { icon: '🛠️', title: 'Laravel Profis', desc: 'Backend-Entwicklung auf höchstem Niveau.' },
-      { icon: '📱', title: 'Mobile First', desc: 'Optimiert für die mobile Nutzung Ihrer Kunden.' }
+      { icon: '⚒️', title: 'Ehrlicher Code', desc: 'Transparente Entwicklung ohne versteckte Kosten.' },
+      { icon: '🔥', title: 'Leidenschaft', desc: 'Kreative Lösungen für komplexe Probleme.' },
+      { icon: '🛡️', title: 'Wartung', desc: 'Langfristige Betreuung Ihres Bochumer Projekts.' }
     ],
-    testimonial: { name: 'U. Weber', position: 'Geschäftsführer, Bochum' }
+    testimonial: { name: 'T. Schulte', position: 'Startup-Founder, Bochum' }
   },
   'wuppertal': {
     cityName: 'Wuppertal',
-    h1Title: 'Webentwicklung Wuppertal: Innovative Web-Lösungen für Ihr Business',
-    heroDesc: 'In Wuppertal setzen wir Ihre Vision digital um. Wir programmieren Web-Apps, die durch Geschwindigkeit und intuitive Bedienung überzeugen.',
+    h1Title: 'Webentwicklung Wuppertal: Digitale Lösungen im Aufschwung',
+    heroDesc: 'Wir bewegen Wuppertal – digital. Maßgeschneiderte Web-Applikationen, die so zuverlässig funktionieren wie die Schwebebahn.',
     highlights: [
-      { icon: '🚟', title: 'Höhenflug digital', desc: 'Wir bringen Ihre Web-Präsenz technologisch auf das nächste Level.' },
-      { icon: '⚡', title: 'Vite & Tailwind', desc: 'Modernster Tech-Stack für extrem kurze Ladezeiten.' },
-      { icon: '📞', title: 'Support', desc: 'Wir lassen Sie auch nach dem Go-Live nicht allein.' }
+      { icon: '🚠', title: 'Zuverlässigkeit', desc: 'Stabile Systeme für den täglichen Einsatz.' },
+      { icon: '🌐', title: 'Sichtbarkeit', desc: 'SEO-Optimierung für den Standort Wuppertal.' },
+      { icon: '⚡', title: 'Speed', desc: 'Vite & Vue.js für blitzschnelle Reaktionen.' }
     ],
-    testimonial: { name: 'E. Bergmann', position: 'CEO, Wuppertal' }
+    testimonial: { name: 'K. Jung', position: 'Inhaberin, Wuppertal' }
   },
   'bielefeld': {
     cityName: 'Bielefeld',
-    h1Title: 'Webentwicklung Bielefeld: Performance für Ostwestfalen-Lippe',
-    heroDesc: 'Bielefeld existiert – und wir bauen dort die besten Web-Apps. Ihr Partner für individuelle Softwareentwicklung in OWL.',
+    h1Title: 'Webentwicklung Bielefeld: Sichtbare Erfolge im Web',
+    heroDesc: 'Wir beweisen: In Bielefeld entstehen erstklassige digitale Produkte. Ihr Partner für Webentwicklung und Software-Engineering in Ostwestfalen-Lippe.',
     highlights: [
-      { icon: '🎯', title: 'Zielgerichtet', desc: 'Software, die genau die Probleme Ihrer Kunden löst.' },
-      { icon: '💎', title: 'High-End Code', desc: 'Qualitätssicherung durch automatisierte Tests.' },
-      { icon: '🚀', title: 'Fast Delivery', desc: 'Effiziente Entwicklung durch agile Methoden.' }
+      { icon: '🔍', title: 'Auffindbar', desc: 'Lokale SEO-Strategien für Bielefelder Firmen.' },
+      { icon: '📦', title: 'Deployment', desc: 'Sichere Ausspielung auf performante Server.' },
+      { icon: '🤝', title: 'Support', desc: 'Ihr fester Ansprechpartner direkt vor Ort.' }
     ],
-    testimonial: { name: 'L. Kramer', position: 'Product Owner, Bielefeld' }
+    testimonial: { name: 'R. Pohl', position: 'E-Commerce, Bielefeld' }
   },
   'bonn': {
     cityName: 'Bonn',
-    h1Title: 'Webentwicklung Bonn: Professionelle Web-Lösungen für die Bundesstadt',
-    heroDesc: 'Individuelle Webentwicklung in Bonn für Unternehmen und Organisationen. Wir liefern Qualität, die höchsten Ansprüchen genügt.',
+    h1Title: 'Webentwicklung Bonn: Digitale Exzellenz in der Bundesstadt',
+    heroDesc: 'In Bonn entwickeln wir Web-Apps für Institutionen und Unternehmen. Sicherheit, Barrierefreiheit und Performance stehen bei uns an erster Stelle.',
     highlights: [
-      { icon: '🏛️', title: 'Seriös & Sicher', desc: 'Web-Systeme mit Fokus auf Stabilität und Datensicherheit.' },
-      { icon: '🔌', title: 'API-Driven', desc: 'Nahtlose Anbindung an Drittsysteme und Datenbanken.' },
-      { icon: '✨', title: 'Vue.js Magie', desc: 'Reaktive Interfaces für ein flüssiges Nutzererlebnis.' }
+      { icon: '🏛️', title: 'Professionalität', desc: 'Strukturierte Prozesse für Behörden & Firmen.' },
+      { icon: '♿', title: 'Accessibility', desc: 'Webseiten für alle Nutzer zugänglich machen.' },
+      { icon: '🔒', title: 'Datenschutz', desc: 'Strenge Einhaltung aller Sicherheitsvorgaben.' }
     ],
-    testimonial: { name: 'Dr. A. Stein', position: 'Berater, Bonn' }
+    testimonial: { name: 'D. Fischer', position: 'Projektleiter, Bonn' }
   },
   'muenster': {
     cityName: 'Münster',
-    h1Title: 'Webentwicklung Münster: Digitale Konzepte für das Münsterland',
-    heroDesc: 'Wir bauen in Münster die digitale Zukunft. Moderne Web-Applikationen, die Design und Funktionalität perfekt vereinen.',
+    h1Title: 'Webentwicklung Münster: Dynamik für die Fahrradstadt',
+    heroDesc: 'Wir bringen Schwung in Ihr digitales Business. In Münster entwickeln wir moderne Web-Applikationen mit Fokus auf intuitive Bedienung.',
     highlights: [
-      { icon: '🚲', title: 'Dynamisch', desc: 'Flexible Lösungen für agile Unternehmen in Münster.' },
-      { icon: '🎨', title: 'UX-Design', desc: 'Nutzerzentrierte Gestaltung für hohe Conversion-Rates.' },
-      { icon: '🛠️', title: 'Custom PHP', desc: 'Maßgeschneiderte Backend-Logik mit Laravel.' }
+      { icon: '🚲', title: 'Agil & Schnell', desc: 'Kurze Entwicklungszyklen für schnellen Erfolg.' },
+      { icon: '🌟', title: 'UX-Design', desc: 'Interfaces, die Ihre Kunden begeistern.' },
+      { icon: '📈', title: 'Skalierung', desc: 'Software, die mit Ihren Zielen mitwächst.' }
     ],
-    testimonial: { name: 'K. Janssen', position: 'Agenturleiter, Münster' }
+    testimonial: { name: 'J. Peters', position: 'CEO, Münster' }
   },
   'karlsruhe': {
     cityName: 'Karlsruhe',
-    h1Title: 'Webentwicklung Karlsruhe: IT-Innovation aus der Fächerstadt',
-    heroDesc: 'Am IT-Standort Karlsruhe entwickeln wir Web-Technologien auf höchstem Niveau. Wir sind Ihr Partner für anspruchsvolle Programmierung.',
+    h1Title: 'Webentwicklung Karlsruhe: Engineering-Mindset im Web',
+    heroDesc: 'In der IT-Region Karlsruhe programmieren wir anspruchsvolle Web-Systeme. Technologische Tiefe trifft auf exzellente Frontend-Performance.',
     highlights: [
-      { icon: '💻', title: 'Developer-First', desc: 'Sauber dokumentierter Code für maximale Transparenz.' },
-      { icon: '🔍', title: 'SEO-Fokus', desc: 'Beste Rankings durch technisch saubere Umsetzung.' },
-      { icon: '🧱', title: 'Komponenten-Basiert', desc: 'Wiederverwendbare UI-Elemente für effiziente Skalierung.' }
+      { icon: '🎓', title: 'IT-Expertise', desc: 'Fundiertes Wissen in modernen Frameworks.' },
+      { icon: '🚀', title: 'High-End Tech', desc: 'Einsatz von Laravel, Vue 3 und Tailwind CSS.' },
+      { icon: '🛠️', title: 'Qualität', desc: 'Automatisierte Tests für fehlerfreien Code.' }
     ],
-    testimonial: { name: 'J. Vogt', position: 'Software Engineer, Karlsruhe' }
+    testimonial: { name: 'M. Kühn', position: 'CTO, Karlsruhe' }
   },
   'mannheim': {
     cityName: 'Mannheim',
-    h1Title: 'Webentwicklung Mannheim: Web-Lösungen für die Quadratestadt',
-    heroDesc: 'Strukturierte Webentwicklung für Mannheim. Wir bauen Web-Apps, die so klar und effizient organisiert sind wie die Stadt selbst.',
+    h1Title: 'Webentwicklung Mannheim: Kreative IT für die Quadratestadt',
+    heroDesc: 'Strukturiert und effizient – Webentwicklung in Mannheim. Wir bauen digitale Lösungen, die Ihre Prozesse in der Rhein-Neckar-Region optimieren.',
     highlights: [
-      { icon: '🔳', title: 'Struktur', desc: 'Logische Software-Architektur für komplexe Aufgaben.' },
-      { icon: '🚀', title: 'Performance', desc: 'Blitzschnelle Seiten für zufriedene Nutzer.' },
-      { icon: '🤝', title: 'Fullstack', desc: 'Frontend und Backend perfekt aufeinander abgestimmt.' }
+      { icon: '🏁', title: 'Effizienz', desc: 'Vermeidung von unnötigem Overhead im Code.' },
+      { icon: '📱', title: 'Responsive', desc: 'Perfekte UX auf jedem Endgerät.' },
+      { icon: '💡', title: 'Beratung', desc: 'Wir denken strategisch für Ihr Business mit.' }
     ],
-    testimonial: { name: 'R. Bauer', position: 'Marketing, Mannheim' }
+    testimonial: { name: 'L. Berger', position: 'Geschäftsführer, Mannheim' }
   },
   'augsburg': {
     cityName: 'Augsburg',
-    h1Title: 'Webentwicklung Augsburg: Tradition trifft auf moderne Web-Technik',
-    heroDesc: 'Wir unterstützen Augsburger Unternehmen bei der Digitalisierung. Individuelle Programmierung für nachhaltigen Online-Erfolg.',
+    h1Title: 'Webentwicklung Augsburg: Traditionell zuverlässig, modern programmiert',
+    heroDesc: 'Wir digitalisieren Augsburg. Individuelle Web-Apps für Handwerk, Industrie und Dienstleister in der Fuggerstadt.',
     highlights: [
-      { icon: '📈', title: 'Wachstum', desc: 'Skalierbare Plattformen für expandierende Betriebe.' },
-      { icon: '🛠️', title: 'Individuell', desc: 'Keine Massenware, sondern echte Handarbeit im Code.' },
-      { icon: '🔒', title: 'Sicherheit', desc: 'Regelmäßige Updates und sicheres Hosting-Setup.' }
+      { icon: '🏦', title: 'Wertarbeit', desc: 'Nachhaltige Software-Architektur für Augsburg.' },
+      { icon: '⚡', title: 'Speed', desc: 'Optimierte Backend-Prozesse für kurze Ladezeiten.' },
+      { icon: '📈', title: 'Sichtbarkeit', desc: 'Lokale Google-Optimierung inklusive.' }
     ],
-    testimonial: { name: 'H. Müller', position: 'Geschäftsführer, Augsburg' }
+    testimonial: { name: 'A. Schmid', position: 'Inhaber, Augsburg' }
   },
   'wiesbaden': {
     cityName: 'Wiesbaden',
-    h1Title: 'Webentwicklung Wiesbaden: Erstklassige Web-Apps für Hessen',
-    heroDesc: 'In der Landeshauptstadt Wiesbaden realisieren wir anspruchsvolle Web-Projekte. Performance, Ästhetik und Sicherheit kombiniert.',
+    h1Title: 'Webentwicklung Wiesbaden: Repräsentative & Starke Web-Apps',
+    heroDesc: 'In der Landeshauptstadt Wiesbaden setzen wir auf Qualität. Wir entwickeln Web-Plattformen, die funktional und optisch überzeugen.',
     highlights: [
-      { icon: '✨', title: 'Premium Web', desc: 'Hochwertige Umsetzung für einen professionellen Auftritt.' },
-      { icon: '⚙️', title: 'Laravel Power', desc: 'Stabile Prozesse durch ein starkes Framework.' },
-      { icon: '📱', title: 'Responsive', desc: 'Optimale Darstellung auf Smartphone, Tablet und PC.' }
+      { icon: '🏛️', title: 'Premium-Look', desc: 'Design und Technik auf höchstem Niveau.' },
+      { icon: '🛡️', title: 'Sicherheit', desc: 'Sichere Datenhaltung und verschlüsselte Übertragung.' },
+      { icon: '📊', title: 'Analytik', desc: 'Integriertes Tracking für Ihren Erfolg.' }
     ],
-    testimonial: { name: 'C. Kurz', position: 'Inhaberin, Wiesbaden' }
+    testimonial: { name: 'S. Hoffmann', position: 'Marketing, Wiesbaden' }
   },
   'gelsenkirchen': {
     cityName: 'Gelsenkirchen',
-    h1Title: 'Webentwicklung Gelsenkirchen: Bodenständige IT-Lösungen fürs Revier',
-    heroDesc: 'Wir entwickeln in Gelsenkirchen Web-Lösungen, die funktionieren. Direkt, ehrlich und technisch am Puls der Zeit.',
+    h1Title: 'Webentwicklung Gelsenkirchen: Aufbruch in die digitale Welt',
+    heroDesc: 'Wir unterstützen Unternehmen in Gelsenkirchen beim digitalen Wandel. Ehrliche Webentwicklung mit Fokus auf messbaren Nutzen.',
     highlights: [
-      { icon: '⚒️', title: 'Ehrlich & Direkt', desc: 'Kein Fachchinesisch, sondern klare Lösungen.' },
-      { icon: '⚡', title: 'Speed-Optimierung', desc: 'Schnelle Webseiten für bessere Google-Rankings.' },
-      { icon: '🛠️', title: 'Custom Code', desc: 'Individuelle Programmierung für Gelsenkirchener Betriebe.' }
+      { icon: '🔵', title: 'Bodenständig', desc: 'Lösungen, die genau zu Ihrem Bedarf passen.' },
+      { icon: '⚙️', title: 'Automation', desc: 'Zeit sparen durch kluge Web-Software.' },
+      { icon: '📱', title: 'Modern UX', desc: 'Intuitive Apps für Ihre Zielgruppe.' }
     ],
-    testimonial: { name: 'S. Nowak', position: 'Betriebsleiter, Gelsenkirchen' }
+    testimonial: { name: 'O. Schulz', position: 'Betriebsleiter, Gelsenkirchen' }
   },
-  // --- PAKET 3: NRW-EXPANSION & DEUTSCHLAND MIX ---
   'moenchengladbach': {
     cityName: 'Mönchengladbach',
-    h1Title: 'Webentwicklung Mönchengladbach: Digitale Lösungen für den Niederrhein',
-    heroDesc: 'Wir programmieren Web-Apps und Portale in Mönchengladbach, die Ihre Geschäftsprozesse vereinfachen. Modern, schnell und sicher.',
+    h1Title: 'Webentwicklung Mönchengladbach: Performance für den Niederrhein',
+    heroDesc: 'In Mönchengladbach programmieren wir Ihre digitale Zukunft. Schnell, sicher und exakt auf Ihre geschäftlichen Anforderungen zugeschnitten.',
     highlights: [
-      { icon: '🐎', title: 'Dynamisch', desc: 'Flexible Web-Lösungen für wachsende Unternehmen in Gladbach.' },
-      { icon: '⚡', title: 'Speed', desc: 'Optimierte Ladezeiten für eine exzellente Nutzererfahrung.' },
-      { icon: '🛡️', title: 'Stabilität', desc: 'Robuste Backend-Systeme auf Basis von Laravel.' }
+      { icon: '⚽', title: 'Voller Einsatz', desc: 'Engagierte Projektbegleitung von A bis Z.' },
+      { icon: '🚀', title: 'High-Speed', desc: 'Optimiert für Core Web Vitals.' },
+      { icon: '🛠️', title: 'Wartbar', desc: 'Zukunftssicherer Code für langanhaltenden Erfolg.' }
     ],
-    testimonial: { name: 'M. Jansen', position: 'Inhaber, Mönchengladbach' }
+    testimonial: { name: 'G. Jansen', position: 'Inhaber, Mönchengladbach' }
   },
   'braunschweig': {
     cityName: 'Braunschweig',
-    h1Title: 'Webentwicklung Braunschweig: IT-Kompetenz für die Löwenstadt',
-    heroDesc: 'Individuelle Softwarelösungen und Web-Apps für Braunschweiger Unternehmen. Wir setzen auf 100% Custom Code statt Standard-Lösungen.',
+    h1Title: 'Webentwicklung Braunschweig: Forschung & Technik im Fokus',
+    heroDesc: 'In der Löwenstadt Braunschweig entwickeln wir innovative Web-Lösungen für technikorientierte Unternehmen und Startups.',
     highlights: [
-      { icon: '🦁', title: 'Löwenstark', desc: 'Zuverlässige Web-Systeme für den Braunschweiger Mittelstand.' },
-      { icon: '💻', title: 'Vue.js Profis', desc: 'Hochmoderne Frontends für intuitive Bedienbarkeit.' },
-      { icon: '🔍', title: 'SEO Ready', desc: 'Technisch perfekt optimiert für Top-Rankings bei Google.' }
+      { icon: '🦁', title: 'Starke Technik', desc: 'Einsatz neuester Frameworks und Tools.' },
+      { icon: '🧪', title: 'Innovation', desc: 'Kreative Ansätze für komplexe Software.' },
+      { icon: '🔗', title: 'Schnittstellen', desc: 'Reibungslose Anbindung externer Daten.' }
     ],
-    testimonial: { name: 'L. Wagner', position: 'CTO, Braunschweig' }
+    testimonial: { name: 'T. Krüger', position: 'Entwicklungsleiter, Braunschweig' }
   },
   'chemnitz': {
     cityName: 'Chemnitz',
-    h1Title: 'Webentwicklung Chemnitz: Innovation für den Technologiestandort',
-    heroDesc: 'In Chemnitz begleiten wir die Industrie 4.0 mit modernen Web-Schnittstellen und Applikationen. Wir digitalisieren Ihre Vision.',
+    h1Title: 'Webentwicklung Chemnitz: Digitaler Macher-Spirit für Sachsen',
+    heroDesc: 'Wir bauen Web-Apps für die Macher in Chemnitz. Funktionalität und klares Design für Ihren unternehmerischen Erfolg in der Region.',
     highlights: [
-      { icon: '⚙️', title: 'Industrie-Fokus', desc: 'Spezialisierte Web-Tools für technische Betriebe in Chemnitz.' },
-      { icon: '🚀', title: 'Skalierbar', desc: 'Anwendungen, die mit Ihren Anforderungen wachsen.' },
-      { icon: '🔒', title: 'Sicher', desc: 'Höchste Datensicherheit für Ihre Unternehmensinfrastruktur.' }
+      { icon: '⚙️', title: 'Effizienz', desc: 'Schlanke Prozesse, starke Ergebnisse.' },
+      { icon: '📊', title: 'Strategie', desc: 'Webentwicklung mit Blick auf Ihre Ziele.' },
+      { icon: '💻', title: 'Custom Code', desc: 'Individuelle Programmierung ohne Ballast.' }
     ],
-    testimonial: { name: 'S. Richter', position: 'Betriebsleiter, Chemnitz' }
+    testimonial: { name: 'S. Vogel', position: 'Geschäftsführer, Chemnitz' }
   },
   'kiel': {
     cityName: 'Kiel',
-    h1Title: 'Webentwicklung Kiel: Frischer Wind für Ihre digitale Präsenz',
-    heroDesc: 'Professionelles Webdesign und individuelle Programmierung in Kiel. Wir bauen Web-Apps, die im Norden Akzente setzen.',
+    h1Title: 'Webentwicklung Kiel: Frische Web-Konzepte für den Norden',
+    heroDesc: 'Direkt von der Förde: Wir entwickeln in Kiel Web-Applikationen, die Ihre Kunden überzeugen und Ihre Marke digital stärken.',
     highlights: [
-      { icon: '⚓', title: 'Maritim Digital', desc: 'Klare Strukturen und frische Designs aus Kiel.' },
-      { icon: '📱', title: 'Responsive', desc: 'Perfekte Darstellung auf allen mobilen Endgeräten.' },
-      { icon: '⚡', title: 'Ladezeit-King', desc: 'Wir minimieren Absprungraten durch maximale Performance.' }
+      { icon: '⛵', title: 'Frischer Wind', desc: 'Moderne Designs und neue Impulse.' },
+      { icon: '🌊', title: 'Klarheit', desc: 'Strukturierte und übersichtliche Interfaces.' },
+      { icon: '⚡', title: 'Performance', desc: 'Rasante Ladezeiten für mobile Nutzer.' }
     ],
-    testimonial: { name: 'J. Petersen', position: 'Marketing, Kiel' }
+    testimonial: { name: 'M. Nielsen', position: 'Marketing, Kiel' }
   },
   'aachen': {
     cityName: 'Aachen',
-    h1Title: 'Webentwicklung Aachen: High-End Software für die Technologieregion',
-    heroDesc: 'In Aachen entwickeln wir Web-Apps auf universitärem Niveau. Präzise Programmierung trifft auf modernes UX-Design.',
+    h1Title: 'Webentwicklung Aachen: Tech-Exzellenz für die Kaiserstadt',
+    heroDesc: 'Im Dreiländereck Aachen programmieren wir Web-Lösungen auf höchstem Niveau. Wir verbinden akademisches Wissen mit praktischer Umsetzung.',
     highlights: [
-      { icon: '🎓', title: 'Expertise', desc: 'Tiefes technisches Verständnis für komplexe Logik-Anforderungen.' },
-      { icon: '🛠️', title: 'Custom API', desc: 'Nahtlose Integration in Ihre bestehende Software-Landschaft.' },
-      { icon: '💎', title: 'Clean Code', desc: 'Hochwertige Code-Qualität für langfristigen Erfolg.' }
+      { icon: '🎓', title: 'Engineering', desc: 'Software-Architektur auf höchstem Stand.' },
+      { icon: '🌍', title: 'International', desc: 'Mehrsprachige Web-Apps für globale Märkte.' },
+      { icon: '🛡️', title: 'Stabilität', desc: 'Ausfallsichere Systeme für Ihr Business.' }
     ],
-    testimonial: { name: 'Dr. M. Schwarz', position: 'Founder, Aachen' }
+    testimonial: { name: 'Dr. L. Becker', position: 'CTO, Aachen' }
   },
   'halle': {
     cityName: 'Halle (Saale)',
-    h1Title: 'Webentwicklung Halle: Digitale Transformation für Sachsen-Anhalt',
-    heroDesc: 'Ihr Partner für individuelle Web-Projekte in Halle. Wir realisieren moderne Web-Applikationen mit Fokus auf Performance.',
+    h1Title: 'Webentwicklung Halle: Digitale Präsenz für die Händelstadt',
+    heroDesc: 'In Halle verbinden wir kreatives Webdesign mit solider Programmierung. Wir entwickeln Web-Apps, die lokale Unternehmen in Sachsen-Anhalt digital nach vorne bringen.',
     highlights: [
-      { icon: '🏙️', title: 'Zukunftssicher', desc: 'Einsatz langlebiger Technologien wie Laravel und Vue.' },
-      { icon: '🎨', title: 'User Experience', desc: 'Interfaces, die Nutzer in Halle und ganz Deutschland begeistern.' },
-      { icon: '📈', title: 'Konversionsstark', desc: 'Websites, die Besucher in Kunden verwandeln.' }
+      { icon: '🎼', title: 'Harmonische UX', desc: 'Interfaces, die intuitiv und flüssig funktionieren.' },
+      { icon: '⚙️', title: 'Backend-Fokus', desc: 'Sichere Datenverwaltung mit modernen Datenbanken.' },
+      { icon: '📱', title: 'Mobile Optimiert', desc: 'Perfekte Darstellung auf jedem Endgerät.' }
     ],
-    testimonial: { name: 'F. Fischer', position: 'Geschäftsführer, Halle' }
+    testimonial: { name: 'R. Wagner', position: 'Inhaber, Halle' }
   },
   'magdeburg': {
     cityName: 'Magdeburg',
-    h1Title: 'Webentwicklung Magdeburg: Innovative Web-Lösungen für die Elbestadt',
-    heroDesc: 'Wir bauen in Magdeburg digitale Produkte, die überzeugen. Von der ersten Idee bis zum fertigen Deployment.',
+    h1Title: 'Webentwicklung Magdeburg: Ihr Partner für das digitale Sachsen-Anhalt',
+    heroDesc: 'Wir bauen die digitale Infrastruktur für Magdeburg. Hochperformante Web-Lösungen für Industrie, Handel und Dienstleistung in der Ottostadt.',
     highlights: [
-      { icon: '🌊', title: 'Elbe-Digital', desc: 'Starke Web-Präsenz für Magdeburger Unternehmen.' },
-      { icon: '📦', title: 'SaaS Fokus', desc: 'Spezialisierung auf Cloud-basierte Software-Lösungen.' },
-      { icon: '💬', title: 'Support', desc: 'Persönliche Beratung und schnelle Hilfe bei Fragen.' }
+      { icon: '🏰', title: 'Stabile Basis', desc: 'Software-Architektur, die langfristig trägt.' },
+      { icon: '🚀', title: 'High-Speed', desc: 'Optimierte Ladezeiten für bessere Google-Rankings.' },
+      { icon: '🛡️', title: 'Sicherheit', desc: 'Umfassender Schutz Ihrer Unternehmensdaten.' }
     ],
-    testimonial: { name: 'H. Becker', position: 'Projektleiter, Magdeburg' }
+    testimonial: { name: 'M. Lehmann', position: 'Geschäftsführer, Magdeburg' }
   },
   'freiburg': {
     cityName: 'Freiburg im Breisgau',
-    h1Title: 'Webentwicklung Freiburg: Nachhaltige und effiziente Web-Lösungen',
-    heroDesc: 'In Freiburg setzen wir auf "Green-IT" durch effizienten Code. Wir programmieren Web-Apps, die Ressourcen schonen und Ladezeiten minimieren.',
+    h1Title: 'Webentwicklung Freiburg: Nachhaltige Software-Lösungen',
+    heroDesc: 'Sonnige Aussichten für Ihr Web-Projekt. In Freiburg entwickeln wir effiziente und zukunftssichere Web-Applikationen mit Fokus auf Clean Code.',
     highlights: [
-      { icon: '☀️', title: 'Effizienz', desc: 'Schlanker Code für maximale Geschwindigkeit und Performance.' },
-      { icon: '🌲', title: 'Nachhaltig', desc: 'Langfristig wartbare Software-Architektur.' },
-      { icon: '📱', title: 'Mobile First', desc: 'Optimale Bedienbarkeit für die mobile Generation.' }
+      { icon: '☀️', title: 'Zukunftssicher', desc: 'Einsatz langlebiger und moderner Frameworks.' },
+      { icon: '🌱', title: 'Effizienz', desc: 'Ressourcenschonende und schnelle Programmierung.' },
+      { icon: '📈', title: 'Wachstum', desc: 'Skalierbare Systeme für Freiburger Unternehmen.' }
     ],
-    testimonial: { name: 'L. Zimmermann', position: 'Inhaberin, Freiburg' }
+    testimonial: { name: 'L. Schwarz', position: 'Marketing, Freiburg' }
   },
-  'luebeck': {
-    cityName: 'Lübeck',
-    h1Title: 'Webentwicklung Lübeck: Digitale Exzellenz zwischen Trave und Ostsee',
-    heroDesc: 'In Lübeck realisieren wir Web-Projekte, die Vertrauen schaffen. Wir programmieren individuelle Lösungen für Handel und Dienstleistung.',
+  'krefeld': {
+    cityName: 'Krefeld',
+    h1Title: 'Webentwicklung Krefeld: Maßgeschneiderter Code vom Niederrhein',
+    heroDesc: 'In der Samt- und Seidenstadt Krefeld verweben wir Design und Technik zu erstklassigen Web-Apps. Ihr Partner für individuelle Software-Lösungen.',
     highlights: [
-      { icon: '⚓', title: 'Hanseatisch Treu', desc: 'Ehrliche Beratung und zuverlässige Projektabwicklung.' },
-      { icon: '⚡', title: 'Turbo-Ladezeit', desc: 'Vite-basierte Entwicklung für sofortige Sichtbarkeit.' },
-      { icon: '🔧', title: 'Wartung', desc: 'Kontinuierliche Pflege Ihrer Lübecker Web-Anwendung.' }
+      { icon: '🧵', title: 'Maßarbeit', desc: 'Exakt auf Ihren Geschäftsprozess zugeschnitten.' },
+      { icon: '⚡', title: 'Vite & Vue', desc: 'Modernste Frontend-Technologie für Speed.' },
+      { icon: '🔍', title: 'Local SEO', desc: 'Gefunden werden am Standort Krefeld.' }
     ],
-    testimonial: { name: 'N. Holsten', position: 'E-Commerce Manager, Lübeck' }
-  },
-  'oberhausen': {
-    cityName: 'Oberhausen',
-    h1Title: 'Webentwicklung Oberhausen: Neue Impulse für das Ruhrgebiet',
-    heroDesc: 'Vom Centro bis nach Sterkrade – wir sind Ihr Partner für Webentwicklung in Oberhausen. Moderne Web-Apps für moderne Unternehmen.',
-    highlights: [
-      { icon: '⚒️', title: 'Strukturwandel', desc: 'Wir bringen Ihr Geschäftsmodell sicher in die digitale Welt.' },
-      { icon: '💡', title: 'Kreativität', desc: 'Frische Designs kombiniert mit funktionaler Programmierung.' },
-      { icon: '📊', title: 'Marketing-Ready', desc: 'Integrierte Analyse-Tools für Ihren Erfolg in Oberhausen.' }
-    ],
-    testimonial: { name: 'P. König', position: 'Startup Founder, Oberhausen' }
-  },
-  'erfurt': {
-    cityName: 'Erfurt',
-    h1Title: 'Webentwicklung Erfurt: Maßgeschneiderte Apps für Thüringen',
-    heroDesc: 'Zentrale Lage, erstklassiger Service. Wir entwickeln in Erfurt Web-Applikationen, die Ihre Kunden nachhaltig binden.',
-    highlights: [
-      { icon: '🏰', title: 'Stabilität', desc: 'Sichere Laravel-Systeme für langlebige Projekte.' },
-      { icon: '✨', title: 'User Interface', desc: 'Ästhetische Oberflächen für hohe Kundenzufriedenheit.' },
-      { icon: '🎯', title: 'Zielgruppe', desc: 'Entwicklungen, die exakt auf Ihre Erfurter Kunden zugeschnitten sind.' }
-    ],
-    testimonial: { name: 'R. Wagner', position: 'CEO, Erfurt' }
+    testimonial: { name: 'S. Mertens', position: 'CEO, Krefeld' }
   },
   'mainz': {
     cityName: 'Mainz',
-    h1Title: 'Webentwicklung Mainz: Digitale Lösungen mit Tiefgang',
-    heroDesc: 'In der Landeshauptstadt Mainz programmieren wir Ihre digitale Zukunft. Hochperformante Web-Apps für anspruchsvolle Ziele.',
+    h1Title: 'Webentwicklung Mainz: Digitale Impulse für die Landeshauptstadt',
+    heroDesc: 'Wir bringen Mainzer Unternehmen online groß raus. Mit Laravel und Vue.js entwickeln wir Web-Systeme, die durch Performance und Optik überzeugen.',
     highlights: [
-      { icon: '🍷', title: 'Qualität', desc: 'Nur die besten Frameworks für Ihre Mainzer Web-Präsenz.' },
-      { icon: '🔒', title: 'Security', desc: 'Datenschutzkonforme Entwicklung nach DSGVO-Standard.' },
-      { icon: '⚙️', title: 'Automation', desc: 'Wir automatisieren Ihre Prozesse direkt im Browser.' }
+      { icon: '🍷', title: 'Qualität', desc: 'Handverlesener Code für anspruchsvolle Projekte.' },
+      { icon: '📱', title: 'User First', desc: 'Optimale Nutzerführung für hohe Conversion.' },
+      { icon: '⚙️', title: 'Schnittstellen', desc: 'Nahtlose Integration in Ihre IT-Landschaft.' }
     ],
-    testimonial: { name: 'M. Lehmann', position: 'Agenturleiter, Mainz' }
+    testimonial: { name: 'P. Schneider', position: 'Projektleiter, Mainz' }
+  },
+  'luebeck': {
+    cityName: 'Lübeck',
+    h1Title: 'Webentwicklung Lübeck: Hanseatische Präzision im Web',
+    heroDesc: 'Wir segeln mit Ihnen in die digitale Zukunft. In Lübeck programmieren wir Web-Apps, die so stabil und wertvoll sind wie die historische Altstadt.',
+    highlights: [
+      { icon: '🧱', title: 'Struktur', desc: 'Klar definierte Software-Architekturen.' },
+      { icon: '🌊', title: 'Frische Ideen', desc: 'Moderne UI-Konzepte für Ihre Zielgruppe.' },
+      { icon: '🚀', title: 'Performance', desc: 'Keine Wartezeiten für Ihre Nutzer.' }
+    ],
+    testimonial: { name: 'J. Hansen', position: 'Inhaber, Lübeck' }
+  },
+  'erfurt': {
+    cityName: 'Erfurt',
+    h1Title: 'Webentwicklung Erfurt: Das digitale Herz Thüringens',
+    heroDesc: 'Zentral gelegen, digital vernetzt. Wir entwickeln für Erfurter Betriebe maßgeschneiderte Web-Lösungen, die den lokalen Markt dominieren.',
+    highlights: [
+      { icon: '🌸', title: 'Wachstum', desc: 'Software, die mit Ihren Zielen mitblüht.' },
+      { icon: '🔒', title: 'Datensicherheit', desc: 'Höchste Standards made in Germany.' },
+      { icon: '💻', title: 'Fullstack', desc: 'Backend und Frontend perfekt abgestimmt.' }
+    ],
+    testimonial: { name: 'K. Bauer', position: 'Geschäftsführer, Erfurt' }
+  },
+  'oberhausen': {
+    cityName: 'Oberhausen',
+    h1Title: 'Webentwicklung Oberhausen: Neue Chancen durch Software',
+    heroDesc: 'Vom Strukturwandel zur digitalen Exzellenz. Wir bauen in Oberhausen Web-Applikationen, die Prozesse vereinfachen und Kunden begeistern.',
+    highlights: [
+      { icon: '🛍️', title: 'E-Commerce', desc: 'Verkaufsstarke Lösungen für den Handel.' },
+      { icon: '⚙️', title: 'Automation', desc: 'Weniger Aufwand durch kluge Web-Logik.' },
+      { icon: '🌟', title: 'Modern UI', desc: 'Designs, die im Kopf bleiben.' }
+    ],
+    testimonial: { name: 'D. Weber', position: 'Marketing, Oberhausen' }
   },
   'rostock': {
     cityName: 'Rostock',
-    h1Title: 'Webentwicklung Rostock: Performance für die Hansestadt',
-    heroDesc: 'In Rostock setzen wir Segel für Ihren digitalen Erfolg. Wir entwickeln Web-Apps und Schnittstellen für die Küstenregion.',
+    h1Title: 'Webentwicklung Rostock: Kurs auf digitale Performance',
+    heroDesc: 'Direkt von der Ostseeküste: Wir programmieren für Rostock Web-Apps, die technisch überlegen sind und Ihre Nutzer zum Ziel führen.',
     highlights: [
-      { icon: '🚢', title: 'Robust', desc: 'Belastbare Software-Lösungen für Rostocker Betriebe.' },
-      { icon: '⚡', title: 'High-Speed', desc: 'Maximale Performance für Google-Rankings.' },
-      { icon: '📱', title: 'Mobile Focus', desc: 'Perfekt für die Nutzung unterwegs am Hafen oder im Büro.' }
+      { icon: '⚓', title: 'Stabilität', desc: 'Software, die jedem Sturm standhält.' },
+      { icon: '⚡', title: 'High-Speed', desc: 'Optimierte Performance für mobile User.' },
+      { icon: '📈', title: 'Erfolg', desc: 'Messbare Steigerung Ihrer Anfragen.' }
     ],
-    testimonial: { name: 'K. Nordmann', position: 'Logistik, Rostock' }
+    testimonial: { name: 'M. Krüger', position: 'Hafen-Logistik, Rostock' }
   },
   'kassel': {
     cityName: 'Kassel',
-    h1Title: 'Webentwicklung Kassel: Dokumentierte Qualität für Ihr Web-Projekt',
-    heroDesc: 'Mitten in Deutschland entwickeln wir für Sie in Kassel Web-Lösungen, die Maßstäbe setzen. Sauber programmiert und voll skalierbar.',
+    h1Title: 'Webentwicklung Kassel: Dokumentierte Qualität im Web',
+    heroDesc: 'In der Mitte Deutschlands entwickeln wir für Kassel erstklassige Web-Software. Wir setzen auf Transparenz, Speed und saubere Programmierung.',
     highlights: [
-      { icon: '🎨', title: 'Dokumentiert', desc: 'Clean Code und klare Dokumentation für Ihr Team.' },
-      { icon: '🛠️', title: 'Custom PHP', desc: 'Individuelle Funktionen ohne unnötigen Ballast.' },
-      { icon: '📈', title: 'Wachstum', desc: 'Web-Apps, die mit Ihrem Kasseler Unternehmen mitgehen.' }
+      { icon: '⛰️', title: 'Beständigkeit', desc: 'Nachhaltige IT-Lösungen für den Mittelstand.' },
+      { icon: '📱', title: 'UX-Fokus', desc: 'Begeisternde Erlebnisse auf allen Screens.' },
+      { icon: '🔗', title: 'API-Power', desc: 'Flexibler Datenaustausch zwischen Systemen.' }
     ],
-    testimonial: { name: 'S. Berger', position: 'IT-Leitung, Kassel' }
+    testimonial: { name: 'A. Jung', position: 'IT-Leiter, Kassel' }
   },
   'hagen': {
     cityName: 'Hagen',
-    h1Title: 'Webentwicklung Hagen: Ihr Wegweiser in die digitale Welt',
-    heroDesc: 'Als Tor zum Sauerland unterstützen wir Hagener Unternehmen bei komplexen Web-Projekten. Direkt, kompetent und fair.',
+    h1Title: 'Webentwicklung Hagen: Das Tor zum digitalen Sauerland',
+    heroDesc: 'Wir öffnen für Hagener Unternehmen neue digitale Türen. Maßgeschneiderte Web-Lösungen, die Ihre Marktposition stärken.',
     highlights: [
-      { icon: '⛰️', title: 'Bodenständig', desc: 'Ehrliche IT-Beratung und Umsetzung in Hagen.' },
-      { icon: '🚀', title: 'Vue Power', desc: 'Blitzschnelle Frontends für moderne Anwendungen.' },
-      { icon: '✅', title: 'Festpreis', desc: 'Keine bösen Überraschungen durch klare Projektkalkulation.' }
+      { icon: '🏗️', title: 'Starke Technik', desc: 'Robuste Frameworks wie Laravel & Vue.' },
+      { icon: '🛡️', title: 'Safety', desc: 'Sichere Backends für geschäftskritische Daten.' },
+      { icon: '📊', title: 'Analyse', desc: 'Datengetriebene Optimierung Ihres Portals.' }
     ],
-    testimonial: { name: 'B. Vogt', position: 'Geschäftsführer, Hagen' }
+    testimonial: { name: 'T. Berg', position: 'Unternehmer, Hagen' }
   },
   'saarbruecken': {
     cityName: 'Saarbrücken',
-    h1Title: 'Webentwicklung Saarbrücken: Grenzenlose digitale Möglichkeiten',
-    heroDesc: 'In Saarbrücken entwickeln wir innovative Web-Software für das gesamte Saarland. Wir verbinden Technik mit Leidenschaft.',
+    h1Title: 'Webentwicklung Saarbrücken: Grenzenlose Web-Lösungen',
+    heroDesc: 'Im Herzen der Großregion entwickeln wir für Saarbrücken Web-Applikationen, die technologisch auf dem neuesten Stand sind.',
     highlights: [
-      { icon: '🇪🇺', title: 'Vernetzt', desc: 'Moderne Schnittstellenlösungen für Ihre Web-App.' },
-      { icon: '🛡️', title: 'Sicher', desc: 'Schutz Ihrer Daten durch modernste Verschlüsselung.' },
-      { icon: '⚙️', title: 'Laravel', desc: 'Backend-Expertise für stabile Applikationen.' }
+      { icon: '🤝', title: 'Nähe', desc: 'Persönliche Beratung und Betreuung vor Ort.' },
+      { icon: '🌍', title: 'Global Ready', desc: 'Mehrsprachige Systeme für den Exportmarkt.' },
+      { icon: '🚀', title: 'Innovation', desc: 'Kreative Ansätze für Ihre Herausforderung.' }
     ],
-    testimonial: { name: 'Y. Müller', position: 'Startup-Founder, Saarbrücken' }
+    testimonial: { name: 'C. Müller', position: 'CEO, Saarbrücken' }
   },
   'hamm': {
     cityName: 'Hamm',
-    h1Title: 'Webentwicklung Hamm: Professionelle Web-Apps für Westfalen',
-    heroDesc: 'In Hamm realisieren wir Ihre digitalen Ideen. Wir bauen Web-Lösungen, die einfach funktionieren und Ihre Arbeit erleichtern.',
+    h1Title: 'Webentwicklung Hamm: Vernetzte Lösungen für die Region',
+    heroDesc: 'Wir programmieren für Hamm digitale Mehrwerte. Individuelle Web-Apps, die Kommunikation verbessern und Umsätze steigern.',
     highlights: [
-      { icon: '🐘', title: 'Stark', desc: 'Belastbare Systeme für den Hammer Mittelstand.' },
-      { icon: '📱', title: 'UX-Fokus', desc: 'Einfache Bedienung für maximale Akzeptanz.' },
-      { icon: '⚡', title: 'Vite', desc: 'Moderne Build-Tools für extrem schnelle Ladezeiten.' }
+      { icon: '🐘', title: 'PHP-Expertise', desc: 'Leistungsstarke Backends mit Laravel.' },
+      { icon: '⚡', title: 'Core Web Vitals', desc: 'Google-konforme Entwicklung für Top-Speed.' },
+      { icon: '🛠️', title: 'Flexibilität', desc: 'Systeme, die sich Ihrem Bedarf anpassen.' }
     ],
-    testimonial: { name: 'A. Weber', position: 'Inhaber, Hamm' }
+    testimonial: { name: 'H. Schulze', position: 'Inhaber, Hamm' }
   },
   'potsdam': {
     cityName: 'Potsdam',
-    h1Title: 'Webentwicklung Potsdam: Ästhetik trifft auf Software-Präzision',
-    heroDesc: 'In Potsdam entwickeln wir anspruchsvolle Web-Projekte für Visionäre. Wir kombinieren exzellentes Design mit sauberer Programmierung.',
+    h1Title: 'Webentwicklung Potsdam: Ästhetik trifft auf State-of-the-Art Code',
+    heroDesc: 'In der brandenburgischen Landeshauptstadt Potsdam entwickeln wir Web-Plattformen mit Fokus auf Design-Exzellenz und technischer Tiefe.',
     highlights: [
-      { icon: '🏰', title: 'Exklusiv', desc: 'Maßgeschneiderte Lösungen statt Massenware.' },
-      { icon: '🔍', title: 'SEO-Power', desc: 'Optimierte Strukturen für beste Sichtbarkeit.' },
-      { icon: '💎', title: 'Vue 3', desc: 'Einsatz der neuesten Frontend-Technologien.' }
+      { icon: '🎨', title: 'High-End Design', desc: 'Exklusive Interfaces für exklusive Marken.' },
+      { icon: '💻', title: 'Modern Tech', desc: 'Nuxt.js und Vue 3 für interaktive Erlebnisse.' },
+      { icon: '🔒', title: 'Sicherheit', desc: 'DSGVO-konforme Architektur für Behörden & Firmen.' }
     ],
-    testimonial: { name: 'L. Brand', position: 'CEO, Potsdam' }
+    testimonial: { name: 'V. König', position: 'Agenturleiterin, Potsdam' }
   },
   'ludwigshafen': {
-    cityName: 'Ludwigshafen am Rhein',
-    h1Title: 'Webentwicklung Ludwigshafen: Starke Software für starke Industrie',
-    heroDesc: 'In Ludwigshafen unterstützen wir Unternehmen mit robusten Web-Anwendungen. Wir bauen Lösungen, die halten, was sie versprechen.',
+    cityName: 'Ludwigshafen',
+    h1Title: 'Webentwicklung Ludwigshafen: Chemie zwischen Technik und Erfolg',
+    heroDesc: 'Wir programmieren für Ludwigshafen leistungsstarke Web-Systeme. Effiziente Lösungen für Chemie, Industrie und Dienstleistung am Rhein.',
     highlights: [
-      { icon: '🏭', title: 'Industrie-Grade', desc: 'Software, die höchsten Belastungen standhält.' },
-      { icon: '🛠️', title: 'Backend-Fokus', desc: 'Stabile Datenverarbeitung mit Laravel.' },
-      { icon: '🔒', title: 'Datenschutz', desc: 'Sichere Speicherung nach deutschen Standards.' }
+      { icon: '⚗️', title: 'Struktur', desc: 'Durchdachte Prozesse für komplexe Daten.' },
+      { icon: '📊', title: 'Reporting', desc: 'Integrierte Dashboards für volle Kontrolle.' },
+      { icon: '📱', title: 'Mobile UX', desc: 'Zugriff auf Ihre Daten von überall.' }
     ],
-    testimonial: { name: 'M. Bauer', position: 'Betriebsleiter, Ludwigshafen' }
+    testimonial: { name: 'Dr. G. Bauer', position: 'CTO, Ludwigshafen' }
   },
-  // --- PAKET 4: WEST- & NORDDEUTSCHLAND MIX ---
   'muelheim': {
     cityName: 'Mülheim an der Ruhr',
-    h1Title: 'Webentwicklung Mülheim: Ihr Partner für digitale Effizienz',
-    heroDesc: 'In Mülheim realisieren wir Web-Projekte, die durch Performance und klare Strukturen überzeugen. Individuelle Software für den Erfolg an der Ruhr.',
+    h1Title: 'Webentwicklung Mülheim: Digitale Brücken zum Kunden',
+    heroDesc: 'Wir verbinden Tradition mit Moderne. In Mülheim entwickeln wir Web-Apps, die lokale Unternehmen zukunftssicher im Netz positionieren.',
     highlights: [
-      { icon: '🌉', title: 'Brückenschlag', desc: 'Wir verbinden Ihre Geschäftsidee mit modernster Web-Technologie.' },
-      { icon: '⚡', title: 'High-Speed', desc: 'Blendschnelle Ladezeiten durch optimierte Asset-Bundles.' },
-      { icon: '🛠️', title: 'Maßarbeit', desc: 'Keine Standard-Themes, sondern 100% individueller Code.' }
+      { icon: '🌉', title: 'Verbindung', desc: 'Nahtlose Integration von Web und Business.' },
+      { icon: '⚡', title: 'Performance', desc: 'Blitzschnelle Ladezeiten für weniger Absprünge.' },
+      { icon: '🛠️', title: 'Wartungsarm', desc: 'Sauberer Code für geringe Folgekosten.' }
     ],
-    testimonial: { name: 'D. Weber', position: 'Geschäftsführer, Mülheim' }
-  },
-  'oldenburg': {
-    cityName: 'Oldenburg',
-    h1Title: 'Webentwicklung Oldenburg: Moderne Web-Apps für den Nordwesten',
-    heroDesc: 'Professionelle Programmierung in Oldenburg. Wir entwickeln skalierbare Lösungen mit Laravel & Vue.js für zukunftsorientierte Unternehmen.',
-    highlights: [
-      { icon: '📈', title: 'Wachstum', desc: 'Digitale Plattformen, die mit Ihrem Unternehmen skalieren.' },
-      { icon: '🛡️', title: 'Sicherheit', desc: 'Höchste Standards bei Datenschutz und Systemsicherheit.' },
-      { icon: '📱', title: 'Mobile First', desc: 'Optimale User Experience auf jedem Endgerät.' }
-    ],
-    testimonial: { name: 'M. Janssen', position: 'IT-Leitung, Oldenburg' }
+    testimonial: { name: 'S. Fischer', position: 'Inhaberin, Mülheim' }
   },
   'osnabrueck': {
     cityName: 'Osnabrück',
-    h1Title: 'Webentwicklung Osnabrück: Technologische Spitzenleistung',
-    heroDesc: 'In Osnabrück sind wir Ihr Partner für komplexe Web-Applikationen. Wir digitalisieren Prozesse und schaffen messbaren Mehrwert.',
+    h1Title: 'Webentwicklung Osnabrück: Friedlich wachsen mit starker Technik',
+    heroDesc: 'In der Friedensstadt Osnabrück programmieren wir Ihre digitale Zukunft. Fokus auf Skalierbarkeit und intuitive Nutzererlebnisse.',
     highlights: [
-      { icon: '⚙️', title: 'Process Logic', desc: 'Abbildung komplexer Workflows in intuitiven Web-Tools.' },
-      { icon: '🔍', title: 'SEO-Fokus', desc: 'Sauberes Markup für maximale Sichtbarkeit in Osnabrück.' },
-      { icon: '🚀', title: 'Performance', desc: 'Maximale Geschwindigkeit durch modernen Tech-Stack.' }
+      { icon: '📦', title: 'E-Logistik', desc: 'Anbindung von Versand- und Lagersystemen.' },
+      { icon: '🛡️', title: 'Security', desc: 'Verschlüsselte Datenübertragung nach Standard.' },
+      { icon: '📈', title: 'SEO-Boost', desc: 'Technisch optimiert für die Google-Suche.' }
     ],
-    testimonial: { name: 'S. Meyer', position: 'Marketing, Osnabrück' }
+    testimonial: { name: 'J. Meyer', position: 'CEO, Osnabrück' }
+  },
+  'oldenburg': {
+    cityName: 'Oldenburg',
+    h1Title: 'Webentwicklung Oldenburg: Innovative Web-Apps für den Nordwesten',
+    heroDesc: 'Wir bringen Oldenburg digital voran. Individuelle Web-Software, die exakt auf die Bedürfnisse des regionalen Mittelstands zugeschnitten ist.',
+    highlights: [
+      { icon: '💡', title: 'Innovation', desc: 'Kreative Lösungen für Ihre Problemstellung.' },
+      { icon: '📱', title: 'Cross-Device', desc: 'Funktioniert perfekt auf allen Geräten.' },
+      { icon: '⚙️', title: 'Backend-Power', desc: 'Stabile Datenbanken und schnelle Logik.' }
+    ],
+    testimonial: { name: 'P. Hansen', position: 'Marketing, Oldenburg' }
   },
   'leverkusen': {
     cityName: 'Leverkusen',
-    h1Title: 'Webentwicklung Leverkusen: Innovation für Chemie & Business',
-    heroDesc: 'In Leverkusen entwickeln wir Web-Lösungen mit Substanz. Hochperformante Anwendungen für Industrie, Handel und Dienstleistung.',
+    h1Title: 'Webentwicklung Leverkusen: Dynamische Lösungen für Ihren Standort',
+    heroDesc: 'Wir entwickeln für Leverkusen Web-Applikationen mit Biss. Von der internen Prozess-Software bis zum verkaufsstarken Web-Portal.',
     highlights: [
-      { icon: '🧪', title: 'Präzision', desc: 'Exakte Umsetzung Ihrer Anforderungen in sauberen Code.' },
-      { icon: '⚡', title: 'Vue.js Power', desc: 'Reaktive Frontends für ein flüssiges Nutzererlebnis.' },
-      { icon: '🔒', title: 'Data Safe', desc: 'Sichere Backend-Strukturen auf Basis von Laravel.' }
+      { icon: '💊', title: 'Präzision', desc: 'Fehlerfreier Code für anspruchsvolle Aufgaben.' },
+      { icon: '🚀', title: 'Agile Dev', desc: 'Schnelle Umsetzung durch kurze Sprints.' },
+      { icon: '🌟', title: 'Conversion', desc: 'Design, das Nutzer zu Kunden macht.' }
     ],
-    testimonial: { name: 'R. Koch', position: 'Projektmanager, Leverkusen' }
-  },
-  'heidelberg': {
-    cityName: 'Heidelberg',
-    h1Title: 'Webentwicklung Heidelberg: Software-Lösungen mit Weitblick',
-    heroDesc: 'Wissenschaftliche Präzision trifft auf moderne Webentwicklung. In Heidelberg bauen wir Web-Apps, die technologisch führend sind.',
-    highlights: [
-      { icon: '🎓', title: 'Know-how', desc: 'Tiefgreifendes technisches Verständnis für Ihr Projekt.' },
-      { icon: '🎨', title: 'Clean Design', desc: 'Ästhetik und Funktionalität in perfekter Harmonie.' },
-      { icon: '🚀', title: 'Next-Gen Tech', desc: 'Einsatz von Vue 3, Vite und Tailwind CSS.' }
-    ],
-    testimonial: { name: 'Dr. L. Stein', position: 'Founder, Heidelberg' }
-  },
-  'solingen': {
-    cityName: 'Solingen',
-    h1Title: 'Webentwicklung Solingen: Scharfe Lösungen für Ihr Web-Projekt',
-    heroDesc: 'Qualität aus der Klingenstadt. Wir programmieren in Solingen Web-Applikationen, die durch Präzision und Schärfe im Detail überzeugen.',
-    highlights: [
-      { icon: '🔪', title: 'Präzise', desc: 'Scharf kalkulierte und exakt umgeführte Software-Projekte.' },
-      { icon: '🛠️', title: 'Custom PHP', desc: 'Individuelle Laravel-Entwicklung ohne Overhead.' },
-      { icon: '📈', title: 'Conversion', desc: 'Optimierte Nutzerführung für mehr Kundenanfragen.' }
-    ],
-    testimonial: { name: 'F. Baum', position: 'Inhaber, Solingen' }
+    testimonial: { name: 'B. Richter', position: 'Inhaber, Leverkusen' }
   },
   'darmstadt': {
     cityName: 'Darmstadt',
-    h1Title: 'Webentwicklung Darmstadt: High-Tech Web-Apps für die Wissenschaftsstadt',
-    heroDesc: 'In Darmstadt setzen wir digitale Maßstäbe. Wir entwickeln komplexe Web-Systeme für forschungsnahe Unternehmen und den Mittelstand.',
+    h1Title: 'Webentwicklung Darmstadt: Wissenschaft trifft Web-Technologie',
+    heroDesc: 'In der Wissenschaftsstadt Darmstadt programmieren wir High-End Web-Lösungen. Wir setzen auf technische Exzellenz und datengestützte Strategien.',
     highlights: [
-      { icon: '🔬', title: 'Innovation', desc: 'Zukunftssichere Technologien für anspruchsvolle Lösungen.' },
-      { icon: '🧱', title: 'Modularität', desc: 'Erweiterbare Systeme durch komponentenbasierte Architektur.' },
-      { icon: '🛡️', title: 'Security', desc: 'Umfassender Schutz Ihrer digitalen Assets.' }
+      { icon: '⚛️', title: 'Smart Tech', desc: 'Einsatz neuester JS-Frameworks (Vue/Nuxt).' },
+      { icon: '⚙️', title: 'Automation', desc: 'Vernetzen Sie Ihre digitalen Workflows.' },
+      { icon: '📊', title: 'Analytics', desc: 'Transparente Erfolgskontrolle Ihrer Web-App.' }
     ],
-    testimonial: { name: 'T. Wagner', position: 'CTO, Darmstadt' }
+    testimonial: { name: 'Dr. M. Weber', position: 'IT-Director, Darmstadt' }
   },
-  'herne': {
-    cityName: 'Herne',
-    h1Title: 'Webentwicklung Herne: Direktes Web-Engineering im Ruhrgebiet',
-    heroDesc: 'Ehrlich, schnell und zuverlässig. Wir bauen in Herne Web-Lösungen, die Ihre tägliche Arbeit effizienter machen.',
+  'solingen': {
+    cityName: 'Solingen',
+    h1Title: 'Webentwicklung Solingen: Scharfe Konzepte für Ihr Business',
+    heroDesc: 'In der Klingenstadt Solingen schmieden wir digitale Lösungen. Hochwertige Web-Apps und Software-Architekturen, die durch Präzision und Schärfe im Design überzeugen.',
     highlights: [
-      { icon: '⚒️', title: 'Ruhr-Power', desc: 'Anpackende Entwicklung für schnelle sichtbare Ergebnisse.' },
-      { icon: '⚡', title: 'Ladezeit', desc: 'Wir machen Ihre Website zum High-Speed-Portal.' },
-      { icon: '✅', title: 'Support', desc: 'Persönlicher Kontakt und schnelle Hilfe vor Ort.' }
+      { icon: '⚔️', title: 'Präzision', desc: 'Scharfer Code und exakte Umsetzung Ihrer Vorgaben.' },
+      { icon: '🚀', title: 'Performance', desc: 'Schnelle Ladezeiten für maximale Nutzerbindung.' },
+      { icon: '🛡️', title: 'Sicherheit', desc: 'Robuste Backends zum Schutz Ihrer Unternehmensdaten.' }
     ],
-    testimonial: { name: 'M. Schulz', position: 'Betriebsleiter, Herne' }
+    testimonial: { name: 'R. Kottmann', position: 'Geschäftsführer, Solingen' }
   },
   'neuss': {
     cityName: 'Neuss',
-    h1Title: 'Webentwicklung Neuss: Ihr Partner für digitale Transformation',
-    heroDesc: 'In Neuss unterstützen wir den Mittelstand bei der Digitalisierung. Wir entwickeln Web-Apps, die Ihre Kunden begeistern.',
+    h1Title: 'Webentwicklung Neuss: Moderne Technik am Rhein',
+    heroDesc: 'Wir bringen Neusser Unternehmen digital auf die Überholspur. Als Experten für Laravel und Vue.js entwickeln wir Web-Systeme, die Ihre Marktposition nachhaltig stärken.',
     highlights: [
-      { icon: '🏛️', title: 'Beständigkeit', desc: 'Langlebige Software-Lösungen für den Standort Neuss.' },
-      { icon: '📱', title: 'UX-Design', desc: 'Intuitive Bedienung auf allen mobilen Geräten.' },
-      { icon: '⚙️', title: 'Automatisierung', desc: 'Effiziente Prozesse durch intelligente Web-Software.' }
+      { icon: '🏛️', title: 'Tradition & Tech', desc: 'Zuverlässige Partnerschaft seit vielen Jahren.' },
+      { icon: '📊', title: 'ROI Fokus', desc: 'Entwicklung mit Blick auf Ihre geschäftlichen Ziele.' },
+      { icon: '📱', title: 'Mobile First', desc: 'Optimale Darstellung auf allen Endgeräten.' }
     ],
-    testimonial: { name: 'K. Müller', position: 'Inhaberin, Neuss' }
+    testimonial: { name: 'A. Helpenstein', position: 'Marketing, Neuss' }
   },
-  'regensburg': {
-    cityName: 'Regensburg',
-    h1Title: 'Webentwicklung Regensburg: Digitale Lösungen für die Domstadt',
-    heroDesc: 'In Regensburg verbinden wir Tradition mit modernster Programmierung. Wir bauen Web-Apps, die technologisch auf dem neuesten Stand sind.',
+  'heidelberg': {
+    cityName: 'Heidelberg',
+    h1Title: 'Webentwicklung Heidelberg: Intelligente Software für kluge Köpfe',
+    heroDesc: 'In der Wissensstadt Heidelberg programmieren wir Web-Applikationen auf wissenschaftlichem Niveau. Wir verbinden Innovation mit technischer Exzellenz.',
     highlights: [
-      { icon: '📈', title: 'Performance', desc: 'Optimierte Systeme für reibungslose Abläufe.' },
-      { icon: '🛠️', title: 'Individuell', desc: 'Exakt auf Ihre Regensburger Zielgruppe zugeschnitten.' },
-      { icon: '🔍', title: 'SEO-Expertise', desc: 'Technisch sauberer Code für Top-Platzierungen.' }
+      { icon: '🎓', title: 'Smart Logic', desc: 'Komplexe Algorithmen einfach im Web abgebildet.' },
+      { icon: '💡', title: 'Innovation', desc: 'Einsatz neuester Frameworks (Nuxt 3 / Vue 3).' },
+      { icon: '⚡', title: 'High-End Speed', desc: 'Optimierte Performance für anspruchsvolle User.' }
     ],
-    testimonial: { name: 'J. Bauer', position: 'Geschäftsführer, Regensburg' }
+    testimonial: { name: 'Dr. S. Mayer', position: 'IT-Leiter, Heidelberg' }
   },
   'paderborn': {
     cityName: 'Paderborn',
-    h1Title: 'Webentwicklung Paderborn: IT-Kompetenz für die Computerstadt',
-    heroDesc: 'In Paderborn fühlen wir uns technologisch zu Hause. Wir entwickeln Web-Software, die höchste IT-Ansprüche erfüllt.',
+    h1Title: 'Webentwicklung Paderborn: IT-Power für Ostwestfalen',
+    heroDesc: 'Paderborn ist IT-Standort – wir liefern den passenden Code dazu. Wir entwickeln für Paderborner Unternehmen performante Web-Plattformen und APIs.',
     highlights: [
-      { icon: '💻', title: 'Deep Tech', desc: 'Fundiertes Know-how in Backend- und Frontend-Architektur.' },
-      { icon: '🚀', title: 'Skalierung', desc: 'Systeme, die mit Ihren Anforderungen mitwachsen.' },
-      { icon: '✅', title: 'Qualität', desc: 'Automatisierte Tests für fehlerfreie Deployments.' }
+      { icon: '💻', title: 'IT-Expertise', desc: 'Tiefes Know-how in moderner Software-Architektur.' },
+      { icon: '⚙️', title: 'Automatisierung', desc: 'Effiziente Workflows durch kluge Web-Logik.' },
+      { icon: '🔍', title: 'SEO-Boost', desc: 'Gefunden werden in der Fokusregion Paderborn.' }
     ],
-    testimonial: { name: 'A. Fischer', position: 'IT-Leitung, Paderborn' }
+    testimonial: { name: 'L. Tegethoff', position: 'CEO, Paderborn' }
   },
-  'ingolstadt': {
-    cityName: 'Ingolstadt',
-    h1Title: 'Webentwicklung Ingolstadt: Vorsprung durch digitale Technik',
-    heroDesc: 'Wir bringen High-End Webentwicklung nach Ingolstadt. Effiziente Applikationen für Automobilzulieferer, Handel und Handwerk.',
+  'regensburg': {
+    cityName: 'Regensburg',
+    h1Title: 'Webentwicklung Regensburg: Welterbe trifft High-Tech',
+    heroDesc: 'In Regensburg bauen wir Web-Lösungen, die Bestand haben. Moderne Single-Page-Apps und robuste Backends für den bayerischen Mittelstand.',
     highlights: [
-      { icon: '🚗', title: 'Dynamik', desc: 'Schnelle Umsetzung und performante Endprodukte.' },
-      { icon: '🛠️', title: 'Custom Code', desc: 'Individuelle Programmierung ohne unnötigen Ballast.' },
-      { icon: '🔒', title: 'Security', desc: 'Sichere Datenhaltung nach höchsten Standards.' }
+      { icon: '🏰', title: 'Beständigkeit', desc: 'Wartbare Systeme für langfristigen Erfolg.' },
+      { icon: '🎨', title: 'UX Design', desc: 'Begeisternde Interfaces für Ihre Kunden.' },
+      { icon: '🚀', title: 'Skalierung', desc: 'Wächst flexibel mit Ihren Anforderungen mit.' }
     ],
-    testimonial: { name: 'H. Weber', position: 'Projektleiter, Ingolstadt' }
+    testimonial: { name: 'M. Huber', position: 'Inhaber, Regensburg' }
   },
-  // --- PAKET 5: SÜDDEUTSCHLAND & SPEZIALSTANDORTE ---
-  'offenbach': {
-    cityName: 'Offenbach am Main',
-    h1Title: 'Webentwicklung Offenbach: Kreative Web-Apps für Macher',
-    heroDesc: 'In Offenbach entwickeln wir Web-Lösungen, die Design und Technik vereinen. Wir bauen reaktive Frontends und stabile Backends für Ihren Erfolg.',
+  'darmstadt': {
+    cityName: 'Darmstadt',
+    h1Title: 'Webentwicklung Darmstadt: Wissenschaft trifft Web-Technologie',
+    heroDesc: 'In der Wissenschaftsstadt Darmstadt programmieren wir High-End Web-Lösungen. Wir setzen auf technische Exzellenz und datengestützte Strategien.',
     highlights: [
-      { icon: '🎨', title: 'Kreativ-Tech', desc: 'Moderne Designs kombiniert mit hochfunktionalem Laravel-Code.' },
-      { icon: '⚡', title: 'Speed-Check', desc: 'Maximale Performance für anspruchsvolle Nutzer in Offenbach.' },
-      { icon: '🛡️', title: 'Sicherheit', desc: 'Sichere Datenverarbeitung nach aktuellen DSGVO-Standards.' }
+      { icon: '⚛️', title: 'Smart Tech', desc: 'Einsatz neuester JS-Frameworks (Vue/Nuxt).' },
+      { icon: '⚙️', title: 'Automation', desc: 'Vernetzen Sie Ihre digitalen Workflows.' },
+      { icon: '📊', title: 'Analytics', desc: 'Transparente Erfolgskontrolle Ihrer Web-App.' }
     ],
-    testimonial: { name: 'D. Fischer', position: 'Agenturleiter, Offenbach' }
-  },
-  'fuerth': {
-    cityName: 'Fürth',
-    h1Title: 'Webentwicklung Fürth: Individuelle Software für den Mittelfranken',
-    heroDesc: 'In der Kleeblattstadt Fürth sind wir Ihr Partner für Web-Applikationen. Wir programmieren maßgeschneidert, effizient und zukunftssicher.',
-    highlights: [
-      { icon: '🍀', title: 'Zuverlässig', desc: 'Stabile Systeme für den Fürther Mittelstand.' },
-      { icon: '🚀', title: 'Vue 3 Power', desc: 'Interaktive Oberflächen für ein perfektes Nutzererlebnis.' },
-      { icon: '🛠️', title: 'Custom Fit', desc: 'Keine Standardlösungen, sondern Code, der zu Ihnen passt.' }
-    ],
-    testimonial: { name: 'J. Meier', position: 'Inhaber, Fürth' }
+    testimonial: { name: 'Dr. M. Weber', position: 'IT-Director, Darmstadt' }
   },
   'wuerzburg': {
     cityName: 'Würzburg',
-    h1Title: 'Webentwicklung Würzburg: Digitale Exzellenz für Unterfranken',
-    heroDesc: 'In Würzburg realisieren wir Web-Projekte mit höchstem Qualitätsanspruch. Wir bauen Web-Apps, die Ihre Kunden nachhaltig begeistern.',
+    h1Title: 'Webentwicklung Würzburg: Frische Impulse für Unterfranken',
+    heroDesc: 'Wir digitalisieren Würzburg. Individuelle Web-Apps, die Ihre Marke stärken und Ihre internen Prozesse spürbar effizienter machen.',
     highlights: [
-      { icon: '🏛️', title: 'Präzision', desc: 'Saubere Architektur für langlebige Software-Lösungen.' },
-      { icon: '📈', title: 'SEO-Fokus', desc: 'Technisches SEO für Top-Rankings am Standort Würzburg.' },
-      { icon: '📱', title: 'Responsive', desc: 'Optimale Darstellung auf allen Endgeräten.' }
+      { icon: '🍇', title: 'Qualität', desc: 'Handverlesener Code für anspruchsvolle Projekte.' },
+      { icon: '⚡', title: 'Performance', desc: 'Optimiert für maximale Geschwindigkeit.' },
+      { icon: '📱', title: 'User First', desc: 'Intuitive Bedienung auf Smartphone & PC.' }
     ],
-    testimonial: { name: 'S. Weber', position: 'Marketing, Würzburg' }
+    testimonial: { name: 'S. Fischer', position: 'Marketing, Würzburg' }
   },
-  'heilbronn': {
-    cityName: 'Heilbronn',
-    h1Title: 'Webentwicklung Heilbronn: IT-Innovation für die Region',
-    heroDesc: 'In der Wissensstadt Heilbronn entwickeln wir Web-Technologien der nächsten Generation. Performance und Skalierbarkeit für Ihr Business.',
+  'fuerth': {
+    cityName: 'Fürth',
+    h1Title: 'Webentwicklung Fürth: Dynamische Lösungen für die Kleeblattstadt',
+    heroDesc: 'In Fürth sind wir Ihr Partner für moderne Webentwicklung. Wir realisieren Web-Projekte mit Leidenschaft und technischem Fokus auf Laravel.',
     highlights: [
-      { icon: '💡', title: 'Innovativ', desc: 'Einsatz modernster Frameworks wie Vite und Tailwind.' },
-      { icon: '⚙️', title: 'Automatisierung', desc: 'Effiziente Web-Workflows für Heilbronner Unternehmen.' },
-      { icon: '🛡️', title: 'High-End Security', desc: 'Schutz Ihrer Web-App vor modernen Bedrohungen.' }
+      { icon: '☘️', title: 'Zuverlässigkeit', desc: 'Ehrliche Beratung und saubere Umsetzung.' },
+      { icon: '🛠️', title: 'Custom Code', desc: 'Keine Baukasten-Lösungen, sondern echte Arbeit.' },
+      { icon: '📈', title: 'Wachstum', desc: 'Digitale Strategien für mehr Reichweite.' }
     ],
-    testimonial: { name: 'M. Hofmann', position: 'IT-Leitung, Heilbronn' }
-  },
-  'ulm': {
-    cityName: 'Ulm',
-    h1Title: 'Webentwicklung Ulm: Web-Lösungen mit höchster Präzision',
-    heroDesc: 'In Ulm setzen wir digitale Maßstäbe. Wir entwickeln hochperformante Web-Applikationen für Industrie, Handel und Dienstleistung.',
-    highlights: [
-      { icon: '📐', title: 'Strukturiert', desc: 'Durchdachte Software-Architektur für komplexe Anforderungen.' },
-      { icon: '⚡', title: 'Fast-Load', desc: 'Optimierte Assets für blitzschnelle Ladezeiten.' },
-      { icon: '✅', title: 'Fullstack', desc: 'Backend und Frontend aus einer erfahrenen Hand.' }
-    ],
-    testimonial: { name: 'R. Bauer', position: 'Projektleiter, Ulm' }
+    testimonial: { name: 'T. Erhardt', position: 'Geschäftsführer, Fürth' }
   },
   'wolfsburg': {
     cityName: 'Wolfsburg',
-    h1Title: 'Webentwicklung Wolfsburg: Dynamische Web-Apps für die Autostadt',
-    heroDesc: 'In Wolfsburg unterstützen wir Unternehmen mit leistungsstarker Web-Software. Wir programmieren Lösungen, die Geschwindigkeit auf die digitale Straße bringen.',
+    h1Title: 'Webentwicklung Wolfsburg: Engineering im digitalen Raum',
+    heroDesc: 'In Wolfsburg setzen wir auf Präzision. Wir entwickeln Web-Applikationen, die so zuverlässig und performant funktionieren wie deutsche Ingenieurskunst.',
     highlights: [
-      { icon: '🏎️', title: 'High-Performance', desc: 'Web-Systeme, die auch bei hohen Nutzerzahlen stabil bleiben.' },
-      { icon: '🔧', title: 'Custom PHP', desc: 'Spezialisierte Laravel-Entwicklung für Wolfsburg.' },
-      { icon: '📊', title: 'Analytik', desc: 'Integrierte Daten-Auswertung für Ihren Erfolg.' }
+      { icon: '🚗', title: 'Drive', desc: 'Wir bringen Ihr Projekt schnell auf die Straße.' },
+      { icon: '⚙️', title: 'Struktur', desc: 'Durchdachte Backends für komplexe Daten.' },
+      { icon: '🛡️', title: 'Security', desc: 'Höchste Standards für Unternehmens-Software.' }
     ],
-    testimonial: { name: 'P. Wagner', position: 'Operations Manager, Wolfsburg' }
+    testimonial: { name: 'J. Winter', position: 'Projektleiter, Wolfsburg' }
   },
-  'goettingen': {
-    cityName: 'Göttingen',
-    h1Title: 'Webentwicklung Göttingen: Wissenschaftlich fundierter Code',
-    heroDesc: 'In Göttingen entwickeln wir Web-Apps mit höchstem technischem Anspruch. Wir kombinieren Know-how mit moderner Fullstack-Entwicklung.',
+  'offenbach': {
+    cityName: 'Offenbach',
+    h1Title: 'Webentwicklung Offenbach: Kreativ & Technisch am Puls',
+    heroDesc: 'Offenbach boomt – wir liefern die Technik. Moderne Webentwicklung für Startups und etablierte Unternehmen in der Rhein-Main-Region.',
     highlights: [
-      { icon: '🎓', title: 'Deep Knowledge', desc: 'Technisches Verständnis für anspruchsvolle Algorithmen.' },
-      { icon: '🧱', title: 'Modularität', desc: 'Erweiterbare Komponenten für langfristige Flexibilität.' },
-      { icon: '🔍', title: 'Optimiert', desc: 'Bestwerte in Core Web Vitals für Ihre Göttinger Website.' }
+      { icon: '🎨', title: 'Design & Code', desc: 'Perfektes Zusammenspiel von Optik und Technik.' },
+      { icon: '🚀', title: 'Agilität', desc: 'Schnelle Sprints für kurze Entwicklungszeiten.' },
+      { icon: '🌐', title: 'Vernetzung', desc: 'Schnittstellen zu Ihren Social- & CRM-Kanälen.' }
     ],
-    testimonial: { name: 'Dr. T. Schmidt', position: 'CEO, Göttingen' }
+    testimonial: { name: 'L. Aziz', position: 'Founder, Offenbach' }
+  },
+  'ulm': {
+    cityName: 'Ulm',
+    h1Title: 'Webentwicklung Ulm: Innovation zwischen Tradition und Zukunft',
+    heroDesc: 'In Ulm programmieren wir Web-Lösungen, die neue Maßstäbe setzen. Höchste Performance für Industrie und Handel an der Donau.',
+    highlights: [
+      { icon: '⛪', title: 'Höchste Qualität', desc: 'Software-Architektur auf Top-Niveau.' },
+      { icon: '⚡', title: 'Vite Speed', desc: 'Ultraschnelle Frontends mit Vue.js.' },
+      { icon: '📦', title: 'Full-Service', desc: 'Von der Idee bis zum fertigen Deployment.' }
+    ],
+    testimonial: { name: 'H. Müller', position: 'IT-Leiter, Ulm' }
+  },
+  'heilbronn': {
+    cityName: 'Heilbronn',
+    h1Title: 'Webentwicklung Heilbronn: Digitale Exzellenz für die Region',
+    heroDesc: 'Wir stärken den Standort Heilbronn durch erstklassige Web-Software. Individuelle Lösungen für den Mittelstand und Hidden Champions.',
+    highlights: [
+      { icon: '🏗️', title: 'Stabilität', desc: 'Robuste Systeme für geschäftskritische Daten.' },
+      { icon: '🧠', title: 'Smart UI', desc: 'Benutzerführung, die Ihre Kunden leitet.' },
+      { icon: '📈', title: 'SEO-Power', desc: 'Optimierte Strukturen für lokale Sichtbarkeit.' }
+    ],
+    testimonial: { name: 'M. Wagner', position: 'Inhaber, Heilbronn' }
   },
   'pforzheim': {
     cityName: 'Pforzheim',
-    h1Title: 'Webentwicklung Pforzheim: Glänzende Lösungen für Ihr Web-Projekt',
-    heroDesc: 'Präzision aus der Goldstadt. Wir programmieren in Pforzheim Web-Applikationen, die so wertvoll und stabil sind wie Ihr Unternehmen selbst.',
+    h1Title: 'Webentwicklung Pforzheim: Glänzende Lösungen für Ihr Web',
+    heroDesc: 'In der Goldstadt Pforzheim entwickeln wir wertvolle Web-Applikationen. Wir verbinden technisches Know-how mit Fokus auf messbare Ergebnisse.',
     highlights: [
-      { icon: '💎', title: 'Präzise Arbeit', desc: 'Detailverliebte Umsetzung Ihrer UI/UX-Vorgaben.' },
-      { icon: '🚀', title: 'Modern Stack', desc: 'Zukunftssicher mit Vue.js und Laravel.' },
-      { icon: '🔒', title: 'Sicher', desc: 'Verschlüsselte Datenübertragung und sichere Backends.' }
+      { icon: '💍', title: 'Wertarbeit', desc: 'Langlebige und wartbare Programmierung.' },
+      { icon: '🔒', title: 'Datenschutz', desc: 'Konsequente Einhaltung der DSGVO-Vorgaben.' },
+      { icon: '📱', title: 'Responsiv', desc: 'Perfekt auf Tablet, Smartphone und Desktop.' }
     ],
-    testimonial: { name: 'C. Müller', position: 'Inhaberin, Pforzheim' }
+    testimonial: { name: 'K. Schmied', position: 'Marketing, Pforzheim' }
   },
-  'recklinghausen': {
-    cityName: 'Recklinghausen',
-    h1Title: 'Webentwicklung Recklinghausen: Ihr Partner im nördlichen Ruhrgebiet',
-    heroDesc: 'Ehrlich und direkt – wir entwickeln in Recklinghausen Web-Lösungen für den Mittelstand. Individuell programmiert für messbare Erfolge.',
+  'goettingen': {
+    cityName: 'Göttingen',
+    h1Title: 'Webentwicklung Göttingen: Wissen schafft digitale Welten',
+    heroDesc: 'Wir programmieren für Göttingen die Web-Lösungen von morgen. Technologische Tiefe trifft auf intuitive User Experience für den Bildungs- & Forschungsstandort.',
     highlights: [
-      { icon: '⚒️', title: 'Bodenständig', desc: 'Ehrliche Beratung und handfeste Programmierung.' },
-      { icon: '⚡', title: 'Speed', desc: 'Schnelle Webseiten für eine bessere Conversion-Rate.' },
-      { icon: '📱', title: 'Mobile Focus', desc: 'Optimiert für Nutzer in Recklinghausen und Umgebung.' }
+      { icon: '📚', title: 'Expertise', desc: 'Fundiertes Wissen in Laravel & Vue.js.' },
+      { icon: '⚡', title: 'Performance', desc: 'Keine Kompromisse bei der Geschwindigkeit.' },
+      { icon: '🤝', title: 'Beratung', desc: 'Wir planen Ihre Software-Architektur im Detail.' }
     ],
-    testimonial: { name: 'M. Schulz', position: 'Geschäftsführer, Recklinghausen' }
+    testimonial: { name: 'Dr. P. Klein', position: 'Wiss. Mitarbeiter, Göttingen' }
   },
   'bottrop': {
     cityName: 'Bottrop',
-    h1Title: 'Webentwicklung Bottrop: Digitale Innovation für das Revier',
-    heroDesc: 'In Bottrop setzen wir auf digitale Fortschritte. Wir bauen Web-Apps, die lokale Unternehmen fit für die Zukunft machen.',
+    h1Title: 'Webentwicklung Bottrop: Echter Code aus dem Revier',
+    heroDesc: 'In Bottrop entwickeln wir ehrliche und starke Web-Apps. Wir unterstützen lokale Unternehmen beim digitalen Aufbruch mit modernster Technik.',
     highlights: [
-      { icon: '🏗️', title: 'Strukturwandel', desc: 'Vom klassischen Geschäft zum digitalen Vorreiter.' },
-      { icon: '⚙️', title: 'Custom Code', desc: '100% individuelle Entwicklung statt Baukasten.' },
-      { icon: '✅', title: 'Service', desc: 'Langfristige Begleitung Ihres Projekts in Bottrop.' }
+      { icon: '⚒️', title: 'Struktur', desc: 'Saubere Trennung von Frontend und Backend.' },
+      { icon: '🔥', title: 'Energie', desc: 'Leidenschaftliche Umsetzung Ihrer Vision.' },
+      { icon: '📊', title: 'Erfolg', desc: 'Lösungen, die Ihre Prozesse beschleunigen.' }
     ],
-    testimonial: { name: 'J. Becker', position: 'Einzelhändler, Bottrop' }
+    testimonial: { name: 'M. Weber', position: 'E-Commerce, Bottrop' }
   },
-  'bremerhaven': {
-    cityName: 'Bremerhaven',
-    h1Title: 'Webentwicklung Bremerhaven: Performance an der Küste',
-    heroDesc: 'In Bremerhaven realisieren wir Web-Projekte für Maritim, Logistik und Handel. Wir bauen robuste Anwendungen für den Norden.',
+  'recklinghausen': {
+    cityName: 'Recklinghausen',
+    h1Title: 'Webentwicklung Recklinghausen: Digitale Festspiele für Ihr Business',
+    heroDesc: 'Wir inszenieren Ihren Web-Auftritt in Recklinghausen technisch perfekt. Innovative Web-Applikationen für Handel und Dienstleistung.',
     highlights: [
-      { icon: '🚢', title: 'Seefest', desc: 'Belastbare Software-Architekturen für raue Märkte.' },
-      { icon: '📱', title: 'UX-Design', desc: 'Moderne Oberflächen, die intuitiv bedienbar sind.' },
-      { icon: '⚡', title: 'Vite Speed', desc: 'Extrem kurze Ladezeiten für bessere Rankings.' }
+      { icon: '🎭', title: 'Auftritt', desc: 'Beeindruckende Frontends, die überzeugen.' },
+      { icon: '⚙️', title: 'Logik', desc: 'Komplexe Prozesse im Hintergrund automatisiert.' },
+      { icon: '🛡️', title: 'Support', desc: 'Wir lassen Sie auch nach dem Launch nicht allein.' }
     ],
-    testimonial: { name: 'K. Hansen', position: 'Logistikleiter, Bremerhaven' }
+    testimonial: { name: 'J. Schulte', position: 'Geschäftsführer, Recklinghausen' }
   },
   'reutlingen': {
     cityName: 'Reutlingen',
-    h1Title: 'Webentwicklung Reutlingen: Technik am Fuße der Alb',
-    heroDesc: 'In Reutlingen entwickeln wir Web-Apps mit schwäbischem Qualitätsbewusstsein. Wir sind Ihr Partner für anspruchsvolle Software.',
+    h1Title: 'Webentwicklung Reutlingen: Innovation am Fuße der Alb',
+    heroDesc: 'In Reutlingen programmieren wir Web-Software für den Erfolg Ihrer Firma. Effizienz, Design und Performance aus einer Hand.',
     highlights: [
-      { icon: '📈', title: 'Wachstum', desc: 'Digitale Plattformen für expandierende Unternehmen.' },
-      { icon: '🛡️', title: 'Sicherheit', desc: 'Höchste Standards bei Datensicherheit und Hosting.' },
-      { icon: '🛠️', title: 'Custom Made', desc: 'Code, der exakt Ihre Geschäftsprozesse abbildet.' }
+      { icon: '⛰️', title: 'Solide Basis', desc: 'Frameworks, die Sicherheit garantieren.' },
+      { icon: '🚀', title: 'Modern Stack', desc: 'Nutzung von Nuxt.js und Tailwind CSS.' },
+      { icon: '🔍', title: 'Sichtbarkeit', desc: 'Technisches SEO für Top-Platzierungen.' }
     ],
-    testimonial: { name: 'F. Keppler', position: 'CTO, Reutlingen' }
+    testimonial: { name: 'A. Bauer', position: 'Inhaber, Reutlingen' }
   },
-  // --- PAKET 6: FINALE & REGIONALE STANDORTE ---
   'koblenz': {
     cityName: 'Koblenz',
-    h1Title: 'Webentwicklung Koblenz: Digitale Präsenz am Deutschen Eck',
-    heroDesc: 'In Koblenz entwickeln wir Web-Lösungen, die Tradition und Moderne verbinden. Hochperformante Apps für Unternehmen in der Region Mittelrhein.',
+    h1Title: 'Webentwicklung Koblenz: Wo Technik auf Erfolg trifft',
+    heroDesc: 'Am Deutschen Eck entwickeln wir für Koblenz zukunftsweisende Web-Apps. Wir vernetzen Ihr Unternehmen digital mit Ihren Kunden.',
     highlights: [
-      { icon: '🏰', title: 'Regional-Power', desc: 'Starke Web-Lösungen für den Koblenzer Mittelstand.' },
-      { icon: '⚡', title: 'Performance', desc: 'Blendschnelle Ladezeiten für maximale Nutzerbindung.' },
-      { icon: '🛡️', title: 'Sicherheit', desc: 'Sichere Backend-Architekturen mit Laravel.' }
+      { icon: '🚩', title: 'Leitwolf', desc: 'Wir führen Ihr Projekt zum digitalen Erfolg.' },
+      { icon: '📱', title: 'UX Fokus', desc: 'Flüssige Bedienung auf allen Endgeräten.' },
+      { icon: '🔗', title: 'Schnittstellen', desc: 'Datenfluss zwischen ERP und Web-App.' }
     ],
-    testimonial: { name: 'M. Jung', position: 'Inhaber, Koblenz' }
+    testimonial: { name: 'M. Rhein', position: 'Projektleiter, Koblenz' }
   },
-  'bergisch-gladbach': {
-    cityName: 'Bergisch Gladbach',
-    h1Title: 'Webentwicklung Bergisch Gladbach: Individuelle Web-Apps',
-    heroDesc: 'Professionelle Softwareentwicklung vor den Toren Kölns. Wir bauen in Bergisch Gladbach Web-Lösungen, die technologisch Maßstäbe setzen.',
+  'bremerhaven': {
+    cityName: 'Bremerhaven',
+    h1Title: 'Webentwicklung Bremerhaven: Volle Kraft voraus für Ihr Web',
+    heroDesc: 'In Bremerhaven programmieren wir Web-Lösungen mit Tiefgang. Von maritimen Portalen bis zu modernen E-Commerce Systemen.',
     highlights: [
-      { icon: '📈', title: 'Wachstum', desc: 'Skalierbare Plattformen für aufstrebende Unternehmen.' },
-      { icon: '📱', title: 'Mobile First', desc: 'Perfekte Darstellung auf allen Endgeräten.' },
-      { icon: '🛠️', title: 'Custom Made', desc: '100% individueller Code ohne unnötigen Ballast.' }
+      { icon: '⚓', title: 'Stabilität', desc: 'Software, die auch bei hohem Traffic hält.' },
+      { icon: '🌊', title: 'Dynamik', desc: 'Schnelle Reaktionen durch modernes Vue-Frontend.' },
+      { icon: '🛡️', title: 'Sicherheit', desc: 'Sichere Datenhaltung in deutschen Rechenzentren.' }
     ],
-    testimonial: { name: 'S. Berger', position: 'Geschäftsführer, Bergisch Gladbach' }
+    testimonial: { name: 'K. Petersen', position: 'Hafen-Logistik, Bremerhaven' }
+  },
+  'jena': {
+    cityName: 'Jena',
+    h1Title: 'Webentwicklung Jena: Lichtblick für Ihre digitale Strategie',
+    heroDesc: 'In der Optik-Stadt Jena setzen wir auf klare Sicht im Code. Wir entwickeln Web-Systeme für Forschung, Tech und Mittelstand.',
+    highlights: [
+      { icon: '🔭', title: 'Weitblick', desc: 'Zukunftssichere Planung Ihrer Software.' },
+      { icon: '⚡', title: 'Lichtgeschwindigkeit', desc: 'Optimierte Core Web Vitals für Speed.' },
+      { icon: '🛠️', title: 'Custom Made', desc: 'Exakt auf Jenaer Innovationen zugeschnitten.' }
+    ],
+    testimonial: { name: 'Dr. T. Zeiß', position: 'CTO, Jena' }
   },
   'erlangen': {
     cityName: 'Erlangen',
     h1Title: 'Webentwicklung Erlangen: High-Tech Software für die Hugenottenstadt',
-    heroDesc: 'In der Medizintechnik-Metropole Erlangen entwickeln wir Web-Apps mit höchster Präzision und technischem Weitblick.',
+    heroDesc: 'In der Siemens-Stadt Erlangen programmieren wir Web-Apps auf höchstem technischem Niveau. Wir verbinden medizintechnische Präzision mit modernem Web-Engineering.',
     highlights: [
-      { icon: '🔬', title: 'Innovation', desc: 'Zukunftssichere Tech-Stacks wie Vue 3 und Vite.' },
-      { icon: '💻', title: 'Clean Code', desc: 'Höchste Software-Qualität für komplexe Anforderungen.' },
-      { icon: '🔒', title: 'Security', desc: 'Datenschutzkonforme Entwicklung nach DSGVO.' }
+      { icon: '⚛️', title: 'MedTech Ready', desc: 'Sichere Handhabung sensibler Datenströme.' },
+      { icon: '🛡️', title: 'Quality First', desc: 'Automatisierte Tests für fehlerfreie Releases.' },
+      { icon: '🚀', title: 'Performance', desc: 'Vite & Vue.js für blitzschnelle Interfaces.' }
     ],
-    testimonial: { name: 'Dr. J. Wagner', position: 'Tech-Lead, Erlangen' }
-  },
-  'jena': {
-    cityName: 'Jena',
-    h1Title: 'Webentwicklung Jena: Digitale Innovation für die Lichtstadt',
-    heroDesc: 'In Jena programmieren wir die digitale Zukunft. Wir bauen Web-Applikationen für forschungsnahe Betriebe und moderne Startups.',
-    highlights: [
-      { icon: '💡', title: 'Lichtgeschwindigkeit', desc: 'Maximale Performance für Ihre Web-Anwendung.' },
-      { icon: '⚙️', title: 'Custom API', desc: 'Nahtlose Anbindung an Ihre bestehenden Systeme.' },
-      { icon: '✅', title: 'Fullstack', desc: 'Backend und Frontend aus einer erfahrenen Hand.' }
-    ],
-    testimonial: { name: 'L. Richter', position: 'Founder, Jena' }
-  },
-  'remscheid': {
-    cityName: 'Remscheid',
-    h1Title: 'Webentwicklung Remscheid: Robuste Software für die Werkzeugstadt',
-    heroDesc: 'In Remscheid entwickeln wir Web-Lösungen, die so präzise und langlebig sind wie die Produkte der lokalen Industrie.',
-    highlights: [
-      { icon: '🛠️', title: 'Industrie-Grade', desc: 'Belastbare Systeme für Remscheider Traditionsbetriebe.' },
-      { icon: '⚡', title: 'High Speed', desc: 'Optimierte Ladezeiten für bessere Google-Rankings.' },
-      { icon: '🏠', title: 'Lokal', desc: 'Persönlicher Ansprechpartner für Ihr Projekt.' }
-    ],
-    testimonial: { name: 'H. Keiper', position: 'Betriebsleiter, Remscheid' }
+    testimonial: { name: 'Dr. A. Wagner', position: 'IT-Leiter, Erlangen' }
   },
   'trier': {
     cityName: 'Trier',
     h1Title: 'Webentwicklung Trier: Moderne Web-Lösungen für die älteste Stadt',
-    heroDesc: 'In Trier verbinden wir Geschichte mit High-Tech. Wir programmieren moderne Web-Apps für Unternehmen in der Mosel-Region.',
+    heroDesc: 'In Trier verbinden wir Geschichte mit High-Tech. Wir programmieren moderne Web-Apps für Unternehmen in der Mosel-Region mit Fokus auf Langlebigkeit.',
     highlights: [
       { icon: '🏛️', title: 'Beständigkeit', desc: 'Zukunftssichere Entwicklung auf stabilen Frameworks.' },
       { icon: '📈', title: 'SEO-Power', desc: 'Optimierte Strukturen für lokale Auffindbarkeit.' },
@@ -829,49 +791,202 @@ export const cityContent = {
     ],
     testimonial: { name: 'M. Weber', position: 'Inhaber, Trier' }
   },
-  'salzgitter': {
-    cityName: 'Salzgitter',
-    h1Title: 'Webentwicklung Salzgitter: Starke digitale Präsenz',
-    heroDesc: 'In Salzgitter unterstützen wir Industrie und Handel mit maßgeschneiderter Web-Software. Wir bauen Lösungen, die halten.',
+  'reutlingen': {
+    cityName: 'Reutlingen',
+    h1Title: 'Webentwicklung Reutlingen: Digitale Kraft am Fuße der Alb',
+    heroDesc: 'Wir bringen Reutlinger Unternehmen ins Web. Maßgeschneiderte Software-Lösungen, die Ihre Geschäftsprozesse digitalisieren und effizienter machen.',
     highlights: [
-      { icon: '⚒️', title: 'Stabilität', desc: 'Robuste Architekturen für hohe Datenlasten.' },
-      { icon: '🛡️', title: 'Datensicherheit', desc: 'Schutz Ihrer sensiblen Unternehmensdaten.' },
-      { icon: '🚀', title: 'Effizienz', desc: 'Schnelle Umsetzung und klare Projektstrukturen.' }
+      { icon: '⚙️', title: 'Automation', desc: 'Zeitersparnis durch intelligente Web-Logik.' },
+      { icon: '🛡️', title: 'Sicherheit', desc: 'Umfassender Schutz Ihrer Kundendaten.' },
+      { icon: '📊', title: 'Wachstum', desc: 'Skalierbare Frontends für wachsende Nutzerzahlen.' }
     ],
-    testimonial: { name: 'P. Schneider', position: 'IT-Projektleiter, Salzgitter' }
+    testimonial: { name: 'S. Gärtner', position: 'CEO, Reutlingen' }
   },
   'siegen': {
     cityName: 'Siegen',
-    h1Title: 'Webentwicklung Siegen: Ihr Partner im Siegerland',
-    heroDesc: 'In Siegen realisieren wir Web-Apps, die Ihre Kunden begeistern. Individuelle Programmierung für den Erfolg in Südwestfalen.',
+    h1Title: 'Webentwicklung Siegen: Ihr Partner für digitales Wachstum',
+    heroDesc: 'In Siegen entwickeln wir Web-Apps, die technisch und optisch überzeugen. Wir realisieren Ihre Vision mit Laravel, Vue.js und viel Leidenschaft.',
     highlights: [
-      { icon: '⛰️', title: 'Regional', desc: 'Ehrliche Beratung und Umsetzung direkt vor Ort.' },
-      { icon: '⚡', title: 'Vite Speed', desc: 'Beste Performance-Werte für Ihre Web-App.' },
-      { icon: '💎', title: 'Qualität', desc: 'Sauber dokumentierter Code für einfache Wartung.' }
+      { icon: '💡', title: 'Innovation', desc: 'Frische Impulse für Ihre digitale Strategie.' },
+      { icon: '⚡', title: 'High-Speed', desc: 'Optimierte Ladezeiten für weniger Absprünge.' },
+      { icon: '🛠️', title: 'Custom Code', desc: 'Passgenaue Programmierung ohne Ballast.' }
     ],
-    testimonial: { name: 'A. Müller', position: 'Geschäftsführer, Siegen' }
+    testimonial: { name: 'F. Bender', position: 'Marketing, Siegen' }
   },
-  // --- ZUSATZ: KLEINERE STANDORTE AUS SITEMAP (Beispiele) ---
-  'grefrath': {
-    cityName: 'Grefrath',
-    h1Title: 'Webentwicklung Grefrath: Lokale Expertise für Ihr Business',
-    heroDesc: 'Direkt am Niederrhein unterstützen wir Grefrather Unternehmen bei der Digitalisierung ihrer Geschäftsprozesse.',
+  'hildesheim': {
+    cityName: 'Hildesheim',
+    h1Title: 'Webentwicklung Hildesheim: Kreativität trifft auf starken Code',
+    heroDesc: 'Wir bauen für Hildesheim Web-Lösungen, die Ihre Kunden begeistern. Von der ersten Idee bis zum fertigen Deployment auf performanten Servern.',
     highlights: [
-      { icon: '🏠', title: 'Nähe', desc: 'Persönlicher Kontakt und schnelle Wege.' },
-      { icon: '✅', title: 'Maßarbeit', desc: 'Individuelle Lösungen für kleine & große Betriebe.' },
-      { icon: '🚀', title: 'Startbereit', desc: 'Schnelle Time-to-Market für Ihr Projekt.' }
+      { icon: '🎨', title: 'Design-Fokus', desc: 'Interfaces, die Ihre Marke perfekt widerspiegeln.' },
+      { icon: '⚙️', title: 'Backend-Power', desc: 'Robuste Logik für komplexe Anforderungen.' },
+      { icon: '🛡️', title: 'Support', desc: 'Fester Ansprechpartner für Ihr Web-Projekt.' }
     ],
-    testimonial: { name: 'T. Klauth', position: 'Unternehmer, Grefrath' }
+    testimonial: { name: 'K. Meyer', position: 'Inhaberin, Hildesheim' }
   },
-  'nettetal': {
-    cityName: 'Nettetal',
-    h1Title: 'Webentwicklung Nettetal: Digitale Lösungen für die Seenstadt',
-    heroDesc: 'In Nettetal realisieren wir Web-Projekte mit Fokus auf Benutzerfreundlichkeit und technische Exzellenz.',
+  'cottbus': {
+    cityName: 'Cottbus',
+    h1Title: 'Webentwicklung Cottbus: Strukturwandel durch digitale Power',
+    heroDesc: 'Wir begleiten Unternehmen in Cottbus bei der digitalen Transformation. Moderne Web-Apps für die Lausitz, die Prozesse optimieren.',
     highlights: [
-      { icon: '🌊', title: 'Frisch', desc: 'Moderne Designs und neueste Technologien.' },
-      { icon: '📱', title: 'Mobil', desc: 'Optimiert für alle Endgeräte.' },
-      { icon: '⚙️', title: 'Laravel', desc: 'Sichere Backend-Logik für Ihre Web-App.' }
+      { icon: '🏗️', title: 'Aufbruch', desc: 'Innovative Lösungen für neue Märkte.' },
+      { icon: '📱', title: 'Responsive', desc: 'Perfekte UX auf allen mobilen Endgeräten.' },
+      { icon: '🔍', title: 'Sichtbarkeit', desc: 'SEO-Optimierung für regionale Reichweite.' }
     ],
-    testimonial: { name: 'R. Simons', position: 'Marketing, Nettetal' }
+    testimonial: { name: 'T. Richter', position: 'Geschäftsführer, Cottbus' }
+  },
+  'gera': {
+    cityName: 'Gera',
+    h1Title: 'Webentwicklung Gera: Digitale Exzellenz für Ostthüringen',
+    heroDesc: 'In Gera programmieren wir Web-Software für den Erfolg Ihrer Firma. Effizienz, Speed und saubere Programmierung aus einer Hand.',
+    highlights: [
+      { icon: '💎', title: 'Clean Code', desc: 'Nachhaltige und wartbare Software-Architektur.' },
+      { icon: '⚡', title: 'Performance', desc: 'Schnelle Response-Zeiten für Ihre Nutzer.' },
+      { icon: '🤝', title: 'Partnerschaft', desc: 'Persönliche Betreuung direkt vor Ort.' }
+    ],
+    testimonial: { name: 'A. Fischer', position: 'Projektleiter, Gera' }
+  },
+  'kaiserslautern': {
+    cityName: 'Kaiserslautern',
+    h1Title: 'Webentwicklung Kaiserslautern: Tech-Lösungen für die Westpfalz',
+    heroDesc: 'In der IT-Stadt Kaiserslautern entwickeln wir High-End Web-Lösungen. Wir verbinden technologische Tiefe mit intuitiver User Experience.',
+    highlights: [
+      { icon: '⚽', title: 'Voller Einsatz', desc: 'Leidenschaft für jedes einzelne Projekt.' },
+      { icon: '⚙️', title: 'Automation', desc: 'Vernetzen Sie Ihre digitalen Workflows.' },
+      { icon: '🔒', title: 'Sicherheit', desc: 'Sichere Datenhaltung nach DSGVO.' }
+    ],
+    testimonial: { name: 'M. Hoffmann', position: 'Inhaber, Kaiserslautern' }
+  },
+  'witten': {
+    cityName: 'Witten',
+    h1Title: 'Webentwicklung Witten: Innovative Web-Apps für die Ruhrstadt',
+    heroDesc: 'Wir bringen Witten digital voran. Individuelle Web-Software, die exakt auf die Bedürfnisse Ihres Unternehmens zugeschnitten ist.',
+    highlights: [
+      { icon: '💡', title: 'Innovation', desc: 'Kreative Ansätze für Ihre Problemstellung.' },
+      { icon: '📱', title: 'Cross-Device', desc: 'Funktioniert perfekt auf allen Geräten.' },
+      { icon: '⚙️', title: 'Backend-Power', desc: 'Stabile Datenbanken und schnelle Logik.' }
+    ],
+    testimonial: { name: 'P. Hansen', position: 'Marketing, Witten' }
+  },
+  'hanau': {
+    cityName: 'Hanau',
+    h1Title: 'Webentwicklung Hanau: Märchenhafte Web-Apps, realistische Performance',
+    heroDesc: 'In der Brüder-Grimm-Stadt Hanau programmieren wir Ihre digitale Zukunft. Fokus auf Skalierbarkeit und intuitive Nutzererlebnisse.',
+    highlights: [
+      { icon: '📦', title: 'E-Logistik', desc: 'Anbindung von Versand- und Lagersystemen.' },
+      { icon: '🛡️', title: 'Security', desc: 'Verschlüsselte Datenübertragung nach Standard.' },
+      { icon: '📈', title: 'SEO-Boost', desc: 'Technisch optimiert für die Google-Suche.' }
+    ],
+    testimonial: { name: 'J. Meyer', position: 'CEO, Hanau' }
+  },
+  'schwerin': {
+    cityName: 'Schwerin',
+    h1Title: 'Webentwicklung Schwerin: Web-Design & Tech für die Landeshauptstadt',
+    heroDesc: 'Wir entwickeln für Schweriner Unternehmen Web-Applikationen mit Fokus auf Design-Exzellenz und technischer Tiefe am See.',
+    highlights: [
+      { icon: '🎨', title: 'High-End Design', desc: 'Exklusive Interfaces für starke Marken.' },
+      { icon: '💻', title: 'Modern Tech', desc: 'Nuxt.js und Vue 3 für reaktive Erlebnisse.' },
+      { icon: '🛡️', title: 'Stabilität', desc: 'Ausfallsichere Systeme für Ihr Business.' }
+    ],
+    testimonial: { name: 'V. König', position: 'Agenturleiterin, Schwerin' }
+  },
+  'ludwigsburg': {
+    cityName: 'Ludwigsburg',
+    h1Title: 'Webentwicklung Ludwigsburg: Barocke Ästhetik & moderner Code',
+    heroDesc: 'In Ludwigsburg programmieren wir Web-Apps, die Ihre Marke repräsentieren. Effiziente Lösungen für Handel und Dienstleistung in der Region Stuttgart.',
+    highlights: [
+      { icon: '🏰', title: 'Qualität', desc: 'Wartbare Systeme für langfristigen Erfolg.' },
+      { icon: '⚡', title: 'Performance', desc: 'Blitzschnell durch moderne Frontend-Technik.' },
+      { icon: '📱', title: 'UX-Fokus', desc: 'Benutzerführung, die Ihre Kunden leitet.' }
+    ],
+    testimonial: { name: 'S. Müller', position: 'Geschäftsführer, Ludwigsburg' }
+  },
+  'esslingen': {
+    cityName: 'Esslingen',
+    h1Title: 'Webentwicklung Esslingen: Engineering am Neckar',
+    heroDesc: 'In Esslingen bringen wir die Ingenieurskunst ins Web. Präzise Programmierung und effiziente Workflows für Ihren digitalen Erfolg.',
+    highlights: [
+      { icon: '⚙️', title: 'Präzision', desc: 'Sauberer Code und exakte Umsetzung.' },
+      { icon: '📈', title: 'ROI Fokus', desc: 'Lösungen, die messbare Ergebnisse liefern.' },
+      { icon: '🛡️', title: 'Sicherheit', desc: 'Sichere Backends für sensible Daten.' }
+    ],
+    testimonial: { name: 'A. Bauer', position: 'Inhaber, Esslingen' }
+  },
+  'giessen': {
+    cityName: 'Gießen',
+    h1Title: 'Webentwicklung Gießen: Wissen schafft digitale Welten',
+    heroDesc: 'In der Universitätsstadt Gießen entwickeln wir innovative Web-Lösungen für technikorientierte Unternehmen und Startups.',
+    highlights: [
+      { icon: '📚', title: 'Expertise', desc: 'Fundiertes Wissen in Laravel & Vue.js.' },
+      { icon: '🚀', title: 'Innovation', desc: 'Kreative Ansätze für Ihre Herausforderung.' },
+      { icon: '📱', title: 'Mobile First', desc: 'Perfekte Darstellung auf allen Geräten.' }
+    ],
+    testimonial: { name: 'Dr. L. Berger', position: 'CTO, Gießen' }
+  },
+  'dueren': {
+    cityName: 'Düren',
+    h1Title: 'Webentwicklung Düren: Ihr Partner am Nordrand der Eifel',
+    heroDesc: 'Wir programmieren für Düren maßgeschneiderte Web-Lösungen. Von der Prozess-Software bis zum verkaufsstarken Web-Portal.',
+    highlights: [
+      { icon: '⚒️', title: 'Struktur', desc: 'Saubere Trennung von Frontend und Backend.' },
+      { icon: '⚡', title: 'Speed', desc: 'Optimierte Ladezeiten für Google & Nutzer.' },
+      { icon: '🛡️', title: 'Support', desc: 'Wir lassen Sie nach dem Launch nicht allein.' }
+    ],
+    testimonial: { name: 'M. Schmitz', position: 'Inhaber, Düren' }
+  },
+  'ratingen': {
+    cityName: 'Ratingen',
+    h1Title: 'Webentwicklung Ratingen: Effizienz für den Standort',
+    heroDesc: 'In Ratingen programmieren wir Web-Apps, die Ihre internen Abläufe automatisieren und Ihre Kunden digital binden.',
+    highlights: [
+      { icon: '🏙️', title: 'Business Fokus', desc: 'Software, die Ihr Unternehmen voranbringt.' },
+      { icon: '⚙️', title: 'Automation', desc: 'Zeit sparen durch kluge Web-Software.' },
+      { icon: '🔍', title: 'SEO-Power', desc: 'Top-Platzierungen in der lokalen Suche.' }
+    ],
+    testimonial: { name: 'S. Weber', position: 'Geschäftsführer, Ratingen' }
+  },
+  'viersen': {
+    cityName: 'Viersen',
+    h1Title: 'Webentwicklung Viersen: Digitale Lösungen vom Niederrhein',
+    heroDesc: 'Wir digitalisieren Viersen. Mit Laravel und Vue.js bauen wir Web-Apps, die Ihre Kunden begeistern und Ihren Umsatz steigern.',
+    highlights: [
+      { icon: '🤝', title: 'Nähe', desc: 'Persönliche Beratung und Betreuung vor Ort.' },
+      { icon: '🚀', title: 'Modern Tech', desc: 'Einsatz neuester JS-Frameworks.' },
+      { icon: '🛡️', title: 'Sicherheit', desc: 'Sichere Datenhaltung in Deutschland.' }
+    ],
+    testimonial: { name: 'G. Jansen', position: 'Inhaber, Viersen' }
+  },
+  'flensburg': {
+    cityName: 'Flensburg',
+    h1Title: 'Webentwicklung Flensburg: Frische Brise für Ihr Web-Projekt',
+    heroDesc: 'Direkt von der Grenze: Wir entwickeln in Flensburg Web-Applikationen, die technisch überlegen sind und Nutzer überzeugen.',
+    highlights: [
+      { icon: '⚓', title: 'Stabilität', desc: 'Software, die jedem Sturm standhält.' },
+      { icon: '🌊', title: 'Klarheit', desc: 'Strukturierte und übersichtliche Interfaces.' },
+      { icon: '📈', title: 'Erfolg', desc: 'Messbare Steigerung Ihrer Anfragen.' }
+    ],
+    testimonial: { name: 'H. Nielsen', position: 'Marketing, Flensburg' }
+  },
+  'lunen': {
+    cityName: 'Lünen',
+    h1Title: 'Webentwicklung Lünen: Echter Code für die Region',
+    heroDesc: 'Wir programmieren für Lünen digitale Mehrwerte. Individuelle Web-Apps, die Kommunikation verbessern und Prozesse vereinfachen.',
+    highlights: [
+      { icon: '⚒️', title: 'Handwerk', desc: 'Ehrliche Programmierung ohne Ballast.' },
+      { icon: '⚡', title: 'Performance', desc: 'Vite & Vue für maximale Geschwindigkeit.' },
+      { icon: '🛡️', title: 'Safety', desc: 'Sichere Backends für Ihre Geschäftsdaten.' }
+    ],
+    testimonial: { name: 'B. Schulte', position: 'Inhaber, Lünen' }
+  },
+  'zwickau': {
+    cityName: 'Zwickau',
+    h1Title: 'Webentwicklung Zwickau: Drive für Ihre digitale Präsenz',
+    heroDesc: 'In der Automobil-Stadt Zwickau setzen wir auf Antrieb. Wir entwickeln Web-Lösungen, die Ihr Business schnell und sicher online bringen.',
+    highlights: [
+      { icon: '🚗', title: 'Präzision', desc: 'Ingenieurskunst im digitalen Raum.' },
+      { icon: '⚙️', title: 'Logik', desc: 'Stabile Prozesse für komplexe Daten.' },
+      { icon: '📊', title: 'Analytik', desc: 'Transparente Erfolgskontrolle Ihrer App.' }
+    ],
+    testimonial: { name: 'R. Wagner', position: 'Inhaber, Zwickau' }
   }
 }

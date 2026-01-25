@@ -1,108 +1,206 @@
 <template>
-  <div class="font-sans text-gray-900 bg-white selection:bg-red-100 selection:text-red-600 antialiased overflow-x-hidden">
+  <NuxtLayout name="guest">
+    <div class="font-sans text-zinc-900 bg-white selection:bg-red-100 selection:text-red-600 antialiased overflow-x-hidden text-left">
 
-    <header class="relative pt-24 pb-16 md:pt-48 md:pb-40 bg-gradient-to-br from-red-700 via-red-600 to-red-500 text-white px-4 mt-[60px] md:mt-[80px]">
-      <div class="relative z-10 max-w-6xl mx-auto text-center">
-        <span class="inline-block px-4 py-1.5 mb-6 rounded-full bg-white text-red-600 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] shadow-xl italic">
-          ✓ Engineering Excellence
-        </span>
-        <h1 class="text-[clamp(2.1rem,9vw,6rem)] font-[1000] mb-6 leading-[0.95] tracking-tighter uppercase italic">
-          Full-Stack <br /><span class="text-white/90 underline decoration-white/30 italic">Substanz.</span>
-        </h1>
-      </div>
-    </header>
-
-    <section class="py-8 bg-gray-900 text-white border-y border-white/10">
-      <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-        <div v-for="stat in serviceStats" :key="stat.label">
-          <div class="text-2xl md:text-5xl font-[1000] text-red-600 italic tracking-tighter">{{ stat.value }}</div>
-          <div class="text-[8px] md:text-[10px] uppercase font-bold text-gray-400 tracking-widest">{{ stat.label }}</div>
+      <header class="relative pt-24 pb-16 md:pt-72 md:pb-56 bg-red-600 text-white px-4 md:px-6 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+          <div class="absolute inset-0 bg-gradient-to-br from-red-800 via-red-600 to-red-500"></div>
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_2px_2px,white_1px,transparent_0)] bg-[size:30px_30px] opacity-10"></div>
         </div>
-      </div>
-    </section>
 
-    <section class="py-16 md:py-24 bg-red-600 text-white mx-2 rounded-[2.5rem] md:rounded-[4rem] my-12 shadow-2xl relative overflow-hidden">
-      <div class="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(circle_at_center,white_1px,transparent_0)] bg-[size:30px_30px]"></div>
-      <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
-        <h3 class="text-3xl md:text-5xl font-[1000] uppercase italic tracking-tighter mb-6">Investition in Systemstabilität.</h3>
-        <p class="text-red-50 italic font-medium text-lg leading-relaxed mb-4">
-          Ein Stundensatz von 125€ garantiert Ihnen Enterprise-Qualität nach ISO-Standards.
-        </p>
-        <p class="text-red-100/80 text-sm italic max-w-2xl mx-auto">
-          Durch saubere Architektur (SOLID) und integrierte QA (PHPUnit/Cypress) senken wir Ihre langfristigen Instandhaltungskosten (TCO) um bis zu 40% gegenüber herkömmlichen Agentur-Lösungen.
-        </p>
-      </div>
-    </section>
+        <div class="relative z-10 max-w-7xl mx-auto">
+          <div class="inline-flex items-center gap-2 px-3 py-2 mb-8 rounded-full bg-black/20 backdrop-blur-2xl border border-white/10 text-[9px] md:text-[12px] font-black uppercase tracking-[0.2em] italic">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute h-full w-full rounded-full bg-red-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+            </span>
+            VelWebSolutions // Engineering Services
+          </div>
 
-    <section class="py-16 md:py-32 px-4 bg-gray-900 text-white rounded-[2.5rem] md:rounded-[4rem] mx-2 mb-12 shadow-3xl overflow-hidden relative">
-      <div class="max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
-          <div v-for="(module, idx) in detailedModules" :key="idx"
-            class="group p-8 md:p-12 bg-white/5 rounded-[2.5rem] border border-white/10 hover:bg-white transition-all duration-500">
-            <div class="mb-8 group-hover:text-gray-900">
-              <h3 class="text-3xl md:text-4xl font-[1000] uppercase italic tracking-tighter mb-1">{{ module.title }}</h3>
-              <p class="text-[10px] font-black uppercase tracking-widest text-red-500 italic">{{ module.subtitle }}</p>
+          <h1 class="text-[clamp(2.2rem,11vw,9rem)] font-[1000] mb-6 leading-[0.85] tracking-tighter uppercase italic break-words">
+            Skalierbare <br /><span class="text-white underline decoration-white/20 underline-offset-[4px] md:underline-offset-[20px]">Kern-Systeme.</span>
+          </h1>
+
+          <p class="text-lg md:text-[2.75rem] text-red-50 font-light max-w-5xl leading-tight italic opacity-95">
+            Ich entwickle das <span class="text-white font-bold">digitale Rückgrat</span> Ihres Unternehmens. VelWebSolutions steht für hocheffiziente ERP- & CRM-Lösungen.
+          </p>
+        </div>
+      </header>
+
+      <section class="py-16 md:py-56 bg-white px-4 md:px-6">
+        <div class="max-w-7xl mx-auto">
+          <div class="mb-12 md:mb-32">
+            <h2 class="text-[clamp(3rem,15vw,10rem)] font-[1000] uppercase italic tracking-tighter leading-none text-zinc-900 mb-4">Stack.</h2>
+            <div class="text-red-600 font-mono italic uppercase text-[10px] md:text-lg tracking-[0.3em]">Engineering_Excellence_2026</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
+            <div v-for="service in leistungen" :key="service.title" class="group bg-zinc-50 p-6 md:p-20 rounded-[2rem] md:rounded-[5rem] border border-zinc-100 transition-all hover:bg-white hover:shadow-2xl">
+              <div class="text-red-600 font-mono font-bold text-[10px] md:text-sm uppercase tracking-[0.3em] mb-6 italic">// {{ service.category }}</div>
+              <h3 class="text-2xl md:text-6xl font-[1000] uppercase italic tracking-tighter mb-4 group-hover:text-red-600 transition-colors leading-[0.9]">{{ service.title }}</h3>
+              <p class="text-zinc-500 italic text-sm md:text-2xl leading-relaxed mb-8">
+                {{ service.description }}
+              </p>
+              <ul class="space-y-3">
+                <li v-for="point in service.points" :key="point" class="flex items-center gap-3 text-[11px] md:text-lg font-black italic text-zinc-900">
+                  <span class="w-3 h-[2px] bg-red-600 shrink-0"></span>
+                  {{ point }}
+                </li>
+              </ul>
             </div>
-            <ul class="space-y-4 mb-12 group-hover:text-gray-600">
-              <li v-for="item in module.items" :key="item" class="flex items-start gap-3 italic font-medium text-sm leading-snug">
-                <span class="text-red-600 font-black mt-0.5">_</span> {{ item }}
-              </li>
-            </ul>
-            <div class="pt-8 border-t border-white/10 group-hover:border-gray-200">
-              <div class="flex items-end justify-between">
-                <div>
-                  <div class="text-3xl md:text-5xl font-[1000] italic group-hover:text-gray-900 leading-none">{{ module.price }}€</div>
-                  <div class="text-[9px] uppercase font-black text-red-500 italic mt-1 group-hover:text-gray-400">Netto / Stunde</div>
-                </div>
-                <div class="text-[10px] font-black uppercase tracking-widest bg-red-600 text-white px-4 py-1.5 rounded-full italic shadow-lg group-hover:shadow-red-200">
-                  Incl. QA
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16 md:py-64 bg-zinc-950 text-white border-y-4 md:border-y-8 border-red-600 px-4 md:px-6">
+        <div class="max-w-7xl mx-auto relative z-10 text-left">
+          <h2 class="text-4xl md:text-[8rem] font-[1000] uppercase italic tracking-tighter text-red-600 mb-12 leading-[0.9]">Robuste <br/><span class="text-white">Resistenz.</span></h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div v-for="f in features" :key="f.title" class="border-l-2 border-red-600 pl-6 py-2">
+              <h4 class="font-[1000] italic uppercase text-lg md:text-3xl mb-3 text-white">{{ f.title }}</h4>
+              <p class="text-[13px] md:text-xl text-zinc-500 italic leading-relaxed">{{ f.desc }}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16 md:py-64 bg-zinc-950 px-4 md:px-6">
+        <div class="max-w-7xl mx-auto">
+          <h2 class="text-5xl md:text-[10rem] font-[1000] uppercase italic tracking-tighter leading-none text-white mb-16">Service- <br/><span class="text-red-600">Units.</span></h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-10">
+            <div v-for="plan in pakete" :key="plan.hours" class="p-8 md:p-12 bg-zinc-900 rounded-[2.5rem] border border-zinc-800 flex flex-col group hover:border-red-600 transition-all">
+              <div class="text-4xl md:text-6xl font-[1000] italic text-zinc-800 mb-6 leading-none group-hover:text-red-900 transition-colors">{{ plan.hours }}h</div>
+              <h4 class="text-2xl md:text-5xl font-[1000] italic uppercase tracking-tighter mb-4 text-white leading-none">Kapazität</h4>
+              <p class="text-sm md:text-xl text-zinc-500 italic mb-10 leading-relaxed flex-grow">{{ plan.desc }}</p>
+
+              <div class="pt-8 border-t border-zinc-800 mt-auto">
+                <div class="text-[10px] font-mono text-red-600 uppercase tracking-widest mb-4 italic">Rate: 125,00€ Netto / Std.</div>
+                <div class="space-y-1">
+                  <div class="text-3xl md:text-5xl font-[1000] italic uppercase tracking-tighter text-white">
+                    {{ plan.priceNetto }}€ <span class="text-[10px] font-light opacity-30 italic">Netto</span>
+                  </div>
+                  <div class="text-lg md:text-2xl font-bold italic text-zinc-500">
+                    {{ plan.priceBrutto }}€ <span class="text-[10px] font-light opacity-50 italic">inkl. 19% MwSt.</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="py-16 md:py-32 bg-white px-4">
-      <div class="max-w-7xl mx-auto flex flex-col lg:row gap-16 items-center">
-        <div class="lg:w-1/2">
-          <h2 class="text-4xl md:text-7xl font-[1000] uppercase italic tracking-tighter mb-8 leading-[0.9] text-gray-900">
-            Scalability & <br/><span class="text-red-600 underline decoration-gray-100">Performance.</span>
+      <section class="py-24 md:py-56 bg-white px-4 md:px-6 text-center border-t border-zinc-100">
+        <div class="max-w-4xl mx-auto">
+          <div class="inline-block px-4 py-1.5 mb-10 border-2 border-red-600 text-red-600 text-[10px] md:text-xs font-black uppercase tracking-[0.4em] italic">
+            Initialisierung
+          </div>
+          <h2 class="text-4xl md:text-8xl font-[1000] uppercase italic tracking-tighter leading-[0.9] mb-12 text-zinc-900">
+            Bereit für <br /> <span class="text-zinc-300">Deployment.</span>
           </h2>
-          <p class="text-gray-500 font-medium italic text-lg leading-relaxed mb-10">
-            Ihr System wächst mit Ihrem Erfolg. Wir nutzen Containerisierung und skalierbare Web-Architekturen, damit Ihr ERP auch bei Millionen Datensätzen performant bleibt.
-          </p>
-          <div class="grid grid-cols-2 gap-4">
-            <div v-for="tech in ['Docker', 'Redis', 'Kubernetes', 'AWS Stack']" :key="tech" class="p-5 bg-gray-50 rounded-2xl border border-gray-100 font-black italic text-center uppercase text-[11px] tracking-widest text-gray-900 shadow-sm">{{ tech }}</div>
+
+          <div class="flex flex-col items-center gap-8">
+            <div class="flex flex-col gap-3 text-zinc-400 font-mono uppercase italic text-[11px] md:text-sm tracking-widest">
+              <span>✓ Test-Driven Development (TDD)</span>
+              <span>✓ System Architecture Documentation</span>
+              <span>✓ Transparente 15m Taktung</span>
+            </div>
+
+            <NuxtLink to="/kontakt" class="w-full md:w-auto inline-flex items-center justify-center px-10 py-5 font-black text-white bg-zinc-950 rounded-2xl transition-all hover:bg-red-600 shadow-2xl active:scale-95">
+              <span class="uppercase italic tracking-widest text-xs">Request_System_Access</span>
+            </NuxtLink>
+
+            <div class="mt-4 text-center">
+               <div class="text-2xl md:text-5xl font-[1000] italic text-zinc-900 tracking-tighter">
+                125,00€ <span class="text-sm md:text-xl font-light text-zinc-300">Netto / Std.</span>
+              </div>
+              <div class="text-lg md:text-2xl font-bold italic text-zinc-400 mt-1">
+                148,75€ <span class="text-xs font-light italic">Brutto</span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="lg:w-1/2 relative">
-          <img src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?q=80&w=1200&auto=format&fit=crop" @error="imageFallback" class="rounded-[3rem] shadow-2xl object-cover aspect-square grayscale" />
-        </div>
-      </div>
-    </section>
+      </section>
 
-  </div>
+    </div>
+  </NuxtLayout>
 </template>
 
 <script setup>
-definePageMeta({ layout: 'guest' })
-
-const serviceStats = [
-  { label: 'Unit Tests', value: 'Auto' },
-  { label: 'Deploy', value: 'Zero' },
-  { label: 'Codebase', value: 'Git' },
-  { label: 'Sicherheit', value: '100%' }
+/**
+ * LEISTUNGS-LOGIK & SUBSTANZ
+ */
+const leistungen = [
+  {
+    category: 'Architecture',
+    title: 'Individual ERP',
+    description: 'Wir bauen das zentrale Nervensystem für Ihr Unternehmen. Keine Standard-Software, sondern Logik, die Ihre echten Prozesse abbildet.',
+    points: ['Automatisierte Workflows', 'Sichere Datenhaltung', 'PHP / Laravel & Vue.js']
+  },
+  {
+    category: 'Relationship',
+    title: 'Custom CRM',
+    description: 'Vertriebssteuerung ohne Kompromisse. VelWebSolutions entwickelt Dashboards, die Ihre Kundenbeziehungen messbar machen.',
+    points: ['Lead-Automation', 'Echtzeit-Reporting', 'Intuitive UX/UI']
+  }
 ]
 
-const detailedModules = [
-  { title: 'Architect', subtitle: '// WEB_STRATEGY', price: '145', items: ['Requirement Engineering', 'Daten-Normalisierung', 'Security Konzepte', 'API Design (OpenAPI)'] },
-  { title: 'Developer', subtitle: '// CORE_ENGINEERING', price: '125', items: ['Laravel Backend Dev', 'Vue.js Dashboard Dev', 'Automatisierte Tests', 'ERP-Anbindung'] },
-  { title: 'Engineer', subtitle: '// WEB_OPERATIONS', price: '110', items: ['CI/CD Automatisierung', 'Cloud Monitoring', 'System-Refactoring', 'LTS-Support'] }
+const features = [
+  {
+    title: 'Clean Architecture',
+    desc: 'Tobias Kubina garantiert Systeme, die nicht nur heute funktionieren, sondern auch in 5 Jahren noch wartbar und skalierbar sind.'
+  },
+  {
+    title: 'Performance First',
+    desc: 'Wir optimieren Backends auf maximale Last. Keine Verzögerungen, keine Ausfälle – nur hocheffizienter Code.'
+  }
 ]
 
-const imageFallback = (event) => {
-  event.target.src = 'https://placehold.co/1000x1000/111827/white?text=Engineering+Substanz'
-}
+/**
+ * Preisberechnung (Netto * 1.19 = Brutto)
+ */
+const pakete = [
+  { hours: 40, priceNetto: '5.000,00', priceBrutto: '5.950,00', desc: 'Sprints für kleinere Features, System-Audits oder strategische Beratung.' },
+  { hours: 80, priceNetto: '10.000,00', priceBrutto: '11.900,00', desc: 'Umfassende Entwicklung neuer Module und tiefgreifende Architektur-Anpassungen.' },
+  { hours: 120, priceNetto: '15.000,00', priceBrutto: '17.850,00', desc: 'Maximale Kapazität für komplexe ERP/CRM-Launches und Enterprise-Lösungen.' }
+]
+
+/**
+ * SEO & META
+ */
+const title = 'Leistungen | VelWebSolutions - ERP & CRM Engineering';
+const description = 'Professionelle Softwareentwicklung von VelWebSolutions. Tobias Kubina entwickelt skalierbare Kern-Systeme, ERP & CRM Lösungen auf höchstem technischen Niveau.';
+const siteUrl = 'https://velwebsolutions.de/leistungen';
+
+useHead({
+  title,
+  htmlAttrs: { lang: 'de' },
+  link: [{ rel: 'canonical', href: siteUrl }]
+});
+
+useSeoMeta({
+  title,
+  description,
+  ogTitle: title,
+  ogDescription: description,
+  ogType: 'website',
+  ogUrl: siteUrl,
+  twitterCard: 'summary_large_image',
+});
 </script>
+
+<style scoped>
+@media (max-width: 350px) {
+  h1 { font-size: 2.2rem !important; line-height: 0.9 !important; }
+  h2 { font-size: 2.5rem !important; }
+  h3 { font-size: 2rem !important; }
+  p { font-size: 1rem !important; line-height: 1.3 !important; }
+  .p-6, .p-8 { padding: 1.5rem !important; }
+  .rounded-[2rem], .rounded-[2.5rem] { border-radius: 1.25rem !important; }
+}
+
+h1, h2, h3, p {
+  hyphens: auto;
+  word-wrap: break-word;
+}
+</style>
