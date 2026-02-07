@@ -124,7 +124,6 @@
           <div class="flex flex-wrap gap-8 text-xs font-black uppercase tracking-widest italic text-gray-400">
             <NuxtLink to="/" class="hover:text-red-600 transition-colors">Startseite</NuxtLink>
             <NuxtLink to="/impressum" class="hover:text-red-600 transition-colors">Impressum</NuxtLink>
-            <NuxtLink to="/projekte" class="hover:text-red-600 transition-colors">Projekte</NuxtLink>
             <NuxtLink to="/kontakt" class="hover:text-red-600 transition-colors">Kontakt</NuxtLink>
           </div>
         </section>
