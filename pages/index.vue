@@ -1,132 +1,100 @@
 <template>
   <NuxtLayout name="guest">
-    <div class="font-sans text-zinc-900 bg-white selection:bg-red-100 selection:text-red-600 antialiased overflow-x-hidden">
+    <div class="bg-white text-zinc-900 font-sans antialiased min-h-screen overflow-x-hidden text-left">
 
-      <header class="relative pt-24 pb-16 md:pt-64 md:pb-48 bg-red-600 text-white px-4 overflow-hidden">
+      <header class="relative min-h-[60vh] md:min-h-[70vh] flex items-center pt-32 pb-20 bg-[#FF2D20] text-white px-4 sm:px-6 overflow-hidden">
         <div class="absolute inset-0 z-0">
-          <div class="absolute inset-0 bg-gradient-to-br from-red-800 via-red-600 to-red-500"></div>
-          <div class="absolute inset-0 bg-[radial-gradient(circle_at_2px_2px,white_1px,transparent_0)] bg-[size:30px_30px] opacity-10"></div>
+          <div class="absolute inset-0 bg-gradient-to-br from-red-800 via-[#FF2D20] to-red-600"></div>
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_2px_2px,white_1px,transparent_0)] bg-[size:32px_32px] opacity-10 md:bg-[size:48px_48px]"></div>
         </div>
 
-        <div class="relative z-10 max-w-7xl mx-auto">
-          <div class="inline-flex items-center gap-2 px-3 py-2 mb-8 rounded-full bg-black/20 backdrop-blur-2xl border border-white/10 text-[9px] md:text-[12px] font-black uppercase tracking-widest italic">
-            <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute h-full w-full rounded-full bg-red-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+        <div class="relative z-10 max-w-7xl mx-auto w-full">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-8 bg-black/20 backdrop-blur-md border border-white/10 rounded-lg">
+            <span class="flex h-1.5 w-1.5 shrink-0">
+              <span class="animate-ping absolute h-1.5 w-1.5 rounded-full bg-red-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-red-500"></span>
             </span>
-            VelWebSolutions // Specialized Engineering
+            <span class="text-[9px] sm:text-xs font-black uppercase tracking-[0.3em] italic">VelWebSolutions // Engineering 2026</span>
           </div>
 
-          <h1 class="text-[clamp(2.1rem,10vw,8.5rem)] font-[1000] mb-6 leading-[0.9] tracking-tighter uppercase italic break-words">
-            VelWeb <br /><span class="text-white underline decoration-white/20 underline-offset-[4px] md:underline-offset-[16px]">Solutions.</span>
+          <h1 class="text-[clamp(2.4rem,11vw,8.5rem)] font-[1000] mb-8 leading-[0.85] tracking-tighter uppercase italic break-words">
+            Schluss mit <br />
+            <span class="text-white underline decoration-white/20 underline-offset-[8px] md:underline-offset-[20px]">
+              Chaos-Systemen.
+            </span>
           </h1>
 
-          <p class="text-lg md:text-4xl text-red-50 font-light max-w-4xl leading-tight italic opacity-95 mb-10">
-            Wir transformieren komplexe Geschäftsprozesse in <span class="text-white font-bold">hochperformante ERP- & CRM-Systeme.</span> Technisch fundiert. Rein digital.
+          <p class="text-xl sm:text-3xl md:text-4xl font-light max-w-5xl mb-12 leading-tight italic text-red-50 opacity-95">
+            Ich entwickle die digitale Lösung, die <span class="text-white font-bold">Ordnung schafft</span>. Einfach bedienbar, sicher und ohne monatliche Abo-Fallen.
           </p>
 
-          <div class="flex flex-wrap gap-4">
-            <NuxtLink to="/kontakt" class="bg-zinc-900 text-white px-8 py-4 rounded-xl font-black uppercase tracking-widest text-xs hover:bg-white hover:text-red-600 transition-all shadow-2xl active:scale-95">
-              Projekt anfragen
+          <div class="flex flex-col sm:flex-row gap-4">
+            <NuxtLink to="/kontakt" class="w-full sm:w-auto px-10 py-6 bg-zinc-950 text-white font-[1000] rounded-2xl text-center shadow-2xl hover:bg-white hover:text-[#FF2D20] transition-all duration-300 text-lg md:text-xl uppercase italic tracking-widest active:scale-[0.97]">
+              System planen
             </NuxtLink>
           </div>
         </div>
       </header>
 
-      <section class="py-16 md:py-40 bg-white px-4 md:px-6">
-        <div class="max-w-7xl mx-auto">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div class="lg:col-span-6">
-              <h2 class="text-4xl md:text-7xl font-[1000] uppercase italic tracking-tighter leading-none mb-8">
-                Digitale <span class="text-red-600">Maßarbeit.</span>
-              </h2>
-              <div class="space-y-8">
-                <div class="group border-l-4 border-red-600 pl-6">
-                  <h4 class="font-black uppercase text-xl mb-2">Automatisierung statt Verwaltung</h4>
-                  <p class="text-zinc-500 italic">VelWebSolutions eliminiert manuelle Fehlerquellen. Wir bauen Systeme, die Ihre Daten nicht nur speichern, sondern aktiv für Sie arbeiten lassen.</p>
-                </div>
-                <div class="group border-l-4 border-zinc-100 pl-6 hover:border-red-600 transition-colors">
-                  <h4 class="font-black uppercase text-xl mb-2">Skalierbare Architektur</h4>
-                  <p class="text-zinc-500 italic">Unsere Lösungen auf Basis von PHP/Laravel und Vue.js sind darauf ausgelegt, mit Ihrem Unternehmen zu wachsen – vom KMU bis zur Plattform.</p>
-                </div>
-              </div>
-            </div>
-            <div class="lg:col-span-6 lg:pl-12">
-              <div class="bg-zinc-50 rounded-[2.5rem] p-8 md:p-16 border border-zinc-200 shadow-sm relative overflow-hidden">
-                <h3 class="text-2xl font-black italic mb-6 uppercase text-zinc-900 underline decoration-red-600 decoration-4">Technical Lead.</h3>
-                <p class="text-zinc-600 italic text-lg leading-relaxed mb-8">
-                  "Hinter VelWebSolutions steht die Vision, Softwareentwicklung ohne bürokratischen Ballast zu liefern. Als Informatiker garantiere ich für die technische Exzellenz jedes Projekts."
-                </p>
-                <div class="flex items-center gap-4">
-                  <div class="w-10 h-10 rounded-lg bg-red-600 flex items-center justify-center font-bold text-white text-xs">TK</div>
-                  <div>
-                    <span class="block font-bold uppercase text-sm">Tobias Kubina</span>
-                    <span class="block text-[10px] text-zinc-400 uppercase tracking-widest">Founder & Informatiker</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="py-16 md:py-40 bg-zinc-950 text-white px-4">
+      <section class="py-24 sm:py-32 md:py-48 lg:py-64 px-4 sm:px-6 bg-white">
         <div class="max-w-7xl mx-auto">
           <div class="mb-16 md:mb-32">
-            <h2 class="text-4xl md:text-8xl font-[1000] uppercase italic tracking-tighter text-red-600">Lösungen.</h2>
+            <h2 class="text-[clamp(3rem,14vw,9.5rem)] font-[1000] uppercase italic tracking-tighter leading-none text-zinc-900 mb-6">Effizienz.</h2>
+            <div class="text-[#FF2D20] font-mono italic uppercase text-xs sm:text-lg tracking-[0.4em] ml-2">Smart_Operations_Architecture</div>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
-            <div class="space-y-6">
-              <div class="text-red-600 font-mono text-[10px] uppercase tracking-[0.3em] font-bold">// Enterprise_Systems</div>
-              <h3 class="text-4xl md:text-6xl font-black italic uppercase">ERP</h3>
-              <p class="text-lg text-zinc-400 italic leading-relaxed">
-                Optimierung Ihrer Kernprozesse durch maßgeschneiderte Logik. Wir integrieren Lager, Finanzen und Personal in einer stabilen Umgebung.
-              </p>
-              <div class="flex flex-wrap gap-2 pt-4">
-                <span class="px-3 py-1 bg-white/5 border border-white/10 text-[10px] font-mono text-zinc-500 uppercase">Inventory</span>
-                <span class="px-3 py-1 bg-white/5 border border-white/10 text-[10px] font-mono text-zinc-500 uppercase">Finance_Logic</span>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
+            <div v-for="card in helpCards" :key="card.title" class="group bg-zinc-50 p-8 sm:p-16 lg:p-24 rounded-[3rem] sm:rounded-[5rem] border border-zinc-100 transition-all hover:bg-zinc-950 hover:text-white flex flex-col justify-between">
+              <div>
+                <div class="text-[#FF2D20] font-mono font-bold text-[10px] sm:text-xs uppercase tracking-[0.3em] mb-6 sm:mb-12 italic">// {{ card.category }}</div>
+                <h3 class="text-3xl sm:text-5xl lg:text-7xl font-[1000] uppercase italic tracking-tighter mb-6 leading-[0.9]">{{ card.title }}</h3>
+                <p class="text-zinc-500 group-hover:text-zinc-400 italic text-lg sm:text-xl lg:text-2xl leading-relaxed font-medium mb-8">
+                  {{ card.text }}
+                </p>
               </div>
+              <div class="text-4xl opacity-20 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">{{ card.icon }}</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-12 sm:py-24 px-4 sm:px-6 bg-white">
+        <div class="max-w-7xl mx-auto bg-zinc-950 text-white rounded-[3rem] sm:rounded-[6rem] p-10 sm:p-24 lg:p-32 overflow-hidden relative shadow-3xl">
+          <div class="flex flex-col lg:flex-row items-center gap-12 md:gap-24 relative z-10 text-left">
+            <div class="relative shrink-0 group">
+              <div class="absolute -inset-4 border-2 border-red-600/30 rounded-[3.5rem] rotate-6 group-hover:rotate-0 transition-transform duration-700"></div>
+              <img
+                src="/tobias_kubina.jpeg"
+                alt="Tobias Kubina"
+                class="w-40 h-40 sm:w-72 sm:h-72 object-cover rounded-[3rem] shadow-2xl border-4 border-zinc-800 grayscale"
+              />
             </div>
 
-            <div class="space-y-6">
-              <div class="text-red-600 font-mono text-[10px] uppercase tracking-[0.3em] font-bold">// Relation_Management</div>
-              <h3 class="text-4xl md:text-6xl font-black italic uppercase">CRM</h3>
-              <p class="text-lg text-zinc-400 italic leading-relaxed">
-                Datenpräzision für Ihren Vertrieb. Wir entwickeln Dashboards, die Kundenbeziehungen messbar machen und Umsätze steigern.
+            <div>
+              <h2 class="text-4xl sm:text-7xl font-[1000] mb-8 italic uppercase tracking-tighter leading-none text-[#FF2D20]">
+                Direkter <br class="hidden sm:block" /> <span class="text-white">Kontakt.</span>
+              </h2>
+              <p class="text-xl sm:text-3xl lg:text-4xl text-zinc-400 italic mb-10 leading-snug font-light">
+                "Ich spreche Ihre Sprache, nicht die des Computers. Gemeinsam bauen wir Werkzeuge, die entlasten."
               </p>
-              <div class="flex flex-wrap gap-2 pt-4">
-                <span class="px-3 py-1 bg-white/5 border border-white/10 text-[10px] font-mono text-zinc-500 uppercase">Sales_Pipeline</span>
-                <span class="px-3 py-1 bg-white/5 border border-white/10 text-[10px] font-mono text-zinc-500 uppercase">Automation</span>
+              <div class="text-[10px] sm:text-sm font-black uppercase tracking-[0.4em] italic text-zinc-500">
+                Tobias Kubina // VelWebSolutions Engineering
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="py-20 bg-white px-4 border-b border-zinc-100">
-        <div class="max-w-7xl mx-auto text-center md:text-left">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <h2 class="text-4xl md:text-6xl font-[1000] uppercase italic tracking-tighter leading-none">
-              Remote-Only <br/><span class="text-zinc-300">Execution.</span>
-            </h2>
-            <p class="text-zinc-500 italic text-lg md:text-xl">
-              VelWebSolutions arbeitet rein digital. Das bedeutet für Sie: Schnellere Reaktionszeiten, keine Reisekosten und eine transparente Projektabwicklung über moderne Kollaborations-Tools.
-            </p>
+      <section class="py-32 sm:py-48 md:py-64 bg-white px-4 sm:px-6 text-center">
+        <div class="max-w-5xl mx-auto">
+          <div class="inline-block px-6 py-2 mb-12 border-2 border-red-600 text-red-600 text-xs font-black uppercase tracking-[0.4em] italic">
+            Zusammenarbeit
           </div>
-        </div>
-      </section>
-
-      <section class="py-24 md:py-56 bg-zinc-50 px-4 text-center">
-        <div class="max-w-4xl mx-auto">
-          <div class="inline-block px-4 py-1.5 mb-10 border-2 border-red-600 text-red-600 text-[10px] md:text-xs font-black uppercase tracking-[0.4em] italic">
-            Get in Touch
-          </div>
-          <h2 class="text-4xl md:text-[7.5rem] font-[1000] uppercase italic tracking-tighter leading-[0.9] mb-12 text-zinc-900">
-            Vision <br /> <span class="text-zinc-300">skalieren.</span>
+          <h2 class="text-5xl sm:text-8xl lg:text-[11rem] font-[1000] uppercase mb-16 leading-[0.85] tracking-tighter text-zinc-950">
+            Bereit für <br /> <span class="text-zinc-200 italic">den Umbau?</span>
           </h2>
-          <NuxtLink to="/kontakt" class="inline-flex items-center justify-center px-10 py-5 font-black text-white bg-red-600 rounded-2xl transition-all hover:bg-zinc-950 shadow-2xl active:scale-95">
-            <span class="uppercase italic tracking-widest text-xs">Anfrage senden</span>
+          <NuxtLink to="/kontakt" class="w-full sm:w-auto inline-flex items-center justify-center px-12 py-8 bg-[#FF2D20] text-white font-[1000] uppercase tracking-[0.2em] rounded-[2rem] shadow-2xl hover:bg-zinc-950 transition-all text-lg sm:text-2xl active:scale-95 italic">
+            Kontakt aufnehmen
           </NuxtLink>
         </div>
       </section>
@@ -136,60 +104,25 @@
 </template>
 
 <script setup>
-/**
- * SEO & KANONISCHE KONFIGURATION - VelWebSolutions (Tobias Kubina)
- */
-const title = 'VelWebSolutions | Spezialisierte ERP & CRM Softwareentwicklung';
-const description = 'Exzellente Softwarelösungen von VelWebSolutions. Wir entwickeln hocheffiziente ERP- & CRM-Systeme mit PHP/Laravel & Vue.js. 100% Remote-Agentur aus Deutschland.';
-const siteUrl = 'https://velwebsolutions.de';
+const helpCards = [
+  { category: 'Zeitgewinn', icon: '⏱️', title: 'Struktur statt Suche', text: 'Zentralisierte Abläufe in einem System, das exakt mit Ihren Anforderungen mitwächst.' },
+  { category: 'Sicherheit', icon: '🛡️', title: 'Volle Kontrolle', text: 'Ihre Daten auf deutschen Servern – unabhängig von großen US-Software-Konzernen.' },
+  { category: 'Wachstum', icon: '📈', title: 'Skalierbar', text: 'Software ohne Sackgassen. Was heute für drei Mitarbeiter funktioniert, trägt morgen auch dreißig.' },
+  { category: 'Fokus', icon: '📱', title: 'Intuitiv', text: 'Wer ein Smartphone bedienen kann, kommt mit meinen individuellen Lösungen sofort zurecht.' }
+]
 
 useHead({
-  title,
-  htmlAttrs: { lang: 'de' },
-  link: [{ rel: 'canonical', href: siteUrl }],
-  script: [
-    {
-      type: 'application/ld+json',
-      children: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "VelWebSolutions",
-        "author": {
-          "@type": "Person",
-          "name": "Tobias Kubina"
-        },
-        "applicationCategory": "BusinessApplication",
-        "description": description,
-        "url": siteUrl
-      })
-    }
-  ]
-});
-
-useSeoMeta({
-  title,
-  description,
-  ogTitle: title,
-  ogDescription: description,
-  ogType: 'website',
-  ogUrl: siteUrl,
-  twitterCard: 'summary_large_image',
-});
+  title: 'VelWebSolutions | Digitale Lösungen für den Mittelstand',
+  htmlAttrs: { lang: 'de' }
+})
 </script>
 
 <style scoped>
-/* Mobile Optimierung für 320px */
-@media (max-width: 350px) {
-  h1 { font-size: 2.1rem !important; }
-  h2 { font-size: 2.3rem !important; }
-  h3 { font-size: 2.2rem !important; }
-  p { font-size: 0.95rem !important; line-height: 1.3 !important; }
-  header { padding-top: 5rem !important; padding-bottom: 3rem !important; }
-  .rounded-\[2\.5rem\] { border-radius: 1.5rem !important; }
+.shadow-3xl {
+  box-shadow: 0 50px 100px -20px rgba(255, 45, 32, 0.15), 0 30px 60px -30px rgba(0, 0, 0, 0.3);
 }
 
-/* Verhindert Text-Overflow bei langen Wörtern */
-h1, h2, h3, p, span {
+h1, h2, h3, p {
   hyphens: auto;
   word-wrap: break-word;
 }

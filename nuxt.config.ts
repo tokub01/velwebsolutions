@@ -1,9 +1,4 @@
 import { defineNuxtConfig } from 'nuxt/config'
-import { blogPosts } from './data/blogPosts'
-import { cityContent } from './data/cityContent'
-import { phpLaravelContent } from './data/phpLaravelContent'
-import { softwareContent } from './data/softwareContent'
-import { vueContent } from './data/vueContent'
 
 export default defineNuxtConfig({
   ssr: true,
@@ -74,12 +69,7 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       routes: [
-        '/', '/leistungen', '/blog', '/kontakt', '/projekte',
-        ...blogPosts.map(post => `/blog/${post.slug}`),
-        ...Object.keys(cityContent).map(city => `/webentwicklung-${city}`),
-        ...Object.keys(phpLaravelContent).map(city => `/php-laravel-agentur-${city}`),
-        ...Object.keys(softwareContent).map(city => `/softwareentwicklung-${city}`),
-        ...Object.keys(vueContent).map(city => `/vue-js-entwicklung-${city}`)
+        '/', '/leistungen', '/blog', '/kontakt', '/projekte', '/faq', '/ueber-mich'
       ]
     }
   },
