@@ -50,11 +50,20 @@
             Projekt <br/><span class="text-red-600">Briefing.</span>
           </h2>
 
-          <div class="mb-10 p-6 bg-red-50 rounded-[1.5rem] border-l-8 border-red-600 italic">
-            <p class="text-[10px] font-black text-red-600 uppercase tracking-widest mb-1">// Workflow-Protokoll</p>
-            <p class="text-gray-900 font-bold text-sm leading-relaxed">
-              Projektstarts erfolgen nach 100% Vorkasse. Dies garantiert die sofortige Reservierung Ihrer Kapazitäten.
-            </p>
+          <div class="space-y-4 mb-10">
+            <div class="p-6 bg-red-50 rounded-[1.5rem] border-l-8 border-red-600 italic shadow-sm">
+              <p class="text-[10px] font-black text-red-600 uppercase tracking-widest mb-1">// Workflow-Protokoll</p>
+              <p class="text-gray-900 font-bold text-sm leading-relaxed">
+                Projektstarts erfolgen nach 100% Vorkasse. Dies garantiert die sofortige Reservierung Ihrer Kapazitäten.
+              </p>
+            </div>
+
+            <div class="p-6 bg-zinc-900 rounded-[1.5rem] border-l-8 border-zinc-400 italic shadow-xl">
+              <p class="text-[10px] font-black text-zinc-400 uppercase tracking-widest mb-1">// Erstkontakt</p>
+              <p class="text-white font-bold text-sm leading-relaxed">
+                Bitte nutzen Sie für Erstanfragen ausschließlich das Formular oder E-Mail. Telefonischer Support erfolgt nach Projektstart.
+              </p>
+            </div>
           </div>
 
           <client-only>
@@ -123,6 +132,16 @@
               </div>
             </div>
 
+            <div class="group bg-gray-50 p-6 md:p-8 rounded-[2rem] border border-gray-100 hover:bg-white hover:shadow-3xl transition-all duration-500">
+              <div class="flex items-center gap-4 md:gap-6">
+                <div class="bg-red-600 p-4 rounded-xl text-white shadow-lg group-hover:-rotate-6 transition-transform shrink-0"><Phone class="w-5 h-5" /></div>
+                <div class="overflow-hidden w-full">
+                  <p class="text-[9px] font-black text-gray-400 uppercase tracking-widest italic">// Mobilfunk (Bestandskunden)</p>
+                  <a href="tel:+4917632544620" class="text-[clamp(0.85rem,4vw,1.125rem)] font-black text-gray-900 hover:text-red-600 italic uppercase transition-colors block leading-tight">0176 32544620</a>
+                </div>
+              </div>
+            </div>
+
             <div class="bg-gray-900 p-8 md:p-10 rounded-[2rem] text-white shadow-2xl relative overflow-hidden">
               <div class="absolute top-0 right-0 p-8 opacity-10"><User class="w-24 h-24" /></div>
               <div class="relative z-10 space-y-6">
@@ -153,7 +172,7 @@
 </template>
 
 <script setup>
-import { Mail, Lock, User } from 'lucide-vue-next'
+import { Mail, Lock, User, Phone } from 'lucide-vue-next'
 import emailjs from '@emailjs/browser'
 
 definePageMeta({ layout: 'guest' })

@@ -8,7 +8,7 @@
 
       <div class="relative z-10 max-w-5xl mx-auto text-center">
         <div class="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[10px] font-black uppercase tracking-[0.2em] italic text-white">
-          <GraduationCap class="w-3 h-3 text-red-300" /> Academic Engineering Level // B.Sc. Computer Science
+          <LucideGraduationCap class="w-3 h-3 text-red-300" /> Academic Engineering Level // B.Sc. Computer Science
         </div>
         <h1 class="text-3xl sm:text-5xl md:text-7xl font-black mb-6 leading-tight tracking-tighter uppercase italic">
           Impres<span class="text-white/80 underline decoration-white/30 italic">sum.</span>
@@ -29,7 +29,7 @@
           </div>
           <div class="bg-gray-900 p-8 md:p-12 rounded-[2rem] text-white shadow-2xl relative overflow-hidden">
             <div class="absolute top-0 right-0 p-8 opacity-5">
-              <User class="w-32 h-32" />
+              <LucideUser class="w-32 h-32" />
             </div>
             <div class="relative z-10 space-y-6">
               <div class="space-y-1">
@@ -51,18 +51,30 @@
             <span class="text-red-600 font-black text-2xl italic">02 //</span>
             <h2 class="text-2xl md:text-3xl font-black text-gray-900 uppercase italic tracking-tighter">Kontakt-Interface</h2>
           </div>
-          <div class="grid md:grid-cols-2 gap-6 font-bold italic tracking-tight">
-            <a href="mailto:info@velwebsolutions.de" class="flex items-center gap-4 p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:border-red-600 transition-all group shadow-sm">
-              <Mail class="w-6 h-6 text-red-600" />
-              <span class="group-hover:text-red-600">info@velwebsolutions.de</span>
-            </a>
+          <div class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6 font-bold italic tracking-tight">
+              <a href="mailto:info@velwebsolutions.de" class="flex items-center gap-4 p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:border-red-600 transition-all group shadow-sm">
+                <LucideMail class="w-6 h-6 text-red-600" />
+                <span class="group-hover:text-red-600">info@velwebsolutions.de</span>
+              </a>
+              <a href="tel:+4917632544620" class="flex items-center gap-4 p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:border-red-600 transition-all group shadow-sm">
+                <LucidePhone class="w-6 h-6 text-red-600" />
+                <span class="group-hover:text-red-600">0176 32544620</span>
+              </a>
+            </div>
+            <div class="flex items-start gap-4 p-5 bg-zinc-50 rounded-2xl border border-zinc-100 shadow-inner">
+              <LucideInfo class="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
+              <p class="text-[11px] sm:text-xs text-gray-500 font-bold uppercase tracking-widest italic leading-relaxed">
+                Hinweis zur Erreichbarkeit: Erste Kontaktanfragen werden ausschließlich per E-Mail oder über das Kontaktformular auf der Website entgegengenommen.
+              </p>
+            </div>
           </div>
         </section>
 
         <section class="grid md:grid-cols-2 gap-12 border-y border-gray-100 py-12">
           <div class="space-y-4">
             <h3 class="text-red-600 font-black uppercase text-[10px] tracking-[0.2em] italic flex items-center gap-2">
-              <Scale class="w-3 h-3" /> Steuerliche Einordnung
+              <LucideScale class="w-3 h-3" /> Steuerliche Einordnung
             </h3>
             <div class="italic text-gray-600 text-sm leading-relaxed space-y-5">
               <p class="text-gray-900 font-bold border-l-2 border-red-600 pl-4 bg-gray-50 py-1">
@@ -90,7 +102,7 @@
 
           <div class="space-y-4">
             <h3 class="text-red-600 font-black uppercase text-[10px] tracking-[0.2em] italic flex items-center gap-2">
-              <PenTool class="w-3 h-3" /> Redaktionelle Leitung
+              <LucidePenTool class="w-3 h-3" /> Redaktionelle Leitung
             </h3>
             <div class="space-y-2">
               <p class="font-bold italic text-gray-900">Tobias Kubina, B.Sc.</p>
@@ -103,7 +115,7 @@
 
         <section class="bg-gray-50 p-8 md:p-12 rounded-[3rem] border-2 border-dashed border-gray-200 relative overflow-hidden">
           <div class="absolute top-0 right-0 p-8 opacity-5">
-            <Cpu class="w-24 h-24" />
+            <LucideCpu class="w-24 h-24" />
           </div>
           <div class="relative z-10">
             <div class="flex items-center gap-4 mb-6">
@@ -142,6 +154,19 @@
 </template>
 
 <script setup>
+import {
+  GraduationCap, User, Mail, Phone, Info, Scale, PenTool, Cpu
+} from 'lucide-vue-next'
+
+const LucideGraduationCap = GraduationCap
+const LucideUser = User
+const LucideMail = Mail
+const LucidePhone = Phone
+const LucideInfo = Info
+const LucideScale = Scale
+const LucidePenTool = PenTool
+const LucideCpu = Cpu
+
 definePageMeta({
   layout: 'guest'
 })
