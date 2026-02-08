@@ -20,7 +20,7 @@ useHead({
     lang: 'de'
   },
   titleTemplate: (titleChunk) => {
-    return titleChunk ? `${titleChunk} | VelWebSolutions` : 'VelWebSolutions - Engineering & Design';
+    return titleChunk ? `${titleChunk}` : 'VelWebSolutions - Engineering & Design';
   },
   meta: [
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
